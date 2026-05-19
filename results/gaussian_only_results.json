@@ -1,0 +1,271 @@
+{
+  "method": "gaussian_only (multiplicative noise, no quantization, no fault)",
+  "comparison_to": "eval.py (ours: gaussian + stuck-at fault + N-states quantization)",
+  "config": {
+    "baseline_seeds": [
+      42,
+      123,
+      456
+    ],
+    "noise_repeats": 3,
+    "sigma_formula": "(var_on + var_off) / 2"
+  },
+  "materials": {
+    "Pt_HfOx_Ti": {
+      "sigma": 0.125,
+      "ratio": 25.0,
+      "acc_mean": 0.6272231905410687,
+      "acc_std": 0.27866864823992765,
+      "f1_mean": 0.8023676441775428,
+      "f1_std": 0.2439052133847078,
+      "per_run": [
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430000,
+          "subset_acc": 0.9297581911087036,
+          "macro_f1": 0.9788699150085449
+        },
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430001,
+          "subset_acc": 0.49588003754615784,
+          "macro_f1": 0.6890501379966736
+        },
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430002,
+          "subset_acc": 0.8374983072280884,
+          "macro_f1": 0.9400755167007446
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240000,
+          "subset_acc": 0.7478049397468567,
+          "macro_f1": 0.9499468207359314
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240001,
+          "subset_acc": 0.5438335537910461,
+          "macro_f1": 0.7796844244003296
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240002,
+          "subset_acc": 0.02701607532799244,
+          "macro_f1": 0.16393330693244934
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570000,
+          "subset_acc": 0.8071052432060242,
+          "macro_f1": 0.9626344442367554
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570001,
+          "subset_acc": 0.3713359534740448,
+          "macro_f1": 0.8272601962089539
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570002,
+          "subset_acc": 0.8847764134407043,
+          "macro_f1": 0.9298540353775024
+        }
+      ]
+    },
+    "Ferroelectric": {
+      "sigma": 0.1,
+      "ratio": 333.3333333333333,
+      "acc_mean": 0.699386139296823,
+      "acc_std": 0.27707100450775424,
+      "f1_mean": 0.8574878772099813,
+      "f1_std": 0.19284303473943512,
+      "per_run": [
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430000,
+          "subset_acc": 0.9473186731338501,
+          "macro_f1": 0.97865891456604
+        },
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430001,
+          "subset_acc": 0.6601377725601196,
+          "macro_f1": 0.810051679611206
+        },
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430002,
+          "subset_acc": 0.8912603259086609,
+          "macro_f1": 0.967836320400238
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240000,
+          "subset_acc": 0.8262866139411926,
+          "macro_f1": 0.9590816497802734
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240001,
+          "subset_acc": 0.7006618976593018,
+          "macro_f1": 0.8491067886352539
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240002,
+          "subset_acc": 0.0460624061524868,
+          "macro_f1": 0.336642324924469
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570000,
+          "subset_acc": 0.8730244636535645,
+          "macro_f1": 0.9699922800064087
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570001,
+          "subset_acc": 0.43320274353027344,
+          "macro_f1": 0.8864642977714539
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570002,
+          "subset_acc": 0.916520357131958,
+          "macro_f1": 0.9595566391944885
+        }
+      ]
+    },
+    "Metallic_Nanowire": {
+      "sigma": 0.065,
+      "ratio": 1.9653179190751444,
+      "acc_mean": 0.8507361875640022,
+      "acc_std": 0.13414311734225326,
+      "f1_mean": 0.9458658827675713,
+      "f1_std": 0.05650926787139302,
+      "per_run": [
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430000,
+          "subset_acc": 0.9539375901222229,
+          "macro_f1": 0.9764480590820312
+        },
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430001,
+          "subset_acc": 0.8400648236274719,
+          "macro_f1": 0.932770848274231
+        },
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430002,
+          "subset_acc": 0.9328650832176208,
+          "macro_f1": 0.9795029163360596
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240000,
+          "subset_acc": 0.8981493711471558,
+          "macro_f1": 0.9718192219734192
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240001,
+          "subset_acc": 0.8626232743263245,
+          "macro_f1": 0.9460339546203613
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240002,
+          "subset_acc": 0.49601513147354126,
+          "macro_f1": 0.7918559908866882
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570000,
+          "subset_acc": 0.9266513586044312,
+          "macro_f1": 0.9784146547317505
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570001,
+          "subset_acc": 0.8044036030769348,
+          "macro_f1": 0.9619779586791992
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570002,
+          "subset_acc": 0.9419154524803162,
+          "macro_f1": 0.9739693403244019
+        }
+      ]
+    },
+    "TaOx_Ta": {
+      "sigma": 0.09,
+      "ratio": 145.83333333333334,
+      "acc_mean": 0.7330361555020014,
+      "acc_std": 0.2622792517928387,
+      "f1_mean": 0.8813839885923598,
+      "f1_std": 0.15997008331671628,
+      "per_run": [
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430000,
+          "subset_acc": 0.9504255056381226,
+          "macro_f1": 0.9791468977928162
+        },
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430001,
+          "subset_acc": 0.7272727489471436,
+          "macro_f1": 0.8461638689041138
+        },
+        {
+          "baseline_seed": 42,
+          "noise_seed": 430002,
+          "subset_acc": 0.9053086638450623,
+          "macro_f1": 0.971102774143219
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240000,
+          "subset_acc": 0.849790632724762,
+          "macro_f1": 0.9626739621162415
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240001,
+          "subset_acc": 0.7583411931991577,
+          "macro_f1": 0.8856706023216248
+        },
+        {
+          "baseline_seed": 123,
+          "noise_seed": 1240002,
+          "subset_acc": 0.09428609907627106,
+          "macro_f1": 0.4465588331222534
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570000,
+          "subset_acc": 0.8934215903282166,
+          "macro_f1": 0.9733580946922302
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570001,
+          "subset_acc": 0.49358367919921875,
+          "macro_f1": 0.90394127368927
+        },
+        {
+          "baseline_seed": 456,
+          "noise_seed": 4570002,
+          "subset_acc": 0.9248952865600586,
+          "macro_f1": 0.963839590549469
+        }
+      ]
+    }
+  }
+}

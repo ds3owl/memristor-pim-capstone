@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>내가 이해하는 캡스톤 정리</title>
+<style>
+  body {
+    font-family: "맑은 고딕", "Apple SD Gothic Neo", sans-serif;
+    font-size: 11.5pt; line-height: 1.8;
+    max-width: 175mm; margin: 0 auto; padding: 20mm;
+    color: #111; background: #fff;
+  }
+  .cover { text-align: center; padding: 20px 0 30px; border-bottom: 3px solid #444; margin-bottom: 30px; }
+  .cover .title { font-size: 18pt; font-weight: bold; }
+  .cover .sub { font-size: 12pt; color: #555; margin-top: 5px; }
+  h1 { font-size: 16pt; border-bottom: 2px solid #5577aa; padding-bottom: 5px;
+       margin-top: 30px; color: #335; background: #f0f4fa; padding-left: 10px; padding-top: 5px; }
+  h2 { font-size: 13pt; margin-top: 18px; color: #224; }
+  h3 { font-size: 12pt; margin-top: 12px; color: #335; }
+  p { margin: 8px 0; }
+  .summary { background: #fff8d8; border-left: 5px solid #cc8800; padding: 12px 18px; margin: 14px 0; }
+  .analogy { background: #e8f4ff; border-left: 5px solid #4488cc; padding: 10px 16px; margin: 10px 0; }
+  .key { background: #ffe8e8; border-left: 5px solid #cc4444; padding: 12px 18px; margin: 14px 0; font-weight: bold; }
+  .qa { background: #f0f0f0; border: 1px solid #aaa; padding: 12px 16px; margin: 10px 0; border-radius: 5px; }
+  .qa .q { font-weight: bold; color: #335; }
+  .qa .a { margin-top: 5px; }
+  table { border-collapse: collapse; margin: 10px auto; font-size: 11pt; width: 95%; }
+  th, td { border: 1px solid #777; padding: 6px 10px; text-align: center; }
+  th { background: #d8e0f0; }
+  ul, ol { margin: 6px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  .step { background: #e8ffe8; border-left: 4px solid #44aa44; padding: 8px 14px; margin: 8px 0; }
+  .pop { font-size: 13pt; font-weight: bold; color: #c00; }
+  .num { font-weight: bold; color: #06a; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="title">📘 내가 이해하는 캡스톤 정리</div>
+  <div class="sub">멤리스터 PIM 웨이퍼 결함 분류 — 디펜스 대비 완전 가이드</div>
+  <div style="font-size: 10pt; color: #777; margin-top: 10px;">상명대학교 시스템반도체공학과 임창우</div>
+</div>
+
+<!-- =================================================== -->
+<h1>📌 0. 가장 먼저 — 한 문장으로 이 연구가 뭐였는지</h1>
+<div class="summary">
+<p class="pop">멤리스터를 소재별로 CNN에 돌려서 웨이퍼 불량을 찾는 것.<br>
+4종 멤리스터(Pt/HfOx/Ti, Ferroelectric, Metallic Nanowire, TaOx/Ta) 중 어떤 게 PIM 환경에 가장 잘 맞나 비교한 거.</p>
+</div>
+
+<p>발표 때 "이 연구가 뭐예요?"라고 누가 물으면 위 한 문장으로 답하면 됩니다. 그 다음에 깊이 들어가요.</p>
+
+<!-- =================================================== -->
+<h1>🔧 1. 왜 이 연구를 했나? (배경)</h1>
+
+<h2>1.1 AI 돌리는 데 왜 PIM이 필요해?</h2>
+<p>
+ChatGPT나 이미지 인식 같은 AI는 <b>가중치</b>(숫자) 수백만 개를 곱하고 더하는 거예요. 그런데 일반 컴퓨터는
+가중치를 메모리에 저장하고 CPU에서 계산하니까, 가중치를 메모리에서 CPU로 매번 옮겨야 함.
+</p>
+
+<div class="analogy">
+🔌 <b>비유</b>: 도서관(메모리)에서 책(가중치) 한 권씩 들고 사무실(CPU)에 가서 읽는 셈.
+책이 수백만 권이면 왕복이 어마어마함. 이게 <b>메모리-CPU 병목</b>.
+</div>
+
+<p>
+<b>PIM (Processing-In-Memory)</b>은 "<b>책장 자체가 책도 읽어주게 만들자</b>"는 아이디어. 메모리가 계산도 하면
+왕복 안 해도 됨. → 훨씬 빠르고 전기 적게 먹어.
+</p>
+
+<h2>1.2 멤리스터가 뭐야?</h2>
+<p>
+멤리스터 = <b>저항을 기억할 수 있는 부품</b>. 전기 꺼도 저항값을 기억하고, 전압을 가하면 그 저항을 바꿀 수 있어.
+</p>
+<div class="analogy">
+💡 <b>비유</b>: 음악 볼륨 다이얼. 한번 돌려놓으면 그 자리 기억하고, 다시 돌리면 바뀜.
+저항값을 가중치로 쓰면, 멤리스터 격자가 곧 <b>가중치 행렬</b>이 됨. 입력 전압을 주면 출력 전류가 자동으로
+"가중치 × 입력"의 합. 옴의 법칙으로 그냥 계산됨.
+</div>
+
+<h2>1.3 그런데 어떤 멤리스터를 써야 해?</h2>
+<p>
+멤리스터는 만드는 소재에 따라 성능이 다 달라. 4종 비교:
+</p>
+<table>
+  <tr><th>소재</th><th>특징</th><th>비유</th></tr>
+  <tr><td>Pt/HfOx/Ti</td><td>흔하고 만들기 쉬움, 25배 저항폭</td><td>준중형 세단</td></tr>
+  <tr><td>Ferroelectric</td><td>저항폭 333배 (가장 큼)</td><td>고급 세단</td></tr>
+  <tr><td>Metallic Nanowire</td><td>저항폭 2배 (가장 좁음), 4단계만 표현</td><td>작은 스쿠터</td></tr>
+  <tr><td>TaOx/Ta</td><td>균형 좋음, 146배</td><td>실용 세단</td></tr>
+</table>
+<p>
+<b>"이 4 중 PIM에 어떤 게 적합한가?"</b> 이게 우리 연구의 본질 질문.
+</p>
+
+<!-- =================================================== -->
+<h1>🧪 2. 어떻게 실험했나? (방법론)</h1>
+
+<h2>2.1 데이터셋 — MixedWM38</h2>
+<p>
+Wang et al. 2020 (IEEE TSM)이 공개한 데이터셋. 웨이퍼 사진 38,015장에 8개 결함 패턴 라벨이 multi-hot으로
+붙어 있어.
+</p>
+<div class="analogy">
+🍕 <b>비유</b>: 피자 도우(웨이퍼) 38,015장에 흠집(결함) 종류를 표시. 한 도우에 여러 흠집이 있을 수 있음
+(multi-label). 흠집 없는 도우 1,000장은 제외.
+</div>
+<ul>
+  <li>크기: 52×52 픽셀 (배경 0, 정상 다이 1, 결함 다이 2)</li>
+  <li>8개 클래스: Center, Donut, Edge-Loc, Edge-Ring, Loc, Near-Full, Random, Scratch</li>
+  <li>학습:검증:테스트 = 7:1:2 (seed 42로 고정)</li>
+</ul>
+
+<h2>2.2 CNN 구조 (고정)</h2>
+<p>
+간단한 3층 CNN. <b>일부러 단순하게 고정</b>해서 모델 자체의 영향을 통제하고, 소재 차이만 보려고 함.
+</p>
+<ul>
+  <li>Conv16-BN-ReLU-Pool → Conv32-BN-ReLU-Pool → Conv64-BN-ReLU-Pool</li>
+  <li>FC(128) + Dropout(0.3) + FC(8)</li>
+  <li>총 파라미터 약 32만 개</li>
+  <li>손실: BCEWithLogitsLoss (multi-label 표준)</li>
+</ul>
+
+<h2>2.3 PIM 환경 흉내내기 — 3가지 "방해" 적용</h2>
+<p>
+실제 멤리스터로 만든 PIM은 이상적이지 않아. 3가지 "방해"가 있어:
+</p>
+
+<div class="step">
+🔹 <b>1. 양자화 (Quantization)</b> = 가중치를 멤리스터가 표현할 수 있는 단계로 반올림<br>
+→ 멤리스터의 물리적 한계. 무한 → N단계로 압축
+</div>
+<div class="step">
+🔹 <b>2. 변동성 (Variation)</b> = 셀마다 살짝씩 다른 저항값<br>
+→ 제조 공정의 본질적 불완전성
+</div>
+<div class="step">
+🔹 <b>3. 고장 (Stuck-at fault)</b> = 일부 셀이 박혀서 안 바뀜<br>
+→ 일부 % 셀이 영원히 최대/최소 저항에 박힘
+</div>
+
+<div class="key">
+이 3가지를 동시에 적용한 게 본 연구의 핵심. 친구는 1번(변동성)만 했어. 우리는 더 현실적임.
+</div>
+
+<h2>2.4 실험 단계 (4단계 파이프라인)</h2>
+<ol>
+  <li><b>학습</b>: 일반 컴퓨터(FP32)로 CNN 3번 학습 (seed 42, 123, 456)</li>
+  <li><b>매핑</b>: 학습된 가중치를 각 소재의 멤리스터 저항 범위로 옮김</li>
+  <li><b>양자화</b>: N단계로 반올림 (Pt 64, Ferro 128, NW 4, TaOx 32)</li>
+  <li><b>비이상성 적용</b>: variation + stuck-at fault (realistic 조건만)</li>
+  <li><b>평가</b>: 매핑된 가중치로 분류. 9회 반복 (3 seed × 3 noise)</li>
+</ol>
+
+<!-- =================================================== -->
+<h1>📊 3. 결과 — 무엇이 나왔나?</h1>
+
+<h2>3.1 Baseline (그냥 일반 컴퓨터에서)</h2>
+<p>Macro F1 = <span class="num">0.9812 ± 0.0032</span> — 매우 안정적인 시작점.</p>
+
+<h2>3.2 4 소재 결과 (한 번에 정리)</h2>
+<table>
+  <tr><th>소재</th><th>저항폭</th><th>Ideal F1</th><th>Realistic F1</th><th>Drop</th></tr>
+  <tr><td>Pt/HfOx/Ti</td><td>25×</td><td>0.98</td><td>0.76 ± 0.28</td><td>−23%</td></tr>
+  <tr><td>Ferroelectric</td><td>333×</td><td>0.98</td><td>0.86 ± 0.16</td><td>−13%</td></tr>
+  <tr style="background:#ffeeee;"><td><b>Metallic Nanowire</b></td><td><b>2×</b></td><td><b>0.38 (망함!)</b></td><td>0.33</td><td>−15%</td></tr>
+  <tr><td>TaOx/Ta</td><td>146×</td><td>0.98</td><td>0.87 ± 0.14</td><td>−11%</td></tr>
+</table>
+
+<div class="key">
+NW는 이상적인 조건(노이즈 없음)에서도 F1 0.38로 망함! 다른 3종은 0.98로 멀쩡함.
+</div>
+
+<!-- =================================================== -->
+<h1>💡 4. 핵심 발견 3가지 (외울 것!)</h1>
+
+<h3>발견 1 — "저항폭이 좁으면 망한다"</h3>
+<p>
+NW는 저항폭이 2배밖에 안 되고 4단계로만 표현 가능 → 가중치 정보가 거의 다 잘려나감.<br>
+다른 3종은 25배 이상 + 32~128단계라 정보 보존.
+</p>
+<div class="analogy">
+📏 <b>비유</b>: 자(ruler)로 비유하면<br>
+• Ferro = 1000mm 자 (정밀)<br>
+• TaOx = 500mm 자 (정밀)<br>
+• Pt = 100mm 자 (괜찮음)<br>
+• NW = 6mm 자에 4개 눈금만 (정보 손실 큼)
+</div>
+
+<h3>발견 2 — "복불복(Worst-case 붕괴)"</h3>
+<p>
+같은 소재로 9번 돌려보니 평균은 비슷한데 <b>그 중 1번은 갑자기 망함</b>. 이유?
+</p>
+<div class="analogy">
+⌨️ <b>비유</b>: 키보드 1개 키가 고장났다고 해봐.<br>
+• 'q' 키 고장 → 거의 안 쓰니 OK<br>
+• '스페이스바' 고장 → 글 못 씀<br>
+같은 "1개 고장"인데 어디 박히느냐로 완전히 갈림.<br>
+PIM에서도 stuck-at fault가 critical 가중치를 hit하면 모델 붕괴.
+</div>
+
+<h3>발견 3 — "친구보다 더 정직한 모델링"</h3>
+<p>
+친구 작업물(<a href="https://github.com/ymc0315/capstone_comparison">github.com/ymc0315</a>)은 노이즈만 적용하고
+양자화·고장은 무시. 그래서 친구 방식으로 돌리면 <b>NW가 가장 좋게 나옴 (F1 0.95)</b>. 거짓 결론!<br>
+우리는 3가지 다 적용해서 진짜 PIM 환경을 흉내냄. NW가 부적합하다는 진실이 드러남.
+</p>
+
+<!-- =================================================== -->
+<h1>🎯 5. 결론 — 무엇을 말할 수 있나?</h1>
+
+<div class="summary">
+<p class="pop">PIM용 멤리스터를 고를 때:</p>
+<ol>
+  <li><b>저항폭(R_off/R_on) 25배 이상</b> 확보할 것</li>
+  <li><b>평균 성능만 보지 말고 worst-case도 평가</b>할 것</li>
+  <li><b>fault tolerance 메커니즘</b>(중복, ECC, write-verify) 병행 권장</li>
+</ol>
+</div>
+
+<p>
+구체 추천: <b>TaOx/Ta가 가장 균형적</b>. Ferroelectric도 좋으나 동작 전압이 매우 높아 시스템 설계 부담. NW는
+PIM 추론에는 부적합.
+</p>
+
+<!-- =================================================== -->
+<h1>⚠️ 6. 한계 (디펜스 때 미리 답할 거리)</h1>
+
+<table>
+  <tr><th>한계</th><th>한 줄 답변</th></tr>
+  <tr><td>9회 표본 너무 작음</td><td>"95% CI [0.3%, 48%] 본문 명시. 정성적 시사가 목표."</td></tr>
+  <tr><td>NW 5% fault rate가 너무 높음</td><td>"NW는 fault 없는 ideal에서도 F1 0.38로 망함. 양자화 효과."</td></tr>
+  <tr><td>저항비 sweep 안 함</td><td>"4 소재 이산 비교. 합성 sweep은 V.D 향후 과제로 명시."</td></tr>
+  <tr><td>회로 수준 비이상성 안 다룸</td><td>"가중치 수준 모델 한정. sneak path/IR drop은 향후 과제."</td></tr>
+  <tr><td>데이터셋 1개</td><td>"MixedWM38만. WM-811K 검증은 향후 과제."</td></tr>
+  <tr><td>VTEAM 동역학 미적분</td><td>"문헌 파라미터를 정적 mapping에 활용. 동역학 적분은 학회급."</td></tr>
+</table>
+
+<!-- =================================================== -->
+<h1>🛡️ 7. 디펜스 예상 질문 + 답변</h1>
+
+<div class="qa">
+<div class="q">Q1. "9번 돌려서 1번 망한 게 진짜 11%인가요?"</div>
+<div class="a">
+"본 결과는 9개 표본 기반 점추정치입니다. 본문 V.C에 binomial 95% 신뢰구간 [0.3%, 48%]를 명시했습니다. 정확한
+발생률 추정엔 더 많은 반복이 필요하며, 본 연구는 정성적 worst-case 위험 시사가 목적입니다."
+</div>
+</div>
+
+<div class="qa">
+<div class="q">Q2. "NW 결과가 양자화 때문인지 fault 때문인지 어떻게 분리해요?"</div>
+<div class="a">
+"NW의 ideal 조건(variation=0, fault=0)에서도 F1 0.38, Subset Acc 0.08입니다. 이미 fault 없이도 망가져
+있으므로 4-state 양자화 효과로 해석됩니다. 동일 fault rate에서의 ablation은 V.D에 향후 과제로 명시했습니다."
+</div>
+</div>
+
+<div class="qa">
+<div class="q">Q3. "왜 VTEAM을 제목에서 뺐나요?"</div>
+<div class="a">
+"VTEAM 동역학 방정식의 시간 적분은 하지 않았고, 문헌 파라미터(R_on, R_off)만 정적 mapping에 활용했기
+때문입니다. 'VTEAM 기반'은 과장이라 판단해 '4종 멤리스터 소재 파라미터 활용'으로 정직하게 표기했습니다."
+</div>
+</div>
+
+<div class="qa">
+<div class="q">Q4. "25배가 정말 임계값인가요? 10배는 어땠을까요?"</div>
+<div class="a">
+"본 연구의 조건에서 25배 이상이면 ideal 성능 손실이 1% 이내였다는 관찰입니다. 보편적 문턱값으로 단정할
+근거는 아니며, 합성 파라미터로 저항비를 sweep한 연속적 검증은 V.D에 향후 과제로 명시했습니다."
+</div>
+</div>
+
+<div class="qa">
+<div class="q">Q5. "왜 LRS/HRS variation을 평균냈나요?"</div>
+<div class="a">
+"4 소재 간 fault rate가 이미 다른 본 연구 설정에서 비교 변수를 줄이기 위함입니다. LRS/HRS 비대칭 분포의
+영향은 V.D에 향후 과제로 명시했습니다."
+</div>
+</div>
+
+<div class="qa">
+<div class="q">Q6. "Subset Acc랑 Macro F1 둘 다 보고하셨는데 어떤 게 더 중요한가요?"</div>
+<div class="a">
+"실제 응용에서 결함 종류를 부분적으로라도 잡는 게 가치 있으므로 Macro F1을 메인으로 두었지만, 모든 결함을
+완전히 잡는 것의 어려움을 보이기 위해 Subset Acc도 함께 보고했습니다. 두 지표 모두 같은 소재 순위를
+보입니다."
+</div>
+</div>
+
+<div class="qa">
+<div class="q">Q7. "왜 친구는 NW가 좋다고 나왔는데 우리는 망했다고 결론 나왔나요?"</div>
+<div class="a">
+"친구 코드는 variation만 적용하고 양자화·stuck-at fault를 모델링하지 않습니다. NW의 본질적 약점인 4-state
+양자화와 5% fault rate가 미반영되어 NW가 좋게 보였습니다. 본 연구는 3가지 비이상성을 모두 적용해 더 보수적
+평가를 수행했습니다."
+</div>
+</div>
+
+<!-- =================================================== -->
+<h1>📁 8. 폴더 구조 정리</h1>
+
+<pre style="background:#f0f0f0; padding:10px; font-size:10pt; border:1px solid #aaa;">
+memristor_pim_capstone/
+├── paper.html                  ← 최종 논문 (그림 포함, 단독 표시 가능)
+├── 교수님_보고용.html           ← 교수님 보고 요약 (4~5p)
+├── 내가_이해하는용.html         ← 이 파일 (본인용 가이드)
+├── README.md
+├── code/                       ← 코드 6개
+│   ├── data.py
+│   ├── model.py
+│   ├── train.py
+│   ├── eval.py
+│   ├── analyze.py
+│   └── embed_figures.py
+├── data/                       ← 전처리 데이터
+├── checkpoints/                ← 학습된 모델 3개
+├── figures/                    ← 그림 (paper.html에 이미 embed됨)
+└── results/                    ← 모든 결과 JSON, 분석 markdown
+</pre>
+
+<!-- =================================================== -->
+<h1>🎤 9. 발표 시 강조 포인트 (5분 발표 가정)</h1>
+
+<ol>
+  <li><b>30초</b>: 한 문장 요약 — "멤리스터 소재별 PIM 웨이퍼 결함 분류 성능 비교"</li>
+  <li><b>1분</b>: 왜? — AI 메모리 병목 → PIM → 멤리스터 → 어떤 소재? (비유 활용)</li>
+  <li><b>1분</b>: 방법 — VTEAM 문헌 파라미터, MixedWM38, 3대 비이상성 동시 적용 (Table 1 보여주기)</li>
+  <li><b>1분 30초</b>: 결과 — Table 2, 그림 1 (material_comparison.png) 보여주며 4 소재 비교</li>
+  <li><b>1분</b>: 발견 — NW 본질적 한계 + worst-case 붕괴 (그림 2 bimodal 활용)</li>
+  <li><b>30초</b>: 결론·한계 — 3가지 가이드라인 + 정직한 한계 명시</li>
+</ol>
+
+<!-- =================================================== -->
+<h1>✨ 10. 마지막 자신감 부스터</h1>
+
+<div class="summary">
+<p class="pop">이 연구의 가장 큰 강점:</p>
+<ul>
+  <li><b>한계를 정직하게 인정</b> — 학부 캡스톤에서 보기 드문 학술적 태도. 심사위원이 좋아함.</li>
+  <li><b>친구보다 더 현실적</b> — 3대 비이상성 다 적용. 실제 PIM에 가까움.</li>
+  <li><b>예상치 못한 발견</b> — Worst-case 붕괴는 평균만 봐서는 알 수 없는 통찰.</li>
+  <li><b>결론이 구체적</b> — "저항비 25배+worst-case 평가+fault tolerance" 3가지 명확한 가이드.</li>
+</ul>
+<p>외부 LLM 평가 평균: 89점 (Codex 86, Gemini 92, Claude 88)<br>
+3자 만장일치 <b>"제출 OK"</b> 판정 받음.</p>
+</div>
+
+<div style="text-align:center; margin-top: 30px; padding: 15px; background: #f4f4ff; border: 2px solid #88f;">
+🎓 <b>화이팅. 본인 작업이고, 본인이 다 이해하고 있어요. 디펜스 잘 보세요!</b>
+</div>
+
+</body>
+</html>

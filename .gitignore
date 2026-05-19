@@ -1,0 +1,17 @@
+# Large preprocessed data (regenerate with `python code/data.py`)
+data/*.pth
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp

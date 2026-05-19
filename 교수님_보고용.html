@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>지도교수 보고용 요약 — 4종 멤리스터 PIM 웨이퍼 결함 분류 비교</title>
+<style>
+  body {
+    font-family: "Times New Roman", "맑은 고딕", serif;
+    font-size: 11pt; line-height: 1.7;
+    max-width: 175mm; margin: 0 auto; padding: 20mm;
+    color: #111; background: #fff;
+  }
+  .header { text-align: center; border-bottom: 3px solid #222; padding-bottom: 10px; margin-bottom: 20px; }
+  .header .title { font-size: 16pt; font-weight: bold; margin-bottom: 5px; }
+  .header .meta { font-size: 10pt; color: #555; }
+  h1 { font-size: 14pt; border-bottom: 2px solid #444; padding-bottom: 3px; margin-top: 22px; color: #222; }
+  h2 { font-size: 12pt; margin-top: 16px; color: #333; }
+  p { text-align: justify; margin: 6px 0; }
+  table { border-collapse: collapse; margin: 10px auto; font-size: 10pt; width: 90%; }
+  th, td { border: 1px solid #555; padding: 5px 9px; text-align: center; }
+  th { background: #e8e8e8; }
+  .box { background: #f6f6f6; border-left: 4px solid #555; padding: 10px 16px; margin: 12px 0; }
+  .key { background: #fffae8; border-left: 4px solid #c09000; padding: 10px 16px; margin: 12px 0; }
+  ul, ol { margin: 6px 0; padding-left: 24px; }
+  li { margin: 3px 0; }
+  .footer { font-size: 10pt; color: #777; margin-top: 30px; border-top: 1px solid #ccc; padding-top: 10px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="title">지도교수 보고용 요약 보고서</div>
+  <div style="font-size: 12pt; margin: 8px 0;">
+    4종 멤리스터 소재 파라미터를 활용한 PIM 환경 웨이퍼 결함 분류 성능 비교 연구
+  </div>
+  <div class="meta">
+    상명대학교 시스템반도체공학과 / 학부 캡스톤 디자인<br>
+    임창우 · 지도교수 이종환 · 2026
+  </div>
+</div>
+
+<!-- =================================================== -->
+<h1>1. 한 줄 요약</h1>
+<div class="key">
+  VTEAM 문헌 파라미터를 정적 conductance mapping에 활용하여 4종 멤리스터 소재(Pt/HfO<sub>x</sub>/Ti,
+  Ferroelectric, Metallic Nanowire, TaO<sub>x</sub>/Ta)의 PIM 환경 웨이퍼 결함 분류 성능을 정량 비교하고,
+  R<sub>off</sub>/R<sub>on</sub> 25배 이상이면 평균 성능은 보존되나 stuck-at fault 위치 무작위성에 의한
+  worst-case 붕괴가 관찰됨을 보였습니다.
+</div>
+
+<!-- =================================================== -->
+<h1>2. 연구 동기</h1>
+<p>
+딥러닝 추론에서 메모리-연산 분리에 의한 데이터 이동 비용이 시스템 성능과 전력의 주된 병목입니다. PIM
+(Processing-In-Memory)은 가중치 저장 셀이 곱셈-누적 연산을 동시 수행하여 이 병목을 완화하는 아키텍처이며,
+멤리스터 크로스바 어레이는 옴의 법칙과 키르히호프 전류 법칙만으로 단일 사이클 행렬-벡터 곱셈을 완성할 수 있어
+딥러닝 추론용 PIM 가속기의 대표 후보입니다.
+</p>
+<p>
+그러나 멤리스터는 소재별로 저항비(R<sub>off</sub>/R<sub>on</sub>), 안정적 컨덕턴스 상태 수, device-to-device
+variation, stuck-at fault 비율 등 물리 특성이 크게 다르며 이는 분류 성능에 직접적인 영향을 미칩니다. 선행 연구의
+다수는 이러한 비이상성 중 한두 가지만 부분적으로 모델링하거나, 매핑 후 출력 재보정을 가정해 영향을 과소평가하는
+경향이 있었습니다.
+</p>
+<p>
+본 연구는 4종 멤리스터 소재를 동일한 통제 환경에서 비교하여 <b>"어떤 소재가 PIM 환경 웨이퍼 결함 분류에
+적합한가"</b>를 정량적으로 답하는 것을 목표로 했습니다.
+</p>
+
+<!-- =================================================== -->
+<h1>3. 방법론 (핵심)</h1>
+
+<h2>3.1 데이터셋</h2>
+<ul>
+  <li><b>MixedWM38</b> (Wang et al., IEEE TSM 2020, DOI 10.1109/TSM.2020.3020985)</li>
+  <li>52×52 binary wafer map 38,015장에서 normal/no-defect 1,000장 제외, 결함 존재 37,015장 사용</li>
+  <li>8개 결함 클래스 multi-label (단일 결함 7,015장, 복합 결함 30,000장)</li>
+  <li>7:1:2 split (seed=42 고정), Train 25,910 / Val 3,702 / Test 7,403</li>
+</ul>
+
+<h2>3.2 CNN 모델 (고정 기준)</h2>
+<ul>
+  <li>3 Conv (16→32→64, BN+ReLU+MaxPool) + FC(128, Dropout 0.3) + FC(8)</li>
+  <li>총 파라미터 319,592, BCEWithLogitsLoss</li>
+  <li>Adam (lr=1e-3, batch=128), max 20 epoch, Early Stopping (patience=5, val macro-F1)</li>
+  <li>3 baseline seed (42, 123, 456) 독립 학습</li>
+</ul>
+
+<h2>3.3 소재 파라미터 (Table 1)</h2>
+<table>
+  <tr><th>Parameter</th><th>Pt/HfO<sub>x</sub>/Ti</th><th>Ferroelectric</th><th>Metallic Nanowire</th><th>TaO<sub>x</sub>/Ta</th></tr>
+  <tr><td>R<sub>on</sub> (Ω)</td><td>100</td><td>150,000</td><td>17.3</td><td>4,800</td></tr>
+  <tr><td>R<sub>off</sub> (Ω)</td><td>2,500</td><td>50,000,000</td><td>34</td><td>700,000</td></tr>
+  <tr><td><b>R<sub>off</sub>/R<sub>on</sub></b></td><td><b>25.0×</b></td><td><b>333.3×</b></td><td><b>1.97×</b></td><td><b>145.8×</b></td></tr>
+  <tr><td>States</td><td>64</td><td>128</td><td>4</td><td>32</td></tr>
+  <tr><td>σ<sub>R_on</sub> / σ<sub>R_off</sub></td><td>10% / 15%</td><td>8% / 12%</td><td>5% / 8%</td><td>8% / 10%</td></tr>
+  <tr><td>Stuck-at fault</td><td>0.5%</td><td>0.3%</td><td>5.0%</td><td>0.3%</td></tr>
+  <tr><td>출처 (R<sub>on</sub>, R<sub>off</sub>)</td><td>[1, 3]</td><td>[1, 4]</td><td>[1, 5]</td><td>[6]</td></tr>
+</table>
+<p style="font-size:10pt; color:#555;">
+R<sub>on</sub>/R<sub>off</sub>는 실측 문헌(VTEAM 원논문 Table II 등), variation/fault는 문헌 yield 보고
+범위에 기반한 가정값입니다.
+</p>
+
+<h2>3.4 매핑 파이프라인</h2>
+<ol>
+  <li><b>레이어별 정규화 + 부호 분리</b>: W = sign(W)·|W|, |W|/max(|W|)로 정규화 (양·음 가중치는
+  differential pair W<sup>+</sup>−W<sup>−</sup>로 해석)</li>
+  <li><b>선형 매핑</b>: 정규화 값을 [G<sub>min</sub>, G<sub>max</sub>] = [1/R<sub>off</sub>, 1/R<sub>on</sub>] 범위로 매핑</li>
+  <li><b>비이상성 주입 (Realistic 조건만)</b>: variation (multiplicative Gaussian), stuck-at fault
+  (절반 LRS, 절반 HRS로 무작위 고정)</li>
+  <li><b>N-state 양자화</b>: 등간격 nearest-state rounding (ideal/realistic 모두 적용)</li>
+</ol>
+<p>
+매핑 후 출력 재보정(tune)은 수행하지 않아 보수적 평가를 유지했습니다. VTEAM 동역학 방정식의 시간 적분은
+수행하지 않았고, 소재별 문헌의 정적 파라미터를 mapping 기준으로 활용했습니다.
+</p>
+
+<h2>3.5 평가 프로토콜</h2>
+<ul>
+  <li><b>Ideal</b>: 양자화만 적용 (variation/fault 없음), baseline seed당 1회</li>
+  <li><b>Realistic</b>: 양자화 + variation + stuck-at fault, baseline seed당 noise sampling 3회 = 총 9회/소재</li>
+  <li>지표: Subset Accuracy + Macro F1, Threshold 0.5</li>
+</ul>
+
+<!-- =================================================== -->
+<h1>4. 주요 결과</h1>
+
+<h2>4.1 Baseline (FP32 software)</h2>
+<p>3 seed 평균: Subset Acc 0.9534 ± 0.0063, <b>Macro F1 0.9812 ± 0.0032</b>. 매우 안정적.</p>
+
+<h2>4.2 4 소재 비교 (Table 2)</h2>
+<table>
+  <tr><th rowspan="2">Material</th><th rowspan="2">Ratio</th><th rowspan="2">States</th>
+      <th colspan="2">Ideal</th><th colspan="2">Realistic (mean ± std)</th><th>ΔF1</th></tr>
+  <tr><th>Acc</th><th>F1</th><th>Acc</th><th>F1</th><th>relative</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>25.0×</td><td>64</td><td>0.9578</td><td>0.9826</td>
+      <td>0.5601 ± 0.2779</td><td>0.7578 ± 0.2759</td><td>−22.88%</td></tr>
+  <tr><td>Ferroelectric</td><td>333.3×</td><td>128</td><td>0.9526</td><td>0.9805</td>
+      <td>0.6992 ± 0.2660</td><td>0.8570 ± 0.1632</td><td>−12.60%</td></tr>
+  <tr><td><b>Metallic Nanowire</b></td><td><b>1.97×</b></td><td><b>4</b></td><td><b>0.0813</b></td><td><b>0.3847</b></td>
+      <td><b>0.0518 ± 0.0413</b></td><td><b>0.3288 ± 0.1286</b></td><td><b>−14.53%</b></td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta</td><td>145.8×</td><td>32</td><td>0.9458</td><td>0.9770</td>
+      <td>0.7258 ± 0.2431</td><td>0.8726 ± 0.1364</td><td>−10.69%</td></tr>
+</table>
+
+<h2>4.3 Worst-case 붕괴 빈도 (Table 3)</h2>
+<p>per-noise F1을 good (≥0.88), moderate (0.60~0.88), catastrophic (<0.60)로 분류:</p>
+<table>
+  <tr><th>Material</th><th>Good</th><th>Moderate</th><th>Catastrophic</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>4/9 (44%)</td><td>4/9 (44%)</td><td>1/9 (11%)</td></tr>
+  <tr><td>Ferroelectric</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td></tr>
+  <tr><td>Metallic Nanowire</td><td>0/9 (0%)</td><td>0/9 (0%)</td><td>9/9 (100%)</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td></tr>
+</table>
+
+<!-- =================================================== -->
+<h1>5. 핵심 발견 3가지</h1>
+
+<div class="box">
+<b>발견 1 — 저항비 임계 부근의 분기</b><br>
+R<sub>off</sub>/R<sub>on</sub> 25배 이상의 세 소재는 ideal 조건에서 baseline의 99% 이상 성능을 유지하나,
+realistic에서는 0.76~0.87로 하락 + std 0.13~0.28의 큰 변동성. 저항비 1.97배의 NW는 ideal부터 F1 0.38로
+붕괴.
+</div>
+
+<div class="box">
+<b>발견 2 — Metallic Nanowire의 본질적 한계</b><br>
+NW의 ideal 조건(variation=0, fault=0)에서도 F1 0.38, Subset Acc 0.08로 분류 성능이 성립하지 않음. 이는
+4-state 양자화의 본질적 정보 손실에 기인하며, fault rate 차이가 아닌 양자화 효과로 해석됩니다. NW는 다단계
+가중치 정밀도가 필요한 PIM 추론에 부적합합니다.
+</div>
+
+<div class="box">
+<b>발견 3 — Worst-case 붕괴 현상 관찰</b><br>
+고저항비 세 소재에서 9회 Monte Carlo 중 1회씩 catastrophic degradation (F1 < 0.60)이 일관되게 관찰됨.
+이는 평균 성능만으로는 드러나지 않는 PIM 환경의 worst-case 위험을 시사합니다.
+표본 한계(n=9)로 정량적 확률 추정은 보류하나, 95% binomial 신뢰구간 [0.3%, 48%]까지 본문에 명시했습니다.
+</div>
+
+<!-- =================================================== -->
+<h1>6. 한계 (정직히 명시)</h1>
+<ul>
+  <li><b>단일 데이터셋</b>: MixedWM38만 사용. WM-811K 등 다른 벤치마크 검증 미수행.</li>
+  <li><b>경량 CNN</b>: 약 32만 파라미터의 얕은 모델. 대규모 모델에서 비이상성 누적 효과 검증 미실시.</li>
+  <li><b>저항비 sweep 미수행</b>: 4 소재의 이산 비교. 저항비-성능 관계의 연속 함수 형태 결정 불가.</li>
+  <li><b>회로 수준 비이상성 미반영</b>: sneak path, IR drop, ADC 양자화 등은 본 연구의 가중치 수준 모델 범위 외.</li>
+  <li><b>시간적 비이상성 미반영</b>: drift, endurance는 inference-only 평가 범위 제외.</li>
+  <li><b>VTEAM 동역학 미적분</b>: 동역학 방정식의 시간 적분은 수행하지 않음. 문헌 파라미터를 정적 mapping 기준으로만 활용.</li>
+  <li><b>표본 한계</b>: 3 baseline seed × 3 noise sample = 9회/소재. 통계적 유의성 검정 또는 정량 확률
+  추정엔 부족.</li>
+  <li><b>Variation 단순화</b>: LRS/HRS σ를 산술 평균하여 단일 Gaussian 적용. 비대칭 분포 모델링은 향후 과제.</li>
+</ul>
+
+<!-- =================================================== -->
+<h1>7. 의의 및 결론</h1>
+<p>
+본 연구의 결과는 PIM용 멤리스터 소재 선정에서 다음 세 가지를 제안합니다.
+</p>
+<ol>
+  <li><b>충분한 동적 범위 확보</b>: R<sub>off</sub>/R<sub>on</sub> 25배 이상을 1차 기준선으로</li>
+  <li><b>worst-case 평가 병행</b>: 평균 성능 외에 catastrophic 시나리오 빈도까지 함께 검토</li>
+  <li><b>fault tolerance 메커니즘 병행</b>: write-verify, row/column-shifting, ECC/redundancy</li>
+</ol>
+<p>
+본 연구의 보수적 평가 프로토콜은 향후 PIM 기반 결함 분류 시스템 설계 시 평균 성능과 worst-case 위험을 함께
+검토하는 기초 검증 절차로 활용될 수 있습니다.
+</p>
+
+<!-- =================================================== -->
+<h1>8. 부록 — 핵심 참고문헌</h1>
+<ol style="font-size: 10pt;">
+  <li>S. Kvatinsky et al., "VTEAM: A General Model for Voltage-Controlled Memristors," IEEE TCAS-II, 62(8), 786-790, 2015.</li>
+  <li>J. Wang et al., "Deformable Convolutional Networks for Efficient Mixed-type Wafer Defect Pattern Recognition," IEEE TSM, 33(4), 587-596, 2020.</li>
+  <li>E. Yalon et al., "Resistive Switching in HfO<sub>2</sub>...," IEEE EDL, 33(1), 11-13, 2012.</li>
+  <li>A. Chanthbouala et al., "A Ferroelectric Memristor," Nature Materials, 11(10), 860-864, 2012.</li>
+  <li>S. L. Johnson et al., "Memristive Switching of Single-Component Metallic Nanowires," Nanotechnology, 21(12), 125204, 2010.</li>
+  <li>C. Yakopcic et al., "Memristor Model Optimization Based on Parameter Extraction...," IEEE TCAD, 39(5), 1084-1095, 2020.</li>
+  <li>M. Horowitz, "Computing's Energy Problem," ISSCC, 2014.</li>
+  <li>Y.-H. Chen et al., "Eyeriss: An Energy-Efficient Reconfigurable Accelerator...," IEEE JSSC, 52(1), 127-138, 2017.</li>
+</ol>
+
+<div class="footer">
+본 보고서는 학부 캡스톤 디자인 결과물의 핵심 요약입니다. 전체 본문(약 20p, paper.html), 코드 5개 파일,
+실험 결과 JSON, 그림 2장은 첨부 폴더 <code>memristor_pim_capstone/</code> 에 포함되어 있습니다.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "dataset": "MixedWM38 (Wang et al., 2020)",
+  "raw_samples": 38015,
+  "removed_unlabeled": 1000,
+  "final_samples": 37015,
+  "image_size": [
+    52,
+    52
+  ],
+  "num_classes": 8,
+  "classes": [
+    "Center",
+    "Donut",
+    "Edge-Loc",
+    "Edge-Ring",
+    "Loc",
+    "Near-Full",
+    "Random",
+    "Scratch"
+  ],
+  "paradigm": "multi-label (multi-hot)",
+  "single_defect": 7015,
+  "multi_defect": 30000,
+  "class_counts": {
+    "Center": 13000,
+    "Donut": 12000,
+    "Edge-Loc": 13000,
+    "Edge-Ring": 12000,
+    "Loc": 18000,
+    "Near-Full": 149,
+    "Random": 19000,
+    "Scratch": 866
+  },
+  "split_seed": 42,
+  "split_ratio": "70/10/20",
+  "normalization": "pixel /2.0 (0,1,2 -> 0.0, 0.5, 1.0)",
+  "train_size": 25910,
+  "val_size": 3702,
+  "test_size": 7403
+}
