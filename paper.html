@@ -95,6 +95,7 @@
     <li class="sub">A. Baseline (FP32 software) 성능</li>
     <li class="sub">B. 4 소재 Ideal vs Realistic 비교</li>
     <li class="sub">C. Worst-case 붕괴 현상 분석</li>
+    <li class="sub">D. 결함 유형별 (per-class) F1 분석</li>
     <li><b>V. 논의 (Discussion)</b></li>
     <li class="sub">A. 저항비(R<sub>off</sub>/R<sub>on</sub>)의 영향</li>
     <li class="sub">B. Metallic Nanowire의 본질적 한계</li>
@@ -458,6 +459,39 @@ catastrophic 구간에 존재하여, 본질적 표현 한계가 noise 종류와 
 또한 NW의 ideal 조건(variation=0, fault=0)에서도 이미 F1=0.38로 붕괴하므로, NW의 결과는 fault rate 차이가
 아닌 4-state 양자화 효과로 해석된다(NW에 대한 4-state vs. 더 많은 상태 수의 강제 ablation은 본 연구 범위 외이며,
 V.D에 향후 과제로 명시한다).
+</p>
+
+<h2>D. 결함 유형별 (per-class) F1 분석</h2>
+<p>
+표 6은 4 소재 × 두 조건에서의 결함 클래스별 macro F1을 보여준다. 데이터셋의 클래스 빈도가 균일하지 않음을
+유의해야 한다(Near-Full 0.4%, Scratch 2.3%로 가장 적음, Loc 48.6%, Random 51.3%로 가장 많음).
+</p>
+<table>
+  <tr><th>Material / Condition</th><th>Center</th><th>Donut</th><th>Edge-Loc</th><th>Edge-Ring</th><th>Loc</th><th>Near-Full</th><th>Random</th><th>Scratch</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti — Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.99</td><td>0.93</td><td>0.99</td><td>0.98</td></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti — Realistic</td><td>0.86</td><td>0.87</td><td>0.74</td><td>0.78</td><td>0.76</td><td><b>0.64</b></td><td>0.82</td><td><b>0.59</b></td></tr>
+  <tr><td>Ferroelectric — Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.98</td></tr>
+  <tr><td>Ferroelectric — Realistic</td><td>0.94</td><td>0.90</td><td>0.90</td><td>0.94</td><td>0.81</td><td>0.79</td><td>0.87</td><td><b>0.69</b></td></tr>
+  <tr><td>Metallic Nanowire — Ideal</td><td>0.29</td><td>0.73</td><td>0.67</td><td><b>0.00</b></td><td>0.67</td><td><b>0.00</b></td><td>0.72</td><td><b>0.01</b></td></tr>
+  <tr><td>Metallic Nanowire — Realistic</td><td>0.19</td><td>0.44</td><td>0.38</td><td>0.27</td><td>0.57</td><td><b>0.15</b></td><td>0.46</td><td><b>0.17</b></td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta — Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.97</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta — Realistic</td><td>0.98</td><td>0.92</td><td>0.92</td><td>0.95</td><td>0.83</td><td>0.80</td><td>0.89</td><td><b>0.70</b></td></tr>
+</table>
+<p class="caption">Table 6. 4 소재 × Ideal/Realistic 조건에서의 결함 클래스별 F1 (Ideal은 3 seed 평균, Realistic은 9 sample 평균).</p>
+
+<p>
+두 가지 패턴이 관찰된다. 첫째, <b>minority class인 Near-Full(0.4%)과 Scratch(2.3%)가 모든 고저항비 소재에서
+가장 낮은 F1을 보였다</b>. 특히 realistic 조건의 Scratch는 Pt/HfO<sub>x</sub>/Ti 0.59, Ferroelectric 0.69,
+TaO<sub>x</sub>/Ta 0.70으로 떨어져, 다른 다수 클래스(Loc, Random 등)와 약 0.15~0.25의 F1 격차를 보인다. 이는
+multi-label 분류에서 클래스 불균형이 비이상성 조건에서 더 증폭됨을 시사한다.
+</p>
+<p>
+둘째, <b>Metallic Nanowire는 ideal 조건에서도 Edge-Ring, Near-Full, Scratch의 F1이 약 0으로 사실상 분류
+실패</b>이다. 이는 4-state 양자화로 인해 가중치 표현 자유도가 부족해 minority 또는 공간적으로 미세한
+패턴(Edge-Ring 같은 가장자리 고리)을 식별할 수 없음을 보여준다. realistic 조건에서 일부 클래스의 F1이 살짝
+증가하는 현상은 양자화로 이미 무너진 결정 경계가 random noise로 우연히 일부 정답을 맞히는 통계적 효과로
+해석된다.
+</p>
 다만 본 결과는 소재당 9개 표본에 기반한 점추정치이므로, 11% 빈도를 실제 칩의 발생 확률로 일반화하기 위해서는
 더 많은 Monte Carlo 반복이 필요하다. 9회 중 1회 사건의 binomial 95% 신뢰구간은 약 [0.3%, 48%]에 이르므로,
 "11%"는 정확한 발생률 추정치가 아닌 본 표본 기준의 관찰 빈도로 해석되어야 한다.
