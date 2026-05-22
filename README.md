@@ -25,9 +25,14 @@ VTEAM 문헌 파라미터를 정적 conductance mapping에 활용하여 4종 멤
 ## 폴더 구조
 ```
 memristor_pim_capstone/
-├── paper.html                  ← 최종 논문 (그림 base64 embed, 단독 표시 가능)
-├── 교수님_보고용.html           ← 학술 요약 (4~5p)
-├── 내가_이해하는용.html         ← 본인 학습용 가이드 + 디펜스 Q&A
+├── README.md
+├── 문서/                        ← 결과물 HTML
+│   ├── paper.html               (최종 논문, 그림 base64 embed, 단독 표시 가능)
+│   ├── 교수님_보고용.html        (학술 요약 4~5p)
+│   └── 내가_이해하는용.html      (본인 학습용 가이드 + 디펜스 Q&A)
+├── 졸업논문/                     ← 최종 제출본
+│   ├── 202021321 임창우 졸업논문 원본.hwpx
+│   └── 202021321 임창우 졸업논문 PDF.pdf
 ├── code/                       ← Python 코드
 │   ├── data.py                 (MixedWM38 전처리)
 │   ├── model.py                (WaferCNN)
@@ -90,7 +95,7 @@ python analyze.py  # Worst-case 분포 분석 + 그림 생성
 - 표본 한계(9회/소재) — 통계적 유의성 검정 미수행
 - VTEAM 동역학 방정식 직접 적분 미수행 (정적 mapping에만 활용)
 
-자세한 내용은 [`paper.html`](paper.html) 참고.
+자세한 내용은 [`paper.html`](문서/paper.html) 참고.
 
 ## 참고문헌 (핵심)
 - [1] S. Kvatinsky et al., "VTEAM: A General Model for Voltage-Controlled Memristors," IEEE TCAS-II, 2015.
