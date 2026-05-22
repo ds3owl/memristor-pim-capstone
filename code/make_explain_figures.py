@@ -117,7 +117,7 @@ def _block(ax, x, y, w, h, depth_n, color, label):
         a = 1.0 if k == 0 else 0.25
         ax.add_patch(Rectangle((x + k * off, y + k * off), w, h,
                                facecolor=c, edgecolor="#37474f", lw=1.0, alpha=a, zorder=10 - k))
-    ax.text(x + w / 2, y - 0.18, label, ha="center", va="top", fontsize=9)
+    ax.text(x + w / 2, y - 0.20, label, ha="center", va="top", fontsize=13)
 
 
 def fig_cnn_architecture():
@@ -137,42 +137,43 @@ def fig_cnn_architecture():
         y = 3 - sz / 2
         _block(ax, x, y, sz, sz, dep, col, lab)
         arr = FancyArrowPatch((prev_x + 0.05, 2.9), (x - 0.15, 2.9),
-                              arrowstyle="-|>", mutation_scale=14, color="#455a64", lw=1.4)
+                              arrowstyle="-|>", mutation_scale=16, color="#455a64", lw=1.6)
         ax.add_patch(arr)
-        ax.text((prev_x + x) / 2 - 0.05, 3.55,
-                "Conv 3×3 (pad=1,\n크기 유지)\nBN·ReLU\nMaxPool 2×2 (½)", ha="center",
-                va="bottom", fontsize=7.2, color="#37474f")
+        # 반복되는 Conv 동작은 화살표마다 짧게만 표기(상세는 하단 캡션)
+        ax.text((prev_x + x) / 2 - 0.05, 3.35,
+                "Conv 3×3\n+Pool ½", ha="center",
+                va="bottom", fontsize=12, color="#37474f")
         prev_x = x + sz + dep * 0.06
 
     # FC 부분
     fcx = 9.2
     arr = FancyArrowPatch((prev_x, 2.9), (fcx - 0.1, 2.9), arrowstyle="-|>",
-                          mutation_scale=14, color="#455a64", lw=1.4)
+                          mutation_scale=16, color="#455a64", lw=1.6)
     ax.add_patch(arr)
-    ax.text((prev_x + fcx) / 2, 3.4, "Flatten\n(2304)", ha="center", va="bottom", fontsize=9)
+    ax.text((prev_x + fcx) / 2, 3.35, "Flatten\n(2304)", ha="center", va="bottom", fontsize=12)
     # FC128
     ax.add_patch(Rectangle((fcx, 1.6), 0.35, 2.6, facecolor="#ffb74d", edgecolor="#37474f"))
-    ax.text(fcx + 0.17, 1.4, "FC 128\n+Dropout", ha="center", va="top", fontsize=8)
+    ax.text(fcx + 0.17, 1.42, "FC 128\n+Dropout", ha="center", va="top", fontsize=12)
     # FC8 (출력)
     out_x = 10.6
     arr = FancyArrowPatch((fcx + 0.4, 2.9), (out_x - 0.1, 2.9), arrowstyle="-|>",
-                          mutation_scale=14, color="#455a64", lw=1.4)
+                          mutation_scale=16, color="#455a64", lw=1.6)
     ax.add_patch(arr)
     labels = CLASSES
     for j, cl in enumerate(labels):
-        yy = 4.7 - j * 0.45
-        ax.add_patch(Rectangle((out_x, yy), 0.3, 0.32, facecolor="#a5d6a7", edgecolor="#37474f"))
-        ax.text(out_x + 0.4, yy + 0.16, cl, ha="left", va="center", fontsize=8)
-    ax.text(out_x + 0.15, 5.25, "8 logits → Sigmoid 확률\n(threshold 0.5)", ha="center", va="bottom", fontsize=8)
+        yy = 4.7 - j * 0.46
+        ax.add_patch(Rectangle((out_x, yy), 0.32, 0.34, facecolor="#a5d6a7", edgecolor="#37474f"))
+        ax.text(out_x + 0.45, yy + 0.17, cl, ha="left", va="center", fontsize=12)
+    ax.text(out_x + 0.15, 5.25, "8 logits → Sigmoid 확률\n(threshold 0.5)", ha="center", va="bottom", fontsize=12)
 
-    ax.text(6.5, 5.75, "WaferCNN 구조 — 3 Conv + 2 FC (총 319,592 파라미터)",
-            ha="center", fontsize=13, weight="bold")
+    ax.text(6.5, 5.78, "WaferCNN 구조 — 3 Conv + 2 FC (총 319,592 파라미터)",
+            ha="center", fontsize=17, weight="bold")
     # conv 개념 캡션
-    ax.text(6.5, 0.30,
+    ax.text(6.5, 0.28,
             "Conv 층은 작은 3×3 필터(pad=1, 크기 유지)를 이미지 전체에 미끄러뜨리며 국소 패턴(가장자리·고리·선)을 검출하고,\n"
             "MaxPool 2×2가 해상도를 절반으로 줄여(52→26→13→6) 점점 더 넓은 범위의 패턴을 본다.\n"
             "마지막 FC 층은 8개 logit을 내고, Sigmoid가 클래스별 확률로 변환 — 여러 결함이 동시에 1이 될 수 있다(multi-label).",
-            ha="center", va="bottom", fontsize=8.3, color="#37474f")
+            ha="center", va="bottom", fontsize=11.5, color="#37474f")
     fig.tight_layout()
     out = os.path.join(FIG, "cnn_architecture.png")
     fig.savefig(out, dpi=150, bbox_inches="tight")
@@ -194,28 +195,28 @@ def fig_pipeline():
         (7.1, "④ 멤리스터 크로스바\n4종 소재 + 양자화\n+ 비이상성(노이즈·고착)", "#ffe0b2"),
         (9.4, "⑤ PIM 추론 평가\n(추론만 하드웨어)\nIdeal vs Realistic", "#c8e6c9"),
     ]
-    w, h, y = 2.0, 2.2, 1.3
+    w, h, y = 2.0, 2.2, 1.45
     centers = []
     for x, txt, col in boxes:
         ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.04,rounding_size=0.12",
                                     facecolor=col, edgecolor="#37474f", lw=1.2))
-        ax.text(x + w / 2, y + h / 2, txt, ha="center", va="center", fontsize=9.2)
+        ax.text(x + w / 2, y + h / 2, txt, ha="center", va="center", fontsize=12.5)
         centers.append(x + w)
     for i in range(len(boxes) - 1):
         x0 = boxes[i][0] + w
         x1 = boxes[i + 1][0]
         arr = FancyArrowPatch((x0 - 0.02, y + h / 2), (x1 + 0.02, y + h / 2),
-                              arrowstyle="-|>", mutation_scale=18, color="#455a64", lw=1.6)
+                              arrowstyle="-|>", mutation_scale=20, color="#455a64", lw=1.8)
         ax.add_patch(arr)
-    ax.text(6.0, 4.15, "연구 전체 흐름: 웨이퍼 결함 분류 CNN을 멤리스터 PIM 하드웨어로 옮길 때 소재별 성능 비교",
-            ha="center", fontsize=12, weight="bold")
-    ax.text(6.0, 0.72,
+    ax.text(6.0, 4.30, "연구 전체 흐름: 웨이퍼 결함 분류 CNN을 멤리스터 PIM 하드웨어로 옮길 때 소재별 성능 비교",
+            ha="center", fontsize=15, weight="bold")
+    ax.text(6.0, 0.78,
             "학습은 소프트웨어(FP32)에서 수행하고, 학습된 가중치를 멤리스터로 매핑해 추론 단계만 PIM 환경에서 평가한다.",
-            ha="center", va="center", fontsize=8.5, color="#546e7a")
-    ax.text(6.0, 0.38,
-            "핵심 질문: 4종 멤리스터 소재(Pt/HfOx/Ti, Ferroelectric, Metallic Nanowire, TaOx/Ta) 중 "
+            ha="center", va="center", fontsize=12, color="#546e7a")
+    ax.text(6.0, 0.34,
+            "핵심 질문: 4종 멤리스터 소재(Pt/HfOx/Ti, Ferroelectric, Metallic Nanowire, TaOx/Ta) 중\n"
             "어떤 것이 PIM 환경에서 분류 성능을 가장 잘 보존하는가?",
-            ha="center", va="center", fontsize=8.8, color="#37474f")
+            ha="center", va="center", fontsize=12.5, color="#37474f")
     fig.tight_layout()
     out = os.path.join(FIG, "pipeline_overview.png")
     fig.savefig(out, dpi=150, bbox_inches="tight")
