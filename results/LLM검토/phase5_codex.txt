@@ -1,0 +1,844 @@
+Reading additional input from stdin...
+OpenAI Codex v0.124.0 (research preview)
+--------
+workdir: C:\Users\ds3owl\Desktop\memristor_pim_capstone
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: none
+reasoning summaries: none
+session id: 019e4914-d288-74a3-aede-4b5d8ac8260b
+--------
+user
+paper_b5.html 변경 후 점검. 직전 변경: (1) 서론을 '1.1 연구 배경'(선행연구 한계를 여기 1문단으로 흡수)+'1.2 본 연구의 기여'(3개 기여를 1문단으로 압축) 2개 절로 슬림화 — 기존 1.2 선행한계 절, 1.3 기여 절 헤딩 제거됨. (2) 결과 그림 Figure 4(소재비교 막대그래프)·Figure 5(per-noise 분포) 삭제, 데이터는 표4·5에 유지, 본문 참조도 정리. 남은 그림은 Figure 1(defect)·2(CNN)·3(파이프라인). 확인할 것: (1) 서론이 슬림화 후에도 자연스럽고 3대 기여가 살아있는지, 흡수된 선행연구 한계 문맥이 어색하지 않은지 (2) 그림 삭제 후 본문에 '그림 4/5' 등 깨진 참조나 '그림 N'↔캡션 불일치 없는지(현재 그림 1~3, 표 1~6) (3) 차례가 본문 헤딩과 일치하는지(1.1/1.2 변경 반영) (4) 새 모순·비문. 졸업논문이라 꼼꼼히. 문제 없으면 '제출 가능', 있으면 우선순위로.
+codex
+paper_b5.html를 읽어서 구조, 그림/표 번호, 본문 참조, 차례를 같이 대조하겠습니다. 먼저 파일 위치와 관련 텍스트를 확인하겠습니다.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-ChildItem -Force' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"그림\\s*[0-9]|Figure\\s*[0-9]|표\\s*[0-9]|Table\\s*[0-9]|1\\.1|1\\.2|1\\.3|선행|기여|차례|목차|caption|figcaption|<h[1-6]|<table\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 577ms:
+32:  .caption { text-align: center; font-size: 9pt; font-style: italic; color: #444; margin: 3px 0 10px; }
+91:  <h1>ì°¨ã€€ã€€ë¡€</h1>
+95:    <li class="s1">1.1 ì—°êµ¬ ë°°ê²½</li>
+96:    <li class="s1">1.2 ë³¸ ì—°êµ¬ì˜ ê¸°ì—¬</li>
+123:  <h1 style="text-align:center;border:none">êµ­ ë¬¸ ìš” ì•½</h1>
+151:<h1>1. ì„œë¡ </h1>
+153:<h2>1.1 ì—°êµ¬ ë°°ê²½</h2>
+175:ì„ í–‰ ì—°êµ¬ì˜ ë‹¤ìˆ˜ëŠ” ì´ë“¤ ì¤‘ í•œë‘ ê°€ì§€ë§Œ ë¶€ë¶„ì ìœ¼ë¡œ ëª¨ë¸ë§í•˜ê±°ë‚˜ ë§¤í•‘ í›„ ì¶œë ¥ ìž¬ë³´ì •(tune)ì„ ê°€ì •í•´ ê·¸ ì˜í–¥ì„
+179:<h2>1.2 ë³¸ ì—°êµ¬ì˜ ê¸°ì—¬</h2>
+181:ë³¸ ì—°êµ¬ì˜ ê¸°ì—¬ëŠ” ë‹¤ìŒê³¼ ê°™ë‹¤. (1) VTEAM ë¬¸í—Œ íŒŒë¼ë¯¸í„° ê¸°ë°˜ ì •ì  conductance mapping í™˜ê²½ì—ì„œ 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬
+191:<h1>2. ì´ë¡ ì  ë°°ê²½</h1>
+193:<h2>2.1 Processing-In-Memory (PIM)</h2>
+200:<h2>2.2 ë©¤ë¦¬ìŠ¤í„° í¬ë¡œìŠ¤ë°” ì–´ë ˆì´</h2>
+208:<h2>2.3 VTEAM ëª¨ë¸</h2>
+222:<h2>2.4 ì›¨ì´í¼ ê²°í•¨ ë¶„ë¥˜ì™€ CNN</h2>
+231:<h1>3. ë°©ë²•ë¡ </h1>
+233:<h2>3.1 ë°ì´í„°ì…‹</h2>
+239:í¬í•¨í•œë‹¤ëŠ” ì ì´ íŠ¹ì§•ì´ë‹¤. 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ì˜ ëŒ€í‘œì ì¸ ê³µê°„ íŒ¨í„´ì€ ê·¸ë¦¼ 1ê³¼ ê°™ë‹¤.
+243:  <div class="caption">Figure 1. MixedWM38ì˜ 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ ë‹¨ì¼ê²°í•¨ ì˜ˆì‹œ (í°=ì›¨ì´í¼ ë°–, íšŒìƒ‰=ì •ìƒ die, ë¹¨ê°•=ê²°í•¨ die). ì‹¤ì œ ë°ì´í„°ëŠ” ë‘ ì¢…ë¥˜ ì´ìƒì´ ê²¹ì¹œ ë³µí•© ê²°í•¨ì„ í¬í•¨í•œë‹¤.</div>
+252:<h2>3.2 CNN ëª¨ë¸ êµ¬ì¡°</h2>
+254:ëª¨ë¸ êµ¬ì¡°ëŠ” ê·¸ë¦¼ 2ì™€ ê°™ë‹¤. ìž…ë ¥ 52Ã—52 ì›¨ì´í¼ ë§µì´ 3ê°œì˜ í•©ì„±ê³± ë¸”ë¡ì„ ê±°ì¹˜ë©° êµ­ì†Œ íŒ¨í„´ì„ ì¶”ì¶œí•˜ê³ 
+256:ê° ê³„ì¸µì˜ ìƒì„¸ ì‚¬ì–‘ì€ í‘œ 1ê³¼ ê°™ìœ¼ë©°, ìž¬í˜„ ê°€ëŠ¥í•œ ë‹¨ìˆœí•œ í˜•íƒœë¡œ ê³ ì •í•˜ì˜€ë‹¤.
+260:  <div class="caption">Figure 2. WaferCNN êµ¬ì¡°. 3ê°œ í•©ì„±ê³± ë¸”ë¡ì´ êµ­ì†Œ íŒ¨í„´ì„ ì¶”ì¶œí•˜ê³ (MaxPoolë¡œ í•´ìƒë„ Â½ì”© ì¶•ì†Œ) ì™„ì „ì—°ê²° ê³„ì¸µì´ 8ê°œ ê²°í•¨ í™•ë¥ ì„ ì¶œë ¥í•œë‹¤(multi-label).</div>
+262:<table>
+270:<p class="caption">Table 1. CNN ëª¨ë¸ êµ¬ì¡°. ì´ íŒŒë¼ë¯¸í„° ìˆ˜ 319,592.</p>
+278:<h2>3.3 4ì¢… ì†Œìž¬ íŒŒë¼ë¯¸í„°</h2>
+280:ë³¸ ì—°êµ¬ì˜ í•µì‹¬ ë¹„êµ ëŒ€ìƒì¸ 4ì¢… ì†Œìž¬ì˜ ë¬¼ë¦¬ íŒŒë¼ë¯¸í„°ëŠ” í‘œ 2ì— ì •ë¦¬í•˜ì˜€ë‹¤.
+284:<table>
+295:<p class="caption">Table 2. 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ì˜ conductance mapping ë° ë¹„ì´ìƒì„± íŒŒë¼ë¯¸í„°. R<sub>on</sub>, R<sub>off</sub>ëŠ” ì‹¤ì¸¡ ë¬¸í—Œ, variation/faultëŠ” ê°€ì •ê°’.</p>
+297:<h2>3.4 ë§¤í•‘Â·ì–‘ìží™” ë° ë¹„ì´ìƒì„± ëª¨ë¸</h2>
+299:ì—°êµ¬ ì „ì²´ íë¦„ì€ ê·¸ë¦¼ 3ê³¼ ê°™ë‹¤. ì´ ì¤‘ í•™ìŠµëœ CNN ê°€ì¤‘ì¹˜ë¥¼ ê° ì†Œìž¬ì˜ ë©¤ë¦¬ìŠ¤í„° í¬ë¡œìŠ¤ë°”ë¡œ ì˜®ê¸°ëŠ” ë§¤í•‘ ì ˆì°¨ëŠ”
+305:  <div class="caption">Figure 3. ì „ì²´ í‰ê°€ íë¦„. ì†Œí”„íŠ¸ì›¨ì–´ì—ì„œ í•™ìŠµí•œ CNN ê°€ì¤‘ì¹˜ë¥¼ ì†Œìž¬ë³„ ë©¤ë¦¬ìŠ¤í„° ì»¨ë•í„´ìŠ¤ë¡œ ë§¤í•‘Â·ì–‘ìží™”í•˜ê³  ë¹„ì´ìƒì„±ì„ ì£¼ìž…í•´ ì¶”ë¡  ë‹¨ê³„ë§Œ PIM í™˜ê²½ì—ì„œ í‰ê°€í•œë‹¤.</div>
+335:<h2>3.5 í‰ê°€ í”„ë¡œí† ì½œ</h2>
+353:<h1>4. ê²°ê³¼</h1>
+355:<h2>4.1 Baseline (FP32 software) ì„±ëŠ¥</h2>
+357:3ê°œì˜ baseline seedì— ëŒ€í•´ í•™ìŠµëœ CNNì˜ í…ŒìŠ¤íŠ¸ ì„±ëŠ¥ì€ í‘œ 3ê³¼ ê°™ë‹¤.
+359:<table>
+366:<p class="caption">Table 3. FP32 software baselineì˜ 3 seed ê²°ê³¼. macro F1ì˜ std=0.0032ë¡œ ë§¤ìš° ì•ˆì •ì .</p>
+372:<h2>4.2 4ì¢… ì†Œìž¬ Ideal vs Realistic ë¹„êµ</h2>
+374:ê° ì†Œìž¬ë³„ ideal ë° realistic ì¡°ê±´ì—ì„œì˜ macro F1 ê²°ê³¼ë¥¼ í‘œ 4ì— ì •ë¦¬í•˜ì˜€ë‹¤.
+376:<table>
+384:<p class="caption">Table 4. 4 ì†Œìž¬ì˜ Ideal vs Realistic ë¶„ë¥˜ ì„±ëŠ¥ (Subset Accuracy ë° Macro F1, 3 baseline seed Ã— 3 noise sample = 9íšŒ í‰ê· ). Î”F1ì€ macro F1 ê¸°ì¤€ì˜ ì ˆëŒ€ ë³€í™”ëŸ‰ê³¼ ìƒëŒ€ ë³€í™”ìœ¨ì„ ë¶„ë¦¬í•˜ì—¬ í‘œê¸°.</p>
+394:Subset Accuracy ê¸°ì¤€ìœ¼ë¡œëŠ” ë” í° ê°ì†Œê°€ ë‚˜íƒ€ë‚˜(í‘œ 4), multi-label ë¶„ë¥˜ì—ì„œ 8ê°œ ê²°í•¨ì„ ë™ì‹œì— ì •í™•ížˆ ë§žížˆëŠ” ê²ƒì´
+404:<h2>4.3 Worst-case ë¶•ê´´ í˜„ìƒ ë¶„ì„</h2>
+406:í‘œ 4ì˜ í° í‘œì¤€íŽ¸ì°¨ëŠ” ë‹¨ìˆœí•œ noise varianceê°€ ì•„ë‹ˆë¼, ë™ì¼ ì†Œìž¬ì˜ 9íšŒ noise sampling ê²°ê³¼ê°€ "ì •ìƒ ì˜ì—­"ê³¼
+411:F1 â‰¥ 0.88ì„ "good", F1 &lt; 0.60ì„ "catastrophic"ìœ¼ë¡œ ì •ì˜í–ˆì„ ë•Œ 4 ì†Œìž¬ì˜ ë¶„í¬ëŠ” í‘œ 5ì™€ ê°™ë‹¤.
+413:<table>
+420:<p class="caption">Table 5. ê° ì†Œìž¬ì˜ per-noise ê²°ê³¼ë¥¼ good / moderate / catastrophic ìž„ê³„ë¡œ ë¶„ë¥˜í•œ ë¹ˆë„.</p>
+430:<h2>4.4 ê²°í•¨ ìœ í˜•ë³„ (per-class) F1 ë¶„ì„</h2>
+432:í‘œ 6ì€ 4ì¢… ì†Œìž¬ Ã— ë‘ ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1ì„ ë³´ì—¬ì¤€ë‹¤. ë°ì´í„°ì…‹ì˜ í´ëž˜ìŠ¤ ë¹ˆë„ê°€ ê· ì¼í•˜ì§€ ì•ŠìŒì„
+433:ìœ ì˜í•´ì•¼ í•œë‹¤(Near-Full 0.4%, Scratch 2.3%ë¡œ ê°€ìž¥ ì ìŒ, Loc 48.6%, Random 51.3%ë¡œ ê°€ìž¥ ë§ŽìŒ).
+435:<table>
+446:<p class="caption">Table 6. 4 ì†Œìž¬ Ã— Ideal/Realistic ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1 (Idealì€ 3 seed í‰ê· , Realisticì€ 9 sample í‰ê· ).</p>
+458:<h1>5. ë…¼ì˜</h1>
+460:<h2>5.1 ì €í•­ë¹„ì˜ ì˜í–¥</h2>
+473:<h2>5.2 Metallic Nanowireì˜ ë³¸ì§ˆì  í•œê³„</h2>
+485:<h2>5.3 Worst-case ë¶•ê´´ í˜„ìƒì˜ PIM í•¨ì˜</h2>
+487:ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” í‰ê·  ì„±ëŠ¥ì´ ë¹„ìŠ·í•´ë„ 9íšŒ ì¤‘ 1íšŒ catastrophic degradationì´ ë‚˜íƒ€ë‚¬ë‹¤(í‘œ 5). ì´ëŠ” í‰ê· ë§Œìœ¼ë¡œ
+498:<h2>5.4 í•œê³„ ë° í–¥í›„ ê³¼ì œ</h2>
+513:<h1>6. ê²°ë¡ </h1>
+538:<h1>ì°¸ê³ ë¬¸í—Œ</h1>
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 602ms:
+
+
+    디렉터리: C:\Users\ds3owl\Desktop\memristor_pim_capstone
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d--h--      2026-05-19  오후 10:38                .git                                                                 
+d-----      2026-05-19   오후 4:46                checkpoints                                                          
+d-----      2026-05-21   오후 2:43                code                                                                 
+d-----      2026-05-19   오후 4:35                data                                                                 
+d-----      2026-05-21  오후 12:37                figures                                                              
+d-----      2026-05-21   오후 2:49                results                                                              
+-a----      2026-05-19  오후 10:09            188 .gitignore                                                           
+-a----      2026-05-19  오후 10:20         443552 paper.html                                                           
+-a----      2026-05-21   오후 2:45          41252 paper_b5.html                                                        
+-a----      2026-05-21   오후 2:14         793417 paper_b5_embedded.html                                               
+-a----      2026-05-21   오후 2:17          43484 paper_b5_noimg.html                                                  
+-a----      2026-05-21  오후 12:36         443552 paper_v8_10p.html                                                    
+-a----      2026-05-19  오후 10:09           5260 README.md                                                            
+-a----      2026-05-19   오후 9:54          13467 교수님_보고용.html                                                   
+-a----      2026-05-19   오후 9:56          17410 내가_이해하는용.html                                                 
+-a----      2026-05-19  오후 10:38           8324 이어서_작업_프롬프트.md                                              
+-a----      2026-05-21   오후 2:45         294489 임창우_졸업논문(docx).docx                                           
+-a----      2026-05-21   오후 2:22          54773 임창우_졸업논문_사진제외.hwpx                                        
+-a----      2026-05-21   오후 2:22         563721 임창우_졸업논문_사진포함.hwpx                                        
+-a----      2026-05-21   오후 2:46         314064 임창우_졸업논문_사진포함_양식.hwpx                                   
+-a----      2026-05-21   오후 2:47         528969 임창우_졸업논문_양식_미리보기.pdf                                    
+
+
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+검색 결과상 HTML은 UTF-8인데 터미널 출력 인코딩이 깨져 보입니다. 구조 자체는 잡혔고, 이제 필요한 구간만 HTML 파싱/텍스트 추출 방식으로 확인해서 문장과 번호를 대조하겠습니다.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 paper_b5.html | Select-Object -Skip 85 -First 105' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 paper_b5.html | Select-Object -Skip 350 -First 160' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"그림\\s*[4-9]|Figure\\s*[4-9]|그림\\s*IV|Figure\\s*IV|Figure 4|Figure 5|그림 4|그림 5|<img|class=\\\"caption\\\"|Table [1-9]|표\\s*[1-9]\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"<li class=\\\"s1\\\"|<li>.*[0-9]\\.|<h1>|<h2>\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+2026-05-21T05:49:44.359900Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.4 seconds
+Output:
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+rg: [1-9]|í‘œ\s*[1-9] paper_b5.html: IO error for operation on [1-9]|í‘œ\s*[1-9] paper_b5.html: íŒŒì¼ ì´ë¦„, ë””ë ‰í„°ë¦¬ ì´ë¦„ ë˜ëŠ” ë³¼ë¥¨ ë ˆì´ë¸” êµ¬ë¬¸ì´ ìž˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤. (os error 123)
+
+ exited 1 in 426ms:
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+rg: [1-9]|í‘œ\s*[1-9] paper_b5.html: IO error for operation on [1-9]|í‘œ\s*[1-9] paper_b5.html: íŒŒì¼ ì´ë¦„, ë””ë ‰í„°ë¦¬ ì´ë¦„ ë˜ëŠ” ë³¼ë¥¨ ë ˆì´ë¸” êµ¬ë¬¸ì´ ìž˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤. (os error 123)
+
+2026-05-21T05:49:44.365439Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.4 seconds
+Output:
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ exited 1 in 431ms:
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 545ms:
+    심사위원　　　　　　　　　　　(인)
+  </div>
+  <div class="fm-info" style="margin-top:20mm">상명대학교 공과대학<br><br>2026년 5월</div>
+</section>
+<section class="sheet toc">
+  <h1>차　　례</h1>
+  <ul>
+    <li><b>국문 요약</b></li>
+    <li><b>1. 서론</b></li>
+    <li class="s1">1.1 연구 배경</li>
+    <li class="s1">1.2 본 연구의 기여</li>
+    <li><b>2. 이론적 배경</b></li>
+    <li class="s1">2.1 Processing-In-Memory (PIM)</li>
+    <li class="s1">2.2 멤리스터 크로스바 어레이</li>
+    <li class="s1">2.3 VTEAM 모델</li>
+    <li class="s1">2.4 웨이퍼 결함 분류와 CNN</li>
+    <li><b>3. 방법론</b></li>
+    <li class="s1">3.1 데이터셋</li>
+    <li class="s1">3.2 CNN 모델 구조</li>
+    <li class="s1">3.3 4종 소재 파라미터</li>
+    <li class="s1">3.4 매핑·양자화 및 비이상성 모델</li>
+    <li class="s1">3.5 평가 프로토콜</li>
+    <li><b>4. 결과</b></li>
+    <li class="s1">4.1 Baseline (FP32 software) 성능</li>
+    <li class="s1">4.2 4종 소재 Ideal vs Realistic 비교</li>
+    <li class="s1">4.3 Worst-case 붕괴 현상 분석</li>
+    <li class="s1">4.4 결함 유형별 (per-class) F1 분석</li>
+    <li><b>5. 논의</b></li>
+    <li class="s1">5.1 저항비의 영향</li>
+    <li class="s1">5.2 Metallic Nanowire의 본질적 한계</li>
+    <li class="s1">5.3 Worst-case 붕괴 현상의 PIM 함의</li>
+    <li class="s1">5.4 한계 및 향후 과제</li>
+    <li><b>6. 결론</b></li>
+    <li><b>참고문헌</b></li>
+  </ul>
+</section>
+<section class="sheet summary">
+  <h1 style="text-align:center;border:none">국 문 요 약</h1>
+  <p class="noindent">
+  Processing-In-Memory (PIM) 아키텍처는 인공지능 가속기의 메모리-연산 병목을 해결할 차세대 기술로 주목받고 있다.
+  특히 멤리스터(memristor) 기반 크로스바 어레이는 가중치 저장과 곱셈-누적 연산을 동시에 수행할 수 있어
+  딥러닝 추론에 적합하다.
+  그러나 멤리스터는 소재별로 저항비, 표현 가능한 상태 수, 변동(variation), 결함률(stuck-at fault) 등 물리적
+  특성이 크게 다르며, 이는 분류 성능에 직접적인 영향을 미친다.
+  본 연구에서는 VTEAM 모델의 문헌 파라미터를 활용하여 Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire,
+  TaO<sub>x</sub>/Ta의 4종 멤리스터 소재를 동일한 정적 conductance mapping 기반 시뮬레이션 환경에서 비교하였다.
+  MixedWM38 웨이퍼 결함 데이터셋(8개 결함 라벨이 모두 0인 normal/no-defect 1,000장을 제외한 37,015장, 8개 결함 클래스 multi-label)으로
+  학습된 경량 CNN 모델을 각 소재의 크로스바 어레이에 매핑하고, 양자화·변동·stuck-at fault의 세 비이상성을 동시에
+  적용하여 9회 Monte Carlo 평가를 수행하였다.
+  실험 결과, R<sub>off</sub>/R<sub>on</sub> 저항비가 25배 이상인 세 소재(Pt/HfO<sub>x</sub>/Ti, Ferroelectric,
+  TaO<sub>x</sub>/Ta)는 평균 macro F1이 0.76~0.87 수준이었으나 noise sample에 따른 변동성이 매우 컸으며
+  (std 0.13~0.28), 저항비 1.97배의
+  Metallic Nanowire는 4-state 양자화와의 결합으로 인한 표현 한계로 이상적 조건에서도 F1 0.38로 분류 성능이 붕괴하였다.
+  또한 고저항비 세 소재(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta) 각각에서 9회 Monte Carlo
+  샘플 중 1회씩 치명적 성능 붕괴(catastrophic degradation, F1 &lt; 0.60)가 관찰되었으며,
+  이는 stuck-at fault 위치 무작위성에 의한 worst-case 붕괴 위험의 가능성을 시사한다(다만 실제 발생 확률 추정에는
+  더 많은 반복이 필요하다).
+  이는 PIM 응용에서 평균 성능뿐 아니라 결함 분포에 따른 worst-case 위험까지 함께 고려해야 함을 시사한다.
+  </p>
+  <p class="noindent keywords">
+  <b>Keywords</b> : Memristor, Processing-In-Memory (PIM), VTEAM model, Convolutional Neural Network,
+  Wafer defect classification, Stuck-at fault, Quantization
+  </p>
+</section>
+<main class="flow">
+<h1>1. 서론</h1>
+
+<h2>1.1 연구 배경</h2>
+<p>
+딥러닝 모델의 규모가 급격히 커지면서 전통적인 von Neumann 구조의 메모리-연산 분리에 의한 데이터 이동 비용이
+시스템 전체 성능과 전력 효율을 좌우하는 주된 병목으로 떠올랐다. 추론 단계에서 발생하는 메모리 접근은 실제 계산
+자원이 소비하는 에너지보다 수십 배 이상의 전력을 요구하는 것으로 보고되며 [11], 이는 모바일·엣지 환경에서
+인공지능 가속기를 구현할 때 가장 큰 걸림돌이 된다 [10, 8, 12].
+</p>
+<p>
+Processing-In-Memory (PIM)는 가중치 저장 셀이 동시에 곱셈-누적(MAC) 연산을 수행하도록 함으로써 위의 데이터
+이동 병목을 완화하는 아키텍처이다. 그중에서도 멤리스터(memristor) 기반 크로스바 어레이는 옴의 법칙과 키르히호프
+전류 법칙만으로 단일 사이클 안에 행렬-벡터 곱셈을 완성할 수 있어 딥러닝 추론용 PIM 가속기의 대표 후보로
+연구되어 왔다 [1, 8, 9, 10].
+</p>
+<p>
+반도체 제조 공정에서는 웨이퍼 표면의 결함 패턴(Center, Donut, Edge-Ring 등)을 자동 분류하는 작업이 수율 관리에
+필수적이다. 이 작업은 CNN(convolutional neural network)이 강점을 보이는 분야이며, 공장 라인에서 실시간으로
+요구되는 만큼 저전력 엣지 추론 가속기와 결합할 수 있다면 실용적 가치가 크다.
+</p>
+
+<p>
+멤리스터 PIM에서 분류 정확도를 떨어뜨리는 비이상성은 크게 세 가지다 ? 컨덕턴스 상태 수가 유한해 발생하는 양자화
+손실, 소자 간 저항 편차(device-to-device variation), 일부 셀이 저저항/고저항에 고착되는 stuck-at fault [1, 8].
+선행 연구의 다수는 이들 중 한두 가지만 부분적으로 모델링하거나 매핑 후 출력 재보정(tune)을 가정해 그 영향을
+과소평가하여, 실제 PIM 칩에서 발생할 수 있는 심각한 성능 저하를 사전 평가하지 못했다.
+</p>
+
+<h2>1.2 본 연구의 기여</h2>
+<p>
+본 연구의 기여는 다음과 같다. (1) VTEAM 문헌 파라미터 기반 정적 conductance mapping 환경에서 4종 멤리스터 소재
+(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire, TaO<sub>x</sub>/Ta)를 동일한 CNN·데이터셋·비이상성 조건으로
+정량 비교한다. (2) 양자화·variation·stuck-at fault를 동시에 적용하고 매핑 후 출력 재보정을 가정하지 않는 보수적
+평가를 수행한다. (3) 3 seed × 3 noise = 9회 Monte Carlo 평가에서 고저항비 세 소재의 worst-case 붕괴 현상을
+관찰하고, PIM 소재 평가에 평균 성능뿐 아니라 worst-case 위험을 함께 고려해야 함을 제시한다.
+</p>
+
+<!-- ============================================================== -->
+<!--  II. 이론적 배경                                               -->
+<!-- ============================================================== -->
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 533ms:
+<!--  IV. 결과                                                      -->
+<!-- ============================================================== -->
+<h1>4. 결과</h1>
+
+<h2>4.1 Baseline (FP32 software) 성능</h2>
+<p>
+3개의 baseline seed에 대해 학습된 CNN의 테스트 성능은 표 3과 같다.
+</p>
+<table>
+  <tr><th>Seed</th><th>Best epoch</th><th>Test Subset Acc</th><th>Test Macro F1</th></tr>
+  <tr><td>42</td><td>9</td><td>0.9568</td><td>0.9780</td></tr>
+  <tr><td>123</td><td>11</td><td>0.9446</td><td>0.9800</td></tr>
+  <tr><td>456</td><td>13</td><td>0.9588</td><td>0.9856</td></tr>
+  <tr><td><b>평균±std</b></td><td>?</td><td><b>0.9534 ± 0.0063</b></td><td><b>0.9812 ± 0.0032</b></td></tr>
+</table>
+<p class="caption">Table 3. FP32 software baseline의 3 seed 결과. macro F1의 std=0.0032로 매우 안정적.</p>
+<p>
+세 seed 모두 macro F1 0.98 수준의 안정적인 baseline을 학습하였으며, std가 0.003 수준으로 매우 작아 이후
+소재 비교의 신뢰성 기반으로 사용 가능하다.
+</p>
+
+<h2>4.2 4종 소재 Ideal vs Realistic 비교</h2>
+<p>
+각 소재별 ideal 및 realistic 조건에서의 macro F1 결과를 표 4에 정리하였다.
+</p>
+<table>
+  <tr><th rowspan="2">Material</th><th rowspan="2">R<sub>off</sub>/R<sub>on</sub></th><th rowspan="2">States</th><th colspan="2">Ideal</th><th colspan="2">Realistic (mean ± std)</th><th colspan="2">ΔF1</th></tr>
+  <tr><th>Subset Acc</th><th>Macro F1</th><th>Subset Acc</th><th>Macro F1</th><th>absolute</th><th>relative</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>25.0×</td><td>64</td><td>0.9578</td><td>0.9826</td><td>0.5601 ± 0.2779</td><td>0.7578 ± 0.2759</td><td>?0.2248</td><td>?22.88%</td></tr>
+  <tr><td>Ferroelectric</td><td>333.3×</td><td>128</td><td>0.9526</td><td>0.9805</td><td>0.6992 ± 0.2660</td><td>0.8570 ± 0.1632</td><td>?0.1235</td><td>?12.60%</td></tr>
+  <tr><td>Metallic Nanowire</td><td>1.97×</td><td>4</td><td>0.0813</td><td>0.3847</td><td>0.0518 ± 0.0413</td><td>0.3288 ± 0.1286</td><td>?0.0559</td><td>?14.53%</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta</td><td>145.8×</td><td>32</td><td>0.9458</td><td>0.9770</td><td>0.7258 ± 0.2431</td><td>0.8726 ± 0.1364</td><td>?0.1044</td><td>?10.69%</td></tr>
+</table>
+<p class="caption">Table 4. 4 소재의 Ideal vs Realistic 분류 성능 (Subset Accuracy 및 Macro F1, 3 baseline seed × 3 noise sample = 9회 평균). ΔF1은 macro F1 기준의 절대 변화량과 상대 변화율을 분리하여 표기.</p>
+
+<p>
+저항비 25배 이상의 세 소재(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta)는 ideal 조건에서
+0.98 수준의 baseline에 거의 근접한 성능을 보였다. 즉 양자화 단독으로는 분류 성능에 큰 영향을 미치지 않는다
+(Pt/HfO<sub>x</sub>/Ti의 ideal F1이 baseline 평균을 미세하게 상회하나 baseline std 범위 내 우연한 변동이다).
+그러나 variation과 stuck-at fault가 더해진 realistic 조건에서는 평균 macro F1이 0.76~0.87로 하락하고 표준편차가
+0.13~0.28로 매우 컸다.
+</p>
+<p>
+Subset Accuracy 기준으로는 더 큰 감소가 나타나(표 4), multi-label 분류에서 8개 결함을 동시에 정확히 맞히는 것이
+부분 일치보다 훨씬 어려움을 보여준다. Metallic Nanowire는 ideal에서도 Subset Acc 0.08로 사실상 분류가 성립하지 않았다.
+</p>
+<p>
+이와 대조적으로 Metallic Nanowire는 ideal 조건에서도 F1 0.38로 분류 성능이 붕괴하였다. 이는 저항비 1.97배
++ 4-state 양자화의 조합이 가중치 분포의 대부분의 정보를 손실시키기 때문이며, realistic 조건이 추가된다고
+하여 더 악화될 여지가 적다(realistic F1 0.33). 즉 Metallic Nanowire의 한계는 비이상성이 아니라 낮은 저항비(1.97×)와
+4-state가 결합해 만드는 <b>표현 가능한 가중치 자유도 부족 자체</b>에 있다(두 요인의 완전한 분리는 ablation이 필요하며 5.4에 향후 과제로 명시).
+</p>
+
+<h2>4.3 Worst-case 붕괴 현상 분석</h2>
+<p>
+표 4의 큰 표준편차는 단순한 noise variance가 아니라, 동일 소재의 9회 noise sampling 결과가 "정상 영역"과
+"붕괴 영역"의 두 그룹으로 갈리는 양상에서 비롯된다. 다만 표본 수가 소재당 9회로 제한되므로 통계적 의미의 bimodal 분포로 단정할 수는 없으며,
+본 절에서는 "worst-case 붕괴 현상"으로 표현한다.
+</p>
+<p>
+F1 ≥ 0.88을 "good", F1 &lt; 0.60을 "catastrophic"으로 정의했을 때 4 소재의 분포는 표 5와 같다.
+</p>
+<table>
+  <tr><th>Material</th><th>Good (F1≥0.88)</th><th>Moderate (0.60≤F1&lt;0.88)</th><th>Catastrophic (F1&lt;0.60)</th><th>Total</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>4/9 (44%)</td><td>4/9 (44%)</td><td>1/9 (11%)</td><td>9</td></tr>
+  <tr><td>Ferroelectric</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+  <tr><td>Metallic Nanowire</td><td>0/9 (0%)</td><td>0/9 (0%)</td><td>9/9 (100%)</td><td>9</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+</table>
+<p class="caption">Table 5. 각 소재의 per-noise 결과를 good / moderate / catastrophic 임계로 분류한 빈도.</p>
+
+<p>
+고저항비 세 소재는 약 44~56%가 baseline의 90% 이상을 유지(good)하는 한편, 9회 중 1회 (약 11%) 비율로 F1이
+0.60 미만으로 붕괴(catastrophic)하는 결과가 세 소재 모두에서 일관되게 관찰되었다. Metallic Nanowire는 본 실험의 9회 샘플에서 noise 종류와 무관하게 모두 catastrophic 구간에 존재하여,
+4-state 양자화에 따른 본질적 표현 한계를 보여준다. 또한 NW는 ideal 조건(variation=0, fault=0)에서도 이미
+F1=0.38로 붕괴하므로, NW의 성능 저하는 fault rate 차이보다는 낮은 저항비와 4-state 양자화의 영향이 지배적인
+것으로 해석된다(두 요인의 완전한 분리를 위한 강제 ablation은 본 연구 범위 외이며, 5.4에 향후 과제로 명시한다).
+</p>
+
+<h2>4.4 결함 유형별 (per-class) F1 분석</h2>
+<p>
+표 6은 4종 소재 × 두 조건에서의 결함 클래스별 F1을 보여준다. 데이터셋의 클래스 빈도가 균일하지 않음을
+유의해야 한다(Near-Full 0.4%, Scratch 2.3%로 가장 적음, Loc 48.6%, Random 51.3%로 가장 많음).
+</p>
+<table>
+  <tr><th>Material / Condition</th><th>Center</th><th>Donut</th><th>Edge-Loc</th><th>Edge-Ring</th><th>Loc</th><th>Near-Full</th><th>Random</th><th>Scratch</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti ? Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.99</td><td>0.93</td><td>0.99</td><td>0.98</td></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti ? Realistic</td><td>0.86</td><td>0.87</td><td>0.74</td><td>0.78</td><td>0.76</td><td><b>0.64</b></td><td>0.82</td><td><b>0.59</b></td></tr>
+  <tr><td>Ferroelectric ? Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.98</td></tr>
+  <tr><td>Ferroelectric ? Realistic</td><td>0.94</td><td>0.90</td><td>0.90</td><td>0.94</td><td>0.81</td><td>0.79</td><td>0.87</td><td><b>0.69</b></td></tr>
+  <tr><td>Metallic Nanowire ? Ideal</td><td>0.29</td><td>0.73</td><td>0.67</td><td><b>0.00</b></td><td>0.67</td><td><b>0.00</b></td><td>0.72</td><td><b>0.01</b></td></tr>
+  <tr><td>Metallic Nanowire ? Realistic</td><td>0.19</td><td>0.44</td><td>0.38</td><td>0.27</td><td>0.57</td><td><b>0.15</b></td><td>0.46</td><td><b>0.17</b></td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta ? Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.97</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta ? Realistic</td><td>0.98</td><td>0.92</td><td>0.92</td><td>0.95</td><td>0.83</td><td>0.80</td><td>0.89</td><td><b>0.70</b></td></tr>
+</table>
+<p class="caption">Table 6. 4 소재 × Ideal/Realistic 조건에서의 결함 클래스별 F1 (Ideal은 3 seed 평균, Realistic은 9 sample 평균).</p>
+
+<p>
+두 가지 패턴이 관찰된다. 첫째, minority class인 Near-Full(0.4%)·Scratch(2.3%)가 모든 고저항비 소재에서 가장 낮은
+F1을 보여(realistic Scratch 0.59~0.70), 클래스 불균형이 비이상성 조건에서 증폭됨을 시사한다. 둘째, Metallic
+Nanowire는 ideal에서도 Edge-Ring·Near-Full·Scratch의 F1이 약 0으로, 낮은 저항비와 4-state 결합에 따른 표현
+자유도 부족으로 공간적으로 미세한 패턴을 식별하지 못한다.
+</p>
+
+<!-- ============================================================== -->
+<!--  V. 논의                                                       -->
+<!-- ============================================================== -->
+<h1>5. 논의</h1>
+
+<h2>5.1 저항비의 영향</h2>
+<p>
+본 비교 조건에서는 R<sub>off</sub>/R<sub>on</sub> 25배 이상인 세 소재와 1.97배인 Metallic Nanowire 사이의 차이가 가장 뚜렷하다. 저항비가 25배 이상인 세 소재는
+ideal 조건에서 baseline 대비 1% 이내의 손실로 가중치 정보를 잘 보존하지만, 저항비 1.97배의 Metallic Nanowire는
+ideal에서도 baseline의 39% 수준으로 추락한다. 이 차이는 컨덕턴스 범위가 좁을수록 동일한 절대 noise/양자화
+간격이 가중치 표현에 미치는 상대 오차가 커지기 때문이다.
+</p>
+<p>
+다만 본 연구의 실험만으로 "25배가 보편적 문턱값"이라 단정하기는 어렵다. 본 연구는 4 소재의 이산적인 비교이며,
+저항비 sweep(예: 5×, 10×, 20×, 50×)을 수행하지 않았기 때문이다. "본 연구의 조건에서 25배 이상이면 양자화로
+인한 ideal 성능 손실이 1% 이내였다"가 정직한 결론이다.
+</p>
+
+<h2>5.2 Metallic Nanowire의 본질적 한계</h2>
+<p>
+Metallic Nanowire는 저항비가 1.97배로 낮아 컨덕턴스 범위가 좁은 데다, 4-state 양자화가 가중치를 4개의 칸으로 압축한다. 32만 개의 부동소수점
+가중치가 가질 수 있는 다양한 값이 4개의 이산 값으로 반올림되는 과정에서, CNN이 학습한 미세한 결정 경계가
+대부분 소실된다. 이 한계는 단순 사후 보정만으로는 회복하기 어렵고, quantization-aware training(QAT)이나 더 많은 conductance
+level을 갖는 변형 구조 등이 필요하다.
+</p>
+<p>
+다만 Metallic Nanowire는 동작 전압이 낮고(v<sub>off</sub>=0.145 V) variation이 작아 다른 응용에는 유리할 수 있으며,
+본 연구의 결론은 "다단계 가중치 정밀도가 필요한 PIM 추론에 부적합"하다는 것이지 소재 자체의 부정은 아니다.
+</p>
+
+<h2>5.3 Worst-case 붕괴 현상의 PIM 함의</h2>
+<p>
+고저항비 세 소재는 평균 성능이 비슷해도 9회 중 1회 catastrophic degradation이 나타났다(표 5). 이는 평균만으로
+소재를 평가하는 관행에 대한 경고로, 그 원인은 stuck-at fault가 가중치 행렬의 어느 위치에 박히는지에 있다 ?
+핵심 가중치를 hit하면 분류기 전체가 무너지지만, 중요도가 낮은 가중치를 hit하면 거의 영향이 없다.
+</p>
+<p>
+따라서 실제 PIM 가속기 설계에서는 (i) write-verify를 통한 stuck-at 셀의 사전 검출, (ii) row/column-shifting
+같은 매핑 다양화, (iii) ECC나 redundancy 같은 fault tolerance 메커니즘이 동반되어야 한다. 본 연구는 이러한
+대책이 적용되지 않은 보수적 베이스라인이며, 향후 fault tolerance 적용 후 worst-case 붕괴 빈도가 어떻게
+변화하는지를 충분한 표본으로 정량화하는 후속 연구가 필요하다.
+</p>
+
+<h2>5.4 한계 및 향후 과제</h2>
+<ul>
+  <li><b>단일 데이터셋·경량 CNN.</b> MixedWM38과 약 32만 파라미터의 얕은 CNN에 한정된 결과로, WM-811K [7] 등
+  다른 데이터셋이나 ResNet 계열 대규모 모델에서의 소재 간 순위 보존은 검증되지 않았다.</li>
+  <li><b>저항비 sweep 미수행.</b> 4 소재의 이산 비교만 수행하여 저항비-성능의 연속적 함수 형태는 결정할 수 없다.</li>
+  <li><b>회로·시간적 비이상성 미반영.</b> sneak path·IR drop·ADC 양자화 등 어레이 수준 비이상성과 drift·endurance
+  같은 장기 변화는 본 가중치 수준·inference-only 평가에서 제외하였고, LRS/HRS variation도 단일 가우시안으로 단순화하였다.</li>
+  <li><b>표본 한계.</b> 소재당 9회(3 seed × 3 noise)로, 9회 중 1회 사건의 binomial 95% 신뢰구간은 약 [0.3%, 48%]에
+  이른다. 따라서 본문의 "11%"는 발생 확률 추정치가 아니라 본 표본의 관찰 빈도이며, 정량적 확률 추정·통계적 유의성
+  검정에는 더 많은 Monte Carlo 반복이 필요하다.</li>
+</ul>
+
+<!-- ============================================================== -->
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+번호 체계는 대체로 맞지만, 일부 출력에서 물음표 문자로 보이는 곳이 있어 실제 파일에 들어간 문자 깨짐인지 확인 중입니다. 제출 전에는 이런 기호 깨짐도 비문으로 보는 게 맞습니다.
+2026-05-21T05:49:58.337101Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '\\?' | Select-Object LineNumber,Line"` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '\\?' | Select-Object LineNumber,Line" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '\\?' | Select-Object LineNumber,Line"` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '<h1>|<h2>' | Select-Object LineNumber,Line" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+2026-05-21T05:49:58.338649Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '<h1>|<h2>' | Select-Object LineNumber,Line"` rejected: blocked by policy
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '<h1>|<h2>' | Select-Object LineNumber,Line"` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '<li class=\"s1\"|<li><b>' | Select-Object LineNumber,Line" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+2026-05-21T05:49:58.341316Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '<li class=\"s1\"|<li><b>' | Select-Object LineNumber,Line"` rejected: blocked by policy
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '<li class=\"s1\"|<li><b>' | Select-Object LineNumber,Line"` rejected: blocked by policy
+2026-05-21T05:49:58.414146Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '<img|Figure [0-9]|Table [0-9]' | Select-Object LineNumber,Line"` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '<img|Figure [0-9]|Table [0-9]' | Select-Object LineNumber,Line" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '<img|Figure [0-9]|Table [0-9]' | Select-Object LineNumber,Line"` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n '\\?' paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n '<h1>|<h2>' paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n '<li class=\"s1\"|<li><b>' paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n '<img|Figure [0-9]|Table [0-9]' paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+2026-05-21T05:50:07.517342Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.4 seconds
+Output:
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ exited 1 in 433ms:
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 422ms:
+91:  <h1>ì°¨ã€€ã€€ë¡€</h1>
+151:<h1>1. ì„œë¡ </h1>
+153:<h2>1.1 ì—°êµ¬ ë°°ê²½</h2>
+179:<h2>1.2 ë³¸ ì—°êµ¬ì˜ ê¸°ì—¬</h2>
+191:<h1>2. ì´ë¡ ì  ë°°ê²½</h1>
+193:<h2>2.1 Processing-In-Memory (PIM)</h2>
+200:<h2>2.2 ë©¤ë¦¬ìŠ¤í„° í¬ë¡œìŠ¤ë°” ì–´ë ˆì´</h2>
+208:<h2>2.3 VTEAM ëª¨ë¸</h2>
+222:<h2>2.4 ì›¨ì´í¼ ê²°í•¨ ë¶„ë¥˜ì™€ CNN</h2>
+231:<h1>3. ë°©ë²•ë¡ </h1>
+233:<h2>3.1 ë°ì´í„°ì…‹</h2>
+252:<h2>3.2 CNN ëª¨ë¸ êµ¬ì¡°</h2>
+278:<h2>3.3 4ì¢… ì†Œìž¬ íŒŒë¼ë¯¸í„°</h2>
+297:<h2>3.4 ë§¤í•‘Â·ì–‘ìží™” ë° ë¹„ì´ìƒì„± ëª¨ë¸</h2>
+335:<h2>3.5 í‰ê°€ í”„ë¡œí† ì½œ</h2>
+353:<h1>4. ê²°ê³¼</h1>
+355:<h2>4.1 Baseline (FP32 software) ì„±ëŠ¥</h2>
+372:<h2>4.2 4ì¢… ì†Œìž¬ Ideal vs Realistic ë¹„êµ</h2>
+404:<h2>4.3 Worst-case ë¶•ê´´ í˜„ìƒ ë¶„ì„</h2>
+430:<h2>4.4 ê²°í•¨ ìœ í˜•ë³„ (per-class) F1 ë¶„ì„</h2>
+458:<h1>5. ë…¼ì˜</h1>
+460:<h2>5.1 ì €í•­ë¹„ì˜ ì˜í–¥</h2>
+473:<h2>5.2 Metallic Nanowireì˜ ë³¸ì§ˆì  í•œê³„</h2>
+485:<h2>5.3 Worst-case ë¶•ê´´ í˜„ìƒì˜ PIM í•¨ì˜</h2>
+498:<h2>5.4 í•œê³„ ë° í–¥í›„ ê³¼ì œ</h2>
+513:<h1>6. ê²°ë¡ </h1>
+538:<h1>ì°¸ê³ ë¬¸í—Œ</h1>
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 406ms:
+93:    <li><b>êµ­ë¬¸ ìš”ì•½</b></li>
+94:    <li><b>1. ì„œë¡ </b></li>
+97:    <li><b>2. ì´ë¡ ì  ë°°ê²½</b></li>
+102:    <li><b>3. ë°©ë²•ë¡ </b></li>
+108:    <li><b>4. ê²°ê³¼</b></li>
+113:    <li><b>5. ë…¼ì˜</b></li>
+118:    <li><b>6. ê²°ë¡ </b></li>
+119:    <li><b>ì°¸ê³ ë¬¸í—Œ</b></li>
+340:  <li><b>Ideal</b>: ë³€ë™Â·ê³ ìž¥ ì—†ì´ ì–‘ìží™”ë§Œ ì ìš©. ì–‘ìží™”ëŠ” ê²°ì •ë¡ ì ì´ë¯€ë¡œ noise samplingì€ ë¬´ì˜ë¯¸í•˜ë©°,
+342:  <li><b>Realistic</b>: ì–‘ìží™” + ë³€ë™ + stuck-at fault. noise ìœ„ì¹˜ëŠ” ë¬´ìž‘ìœ„ì´ë¯€ë¡œ baseline seedë‹¹ noise seedë¥¼
+500:  <li><b>ë‹¨ì¼ ë°ì´í„°ì…‹Â·ê²½ëŸ‰ CNN.</b> MixedWM38ê³¼ ì•½ 32ë§Œ íŒŒë¼ë¯¸í„°ì˜ ì–•ì€ CNNì— í•œì •ëœ ê²°ê³¼ë¡œ, WM-811K [7] ë“±
+502:  <li><b>ì €í•­ë¹„ sweep ë¯¸ìˆ˜í–‰.</b> 4 ì†Œìž¬ì˜ ì´ì‚° ë¹„êµë§Œ ìˆ˜í–‰í•˜ì—¬ ì €í•­ë¹„-ì„±ëŠ¥ì˜ ì—°ì†ì  í•¨ìˆ˜ í˜•íƒœëŠ” ê²°ì •í•  ìˆ˜ ì—†ë‹¤.</li>
+503:  <li><b>íšŒë¡œÂ·ì‹œê°„ì  ë¹„ì´ìƒì„± ë¯¸ë°˜ì˜.</b> sneak pathÂ·IR dropÂ·ADC ì–‘ìží™” ë“± ì–´ë ˆì´ ìˆ˜ì¤€ ë¹„ì´ìƒì„±ê³¼ driftÂ·endurance
+505:  <li><b>í‘œë³¸ í•œê³„.</b> ì†Œìž¬ë‹¹ 9íšŒ(3 seed Ã— 3 noise)ë¡œ, 9íšŒ ì¤‘ 1íšŒ ì‚¬ê±´ì˜ binomial 95% ì‹ ë¢°êµ¬ê°„ì€ ì•½ [0.3%, 48%]ì—
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 440ms:
+242:  <img src="figures/wafer_defect_examples.png" alt="ì›¨ì´í¼ ê²°í•¨ 8ì¢… ì˜ˆì‹œ">
+243:  <div class="caption">Figure 1. MixedWM38ì˜ 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ ë‹¨ì¼ê²°í•¨ ì˜ˆì‹œ (í°=ì›¨ì´í¼ ë°–, íšŒìƒ‰=ì •ìƒ die, ë¹¨ê°•=ê²°í•¨ die). ì‹¤ì œ ë°ì´í„°ëŠ” ë‘ ì¢…ë¥˜ ì´ìƒì´ ê²¹ì¹œ ë³µí•© ê²°í•¨ì„ í¬í•¨í•œë‹¤.</div>
+259:  <img src="figures/cnn_architecture.png" alt="CNN êµ¬ì¡°ë„">
+260:  <div class="caption">Figure 2. WaferCNN êµ¬ì¡°. 3ê°œ í•©ì„±ê³± ë¸”ë¡ì´ êµ­ì†Œ íŒ¨í„´ì„ ì¶”ì¶œí•˜ê³ (MaxPoolë¡œ í•´ìƒë„ Â½ì”© ì¶•ì†Œ) ì™„ì „ì—°ê²° ê³„ì¸µì´ 8ê°œ ê²°í•¨ í™•ë¥ ì„ ì¶œë ¥í•œë‹¤(multi-label).</div>
+270:<p class="caption">Table 1. CNN ëª¨ë¸ êµ¬ì¡°. ì´ íŒŒë¼ë¯¸í„° ìˆ˜ 319,592.</p>
+295:<p class="caption">Table 2. 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ì˜ conductance mapping ë° ë¹„ì´ìƒì„± íŒŒë¼ë¯¸í„°. R<sub>on</sub>, R<sub>off</sub>ëŠ” ì‹¤ì¸¡ ë¬¸í—Œ, variation/faultëŠ” ê°€ì •ê°’.</p>
+304:  <img src="figures/pipeline_overview.png" alt="ì „ì²´ íŒŒì´í”„ë¼ì¸">
+305:  <div class="caption">Figure 3. ì „ì²´ í‰ê°€ íë¦„. ì†Œí”„íŠ¸ì›¨ì–´ì—ì„œ í•™ìŠµí•œ CNN ê°€ì¤‘ì¹˜ë¥¼ ì†Œìž¬ë³„ ë©¤ë¦¬ìŠ¤í„° ì»¨ë•í„´ìŠ¤ë¡œ ë§¤í•‘Â·ì–‘ìží™”í•˜ê³  ë¹„ì´ìƒì„±ì„ ì£¼ìž…í•´ ì¶”ë¡  ë‹¨ê³„ë§Œ PIM í™˜ê²½ì—ì„œ í‰ê°€í•œë‹¤.</div>
+366:<p class="caption">Table 3. FP32 software baselineì˜ 3 seed ê²°ê³¼. macro F1ì˜ std=0.0032ë¡œ ë§¤ìš° ì•ˆì •ì .</p>
+384:<p class="caption">Table 4. 4 ì†Œìž¬ì˜ Ideal vs Realistic ë¶„ë¥˜ ì„±ëŠ¥ (Subset Accuracy ë° Macro F1, 3 baseline seed Ã— 3 noise sample = 9íšŒ í‰ê· ). Î”F1ì€ macro F1 ê¸°ì¤€ì˜ ì ˆëŒ€ ë³€í™”ëŸ‰ê³¼ ìƒëŒ€ ë³€í™”ìœ¨ì„ ë¶„ë¦¬í•˜ì—¬ í‘œê¸°.</p>
+420:<p class="caption">Table 5. ê° ì†Œìž¬ì˜ per-noise ê²°ê³¼ë¥¼ good / moderate / catastrophic ìž„ê³„ë¡œ ë¶„ë¥˜í•œ ë¹ˆë„.</p>
+446:<p class="caption">Table 6. 4 ì†Œìž¬ Ã— Ideal/Realistic ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1 (Idealì€ 3 seed í‰ê· , Realisticì€ 9 sample í‰ê· ).</p>
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+2026-05-21T05:50:18.486529Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[169]; $l.ToCharArray() | ForEach-Object { [int][char]$_ }'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[169]; $l.ToCharArray() | ForEach-Object { [int][char]$_ }' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[363]; $l.ToCharArray() | ForEach-Object { [int][char]$_ }' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[436]; $l.ToCharArray() | ForEach-Object { [int][char]$_ }' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[169]; $l.ToCharArray() | ForEach-Object { [int][char]$_ }'` rejected: blocked by policy
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[363]; $l.ToCharArray() | ForEach-Object { [int][char]$_ }'` rejected: blocked by policy
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[436]; $l.ToCharArray() | ForEach-Object { [int][char]$_ }'` rejected: blocked by policy
+2026-05-21T05:50:18.487123Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[363]; $l.ToCharArray() | ForEach-Object { [int][char]$_ }'` rejected: blocked by policy
+2026-05-21T05:50:18.487345Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[436]; $l.ToCharArray() | ForEach-Object { [int][char]$_ }'` rejected: blocked by policy
+2026-05-21T05:50:26.529051Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[169]; foreach ($c in $l.ToCharArray()) { [int][char]$c }'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[169]; foreach ($c in $l.ToCharArray()) { [int][char]$c }' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[169]; foreach ($c in $l.ToCharArray()) { [int][char]$c }'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[363]; foreach ($c in $l.ToCharArray()) { [int][char]$c }' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+2026-05-21T05:50:26.529691Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[363]; foreach ($c in $l.ToCharArray()) { [int][char]$c }'` rejected: blocked by policy
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[363]; foreach ($c in $l.ToCharArray()) { [int][char]$c }'` rejected: blocked by policy
+2026-05-21T05:50:26.531424Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[436]; foreach ($c in $l.ToCharArray()) { [int][char]$c }'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[436]; foreach ($c in $l.ToCharArray()) { [int][char]$c }' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$l=(Get-Content -Encoding UTF8 paper_b5.html)[436]; foreach ($c in $l.ToCharArray()) { [int][char]$c }'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+lines=Path('paper_b5.html').read_text(encoding='utf-8').splitlines()
+for n in [170,364,437,388,439,490]:
+    s=lines[n-1]
+    print(n, s.encode('unicode_escape').decode('ascii'))
+'@ | python -" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+for token in ['Figure 4','Figure 5','그림 4','그림 5','Table 7','표 7','1.3']:
+    print(token, s.count(token))
+print('replacement', s.count('\\ufffd'), 'ascii_question', s.count('?'))
+'@ | python -" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+lines=Path('paper_b5.html').read_text(encoding='utf-8').splitlines()
+for n in [170,364,437,388,439,490]:
+    s=lines[n-1]
+    print(n, s.encode('unicode_escape').decode('ascii'))
+'@ | python -"` rejected: blocked by policy
+2026-05-21T05:50:39.460663Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+lines=Path('paper_b5.html').read_text(encoding='utf-8').splitlines()
+for n in [170,364,437,388,439,490]:
+    s=lines[n-1]
+    print(n, s.encode('unicode_escape').decode('ascii'))
+'@ | python -"` rejected: blocked by policy
+2026-05-21T05:50:39.461217Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+for token in ['Figure 4','Figure 5','그림 4','그림 5','Table 7','표 7','1.3']:
+    print(token, s.count(token))
+print('replacement', s.count('\\ufffd'), 'ascii_question', s.count('?'))
+'@ | python -"` rejected: blocked by policy
+2026-05-21T05:50:39.461483Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+from bs4 import BeautifulSoup
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+soup=BeautifulSoup(s, 'html.parser')
+for tag in soup.find_all(['h1','h2']):
+    print(tag.name, tag.get_text(' ', strip=True))
+print('--- captions')
+for cap in soup.select('.caption'):
+    t=cap.get_text(' ', strip=True)
+    if t.startswith(('Figure','Table')):
+        print(t[:120])
+'@ | python -"` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+from bs4 import BeautifulSoup
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+soup=BeautifulSoup(s, 'html.parser')
+for tag in soup.find_all(['h1','h2']):
+    print(tag.name, tag.get_text(' ', strip=True))
+print('--- captions')
+for cap in soup.select('.caption'):
+    t=cap.get_text(' ', strip=True)
+    if t.startswith(('Figure','Table')):
+        print(t[:120])
+'@ | python -" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+for token in ['Figure 4','Figure 5','그림 4','그림 5','Table 7','표 7','1.3']:
+    print(token, s.count(token))
+print('replacement', s.count('\\ufffd'), 'ascii_question', s.count('?'))
+'@ | python -"` rejected: blocked by policy
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+from bs4 import BeautifulSoup
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+soup=BeautifulSoup(s, 'html.parser')
+for tag in soup.find_all(['h1','h2']):
+    print(tag.name, tag.get_text(' ', strip=True))
+print('--- captions')
+for cap in soup.select('.caption'):
+    t=cap.get_text(' ', strip=True)
+    if t.startswith(('Figure','Table')):
+        print(t[:120])
+'@ | python -"` rejected: blocked by policy
+2026-05-21T05:50:49.468962Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; lines=Path('paper_b5.html').read_text(encoding='utf-8').splitlines(); [print(n, lines[n-1].encode('unicode_escape').decode('ascii')) for n in [170,364,437,388,439,490]]\""` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; lines=Path('paper_b5.html').read_text(encoding='utf-8').splitlines(); [print(n, lines[n-1].encode('unicode_escape').decode('ascii')) for n in [170,364,437,388,439,490]]\"" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; s=Path('paper_b5.html').read_text(encoding='utf-8'); [print(tok, s.count(tok)) for tok in ['Figure 4','Figure 5','그림 4','그림 5','Table 7','표 7','1.3']]; print('replacement', s.count(chr(65533)), 'ascii_question', s.count('?'))\"" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; lines=Path('paper_b5.html').read_text(encoding='utf-8').splitlines(); [print(n, lines[n-1].encode('unicode_escape').decode('ascii')) for n in [170,364,437,388,439,490]]\""` rejected: blocked by policy
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; s=Path('paper_b5.html').read_text(encoding='utf-8'); [print(tok, s.count(tok)) for tok in ['Figure 4','Figure 5','그림 4','그림 5','Table 7','표 7','1.3']]; print('replacement', s.count(chr(65533)), 'ascii_question', s.count('?'))\""` rejected: blocked by policy
+2026-05-21T05:50:49.469312Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; s=Path('paper_b5.html').read_text(encoding='utf-8'); [print(tok, s.count(tok)) for tok in ['Figure 4','Figure 5','그림 4','그림 5','Table 7','표 7','1.3']]; print('replacement', s.count(chr(65533)), 'ascii_question', s.count('?'))\""` rejected: blocked by policy
+2026-05-21T05:50:49.471199Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; import re; s=Path('paper_b5.html').read_text(encoding='utf-8'); print('\\n'.join(f'{m.start()} {m.group(0)}' for m in re.finditer(r'Figure [0-9]|Table [0-9]|그림\\\\s*[0-9]|표\\\\s*[0-9]', s)))\""` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; import re; s=Path('paper_b5.html').read_text(encoding='utf-8'); print('\\n'.join(f'{m.start()} {m.group(0)}' for m in re.finditer(r'Figure [0-9]|Table [0-9]|그림\\\\s*[0-9]|표\\\\s*[0-9]', s)))\"" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; import re; s=Path('paper_b5.html').read_text(encoding='utf-8'); print('\\n'.join(f'{m.start()} {m.group(0)}' for m in re.finditer(r'Figure [0-9]|Table [0-9]|그림\\\\s*[0-9]|표\\\\s*[0-9]', s)))\""` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"Figure 4|Figure 5|Figure 6|Table 7|Table 8|1\\.3\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'rg -n "그림" paper_b5.html' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'rg -n "표" paper_b5.html' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"<li class=\\\"s1\\\">1\\.|<h2>1\\.\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 410ms:
+239:í¬í•¨í•œë‹¤ëŠ” ì ì´ íŠ¹ì§•ì´ë‹¤. 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ì˜ ëŒ€í‘œì ì¸ ê³µê°„ íŒ¨í„´ì€ ê·¸ë¦¼ 1ê³¼ ê°™ë‹¤.
+254:ëª¨ë¸ êµ¬ì¡°ëŠ” ê·¸ë¦¼ 2ì™€ ê°™ë‹¤. ìž…ë ¥ 52Ã—52 ì›¨ì´í¼ ë§µì´ 3ê°œì˜ í•©ì„±ê³± ë¸”ë¡ì„ ê±°ì¹˜ë©° êµ­ì†Œ íŒ¨í„´ì„ ì¶”ì¶œí•˜ê³ 
+299:ì—°êµ¬ ì „ì²´ íë¦„ì€ ê·¸ë¦¼ 3ê³¼ ê°™ë‹¤. ì´ ì¤‘ í•™ìŠµëœ CNN ê°€ì¤‘ì¹˜ë¥¼ ê° ì†Œìž¬ì˜ ë©¤ë¦¬ìŠ¤í„° í¬ë¡œìŠ¤ë°”ë¡œ ì˜®ê¸°ëŠ” ë§¤í•‘ ì ˆì°¨ëŠ”
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 421ms:
+433:ìœ ì˜í•´ì•¼ í•œë‹¤(Near-Full 0.4%, Scratch 2.3%ë¡œ ê°€ìž¥ ì ìŒ, Loc 48.6%, Random 51.3%ë¡œ ê°€ìž¥ ë§ŽìŒ).
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 402ms:
+128:  ê·¸ëŸ¬ë‚˜ ë©¤ë¦¬ìŠ¤í„°ëŠ” ì†Œìž¬ë³„ë¡œ ì €í•­ë¹„, í‘œí˜„ ê°€ëŠ¥í•œ ìƒíƒœ ìˆ˜, ë³€ë™(variation), ê²°í•¨ë¥ (stuck-at fault) ë“± ë¬¼ë¦¬ì 
+138:  Metallic NanowireëŠ” 4-state ì–‘ìží™”ì™€ì˜ ê²°í•©ìœ¼ë¡œ ì¸í•œ í‘œí˜„ í•œê³„ë¡œ ì´ìƒì  ì¡°ê±´ì—ì„œë„ F1 0.38ë¡œ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´í•˜ì˜€ë‹¤.
+163:ì „ë¥˜ ë²•ì¹™ë§Œìœ¼ë¡œ ë‹¨ì¼ ì‚¬ì´í´ ì•ˆì— í–‰ë ¬-ë²¡í„° ê³±ì…ˆì„ ì™„ì„±í•  ìˆ˜ ìžˆì–´ ë”¥ëŸ¬ë‹ ì¶”ë¡ ìš© PIM ê°€ì†ê¸°ì˜ ëŒ€í‘œ í›„ë³´ë¡œ
+167:ë°˜ë„ì²´ ì œì¡° ê³µì •ì—ì„œëŠ” ì›¨ì´í¼ í‘œë©´ì˜ ê²°í•¨ íŒ¨í„´(Center, Donut, Edge-Ring ë“±)ì„ ìžë™ ë¶„ë¥˜í•˜ëŠ” ìž‘ì—…ì´ ìˆ˜ìœ¨ ê´€ë¦¬ì—
+211:ëª¨ë¸ë¡œ [1], ë‹¤ì–‘í•œ ì†Œìž¬ì˜ ì‹¤ì¸¡ íŠ¹ì„±ì„ ë™ì¼í•œ ìˆ˜ì‹ í˜•íƒœ ì•ˆì—ì„œ íŒŒë¼ë¯¸í„°ë§Œ ë°”ê¾¸ì–´ í‘œí˜„í•  ìˆ˜ ìžˆë‹¤. ë³¸ ì—°êµ¬ëŠ” ì‹œê°„
+219:ë¡œ í‘œí˜„ë˜ë©°(<i>w</i>ëŠ” ì •ê·œí™”ëœ ë‚´ë¶€ ìƒíƒœ ë³€ìˆ˜), ì´ ì‹ì´ ì†Œìž¬ë³„ R<sub>on</sub>Â·R<sub>off</sub>ë§Œìœ¼ë¡œ í†µì¼ëœ ë¹„êµ í™˜ê²½ì„ êµ¬ì„±í•˜ëŠ” ê¸°ë°˜ì´ ëœë‹¤.
+239:í¬í•¨í•œë‹¤ëŠ” ì ì´ íŠ¹ì§•ì´ë‹¤. 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ì˜ ëŒ€í‘œì ì¸ ê³µê°„ íŒ¨í„´ì€ ê·¸ë¦¼ 1ê³¼ ê°™ë‹¤.
+256:ê° ê³„ì¸µì˜ ìƒì„¸ ì‚¬ì–‘ì€ í‘œ 1ê³¼ ê°™ìœ¼ë©°, ìž¬í˜„ ê°€ëŠ¥í•œ ë‹¨ìˆœí•œ í˜•íƒœë¡œ ê³ ì •í•˜ì˜€ë‹¤.
+272:ì†ì‹¤ í•¨ìˆ˜ëŠ” multi-label ë¶„ë¥˜ í‘œì¤€ì¸ BCEWithLogitsLossë¥¼ ì‚¬ìš©í•˜ì˜€ê³ , ìµœì í™”ëŠ” Adam(lr=1e-3, batch size=128)
+280:ë³¸ ì—°êµ¬ì˜ í•µì‹¬ ë¹„êµ ëŒ€ìƒì¸ 4ì¢… ì†Œìž¬ì˜ ë¬¼ë¦¬ íŒŒë¼ë¯¸í„°ëŠ” í‘œ 2ì— ì •ë¦¬í•˜ì˜€ë‹¤.
+343:  ë¶„ë¦¬í•´ 3íšŒ sampling(ì´ 9íšŒ/ì†Œìž¬) í›„ í‰ê· ê³¼ í‘œì¤€íŽ¸ì°¨ë¥¼ ë³´ê³ í•œë‹¤.</li>
+346:í‰ê°€ ì§€í‘œëŠ” multi-label ë¶„ë¥˜ í‘œì¤€ì¸ <b>Macro F1</b>(í´ëž˜ìŠ¤ ë¶ˆê· í˜•ì— ê°•ê±´)ê³¼ <b>Subset Accuracy</b>(ëª¨ë“  ë¼ë²¨ì´
+357:3ê°œì˜ baseline seedì— ëŒ€í•´ í•™ìŠµëœ CNNì˜ í…ŒìŠ¤íŠ¸ ì„±ëŠ¥ì€ í‘œ 3ê³¼ ê°™ë‹¤.
+374:ê° ì†Œìž¬ë³„ ideal ë° realistic ì¡°ê±´ì—ì„œì˜ macro F1 ê²°ê³¼ë¥¼ í‘œ 4ì— ì •ë¦¬í•˜ì˜€ë‹¤.
+384:<p class="caption">Table 4. 4 ì†Œìž¬ì˜ Ideal vs Realistic ë¶„ë¥˜ ì„±ëŠ¥ (Subset Accuracy ë° Macro F1, 3 baseline seed Ã— 3 noise sample = 9íšŒ í‰ê· ). Î”F1ì€ macro F1 ê¸°ì¤€ì˜ ì ˆëŒ€ ë³€í™”ëŸ‰ê³¼ ìƒëŒ€ ë³€í™”ìœ¨ì„ ë¶„ë¦¬í•˜ì—¬ í‘œê¸°.</p>
+390:ê·¸ëŸ¬ë‚˜ variationê³¼ stuck-at faultê°€ ë”í•´ì§„ realistic ì¡°ê±´ì—ì„œëŠ” í‰ê·  macro F1ì´ 0.76~0.87ë¡œ í•˜ë½í•˜ê³  í‘œì¤€íŽ¸ì°¨ê°€
+394:Subset Accuracy ê¸°ì¤€ìœ¼ë¡œëŠ” ë” í° ê°ì†Œê°€ ë‚˜íƒ€ë‚˜(í‘œ 4), multi-label ë¶„ë¥˜ì—ì„œ 8ê°œ ê²°í•¨ì„ ë™ì‹œì— ì •í™•ížˆ ë§žížˆëŠ” ê²ƒì´
+401:4-stateê°€ ê²°í•©í•´ ë§Œë“œëŠ” <b>í‘œí˜„ ê°€ëŠ¥í•œ ê°€ì¤‘ì¹˜ ìžìœ ë„ ë¶€ì¡± ìžì²´</b>ì— ìžˆë‹¤(ë‘ ìš”ì¸ì˜ ì™„ì „í•œ ë¶„ë¦¬ëŠ” ablationì´ í•„ìš”í•˜ë©° 5.4ì— í–¥í›„ ê³¼ì œë¡œ ëª…ì‹œ).
+406:í‘œ 4ì˜ í° í‘œì¤€íŽ¸ì°¨ëŠ” ë‹¨ìˆœí•œ noise varianceê°€ ì•„ë‹ˆë¼, ë™ì¼ ì†Œìž¬ì˜ 9íšŒ noise sampling ê²°ê³¼ê°€ "ì •ìƒ ì˜ì—­"ê³¼
+407:"ë¶•ê´´ ì˜ì—­"ì˜ ë‘ ê·¸ë£¹ìœ¼ë¡œ ê°ˆë¦¬ëŠ” ì–‘ìƒì—ì„œ ë¹„ë¡¯ëœë‹¤. ë‹¤ë§Œ í‘œë³¸ ìˆ˜ê°€ ì†Œìž¬ë‹¹ 9íšŒë¡œ ì œí•œë˜ë¯€ë¡œ í†µê³„ì  ì˜ë¯¸ì˜ bimodal ë¶„í¬ë¡œ ë‹¨ì •í•  ìˆ˜ëŠ” ì—†ìœ¼ë©°,
+408:ë³¸ ì ˆì—ì„œëŠ” "worst-case ë¶•ê´´ í˜„ìƒ"ìœ¼ë¡œ í‘œí˜„í•œë‹¤.
+411:F1 â‰¥ 0.88ì„ "good", F1 &lt; 0.60ì„ "catastrophic"ìœ¼ë¡œ ì •ì˜í–ˆì„ ë•Œ 4 ì†Œìž¬ì˜ ë¶„í¬ëŠ” í‘œ 5ì™€ ê°™ë‹¤.
+425:4-state ì–‘ìží™”ì— ë”°ë¥¸ ë³¸ì§ˆì  í‘œí˜„ í•œê³„ë¥¼ ë³´ì—¬ì¤€ë‹¤. ë˜í•œ NWëŠ” ideal ì¡°ê±´(variation=0, fault=0)ì—ì„œë„ ì´ë¯¸
+432:í‘œ 6ì€ 4ì¢… ì†Œìž¬ Ã— ë‘ ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1ì„ ë³´ì—¬ì¤€ë‹¤. ë°ì´í„°ì…‹ì˜ í´ëž˜ìŠ¤ ë¹ˆë„ê°€ ê· ì¼í•˜ì§€ ì•ŠìŒì„
+451:NanowireëŠ” idealì—ì„œë„ Edge-RingÂ·Near-FullÂ·Scratchì˜ F1ì´ ì•½ 0ìœ¼ë¡œ, ë‚®ì€ ì €í•­ë¹„ì™€ 4-state ê²°í•©ì— ë”°ë¥¸ í‘œí˜„
+465:ê°„ê²©ì´ ê°€ì¤‘ì¹˜ í‘œí˜„ì— ë¯¸ì¹˜ëŠ” ìƒëŒ€ ì˜¤ì°¨ê°€ ì»¤ì§€ê¸° ë•Œë¬¸ì´ë‹¤.
+487:ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” í‰ê·  ì„±ëŠ¥ì´ ë¹„ìŠ·í•´ë„ 9íšŒ ì¤‘ 1íšŒ catastrophic degradationì´ ë‚˜íƒ€ë‚¬ë‹¤(í‘œ 5). ì´ëŠ” í‰ê· ë§Œìœ¼ë¡œ
+495:ë³€í™”í•˜ëŠ”ì§€ë¥¼ ì¶©ë¶„í•œ í‘œë³¸ìœ¼ë¡œ ì •ëŸ‰í™”í•˜ëŠ” í›„ì† ì—°êµ¬ê°€ í•„ìš”í•˜ë‹¤.
+505:  <li><b>í‘œë³¸ í•œê³„.</b> ì†Œìž¬ë‹¹ 9íšŒ(3 seed Ã— 3 noise)ë¡œ, 9íšŒ ì¤‘ 1íšŒ ì‚¬ê±´ì˜ binomial 95% ì‹ ë¢°êµ¬ê°„ì€ ì•½ [0.3%, 48%]ì—
+506:  ì´ë¥¸ë‹¤. ë”°ë¼ì„œ ë³¸ë¬¸ì˜ "11%"ëŠ” ë°œìƒ í™•ë¥  ì¶”ì •ì¹˜ê°€ ì•„ë‹ˆë¼ ë³¸ í‘œë³¸ì˜ ê´€ì°° ë¹ˆë„ì´ë©°, ì •ëŸ‰ì  í™•ë¥  ì¶”ì •Â·í†µê³„ì  ìœ ì˜ì„±
+523:ë‚®ì€ ì €í•­ë¹„ì™€ 4-state ì–‘ìží™”ì˜ ê²°í•©ì— ë”°ë¥¸ í‘œí˜„ í•œê³„ë¡œ ideal ì¡°ê±´ì—ì„œë„ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´(F1 0.38)í•˜ì—¬, ë‹¤ë‹¨ê³„ ê°€ì¤‘ì¹˜ ì •ë°€ë„ê°€
+526:ì‹œì‚¬í•œë‹¤(í‘œë³¸ 9ê°œ í•œê³„ìƒ í†µê³„ì  ë¶„í¬ í˜•íƒœë¡œëŠ” ë‹¨ì •í•˜ì§€ ì•ŠëŠ”ë‹¤).
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+2026-05-21T05:51:04.035242Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.4 seconds
+Output:
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ exited 1 in 423ms:
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+제출 가능으로 봅니다.
+
+점검 결과:
+
+- 서론: [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:153)의 `1.1 연구 배경` 흐름은 자연스럽습니다. PIM 필요성 → 멤리스터 크로스바 → 웨이퍼 결함 CNN 응용 → 비이상성과 선행연구 한계로 이어져서 문맥이 끊기지 않습니다.
+- 기여: [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:179)의 `1.2 본 연구의 기여`에 3대 기여가 모두 살아 있습니다. 4종 소재 동일 조건 비교, 3개 비이상성 동시 적용 및 무보정 평가, worst-case 붕괴 관찰이 명확합니다.
+- 그림 참조: 본문 `그림` 참조는 `그림 1`, `그림 2`, `그림 3`만 남아 있습니다. `Figure 4/5`, `그림 4/5` 깨진 참조는 발견하지 못했습니다.
+- 캡션: 실제 그림 캡션은 `Figure 1~3`, 표 캡션은 `Table 1~6`으로 맞습니다.
+- 차례: 차례의 `1.1 연구 배경`, `1.2 본 연구의 기여`가 본문 헤딩과 일치합니다. 삭제된 `1.3` 헤딩도 없습니다.
+- 새 모순/비문: 제출을 막을 정도의 모순이나 비문은 보이지 않습니다.
+
+사소한 선택 사항으로는 4.2에서 Metallic Nanowire 설명이 두 문단에 연속으로 나와 약간 반복감은 있지만, 논리 오류는 아니고 졸업논문 제출 기준에서는 그대로 둬도 무방합니다.
+tokens used
+89,794
+제출 가능으로 봅니다.
+
+점검 결과:
+
+- 서론: [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:153)의 `1.1 연구 배경` 흐름은 자연스럽습니다. PIM 필요성 → 멤리스터 크로스바 → 웨이퍼 결함 CNN 응용 → 비이상성과 선행연구 한계로 이어져서 문맥이 끊기지 않습니다.
+- 기여: [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:179)의 `1.2 본 연구의 기여`에 3대 기여가 모두 살아 있습니다. 4종 소재 동일 조건 비교, 3개 비이상성 동시 적용 및 무보정 평가, worst-case 붕괴 관찰이 명확합니다.
+- 그림 참조: 본문 `그림` 참조는 `그림 1`, `그림 2`, `그림 3`만 남아 있습니다. `Figure 4/5`, `그림 4/5` 깨진 참조는 발견하지 못했습니다.
+- 캡션: 실제 그림 캡션은 `Figure 1~3`, 표 캡션은 `Table 1~6`으로 맞습니다.
+- 차례: 차례의 `1.1 연구 배경`, `1.2 본 연구의 기여`가 본문 헤딩과 일치합니다. 삭제된 `1.3` 헤딩도 없습니다.
+- 새 모순/비문: 제출을 막을 정도의 모순이나 비문은 보이지 않습니다.
+
+사소한 선택 사항으로는 4.2에서 Metallic Nanowire 설명이 두 문단에 연속으로 나와 약간 반복감은 있지만, 논리 오류는 아니고 졸업논문 제출 기준에서는 그대로 둬도 무방합니다.

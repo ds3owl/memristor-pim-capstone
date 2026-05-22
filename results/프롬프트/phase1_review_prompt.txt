@@ -1,0 +1,23 @@
+[검토 요청] 학부 졸업논문(멤리스터 PIM 웨이퍼 결함 분류)에 새로 추가할 "입문자용 설명 그림 3종"을 검토해줘.
+지도교수 요구사항: (1) 논문 분량은 본문 10페이지 내외로 줄일 것, (2) 처음 보는 사람도 이해 가능하게 전체 구조를 시각화할 것 — 예: CNN이 어떻게 동작하는지 구조도, 어떤 웨이퍼 defect를 잡는지 예시 사진.
+
+다음 파일을 직접 읽고 대조 검토해줘:
+- code/make_explain_figures.py  (그림 생성 코드)
+- code/model.py                 (실제 CNN 구조 — 그림과 일치하는지 확인)
+- code/data.py                  (8개 클래스/전처리 — 그림과 일치하는지 확인)
+- figures/wafer_defect_examples.png  (가능하면 이미지도 열어볼 것)
+- figures/cnn_architecture.png
+- figures/pipeline_overview.png
+
+생성된 그림 3종 개요:
+1) wafer_defect_examples.png : MixedWM38 단일결함 8종(Center/Donut/Edge-Loc/Edge-Ring/Loc/Near-Full/Random/Scratch) 실제 샘플을 2x4 그리드로. 색: 흰=웨이퍼밖, 연회색=정상 die, 빨강=결함 die. 한국어 클래스 설명 포함.
+2) cnn_architecture.png : 입력 52x52x1 -> Conv16(26x26) -> Conv32(13x13) -> Conv64(6x6) -> Flatten(2304) -> FC128+Dropout -> 출력8(Sigmoid, multi-label). 각 Conv 단계에 "Conv3x3·BN·ReLU·MaxPool" 표기, 하단에 conv 동작 개념 캡션.
+3) pipeline_overview.png : ①웨이퍼맵 ②CNN학습(FP32) ③가중치->컨덕턴스 매핑 ④멤리스터 크로스바(4종 소재+양자화+비이상성) ⑤PIM 추론 평가(Ideal vs Realistic) 5단계 흐름.
+
+평가 항목:
+A. 정확성 — 그림 내용이 model.py/data.py의 실제 구조·클래스·수치와 일치하는가? 틀린 부분/오해 소지?
+B. 명확성 — 학부 논문 심사위원과 입문자가 이해하기에 충분한가? 빠진 핵심 요소?
+C. 적합성 — 10페이지 논문에 넣기 적절한가? 과하거나 부족한 부분?
+D. 개선 제안 — 우선순위 높은 순으로 구체적으로.
+
+간결하게, 항목별 핵심만. 칭찬보다 고칠 점 위주로.

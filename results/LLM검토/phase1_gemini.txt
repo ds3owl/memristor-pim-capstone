@@ -1,0 +1,38 @@
+Warning: True color (24-bit) support not detected. Using a terminal with true color enabled will result in a better visual experience.
+Ripgrep is not available. Falling back to GrepTool.
+(node:1996) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+제시해주신 그림 3종 생성 코드(`make_explain_figures.py`)와 실제 모델/데이터 정의(`model.py`, `data.py`), 그리고 논문 본문(`paper.html`)을 대조 검토한 결과입니다. 전체적으로 코드 수치와 그림의 시각적 정보가 매우 정확하게 일치하며, 학부 논문 수준에서 요구되는 시각화의 정석을 잘 따르고 있습니다.
+
+### A. 정확성 (Accuracy) — **우수**
+*   **CNN 파라미터 수:** 그림에 표기된 **319,592개**는 `model.py`의 구조를 기반으로 계산했을 때 오차 없이 정확합니다. (FC1 층의 가중치가 대부분을 차지함)
+*   **데이터 클래스:** `data.py`의 `CLASSES` 리스트 순서와 `make_explain_figures.py`의 8종 클래스 및 한국어 매핑이 완벽히 일치합니다.
+*   **Feature Map 사이즈:** 입력 52x52에서 시작하여 각 Conv+Pool 단계를 거칠 때마다 26, 13, 6으로 줄어드는 수치가 모델의 `MaxPool2d(2)` 설정과 정확히 맞습니다.
+*   **소재 명칭:** `pipeline_overview.png`에 기재된 4종 소재(Pt/HfOx/Ti, Ferroelectric, Metallic Nanowire, TaOx/Ta)가 논문 데이터 및 시뮬레이션 코드(`analyze.py` 등)와 일치합니다.
+
+### B. 명확성 (Clarity) — **양호**
+*   **시각적 직관성:** CNN 구조도에서 3D 블록을 겹쳐 표현하여 채널(Depth)이 늘어나는 개념을 잘 시각화했습니다. 하단에 Conv 연산에 대한 기초 설명을 추가한 점이 입문자 배려 차원에서 좋습니다.
+*   **대표 샘플 선정:** 단순히 무작위 샘플이 아니라, 결함 화소 수의 중앙값(median) 근처 샘플을 뽑도록 코딩되어 있어 '너무 깨끗하거나 너무 지저분한' 노이즈 섞인 그림이 배제되도록 설계된 점이 훌륭합니다.
+
+### C. 적합성 (Suitability) — **적절**
+*   **분량 조절:** 10페이지 제한이므로 그림 3개가 너무 커지지 않도록 배치해야 합니다. `wafer_defect_examples`는 1단(Full width)으로, 나머지 2개는 적절히 크기를 조절하면 본문 1.5~2페이지 내에 핵심 내용을 압축 전달할 수 있습니다.
+*   **난이도:** "PIM 하드웨어로 옮길 때 소재별 성능 비교"라는 핵심 질문을 파이프라인 그림 마지막에 명시하여 논문의 목적을 잘 드러내고 있습니다.
+
+### D. 개선 제안 (우선순위 순)
+
+1.  **CNN 구조도 내 '해상도 감소' 시점 명확화 (중요):**
+    *   현재 그림은 화살표 위에 "Conv 3x3·BN·ReLU·MaxPool"이 적혀 있고, 그 다음 블록이 이미 줄어든 사이즈(예: 26x26)를 보여줍니다.
+    *   입문자는 'Conv를 하면 사이즈가 줄어든다'고 오해할 수 있습니다. (사실 본 모델은 padding=1이라 Conv 자체로는 사이즈가 안 줄어듦)
+    *   **제안:** 블록 내부나 화살표 사이에 **"2x2 Pooling"** 단계를 별도 표시하거나, 블록 하단에 `(After MaxPool)`이라는 문구를 작게 병기하면 더 정확합니다.
+
+2.  **VTEAM 모델 언급 추가 (권장):**
+    *   본 연구의 핵심 하드웨어 시뮬레이션 기반이 **VTEAM 모델**임을 논문 곳곳에서 강조하고 있습니다.
+    *   `pipeline_overview.png`의 ③ 또는 ④단계 텍스트에 "(VTEAM 모델 기반)"이라는 표현을 한 단어 추가하면 이론적 근거가 더 탄탄해 보입니다.
+
+3.  **데이터셋 명칭 강조:**
+    *   `wafer_defect_examples.png`의 제목이나 캡션에 WM-811K의 하위셋인 **"MixedWM38"** 명칭을 명확히 하면 심사위원이 데이터 출처를 파악하기 더 쉽습니다. (현재는 코드에 반영되어 있으나 폰트 크기를 키우면 좋음)
+
+4.  **폰트 크기 및 일관성:**
+    *   CNN 구조도에서 `Flatten (2304)` 글씨가 다른 텍스트에 비해 작아 보일 수 있습니다. 인쇄 시 가독성을 위해 최소 9pt 이상을 유지하도록 코드의 `fontsize`를 살짝 조정하십시오.
+
+**종합 의견:** 추가 수정 없이 그대로 사용해도 무방할 만큼 완성도가 높습니다. 위 개선 제안 중 1번(Pooling 시점)만 살짝 다듬으시면 입문자용 설명 그림으로서 완벽할 것 같습니다.

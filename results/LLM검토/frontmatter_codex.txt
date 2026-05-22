@@ -1,0 +1,620 @@
+Reading additional input from stdin...
+OpenAI Codex v0.124.0 (research preview)
+--------
+workdir: C:\Users\ds3owl\Desktop\memristor_pim_capstone
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: none
+reasoning summaries: none
+session id: 019e48cf-87a8-7243-8630-c195ca157b1a
+--------
+user
+paper_b5.html의 front matter(<main> 앞부분: 표지/속표지/인준서/차례/국문요약)를 점검해줘. 확인할 것: (1) 날짜가 모두 '2026년 5월'로 통일됐는지 (3곳: 표지/속표지/인준서) (2) 저자 '임창우', 지도교수 '이종환' 정확한지 (3) 표지/속표지/인준서/차례 구성이 한국 학사학위논문 양식으로 자연스러운지, 누락·어색한 표현 (4) 차례의 십진 번호(1./1.1)가 본문 헤딩과 일치하는지. 간결하게 문제점 위주로.
+codex
+paper_b5.html의 front matter와 본문 헤딩을 대조해서 문제점만 추려보겠습니다. 먼저 파일 구조와 관련 구간을 읽겠습니다.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Path paper_b5.html -TotalCount 260' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'rg -n "<main|2026|임창우|이종환|목차|차례|국문|요약|인준|<h[1-6]|class=.*toc|toc" paper_b5.html' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 369ms:
+47:  .toc h1 { text-align:center; border:none; }
+48:  .toc ul { list-style: none; padding-left: 0; font-size: 10.5pt; }
+49:  .toc li { padding: 2.5px 0; }
+50:  .toc li.s1 { padding-left: 14px; }
+51:  .toc li.s2 { padding-left: 30px; color:#333; }
+65:    ìƒëª…ëŒ€í•™êµ ê³µê³¼ëŒ€í•™<br>ì‹œìŠ¤í…œë°˜ë„ì²´ê³µí•™ê³¼<br>ìž„ ì°½ ìš°<br><br>2026ë…„ 5ì›”
+74:    2026ë…„ 5ì›”<br><br>
+79:  <div class="ko-title" style="margin-top:30mm">ìž„ì°½ìš°ì˜ í•™ì‚¬í•™ìœ„ ë…¼ë¬¸ì„<br>ì¸ì¤€í•¨</div>
+85:  <div class="fm-info" style="margin-top:20mm">ìƒëª…ëŒ€í•™êµ ê³µê³¼ëŒ€í•™<br><br>2026ë…„ 5ì›”</div>
+87:<section class="sheet toc">
+88:  <h1>ì°¨ã€€ã€€ë¡€</h1>
+90:    <li><b>êµ­ë¬¸ ìš”ì•½</b></li>
+121:  <h1 style="text-align:center;border:none">êµ­ ë¬¸ ìš” ì•½</h1>
+148:<main class="flow">
+149:<h1>1. ì„œë¡ </h1>
+151:<h2>1.1 ì—°êµ¬ ë°°ê²½</h2>
+170:<h2>1.2 ì„ í–‰ ì—°êµ¬ì˜ í•œê³„</h2>
+183:<h2>1.3 ë³¸ ì—°êµ¬ì˜ ê¸°ì—¬</h2>
+206:<h1>2. ì´ë¡ ì  ë°°ê²½</h1>
+208:<h2>2.1 Processing-In-Memory (PIM)</h2>
+215:<h2>2.2 ë©¤ë¦¬ìŠ¤í„° í¬ë¡œìŠ¤ë°” ì–´ë ˆì´</h2>
+223:<h2>2.3 VTEAM ëª¨ë¸</h2>
+237:<h2>2.4 ì›¨ì´í¼ ê²°í•¨ ë¶„ë¥˜ì™€ CNN</h2>
+249:<h1>3. ë°©ë²•ë¡ </h1>
+251:<h2>3.1 ë°ì´í„°ì…‹</h2>
+266:<h2>3.2 CNN ëª¨ë¸ êµ¬ì¡°</h2>
+286:<h2>3.3 4ì¢… ì†Œìž¬ íŒŒë¼ë¯¸í„°</h2>
+305:<h2>3.4 ë§¤í•‘Â·ì–‘ìží™” ë° ë¹„ì´ìƒì„± ëª¨ë¸</h2>
+338:<h2>3.5 í‰ê°€ í”„ë¡œí† ì½œ</h2>
+356:<h1>4. ê²°ê³¼</h1>
+358:<h2>4.1 Baseline (FP32 software) ì„±ëŠ¥</h2>
+375:<h2>4.2 4 ì†Œìž¬ Ideal vs Realistic ë¹„êµ</h2>
+413:<h2>4.3 Worst-case ë¶•ê´´ í˜„ìƒ ë¶„ì„</h2>
+446:<h2>4.4 ê²°í•¨ ìœ í˜•ë³„ (per-class) F1 ë¶„ì„</h2>
+481:<h1>5. ë…¼ì˜</h1>
+483:<h2>5.1 ì €í•­ë¹„(R<sub>off</sub>/R<sub>on</sub>)ì˜ ì˜í–¥</h2>
+496:<h2>5.2 Metallic Nanowireì˜ ë³¸ì§ˆì  í•œê³„</h2>
+510:<h2>5.3 Worst-case ë¶•ê´´ í˜„ìƒì˜ PIM í•¨ì˜</h2>
+523:<h2>5.4 í•œê³„ ë° í–¥í›„ ê³¼ì œ</h2>
+538:<h1>6. ê²°ë¡ </h1>
+563:<h1>ì°¸ê³ ë¬¸í—Œ</h1>
+582:â€” Manuscript draft, Sangmyung University Capstone Project, 2026 â€”
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 390ms:
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬ ?Œë¼ë¯¸í„°ë¥??œìš©??PIM ?˜ê²½ ?¨ì´??ê²°í•¨ ë¶„ë¥˜ ?±ëŠ¥ ë¹„êµ ?°êµ¬</title>
+<style>
+  @page { size: 182mm 257mm; margin: 15mm 25mm 15mm 25mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "?¨ì´ˆë¡¬ë°”??, "ë°”íƒ•", Batang, "Times New Roman", serif;
+    font-size: 10.5pt; line-height: 1.6; color: #111; margin: 0;
+    background: #8a9099;
+  }
+  /* ?”ë©´: ì¢…ì´ ???¥ì²˜??ë³´ì´ê²?*/
+  .sheet {
+    width: 182mm; min-height: 257mm; padding: 15mm 25mm;
+    margin: 8mm auto; background: #fff;
+    box-shadow: 0 1px 8px rgba(0,0,0,.45);
+  }
+  .flow {                      /* ë³¸ë¬¸(?¬ëŸ¬ ?˜ì´ì§€ê°€ ?´ì–´ì§? */
+    width: 182mm; padding: 15mm 25mm; margin: 8mm auto;
+    background: #fff; box-shadow: 0 1px 8px rgba(0,0,0,.45);
+  }
+  h1 { font-size: 15pt; font-weight: bold; margin: 9mm 0 4mm; }
+  h2 { font-size: 12pt; font-weight: bold; margin: 6mm 0 3mm; }
+  h3 { font-size: 11pt; margin: 5mm 0 2mm; }
+  p { text-align: justify; margin: 4px 0; text-indent: 1em; }
+  p.noindent { text-indent: 0; }
+  table { border-collapse: collapse; margin: 6px auto; font-size: 9pt; }
+  th, td { border: 1px solid #555; padding: 3px 7px; text-align: center; }
+  th { background: #eee; }
+  .caption { text-align: center; font-size: 9pt; font-style: italic; color: #444; margin: 3px 0 10px; }
+  .figure { text-align: center; margin: 10px 0; page-break-inside: avoid; }
+  .figure img { max-width: 95%; border: 1px solid #ccc; }
+  .equation { text-align: center; font-style: italic; margin: 6px 0; }
+  .keywords { font-size: 9.5pt; color: #333; }
+  .references { font-size: 9.5pt; }
+  .references ol { padding-left: 20px; }
+  .references li { margin: 3px 0; text-align: left; text-indent: 0; }
+  /* front matter */
+  .cover, .inner, .approval { text-align: center; }
+  .cover .deg { font-size: 16pt; font-weight: bold; margin: 18mm 0 28mm; letter-spacing: 4px; }
+  .ko-title { font-size: 17pt; font-weight: bold; line-height: 1.6; margin: 8mm 0; }
+  .en-title { font-size: 11pt; color: #444; line-height: 1.5; margin: 6mm 0; }
+  .fm-info { font-size: 12pt; line-height: 2.2; margin-top: 16mm; }
+  .approval .judge { text-align: left; width: 70%; margin: 6mm auto; font-size: 12pt; line-height: 3; }
+  .toc h1 { text-align:center; border:none; }
+  .toc ul { list-style: none; padding-left: 0; font-size: 10.5pt; }
+  .toc li { padding: 2.5px 0; }
+  .toc li.s1 { padding-left: 14px; }
+  .toc li.s2 { padding-left: 30px; color:#333; }
+  @media print {
+    body { background: #fff; }
+    .sheet, .flow { width: auto; min-height: 0; margin: 0; padding: 0; box-shadow: none; }
+    .sheet { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+<section class="sheet cover">
+  <div class="deg">?™ì‚¬?™ìœ„?¼ë¬¸</div>
+  <div class="ko-title">4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬ ?Œë¼ë¯¸í„°ë¥??œìš©??br>PIM ?˜ê²½ ?¨ì´??ê²°í•¨ ë¶„ë¥˜ ?±ëŠ¥ ë¹„êµ ?°êµ¬</div>
+  <div class="en-title">A Comparative Study of Four Memristive Material Candidates<br>for Processing-In-Memory Wafer Defect Classification</div>
+  <div class="fm-info">
+    ?ëª…?€?™êµ ê³µê³¼?€??br>?œìŠ¤?œë°˜?„ì²´ê³µí•™ê³?br>??ì°???br><br>2026??5??
+  </div>
+</section>
+<section class="sheet inner">
+  <div class="ko-title" style="margin-top:14mm">4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬ ?Œë¼ë¯¸í„°ë¥??œìš©??br>PIM ?˜ê²½ ?¨ì´??ê²°í•¨ ë¶„ë¥˜ ?±ëŠ¥ ë¹„êµ ?°êµ¬</div>
+  <div class="en-title">A Comparative Study of Four Memristive Material Candidates<br>for Processing-In-Memory Wafer Defect Classification</div>
+  <div class="fm-info" style="margin-top:10mm">
+    ì§€?„êµ?˜ã€€??ì¢???br><br>
+    ???¼ë¬¸???™ì‚¬?™ìœ„ ?¼ë¬¸?¼ë¡œ ?œì¶œ??br><br>
+    2026??5??br><br>
+    ?ëª…?€?™êµ ê³µê³¼?€??br>?œìŠ¤?œë°˜?„ì²´ê³µí•™ê³?br>??ì°???
+  </div>
+</section>
+<section class="sheet approval">
+  <div class="ko-title" style="margin-top:30mm">?„ì°½?°ì˜ ?™ì‚¬?™ìœ„ ?¼ë¬¸??br>?¸ì???/div>
+  <div class="judge" style="margin-top:24mm">
+    ?¬ì‚¬?„ì›?¥ã€€?€?€?€?€?€?€?€?€?€(??<br>
+    ?¬ì‚¬?„ì›?€?€?€?€?€?€?€?€?€?€?€(??<br>
+    ?¬ì‚¬?„ì›?€?€?€?€?€?€?€?€?€?€?€(??
+  </div>
+  <div class="fm-info" style="margin-top:20mm">?ëª…?€?™êµ ê³µê³¼?€??br><br>2026??5??/div>
+</section>
+<section class="sheet toc">
+  <h1>ì°¨ã€€?€ë¡€</h1>
+  <ul>
+    <li><b>êµ?¬¸ ?”ì•½</b></li>
+    <li><b>1. ?œë¡ </b></li>
+    <li class="s1">1.1 ?°êµ¬ ë°°ê²½</li>
+    <li class="s1">1.2 ? í–‰ ?°êµ¬???œê³„</li>
+    <li class="s1">1.3 ë³??°êµ¬??ê¸°ì—¬</li>
+    <li><b>2. ?´ë¡ ??ë°°ê²½</b></li>
+    <li class="s1">2.1 Processing-In-Memory (PIM)</li>
+    <li class="s1">2.2 ë©¤ë¦¬?¤í„° ?¬ë¡œ?¤ë°” ?´ë ˆ??/li>
+    <li class="s1">2.3 VTEAM ëª¨ë¸</li>
+    <li class="s1">2.4 ?¨ì´??ê²°í•¨ ë¶„ë¥˜?€ CNN</li>
+    <li><b>3. ë°©ë²•ë¡?/b></li>
+    <li class="s1">3.1 ?°ì´?°ì…‹</li>
+    <li class="s1">3.2 CNN ëª¨ë¸ êµ¬ì¡°</li>
+    <li class="s1">3.3 4ì¢??Œìž¬ ?Œë¼ë¯¸í„°</li>
+    <li class="s1">3.4 ë§¤í•‘Â·?‘ìž??ë°?ë¹„ì´?ì„± ëª¨ë¸</li>
+    <li class="s1">3.5 ?‰ê? ?„ë¡œ? ì½œ</li>
+    <li><b>4. ê²°ê³¼</b></li>
+    <li class="s1">4.1 Baseline (FP32 software) ?±ëŠ¥</li>
+    <li class="s1">4.2 4 ?Œìž¬ Ideal vs Realistic ë¹„êµ</li>
+    <li class="s1">4.3 Worst-case ë¶•ê´´ ?„ìƒ ë¶„ì„</li>
+    <li class="s1">4.4 ê²°í•¨ ? í˜•ë³?(per-class) F1 ë¶„ì„</li>
+    <li><b>5. ?¼ì˜</b></li>
+    <li class="s1">5.1 ?€??¹„???í–¥</li>
+    <li class="s1">5.2 Metallic Nanowire??ë³¸ì§ˆ???œê³„</li>
+    <li class="s1">5.3 Worst-case ë¶•ê´´ ?„ìƒ??PIM ?¨ì˜</li>
+    <li class="s1">5.4 ?œê³„ ë°??¥í›„ ê³¼ì œ</li>
+    <li><b>6. ê²°ë¡ </b></li>
+    <li><b>ì°¸ê³ ë¬¸í—Œ</b></li>
+  </ul>
+</section>
+<section class="sheet summary">
+  <h1 style="text-align:center;border:none">êµ?ë¬?????/h1>
+  <p class="noindent"><p class="noindent">
+  Processing-In-Memory (PIM) ?„í‚¤?ì²˜???¸ê³µì§€??ê°€?ê¸°??ë©”ëª¨ë¦??°ì‚° ë³‘ëª©???´ê²°??ì°¨ì„¸?€ ê¸°ìˆ ë¡?ì£¼ëª©ë°›ê³  ?ˆë‹¤.
+  ?¹ížˆ ë©¤ë¦¬?¤í„°(memristor) ê¸°ë°˜ ?¬ë¡œ?¤ë°” ?´ë ˆ?´ëŠ” ê°€ì¤‘ì¹˜ ?€?¥ê³¼ ê³±ì…ˆ-?„ì  ?°ì‚°???™ì‹œ???˜í–‰?????ˆì–´
+  ?¥ëŸ¬??ì¶”ë¡ ???í•©?˜ë‹¤.
+  ê·¸ëŸ¬??ë©¤ë¦¬?¤í„°???Œìž¬ë³„ë¡œ ?€??¹„, ?œí˜„ ê°€?¥í•œ ?íƒœ ?? ë³€??variation), ê²°í•¨ë¥?stuck-at fault) ??ë¬¼ë¦¬??
+  ?¹ì„±???¬ê²Œ ?¤ë¥´ë©? ?´ëŠ” ë¶„ë¥˜ ?±ëŠ¥??ì§ì ‘?ì¸ ?í–¥??ë¯¸ì¹œ??
+  ë³??°êµ¬?ì„œ??VTEAM ëª¨ë¸??ë¬¸í—Œ ?Œë¼ë¯¸í„°ë¥??œìš©?˜ì—¬ Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire,
+  TaO<sub>x</sub>/Ta??4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬ë¥??™ì¼???•ì  conductance mapping ê¸°ë°˜ ?œë??ˆì´???˜ê²½?ì„œ ë¹„êµ?˜ì???
+  MixedWM38 ?¨ì´??ê²°í•¨ ?°ì´?°ì…‹(8ê°?ê²°í•¨ ?¼ë²¨??ëª¨ë‘ 0??normal/no-defect 1,000?¥ì„ ?œì™¸??37,015?? 8ê°?ê²°í•¨ ?´ëž˜??multi-label)?¼ë¡œ
+  ?™ìŠµ??ê²½ëŸ‰ CNN ëª¨ë¸??ê°??Œìž¬???¬ë¡œ?¤ë°” ?´ë ˆ?´ì— ë§¤í•‘?˜ê³ , ?‘ìž?”Â·ë??™Â·stuck-at fault????ë¹„ì´?ì„±???™ì‹œ??
+  ?ìš©?˜ì—¬ 9??Monte Carlo ?‰ê?ë¥??˜í–‰?˜ì???
+  ?¤í—˜ ê²°ê³¼, R<sub>off</sub>/R<sub>on</sub> ?€??¹„ê°€ 25ë°??´ìƒ?????Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric,
+  TaO<sub>x</sub>/Ta)???‰ê·  macro F1??0.76~0.88 ?˜ì??´ì—ˆ?¼ë‚˜ noise sample???°ë¥¸ ë³€?™ì„±??ë§¤ìš° ì»¸ìœ¼ë©?
+  (std 0.13~0.28), ?€??¹„ 1.97ë°°ì˜
+  Metallic Nanowire??4-state ?‘ìž?”ì˜ ë³¸ì§ˆ???œê³„ë¡??¸í•´ ?´ìƒ??ì¡°ê±´?ì„œ??F1 0.38ë¡?ë¶„ë¥˜ ?±ëŠ¥??ë¶•ê´´?˜ì???
+  ?í•œ ê³ ì???¹„ ???Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta) ê°ê°?ì„œ 9??Monte Carlo
+  ?˜í”Œ ì¤?1?Œì”© ì¹˜ëª…???±ëŠ¥ ë¶•ê´´(catastrophic degradation, F1 &lt; 0.60)ê°€ ê´€ì°°ë˜?ˆìœ¼ë©?
+  ?´ëŠ” stuck-at fault ?„ì¹˜ ë¬´ìž‘?„ì„±???˜í•œ worst-case ë¶•ê´´ ?„í—˜??ê°€?¥ì„±???œì‚¬?œë‹¤(?¤ë§Œ ?¤ì œ ë°œìƒ ?•ë¥  ì¶”ì •?ëŠ”
+  ??ë§Žì? ë°˜ë³µ???„ìš”?˜ë‹¤).
+  ?´ëŠ” PIM ?‘ìš©?ì„œ ?‰ê·  ?±ëŠ¥ë¿??„ë‹ˆ??ê²°í•¨ ë¶„í¬???°ë¥¸ worst-case ?„í—˜ê¹Œì? ?¨ê»˜ ê³ ë ¤?´ì•¼ ?¨ì„ ?œì‚¬?œë‹¤.
+  </p>
+  <p class="noindent keywords">
+  <b>Keywords</b> : Memristor, Processing-In-Memory (PIM), VTEAM model, Convolutional Neural Network,
+  Wafer defect classification, Stuck-at fault, Quantization
+  </p></p>
+</section>
+<main class="flow">
+<h1>1. ?œë¡ </h1>
+
+<h2>1.1 ?°êµ¬ ë°°ê²½</h2>
+<p>
+?¥ëŸ¬??ëª¨ë¸??ê·œëª¨ê°€ ê¸‰ê²©??ì»¤ì?ë©´ì„œ ?„í†µ?ì¸ von Neumann êµ¬ì¡°??ë©”ëª¨ë¦??°ì‚° ë¶„ë¦¬???˜í•œ ?°ì´???´ë™ ë¹„ìš©??
+?œìŠ¤???„ì²´ ?±ëŠ¥ê³??„ë ¥ ?¨ìœ¨??ì¢Œìš°?˜ëŠ” ì£¼ëœ ë³‘ëª©?¼ë¡œ ? ì˜¬?ë‹¤. ì¶”ë¡  ?¨ê³„?ì„œ ë°œìƒ?˜ëŠ” ë©”ëª¨ë¦??‘ê·¼?€ ?¤ì œ ê³„ì‚°
+?ì›???Œë¹„?˜ëŠ” ?ë„ˆì§€ë³´ë‹¤ ?˜ì‹­ ë°??´ìƒ???„ë ¥???”êµ¬?˜ëŠ” ê²ƒìœ¼ë¡?ë³´ê³ ?˜ë©° [11], ?´ëŠ” ëª¨ë°”?¼Â·ì—£ì§€ ?˜ê²½?ì„œ
+?¸ê³µì§€??ê°€?ê¸°ë¥?êµ¬í˜„????ê°€????ê±¸ë¦¼?Œì´ ?œë‹¤ [10, 8, 12].
+</p>
+<p>
+Processing-In-Memory (PIM)??ê°€ì¤‘ì¹˜ ?€???€???™ì‹œ??ê³±ì…ˆ-?„ì (MAC) ?°ì‚°???˜í–‰?˜ë„ë¡??¨ìœ¼ë¡œì¨ ?„ì˜ ?°ì´??
+?´ë™ ë³‘ëª©???„í™”?˜ëŠ” ?„í‚¤?ì²˜?´ë‹¤. ê·¸ì¤‘?ì„œ??ë©¤ë¦¬?¤í„°(memristor) ê¸°ë°˜ ?¬ë¡œ?¤ë°” ?´ë ˆ?´ëŠ” ?´ì˜ ë²•ì¹™ê³??¤ë¥´?ˆí˜¸??
+?„ë¥˜ ë²•ì¹™ë§Œìœ¼ë¡??¨ì¼ ?¬ì´???ˆì— ?‰ë ¬-ë²¡í„° ê³±ì…ˆ???„ì„±?????ˆì–´ ?¥ëŸ¬??ì¶”ë¡ ??PIM ê°€?ê¸°???€???„ë³´ë¡?
+?°êµ¬?˜ì–´ ?”ë‹¤ [1, 8, 9, 10].
+</p>
+<p>
+ë°˜ë„ì²??œì¡° ê³µì •?ì„œ???¨ì´???œë©´??ê²°í•¨ ?¨í„´(Center, Donut, Edge-Ring ?????ë™ ë¶„ë¥˜?˜ëŠ” ?‘ì—…???˜ìœ¨ ê´€ë¦¬ì—
+?„ìˆ˜?ì´?? ???‘ì—…?€ CNN(convolutional neural network)??ê°•ì ??ë³´ì´??ë¶„ì•¼?´ë©°, ê³µìž¥ ?¼ì¸?ì„œ ?¤ì‹œê°„ìœ¼ë¡?
+?”êµ¬?˜ëŠ” ë§Œí¼ ?€?„ë ¥ ?£ì? ì¶”ë¡  ê°€?ê¸°?€ ê²°í•©?????ˆë‹¤ë©??¤ìš©??ê°€ì¹˜ê? ?¬ë‹¤.
+</p>
+
+<h2>1.2 ? í–‰ ?°êµ¬???œê³„</h2>
+<p>
+ë©¤ë¦¬?¤í„° ê¸°ë°˜ PIM?ì„œ ë¶„ë¥˜ ?•í™•?„ì— ?í–¥??ì£¼ëŠ” ë¹„ì´?ì„±(non-ideality)?€ ?¬ê²Œ ??ê°€ì§€ë¡??•ë¦¬?œë‹¤.
+ì²«ì§¸, ë©¤ë¦¬?¤í„°ê°€ ?ˆì •?ìœ¼ë¡?êµ¬ë¶„?????ˆëŠ” ì»¨ë•?´ìŠ¤ ?íƒœ???˜ê? ? í•œ?˜ë?ë¡?ê°€ì¤‘ì¹˜ë¥??œí˜„?????‘ìž???ì‹¤??
+ë°œìƒ?œë‹¤. ?˜ì§¸, ?™ì¼ ê³µì •?ì„œ ?œì¡°???€??ê°„ì—???€??°’??ê°€?°ì‹œ??ë¶„í¬ë¡?ë³€??device-to-device variation)
+?œë‹¤. ?‹ì§¸, ?¼ë? ?€?€ ?êµ¬?ìœ¼ë¡??€?€??LRS) ?ëŠ” ê³ ì???HRS) ?íƒœ??ê³ ì°©?˜ëŠ” stuck-at faultë¥?ë³´ì¸??[1, 8].
+</p>
+<p>
+? í–‰ ?°êµ¬???¤ìˆ˜??????ê°€ì§€ ë¹„ì´?ì„± ì¤??œë‘ ê°€ì§€ë§Œì„ ë¶€ë¶„ì ?¼ë¡œ ëª¨ë¸ë§í•˜ê±°ë‚˜, ë§¤í•‘ ??ì¶œë ¥ ?¬ë³´??tune)??
+ê°€?•í•´ ë¹„ì´?ì„±???í–¥??ê³¼ì†Œ?‰ê??˜ëŠ” ê²½í–¥???ˆì—ˆ?? ?´ëŠ” ?¤ì œ PIM ì¹©ì—??ë°œìƒ?????ˆëŠ” ?¬ê°???±ëŠ¥ ?€??
+(catastrophic degradation)ë¥??œë??ˆì´???¨ê³„?ì„œ ?¬ì „ ?‰ê??˜ì? ëª»í•˜ê²?ë§Œë“ ??
+</p>
+
+<h2>1.3 ë³??°êµ¬??ê¸°ì—¬</h2>
+<p>ë³??°êµ¬???¤ìŒê³?ê°™ì? ê¸°ì—¬ë¥??œì‹œ?œë‹¤.</p>
+<p>
+<b>1) VTEAM ë¬¸í—Œ ?Œë¼ë¯¸í„°ë¥?ì°¸ê³ ???•ì  conductance mapping ?˜ê²½?ì„œ 4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬???•ëŸ‰ ë¹„êµ.</b>
+Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire, TaO<sub>x</sub>/Ta???€???™ì¼??CNN, ?™ì¼???°ì´?°ì…‹,
+?™ì¼??ë¹„ì´?ì„± ëª¨ë¸???ìš©?˜ì—¬ ?Œìž¬ ê°?PIM ?í•©?±ì„ macro F1 ì§€?œë¡œ ë¹„êµ?œë‹¤.
+</p>
+<p>
+<b>2) ??ë¹„ì´?ì„±???™ì‹œ ?ìš©.</b>
+?‘ìž?”Â·ë??™Â·stuck-at faultë¥?ë§¤í•‘ ?Œì´?„ë¼?¸ì— ?™ì‹œ??ë°˜ì˜?¨ìœ¼ë¡œì¨ ?¤ì œ ë©¤ë¦¬?¤í„° ì¹©ì˜ ?™ìž‘????ê°€ê¹Œìš´
+ë³´ìˆ˜???‰ê?ë¥??˜í–‰?œë‹¤. ë§¤í•‘ ??ì¶œë ¥ ?¬ë³´?•ì? ê°€?•í•˜ì§€ ?ŠëŠ”??
+</p>
+<p>
+<b>3) Worst-case ë¶•ê´´ ?„ìƒ ê´€ì°?</b>
+3ê°œì˜ baseline seed?€ 3ê°œì˜ noise sample??ê²°í•©??9??Monte Carlo ?‰ê??ì„œ, ê³ ì???¹„ ???Œìž¬ ëª¨ë‘?ì„œ
+9??ì¤?1??ë¹„ìœ¨ë¡?catastrophic degradation??ê´€ì°°ë˜?ˆë‹¤. ?œë³¸???‘ì•„ ë¶„í¬ ?•íƒœë¥??¨ì •???˜ëŠ” ?†ìœ¼??
+stuck-at fault ?„ì¹˜ ë¬´ìž‘?„ì„±???°ë¼ ?™ì¼ ?Œìž¬ê°€ worst-case??ê°€ê¹Œìš´ ë¶•ê´´ ê²°ê³¼ë¥?ë³´ì¼ ???ˆìŒ???œì‚¬?œë‹¤.
+?´ëŠ” PIM ?‘ìš©?ì„œ ?‰ê·  ?±ëŠ¥ë¿??„ë‹ˆ??worst-case ?„í—˜ê¹Œì? ê³ ë ¤?´ì•¼ ?¨ì„ ?•ì„±?ìœ¼ë¡??·ë°›ì¹¨í•œ??
+</p>
+
+<!-- ============================================================== -->
+<!--  II. ?´ë¡ ??ë°°ê²½                                               -->
+<!-- ============================================================== -->
+<h1>2. ?´ë¡ ??ë°°ê²½</h1>
+
+<h2>2.1 Processing-In-Memory (PIM)</h2>
+<p>
+PIM?€ ë©”ëª¨ë¦??€???€??ê¸°ëŠ¥ê³??¨ê»˜ ?°ì‚° ê¸°ëŠ¥???˜í–‰?˜ë„ë¡??˜ì—¬ ê°€ì¤‘ì¹˜ ?°ì´?°ë? ë³„ë„ ?°ì‚° ? ë‹›?¼ë¡œ ?´ë™?œí‚¤??
+ë¹„ìš©???œê±°?˜ëŠ” ?„í‚¤?ì²˜?´ë‹¤. CNN ì¶”ë¡ ?€ ë³¸ì§ˆ?ìœ¼ë¡??‰ë ¬-ë²¡í„° ê³±ì…ˆ(MVM)???°ì‡„?´ë©°, ë©¤ë¦¬?¤í„° ?¬ë¡œ?¤ë°”
+?´ë ˆ?´ëŠ” ?¨ì¼ ?¬ì´?´ì˜ ?„ë‚ ë¡œê·¸ ?°ì‚°?¼ë¡œ MVM??ì²˜ë¦¬?????ˆì–´ PIM???¨ê³¼?ì¸ ë¬¼ë¦¬ êµ¬í˜„ ?„ë³´ë¡??‰ê??œë‹¤ [10].
+</p>
+
+<h2>2.2 ë©¤ë¦¬?¤í„° ?¬ë¡œ?¤ë°” ?´ë ˆ??/h2>
+<p>
+ë©¤ë¦¬?¤í„°???¸ê? ?„ì•• ?´ë ¥???°ë¼ ?€???íƒœê°€ ë³€?”í•˜ê³? ?„ì›??ì°¨ë‹¨???´í›„?ë„ ë§ˆì?ë§??€???íƒœë¥?? ì??˜ëŠ”
+2?¨ìž ë¹„íœ˜ë°œì„± ?Œìž?´ë‹¤. ?‰ê³¼ ?´ì´ ê²©ìž?•ìœ¼ë¡?êµì°¨?˜ëŠ” ?¬ë¡œ?¤ë°” ?´ë ˆ?´ì—??ê°?êµì°¨?ì— ë©¤ë¦¬?¤í„°ë¥?ë°°ì¹˜?˜ë©´, ???¼ì¸??
+?…ë ¥ ?„ì•• <i>V<sub>i</sub></i>ë¥??¸ê??ˆì„ ?????¼ì¸???ë¥´???„ë¥˜??<i>I<sub>j</sub> = Î£<sub>i</sub> G<sub>ij</sub> V<sub>i</sub></i>
+ê°€ ?˜ì–´ ?´ì˜ ë²•ì¹™ê³??¤ë¥´?ˆí˜¸???„ë¥˜ ë²•ì¹™ë§Œìœ¼ë¡?ê°€ì¤‘ì¹˜ ?‰ë ¬ <b>G</b>?€ ?…ë ¥ ë²¡í„°??ê³±ì´ ì¦‰ì‹œ ?»ì–´ì§„ë‹¤.
+</p>
+
+<h2>2.3 VTEAM ëª¨ë¸</h2>
+<p>
+VTEAM(Voltage Threshold Adaptive Memristor)?€ Kvatinsky ?±ì´ ?œì•ˆ???„ì•• ?„ê³„ ê¸°ë°˜???¼ë°˜?”ëœ ë©¤ë¦¬?¤í„° ê±°ë™
+ëª¨ë¸ë¡?[1], ?¤ì–‘???Œìž¬???¤ì¸¡ ?¹ì„±???™ì¼???˜ì‹ ?•íƒœ ?ˆì—???Œë¼ë¯¸í„°ë§?ë°”ê¾¸???œí˜„?????ˆë‹¤. ë³??°êµ¬???œê°„
+?™ì—­??ë°©ì •?ì„ ì§ì ‘ ?ë¶„?˜ì? ?Šê³ , ??ëª¨ë¸ ë°?ê´€???Œìž ë¬¸í—Œ???œì‹œ???Œìž¬ë³??€??ë²”ìœ„Â·?¤ìœ„ì¹??¹ì„±???•ì 
+conductance mapping??ê¸°ì? ?Œë¼ë¯¸í„°ë¡œë§Œ ?œìš©?˜ì??? ?•ì  ?íƒœ?ì„œ ë©¤ë¦¬?¤í„°???€???
+</p>
+<div class="equation">
+  <i>R</i>(<i>w</i>) = <i>R<sub>on</sub></i> + (<i>R<sub>off</sub></i> ??<i>R<sub>on</sub></i>) <i>w</i> &nbsp;&nbsp; (0 ??<i>w</i> ??1)
+</div>
+<p>
+ë¡??œí˜„?˜ë©°(<i>w</i>???•ê·œ?”ëœ ?´ë? ?íƒœ ë³€??, ???ì´ ?Œìž¬ë³?R<sub>on</sub>Â·R<sub>off</sub>ë§Œìœ¼ë¡??µì¼??ë¹„êµ ?˜ê²½??êµ¬ì„±?˜ëŠ” ê¸°ë°˜???œë‹¤.
+</p>
+
+<h2>2.4 ?¨ì´??ê²°í•¨ ë¶„ë¥˜?€ CNN</h2>
+<p>
+?¨ì´??ê²°í•¨ ?¨í„´?€ ê³µì • ?´ìƒ??1ì°?? í˜¸ë¡œì„œ, ?¨í„´ ì¢…ë¥˜???°ë¼ ?ì¸ ê³µì •???¤ë¥´??
+CNN?€ ê³µê°„???¨í„´??ê³„ì¸µ?ìœ¼ë¡?ì¶”ì¶œ?˜ë?ë¡?ê²°í•¨ ë¶„ë¥˜???¨ê³¼?ì´ë©? ë³??°êµ¬?ì„œ??3ê°œì˜ ?©ì„±ê³?ê³„ì¸µê³?1ê°œì˜
+?€???„ì „?°ê²° ê³„ì¸µ, ìµœì¢… ë¶„ë¥˜ ê³„ì¸µ?¼ë¡œ êµ¬ì„±??ê²½ëŸ‰ CNN(??32ë§??Œë¼ë¯¸í„°)???¬ìš©?œë‹¤. ?…ë ¥?€ 52Ã—52 ?½ì???
+3-level categorical wafer map(ë°°ê²½/?•ìƒ ?¤ì´/ê²°í•¨ ?¤ì´ë¥?0/0.5/1.0?¼ë¡œ ?•ê·œ???´ê³ , ì¶œë ¥?€ 8ê°?ê²°í•¨ ?´ëž˜??ê°ê°??
+?€??multi-label sigmoid ?•ë¥ ?´ë‹¤.
+</p>
+
+<!-- ============================================================== -->
+<!--  III. ë°©ë²•ë¡?                                                  -->
+<!-- ============================================================== -->
+<h1>3. ë°©ë²•ë¡?/h1>
+
+<h2>3.1 ?°ì´?°ì…‹</h2>
+<p>
+ë³??°êµ¬?ì„œ??Wang ?±ì´ ê³µê°œ??MixedWM38 ?¨ì´??ê²°í•¨ ?°ì´?°ì…‹???¬ìš©?˜ì???[2].
+ì´?38,015?¥ì˜ 52Ã—52 ?¨ì´??ë§µìœ¼ë¡?êµ¬ì„±?˜ë©°, ?½ì? ê°’ì? ë°°ê²½(0), ?•ìƒ ?¤ì´(1), ê²°í•¨ ?¤ì´(2)???•ìˆ˜ categorical
+ê°’ì´?? ?¼ë²¨?€ 8ê°?ê²°í•¨ ?´ëž˜??Center, Donut, Edge-Loc, Edge-Ring, Loc, Near-Full, Random, Scratch)???€??
+multi-hot ë²¡í„°ë¡? ?¨ì¼ ê²°í•¨ë¿??„ë‹ˆ????ì¢…ë¥˜ ?´ìƒ??ê²°í•¨???™ì‹œ??ì¡´ìž¬?˜ëŠ” ë³µí•© ê²°í•¨(mixed-type) ?¨í„´??
+?¬í•¨?œë‹¤???ì´ ?¹ì§•?´ë‹¤.
+</p>
+<p>
+?„ì²˜ë¦?ê³¼ì •?ì„œ 8ê°?ê²°í•¨ ?¼ë²¨??ëª¨ë‘ 0??1,000?¥ì˜ normal/no-defect ?˜í”Œ???œì™¸?˜ê³ , ê²°í•¨??ì¡´ìž¬?˜ëŠ” 37,015?¥ì„
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+현재 터미널 출력은 한글이 깨져 보이지만, HTML 구조와 행 번호는 확인됩니다. 인코딩 자체 문제인지 출력 문제인지 구분하면서 front matter 원문을 더 좁혀 보겠습니다.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Path paper_b5.html -Encoding UTF8 -TotalCount 160' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+2026-05-21T04:33:57.349780Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"<li|<h1|<h2|<section|<div class=\\\"fm-info|<div class=\\\"ko-title|<div class=\\\"deg\" paper_b5.html"` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"<li|<h1|<h2|<section|<div class=\\\"fm-info|<div class=\\\"ko-title|<div class=\\\"deg\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"<li|<h1|<h2|<section|<div class=\\\"fm-info|<div class=\\\"ko-title|<div class=\\\"deg\" paper_b5.html"` rejected: blocked by policy
+ succeeded in 359ms:
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>4종 멤리스터 소재 파라미터를 활용한 PIM 환경 웨이퍼 결함 분류 성능 비교 연구</title>
+<style>
+  @page { size: 182mm 257mm; margin: 15mm 25mm 15mm 25mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "함초롬바탕", "바탕", Batang, "Times New Roman", serif;
+    font-size: 10.5pt; line-height: 1.6; color: #111; margin: 0;
+    background: #8a9099;
+  }
+  /* 화면: 종이 한 장처럼 보이게 */
+  .sheet {
+    width: 182mm; min-height: 257mm; padding: 15mm 25mm;
+    margin: 8mm auto; background: #fff;
+    box-shadow: 0 1px 8px rgba(0,0,0,.45);
+  }
+  .flow {                      /* 본문(여러 페이지가 이어짐) */
+    width: 182mm; padding: 15mm 25mm; margin: 8mm auto;
+    background: #fff; box-shadow: 0 1px 8px rgba(0,0,0,.45);
+  }
+  h1 { font-size: 15pt; font-weight: bold; margin: 9mm 0 4mm; }
+  h2 { font-size: 12pt; font-weight: bold; margin: 6mm 0 3mm; }
+  h3 { font-size: 11pt; margin: 5mm 0 2mm; }
+  p { text-align: justify; margin: 4px 0; text-indent: 1em; }
+  p.noindent { text-indent: 0; }
+  table { border-collapse: collapse; margin: 6px auto; font-size: 9pt; }
+  th, td { border: 1px solid #555; padding: 3px 7px; text-align: center; }
+  th { background: #eee; }
+  .caption { text-align: center; font-size: 9pt; font-style: italic; color: #444; margin: 3px 0 10px; }
+  .figure { text-align: center; margin: 10px 0; page-break-inside: avoid; }
+  .figure img { max-width: 95%; border: 1px solid #ccc; }
+  .equation { text-align: center; font-style: italic; margin: 6px 0; }
+  .keywords { font-size: 9.5pt; color: #333; }
+  .references { font-size: 9.5pt; }
+  .references ol { padding-left: 20px; }
+  .references li { margin: 3px 0; text-align: left; text-indent: 0; }
+  /* front matter */
+  .cover, .inner, .approval { text-align: center; }
+  .cover .deg { font-size: 16pt; font-weight: bold; margin: 18mm 0 28mm; letter-spacing: 4px; }
+  .ko-title { font-size: 17pt; font-weight: bold; line-height: 1.6; margin: 8mm 0; }
+  .en-title { font-size: 11pt; color: #444; line-height: 1.5; margin: 6mm 0; }
+  .fm-info { font-size: 12pt; line-height: 2.2; margin-top: 16mm; }
+  .approval .judge { text-align: left; width: 70%; margin: 6mm auto; font-size: 12pt; line-height: 3; }
+  .toc h1 { text-align:center; border:none; }
+  .toc ul { list-style: none; padding-left: 0; font-size: 10.5pt; }
+  .toc li { padding: 2.5px 0; }
+  .toc li.s1 { padding-left: 14px; }
+  .toc li.s2 { padding-left: 30px; color:#333; }
+  @media print {
+    body { background: #fff; }
+    .sheet, .flow { width: auto; min-height: 0; margin: 0; padding: 0; box-shadow: none; }
+    .sheet { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+<section class="sheet cover">
+  <div class="deg">학사학위논문</div>
+  <div class="ko-title">4종 멤리스터 소재 파라미터를 활용한<br>PIM 환경 웨이퍼 결함 분류 성능 비교 연구</div>
+  <div class="en-title">A Comparative Study of Four Memristive Material Candidates<br>for Processing-In-Memory Wafer Defect Classification</div>
+  <div class="fm-info">
+    상명대학교 공과대학<br>시스템반도체공학과<br>임 창 우<br><br>2026년 5월
+  </div>
+</section>
+<section class="sheet inner">
+  <div class="ko-title" style="margin-top:14mm">4종 멤리스터 소재 파라미터를 활용한<br>PIM 환경 웨이퍼 결함 분류 성능 비교 연구</div>
+  <div class="en-title">A Comparative Study of Four Memristive Material Candidates<br>for Processing-In-Memory Wafer Defect Classification</div>
+  <div class="fm-info" style="margin-top:10mm">
+    지도교수　이 종 환<br><br>
+    이 논문을 학사학위 논문으로 제출함<br><br>
+    2026년 5월<br><br>
+    상명대학교 공과대학<br>시스템반도체공학과<br>임 창 우
+  </div>
+</section>
+<section class="sheet approval">
+  <div class="ko-title" style="margin-top:30mm">임창우의 학사학위 논문을<br>인준함</div>
+  <div class="judge" style="margin-top:24mm">
+    심사위원장　　　　　　　　　　(인)<br>
+    심사위원　　　　　　　　　　　(인)<br>
+    심사위원　　　　　　　　　　　(인)
+  </div>
+  <div class="fm-info" style="margin-top:20mm">상명대학교 공과대학<br><br>2026년 5월</div>
+</section>
+<section class="sheet toc">
+  <h1>차　　례</h1>
+  <ul>
+    <li><b>국문 요약</b></li>
+    <li><b>1. 서론</b></li>
+    <li class="s1">1.1 연구 배경</li>
+    <li class="s1">1.2 선행 연구의 한계</li>
+    <li class="s1">1.3 본 연구의 기여</li>
+    <li><b>2. 이론적 배경</b></li>
+    <li class="s1">2.1 Processing-In-Memory (PIM)</li>
+    <li class="s1">2.2 멤리스터 크로스바 어레이</li>
+    <li class="s1">2.3 VTEAM 모델</li>
+    <li class="s1">2.4 웨이퍼 결함 분류와 CNN</li>
+    <li><b>3. 방법론</b></li>
+    <li class="s1">3.1 데이터셋</li>
+    <li class="s1">3.2 CNN 모델 구조</li>
+    <li class="s1">3.3 4종 소재 파라미터</li>
+    <li class="s1">3.4 매핑·양자화 및 비이상성 모델</li>
+    <li class="s1">3.5 평가 프로토콜</li>
+    <li><b>4. 결과</b></li>
+    <li class="s1">4.1 Baseline (FP32 software) 성능</li>
+    <li class="s1">4.2 4 소재 Ideal vs Realistic 비교</li>
+    <li class="s1">4.3 Worst-case 붕괴 현상 분석</li>
+    <li class="s1">4.4 결함 유형별 (per-class) F1 분석</li>
+    <li><b>5. 논의</b></li>
+    <li class="s1">5.1 저항비의 영향</li>
+    <li class="s1">5.2 Metallic Nanowire의 본질적 한계</li>
+    <li class="s1">5.3 Worst-case 붕괴 현상의 PIM 함의</li>
+    <li class="s1">5.4 한계 및 향후 과제</li>
+    <li><b>6. 결론</b></li>
+    <li><b>참고문헌</b></li>
+  </ul>
+</section>
+<section class="sheet summary">
+  <h1 style="text-align:center;border:none">국 문 요 약</h1>
+  <p class="noindent"><p class="noindent">
+  Processing-In-Memory (PIM) 아키텍처는 인공지능 가속기의 메모리-연산 병목을 해결할 차세대 기술로 주목받고 있다.
+  특히 멤리스터(memristor) 기반 크로스바 어레이는 가중치 저장과 곱셈-누적 연산을 동시에 수행할 수 있어
+  딥러닝 추론에 적합하다.
+  그러나 멤리스터는 소재별로 저항비, 표현 가능한 상태 수, 변동(variation), 결함률(stuck-at fault) 등 물리적
+  특성이 크게 다르며, 이는 분류 성능에 직접적인 영향을 미친다.
+  본 연구에서는 VTEAM 모델의 문헌 파라미터를 활용하여 Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire,
+  TaO<sub>x</sub>/Ta의 4종 멤리스터 소재를 동일한 정적 conductance mapping 기반 시뮬레이션 환경에서 비교하였다.
+  MixedWM38 웨이퍼 결함 데이터셋(8개 결함 라벨이 모두 0인 normal/no-defect 1,000장을 제외한 37,015장, 8개 결함 클래스 multi-label)으로
+  학습된 경량 CNN 모델을 각 소재의 크로스바 어레이에 매핑하고, 양자화·변동·stuck-at fault의 세 비이상성을 동시에
+  적용하여 9회 Monte Carlo 평가를 수행하였다.
+  실험 결과, R<sub>off</sub>/R<sub>on</sub> 저항비가 25배 이상인 세 소재(Pt/HfO<sub>x</sub>/Ti, Ferroelectric,
+  TaO<sub>x</sub>/Ta)는 평균 macro F1이 0.76~0.88 수준이었으나 noise sample에 따른 변동성이 매우 컸으며
+  (std 0.13~0.28), 저항비 1.97배의
+  Metallic Nanowire는 4-state 양자화의 본질적 한계로 인해 이상적 조건에서도 F1 0.38로 분류 성능이 붕괴하였다.
+  또한 고저항비 세 소재(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta) 각각에서 9회 Monte Carlo
+  샘플 중 1회씩 치명적 성능 붕괴(catastrophic degradation, F1 &lt; 0.60)가 관찰되었으며,
+  이는 stuck-at fault 위치 무작위성에 의한 worst-case 붕괴 위험의 가능성을 시사한다(다만 실제 발생 확률 추정에는
+  더 많은 반복이 필요하다).
+  이는 PIM 응용에서 평균 성능뿐 아니라 결함 분포에 따른 worst-case 위험까지 함께 고려해야 함을 시사한다.
+  </p>
+  <p class="noindent keywords">
+  <b>Keywords</b> : Memristor, Processing-In-Memory (PIM), VTEAM model, Convolutional Neural Network,
+  Wafer defect classification, Stuck-at fault, Quantization
+  </p></p>
+</section>
+<main class="flow">
+<h1>1. 서론</h1>
+
+<h2>1.1 연구 배경</h2>
+<p>
+딥러닝 모델의 규모가 급격히 커지면서 전통적인 von Neumann 구조의 메모리-연산 분리에 의한 데이터 이동 비용이
+시스템 전체 성능과 전력 효율을 좌우하는 주된 병목으로 떠올랐다. 추론 단계에서 발생하는 메모리 접근은 실제 계산
+자원이 소비하는 에너지보다 수십 배 이상의 전력을 요구하는 것으로 보고되며 [11], 이는 모바일·엣지 환경에서
+인공지능 가속기를 구현할 때 가장 큰 걸림돌이 된다 [10, 8, 12].
+</p>
+<p>
+Processing-In-Memory (PIM)는 가중치 저장 셀이 동시에 곱셈-누적(MAC) 연산을 수행하도록 함으로써 위의 데이터
+이동 병목을 완화하는 아키텍처이다. 그중에서도 멤리스터(memristor) 기반 크로스바 어레이는 옴의 법칙과 키르히호프
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+front matter의 핵심 항목은 읽혔습니다. 이제 차례 항목과 본문 제목을 실제 텍스트 기준으로 맞춰 보겠습니다.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Path paper_b5.html -Encoding UTF8 | Select-Object -Skip 140 | Select-Object -First 430 | Select-String -Pattern '<h1>|<h2>'" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 395ms:
+
+<h1>1. 서론</h1>
+<h2>1.1 연구 배경</h2>
+<h2>1.2 선행 연구의 한계</h2>
+<h2>1.3 본 연구의 기여</h2>
+<h1>2. 이론적 배경</h1>
+<h2>2.1 Processing-In-Memory (PIM)</h2>
+<h2>2.2 멤리스터 크로스바 어레이</h2>
+<h2>2.3 VTEAM 모델</h2>
+<h2>2.4 웨이퍼 결함 분류와 CNN</h2>
+<h1>3. 방법론</h1>
+<h2>3.1 데이터셋</h2>
+<h2>3.2 CNN 모델 구조</h2>
+<h2>3.3 4종 소재 파라미터</h2>
+<h2>3.4 매핑·양자화 및 비이상성 모델</h2>
+<h2>3.5 평가 프로토콜</h2>
+<h1>4. 결과</h1>
+<h2>4.1 Baseline (FP32 software) 성능</h2>
+<h2>4.2 4 소재 Ideal vs Realistic 비교</h2>
+<h2>4.3 Worst-case 붕괴 현상 분석</h2>
+<h2>4.4 결함 유형별 (per-class) F1 분석</h2>
+<h1>5. 논의</h1>
+<h2>5.1 저항비(R<sub>off</sub>/R<sub>on</sub>)의 영향</h2>
+<h2>5.2 Metallic Nanowire의 본질적 한계</h2>
+<h2>5.3 Worst-case 붕괴 현상의 PIM 함의</h2>
+<h2>5.4 한계 및 향후 과제</h2>
+<h1>6. 결론</h1>
+<h1>참고문헌</h1>
+
+
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path paper_b5.html -Encoding UTF8 -Pattern '2026년 5월|임 창 우|임창우|지도교수|이 종 환|5.1|4.2|<p class=\"noindent\"><p class=\"noindent\"|</p></p>'" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 366ms:
+
+paper_b5.html:65:    상명대학교 공과대학<br>시스템반도체공학과<br>임 창 우<br><br>2026년 5월
+paper_b5.html:72:    지도교수　이 종 환<br><br>
+paper_b5.html:74:    2026년 5월<br><br>
+paper_b5.html:75:    상명대학교 공과대학<br>시스템반도체공학과<br>임 창 우
+paper_b5.html:79:  <div class="ko-title" style="margin-top:30mm">임창우의 학사학위 논문을<br>인준함</div>
+paper_b5.html:85:  <div class="fm-info" style="margin-top:20mm">상명대학교 공과대학<br><br>2026년 5월</div>
+paper_b5.html:108:    <li class="s1">4.2 4 소재 Ideal vs Realistic 비교</li>
+paper_b5.html:112:    <li class="s1">5.1 저항비의 영향</li>
+paper_b5.html:122:  <p class="noindent"><p class="noindent">
+paper_b5.html:146:  </p></p>
+paper_b5.html:242:3-level categorical wafer map(배경/정상 다이/결함 다이를 0/0.5/1.0으로 정규화)이고, 출력은 8개 결함 
+클래스 각각에
+paper_b5.html:262:데이터셋 특성은 multi-label 분류 패러다임 선택의 근거가 된다. 픽셀 값은 categorical 값(0,1,2)을 0/0.5
+/1.0으로
+paper_b5.html:375:<h2>4.2 4 소재 Ideal vs Realistic 비교</h2>
+paper_b5.html:483:<h2>5.1 저항비(R<sub>off</sub>/R<sub>on</sub>)의 영향</h2>
+
+
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+점검 결과, 큰 오류는 없고 아래만 손보면 됩니다.
+
+- 날짜: 문제 없음. 표지 [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:65), 속표지 [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:74), 인준서 [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:85) 모두 `2026년 5월`입니다.
+
+- 저자/지도교수: 의미상 맞습니다. 다만 표지/속표지는 `임 창 우`, 지도교수는 `이 종 환`처럼 자간을 띄운 표기입니다. “정확히 `임창우`, `이종환` 문자열이어야 한다”는 기준이면 [65](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:65), [72](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:72), [75](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:75)를 붙여 쓰는 쪽이 낫습니다. 학위논문 표지 관행상 이름 자간 표기는 자연스럽긴 합니다.
+
+- 구성: `표지 → 속표지 → 인준서 → 차례 → 국문요약` 순서는 한국 학사학위논문 front matter로 자연스럽습니다. 다만 차례가 쪽수 없이 항목만 나열되어 있어 학위논문 양식으로는 다소 덜 완성돼 보입니다. 가능하면 점선 리더와 쪽수를 넣는 것이 더 자연스럽습니다.
+
+- 표현상 어색함: 차례/본문의 `4.2 4 소재 Ideal vs Realistic 비교`는 `4종 소재의 Ideal vs. Realistic 비교` 정도가 더 자연스럽습니다. 현재 차례와 본문은 서로 일치하지만 표현이 어색합니다.
+
+- 차례-본문 불일치: `5.1`만 불일치합니다. 차례는 [paper_b5.html:112](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:112) `5.1 저항비의 영향`, 본문은 [paper_b5.html:483](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:483) `5.1 저항비(Roff/Ron)의 영향`입니다. 둘 중 하나로 맞추세요.
+
+- HTML 구조 문제: 국문요약 시작/끝에 `<p class="noindent"><p class="noindent">`와 `</p></p>`가 중첩되어 있습니다. [paper_b5.html:122](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:122), [paper_b5.html:146](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:146) 한 겹만 남기는 게 맞습니다.
+tokens used
+41,988
+점검 결과, 큰 오류는 없고 아래만 손보면 됩니다.
+
+- 날짜: 문제 없음. 표지 [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:65), 속표지 [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:74), 인준서 [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:85) 모두 `2026년 5월`입니다.
+
+- 저자/지도교수: 의미상 맞습니다. 다만 표지/속표지는 `임 창 우`, 지도교수는 `이 종 환`처럼 자간을 띄운 표기입니다. “정확히 `임창우`, `이종환` 문자열이어야 한다”는 기준이면 [65](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:65), [72](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:72), [75](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:75)를 붙여 쓰는 쪽이 낫습니다. 학위논문 표지 관행상 이름 자간 표기는 자연스럽긴 합니다.
+
+- 구성: `표지 → 속표지 → 인준서 → 차례 → 국문요약` 순서는 한국 학사학위논문 front matter로 자연스럽습니다. 다만 차례가 쪽수 없이 항목만 나열되어 있어 학위논문 양식으로는 다소 덜 완성돼 보입니다. 가능하면 점선 리더와 쪽수를 넣는 것이 더 자연스럽습니다.
+
+- 표현상 어색함: 차례/본문의 `4.2 4 소재 Ideal vs Realistic 비교`는 `4종 소재의 Ideal vs. Realistic 비교` 정도가 더 자연스럽습니다. 현재 차례와 본문은 서로 일치하지만 표현이 어색합니다.
+
+- 차례-본문 불일치: `5.1`만 불일치합니다. 차례는 [paper_b5.html:112](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:112) `5.1 저항비의 영향`, 본문은 [paper_b5.html:483](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:483) `5.1 저항비(Roff/Ron)의 영향`입니다. 둘 중 하나로 맞추세요.
+
+- HTML 구조 문제: 국문요약 시작/끝에 `<p class="noindent"><p class="noindent">`와 `</p></p>`가 중첩되어 있습니다. [paper_b5.html:122](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:122), [paper_b5.html:146](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:146) 한 겹만 남기는 게 맞습니다.

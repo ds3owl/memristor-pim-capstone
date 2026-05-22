@@ -1,0 +1,1619 @@
+Reading additional input from stdin...
+OpenAI Codex v0.124.0 (research preview)
+--------
+workdir: C:\Users\ds3owl\Desktop\memristor_pim_capstone
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: none
+reasoning summaries: none
+session id: 019e496f-c11e-7dd2-b7a3-b50c787cce85
+--------
+user
+[최종 제출 직전 점검] 학부 졸업논문 완성본이다. results/final2_text.txt를 직접 읽어줘([pN]=페이지 구분, B5 양식 hwpx 추출).
+
+배경: 이미 여러 차례 검토·수정을 거친 최종본이다. 양식(B5, 표지/속표지/인준서/차례[페이지번호+점선]/국문요약/한글 십진번호), 그림 3개(그림1 웨이퍼 defect 8종, 그림2 CNN 구조도, 그림3 파이프라인), 표 6개 모두 포함. 본문 11pt, 캡션 한글화(그림/표) 완료.
+
+이번엔 "제출해도 되는가"의 마지막 게이트다. 꼼꼼히:
+1. 치명적 오류 — 수치 불일치(F1/저항비/std/9회중1회=11%), 깨진 참조(표 N/그림 N/[N]), 오타·비문.
+2. 논리/일관성 — 초록·본문·결론이 서로 안 어긋나는지, 핵심 발견 3가지가 명확한지.
+3. 디펜스 리스크 — 과장·단정, 방어 안 된 주장.
+4. 양식·구성 누락.
+
+발견된 것을 우선순위로 간결히. 없으면 명확히 "제출 가능"이라고 답해줘.
+codex
+최종 게이트 관점으로 실제 텍스트를 읽고 수치, 참조, 논리 흐름을 대조하겠습니다. 먼저 파일 구조와 본문 주요 지표가 어디에 반복되는지 확인하겠습니다.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-ChildItem -Force results; rg -n \"F1|저항비|std|표 [0-9]|그림 [0-9]|\\[[0-9]+\\]|11%|11 %|9회|1회|defect|CNN|파이프라인|결론|요약|초록|국문\" results/final2_text.txt" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content results/final2_text.txt -TotalCount 220' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 401ms:
+[p1]
+?欖偓?欖渼?茧
+4膦?氅るΜ?ろ劙 ?岇灛 ?岆澕氙疙劙毳??滌毄??
+PIM ?橁步 ?澊??瓴绊暔 攵勲 ?彪姤 牍勱祼 ?瓣惮
+A Comparative Study of Four Memristive Material 
+Candidates for Processing-In-Memory Wafer Defect 
+Classification
+?侂獏?€?欔祼 瓿店臣?€??
+?滌姢?滊皹?勳泊瓿淀暀瓿?
+??彀???
+2026??  5??
+
+[p2]
+4膦?氅るΜ?ろ劙 ?岇灛 ?岆澕氙疙劙毳??滌毄??
+PIM ?橁步 ?澊??瓴绊暔 攵勲 ?彪姤 牍勱祼 ?瓣惮
+A Comparative Study of Four Memristive Material 
+Candidates for Processing-In-Memory Wafer Defect 
+Classification
+歆€?勱祼?? ?挫??
+氤??茧???欖偓?欖渼 ?茧?茧 ?滌稖??
+?侂獏?€?欔祼 瓿店臣?€??
+?滌姢?滊皹?勳泊瓿淀暀瓿?
+??彀???
+2026?? 5??
+
+[p3]
+??彀??办潣 
+?欖偓?欖渼 ?茧???胳???
+               ?偓?勳洂??             ?€
+ 
+?偓?勳洂                ?€
+ 
+?偓?勳洂                ?€
+?侂獏?€?欔祼 瓿店臣?€??
+2026?? 5??
+
+[p4]
+彀? ?€?€搿€
+甑? ?旍暯路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 1
+1. ?滊路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 2
+1.1. ?瓣惮 氚瓣步路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 2
+1.2. 氤??瓣惮??旮办棳路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 2
+2. ?措??氚瓣步路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 3
+2.1. Processing-In-Memory (PIM) 路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 3
+2.2. 氅るΜ?ろ劙 ??る皵 ?措爤?绰仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿?3
+2.3. VTEAM 氇嵏路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 3
+2.4. ?澊??瓴绊暔 攵勲?€ CNN 路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 4
+3. 氚╇矔搿犅仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿仿?4
+3.1. ?办澊?办厠路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 4
+3.2. CNN 氇嵏 甑“路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 5
+3.3. 4膦??岇灛 ?岆澕氙疙劙路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 6
+3.4. 毵ろ晳路?戩瀽??氚?牍勳澊?侅劚 氇嵏路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 6
+3.5. ?夑? ?勲?犾綔路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 8
+4. 瓴瓣臣路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 8
+4.1. Baseline (FP32 software) ?彪姤路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 8
+4.2. 4膦??岇灛 Ideal vs Realistic 牍勱祼路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 8
+4.3. Worst-case 攵曣创 ?勳儊 攵勳劃路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 9
+4.4. 瓴绊暔 ?犿槙氤?(per-class) F1 攵勳劃路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 10
+5. ?检潣路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 11
+5.1. ?€??箘???來枼路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 11
+5.2. Metallic Nanowire??氤胳???滉硠路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 12
+5.3. Worst-case 攵曣创 ?勳儊??PIM ?潣路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 12
+5.4. ?滉硠 氚??ロ泟 瓿检牅路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 12
+6. 瓴半路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 13
+彀戈碃氍疙棇路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路 14
+
+[p5]
+1
+甑?氍?????
+ Processing-In-Memory (PIM) ?勴偆?嶌矘???戈车歆€??臧€?嶊赴??氅旊毽??办偘 氤戨??
+?搓舶??彀劯?€ 旮办垹搿?欤茧氚涥碃 ?堧嫟. ?鬼瀳 氅るΜ?ろ劙(memristor) 旮半皹 ??る皵 
+?措爤?措姅 臧€欷戩箻 ?€?リ臣 瓿膘厛-?勳爜 ?办偘???欖嫓???橅枆?????堨柎 ?ル煬??於旊??
+?來暕?橂嫟. 
+攴鸽煬??
+氅るΜ?ろ劙??
+?岇灛氤勲 
+?€??箘, 
+?滍槃 
+臧€?ロ暅 
+?來儨 
+?? 
+氤€??variation), 瓴绊暔毳?stuck-at fault) ??氍茧Μ???轨劚???矊 ?るゴ氅? ?措姅 攵勲 
+?彪姤??歆侅爲?侅澑 ?來枼??氙胳箿?? 氤??瓣惮?愳劀??VTEAM 氇嵏??氍疙棇 ?岆澕氙疙劙毳?
+?滌毄?橃棳 Pt/HfOx/Ti, Ferroelectric, Metallic Nanowire, TaOx/Ta??4膦?氅るΜ?ろ劙 
+?岇灛毳??欖澕???曥爜 conductance mapping 旮半皹 ?滊??堨澊???橁步?愳劀 牍勱祼?橃??? 
+MixedWM38 ?澊??瓴绊暔 ?办澊?办厠(8臧?瓴绊暔 ?茧波??氇憪 0??normal/no-defect 
+1,000?レ潉 ?滌櫢??37,015?? 8臧?瓴绊暔 ?措灅??multi-label)?茧 ?欖姷??瓴诫焿 CNN 
+氇嵏??臧??岇灛????る皵 ?措爤?挫棎 毵ろ晳?橁碃, ?戩瀽?斅冯??櫬穝tuck-at fault????
+牍勳澊?侅劚???欖嫓???侅毄?橃棳 9??Monte Carlo ?夑?毳??橅枆?橃??? ?ろ棙 瓴瓣臣, 
+Roff/Ron ?€??箘臧€ 25氚??挫儊?????岇灛(Pt/HfOx/Ti, Ferroelectric, TaOx/Ta)???夑窢 
+macro F1??0.76~0.87 ?橃??挫棃?茧倶 noise sample???半ジ 氤€?欖劚??毵れ毎 旎胳溂氅?
+(std 0.13~0.28), ?€??箘 1.97氚办潣 Metallic Nanowire??4-state ?戩瀽?旍???瓴绊暕?茧 
+?疙暅 ?滍槃 ?滉硠搿??挫儊??臁瓣贝?愳劀??F1 0.38搿?攵勲 ?彪姤??攵曣创?橃??? ?愴暅 
+瓿犾???箘 ???岇灛(Pt/HfOx/Ti, Ferroelectric, TaOx/Ta) 臧侁皝?愳劀 9??Monte Carlo ?橅攲 
+欷?1?岇敥 旃橂獏???彪姤 攵曣创(catastrophic degradation, F1 < 0.60)臧€ 甏€彀半悩?堨溂氅? 
+?措姅 stuck-at fault ?勳箻 氍挫瀾?勳劚???橅暅 worst-case 攵曣创 ?勴棙??臧€?レ劚??
+?滌偓?滊嫟(?る ?れ牅 氚滌儩 ?曤 於旍爼?愲姅 ??毵庫? 氚橂车???勳殧?橂嫟). ?措姅 PIM 
+?戩毄?愳劀 ?夑窢 ?彪姤肟??勲媹??瓴绊暔 攵勴彫???半ジ worst-case ?勴棙旯岇? ?粯 
+瓿犽牑?挫暭 ?潉 ?滌偓?滊嫟. 
+ Keywords : Memristor, Processing-In-Memory (PIM), VTEAM model, Convolutional 
+Neural Network, Wafer defect classification, Stuck-at fault, Quantization 
+
+[p6]
+2
+1. ?滊
+1.1. ?瓣惮 氚瓣步
+ ?ル煬??氇嵏??攴滊臧€ 旮夑博??旎れ?氅挫劀 ?勴喌?侅澑 von Neumann 甑“??
+氅旊毽??办偘 攵勲Μ???橅暅 ?办澊???措彊 牍勳毄???滌姢???勳泊 ?彪姤瓿??勲牓 
+?湪??膦岇毎?橂姅 欤茧悳 氤戨?茧 ?犾槵?愲嫟. 於旊 ?硠?愳劀 氚滌儩?橂姅 氅旊毽?
+?戧芳?€ ?れ牅 瓿勳偘 ?愳洂???岆箘?橂姅 ?愲剤歆€氤措嫟 ?橃嫮 氚??挫儊???勲牓??
+?旉惮?橂姅 瓴冹溂搿?氤搓碃?橂┌ [11], ?措姅 氇皵?悸缝棧歆€ ?橁步?愳劀 ?戈车歆€??
+臧€?嶊赴毳?甑槃????臧€????瓯鸽?岇澊 ?滊嫟 [10, 8, 12]. 
+ Processing-In-Memory (PIM)??臧€欷戩箻 ?€???€???欖嫓??瓿膘厛-?勳爜(MAC) 
+?办偘??
+?橅枆?橂弰搿?
+?溂搿滌崹 
+?勳潣 
+?办澊??
+?措彊 
+氤戨??
+?勴檾?橂姅 
+?勴偆?嶌矘?措嫟. 攴胳?愳劀??氅るΜ?ろ劙(memristor) 旮半皹 ??る皵 ?措爤?措姅 ?挫潣 
+氩曥箼瓿??るゴ?堩樃???勲 氩曥箼毵岇溂搿??澕 ?澊???堨棎 ?夒牞-氩№劙 瓿膘厛??
+?勳劚?????堨柎 ?ル煬??於旊??PIM 臧€?嶊赴???€???勲炒搿??瓣惮?橃柎 ?旊嫟 [1, 
+8, 9, 10]. 
+ 氚橂弰觳??滌“ 瓿奠爼?愳劀???澊???滊┐??瓴绊暔 ?劥(Center, Donut, Edge-Ring 
+?????愲彊 攵勲?橂姅 ?戩梾???橃湪 甏€毽棎 ?勳垬?侅澊?? 
+???戩梾?€ 
+CNN(convolutional neural network)??臧曥爯??氤挫澊??攵勳暭?措┌, 瓿奠灔 ?检澑?愳劀 
+?れ嫓臧勳溂搿??旉惮?橂姅 毵岉伡 ?€?勲牓 ?ｌ? 於旊 臧€?嶊赴?€ 瓴绊暕?????堧嫟氅?
+?れ毄??臧€旃橁? ?嫟. 
+ 氅るΜ?ろ劙 PIM?愳劀 攵勲 ?曧檿?勲? ?柎?Μ??牍勳澊?侅劚?€ ?矊 ??臧€歆€??
+??旎崟?挫姢 ?來儨 ?橁? ?犿暅??氚滌儩?橂姅 ?戩瀽???愳嫟, ?岇瀽 臧??€??
+?胳皑(device-to-device variation), ?茧? ?€???€?€??瓿犾???棎 瓿犾癌?橂姅 stuck-at 
+fault [1, 8]. ?犿枆 ?瓣惮???れ垬???措摛 欷??滊憪 臧€歆€毵?攵€攵勳爜?茧 
+氇嵏毵來晿瓯半倶 毵ろ晳 ??於滊牓 ?炒??tune)??臧€?曧暣 攴??來枼??瓿检唽?夑??橃棳, 
+?れ牅 PIM 旃╈棎??氚滌儩?????堧姅 ?皝???彪姤 ?€?橂? ?爠 ?夑??橃? 氇豁枅?? 
+1.2. 氤??瓣惮??旮办棳
+
+[p7]
+3
+ 氤??瓣惮??旮办棳???れ潓瓿?臧欕嫟. (1) VTEAM 氍疙棇 ?岆澕氙疙劙 旮半皹 ?曥爜 
+conductance mapping ?橁步?愳劀 4膦?氅るΜ?ろ劙 ?岇灛 (Pt/HfOx/Ti, Ferroelectric, 
+Metallic Nanowire, TaOx/Ta)毳??欖澕??CNN路?办澊?办厠路牍勳澊?侅劚 臁瓣贝?茧 ?曤焿 
+牍勱祼?滊嫟. (2) ?戩瀽?斅穠ariation路stuck-at fault毳??欖嫓???侅毄?橁碃 毵ろ晳 ??於滊牓 
+?炒?曥潉 臧€?曧晿歆€ ?婋姅 氤挫垬???夑?毳??橅枆?滊嫟. (3) 3 seed 脳 3 noise = 9??
+Monte Carlo ?夑??愳劀 瓿犾???箘 ???岇灛??worst-case 攵曣创 ?勳儊??甏€彀绊晿瓿? 
+PIM ?岇灛 ?夑????夑窢 ?彪姤肟??勲媹??worst-case ?勴棙???粯 瓿犽牑?挫暭 ?潉 
+?滌嫓?滊嫟. 
+2. ?措??氚瓣步
+2.1. Processing-In-Memory (PIM)
+ PIM?€ 氅旊毽??€???€??旮半姤瓿??粯 ?办偘 旮半姤???橅枆?橂弰搿??橃棳 
+臧€欷戩箻 ?办澊?半? 氤勲弰 ?办偘 ?犽嫑?茧 ?措彊?滍偆??牍勳毄???滉卑?橂姅 
+?勴偆?嶌矘?措嫟. CNN 於旊?€ 氤胳?侅溂搿??夒牞-氩№劙 瓿膘厛(MVM)???办噭?措┌, 
+氅るΜ?ろ劙 ??る皵 ?措爤?措姅 ?澕 ?澊?挫潣 ?勲偁搿滉犯 ?办偘?茧 MVM??
+觳橂Μ?????堨柎 PIM???臣?侅澑 氍茧Μ 甑槃 ?勲炒搿??夑??滊嫟 [10]. 
+2.2. 氅るΜ?ろ劙 ??る皵 ?措爤??
+ 氅るΜ?ろ劙???戈? ?勳晻 ?措牓???半澕 ?€???來儨臧€ 氤€?旐晿瓿? ?勳洂??彀嫧??
+?错泟?愲弰 毵堨?毵??€???來儨毳??犾??橂姅 2?瀽 牍勴湗氚滌劚 ?岇瀽?措嫟. ?夑臣 ?挫澊 
+瓴╈瀽?曥溂搿?甑愳皑?橂姅 ??る皵 ?措爤?挫棎??臧?甑愳皑?愳棎 氅るΜ?ろ劙毳?氚办箻?橂┐, 
+???检澑???呺牓 ?勳晻 Vi毳??戈??堨潉 ?????检澑???愲ゴ???勲??Ij = 危i Gij Vi 
+臧€ ?橃柎 ?挫潣 氩曥箼瓿??るゴ?堩樃???勲 氩曥箼毵岇溂搿?臧€欷戩箻 ?夒牞 G?€ ?呺牓 
+氩№劙??瓿膘澊 歃夓嫓 ?混柎歆勲嫟. 
+2.3. VTEAM 氇嵏
+ VTEAM(Voltage Threshold Adaptive Memristor)?€ Kvatinsky ?膘澊 ?滌晥??
+?勳晻 ?勱硠 旮半皹???茧皹?旊悳 氅るΜ?ろ劙 瓯半彊 氇嵏搿?[1], ?れ枒???岇灛???れ浮 
+?轨劚???欖澕???橃嫕 ?曧儨 ?堨棎???岆澕氙疙劙毵?氚旉靖???滍槃?????堧嫟. 氤?
+
+[p8]
+4
+?瓣惮???滉皠 ?欖棴??氚╈爼?濎潉 歆侅爲 ?侂秳?橃? ?婈碃, ??氇嵏 氚?甏€???岇瀽 
+氍疙棇???滌嫓???岇灛氤??€??氩旍渼路?れ渼旃??轨劚???曥爜 conductance mapping??
+旮办? ?岆澕氙疙劙搿滊 ?滌毄?橃??? ?曥爜 ?來儨?愳劀 氅るΜ?ろ劙???€??? 
+ R(w) = Ron + (Roff ??Ron) w (0 ??w ??1) 
+ 搿??滍槃?橂┌(w???曣窚?旊悳 ?措? ?來儨 氤€??, ???濎澊 ?岇灛氤?Ron路Roff毵岇溂搿?
+?奠澕??牍勱祼 ?橁步??甑劚?橂姅 旮半皹???滊嫟. 
+2.4. ?澊??瓴绊暔 攵勲?€ CNN
+ ?澊??瓴绊暔 ?劥?€ 瓿奠爼 ?挫儊??1彀??犿樃搿滌劀 ?劥 膦呺???半澕 ?愳澑 
+瓿奠爼???るゴ?? CNN?€ 瓿店皠???劥??瓿勳傅?侅溂搿?於旍稖?橂?搿?瓴绊暔 攵勲??
+?臣?侅澊氅? 氤??瓣惮??瓴诫焿 CNN?茧 8臧?瓴绊暔 ?措灅?る? multi-label 
+攵勲?滊嫟(?侅劯 甑“??3.2??. 
+3. 氚╇矔搿?
+3.1. ?办澊?办厠
+ 氤??瓣惮?愳劀??Wang ?膘澊 瓿店皽??MixedWM38 ?澊??瓴绊暔 ?办澊?办厠??
+?毄?橃???[2]. 齑?38,015?レ潣 52脳52 ?澊??毵奠溂搿?甑劚?橂┌, ?届? 臧掛? 
+氚瓣步(0), ?曥儊 ?れ澊(1), 瓴绊暔 ?れ澊(2)???曥垬 categorical 臧掛澊?? ?茧波?€ 8臧?
+瓴绊暔 ?措灅??Center, Donut, Edge-Loc, Edge-Ring, Loc, Near-Full, Random, 
+Scratch)???€??multi-hot 氩№劙搿? ?澕 瓴绊暔肟??勲媹????膦呺 ?挫儊??瓴绊暔??
+?欖嫓??臁挫灛?橂姅 氤淀暕 瓴绊暔(mixed-type) ?劥???暔?滊嫟???愳澊 ?轨?措嫟. 
+8臧?瓴绊暔 ?措灅?れ潣 ?€?滌爜??瓿店皠 ?劥?€ 攴鸽 1瓿?臧欕嫟. 
+
+[p9]
+5
+攴鸽 1. MixedWM38??8臧?瓴绊暔 ?措灅???澕瓴绊暔 ?堨嫓 (???澊??氚? ?岇儔=?曥儊 die, 
+牍皶=瓴绊暔 die). ?れ牅 ?办澊?半姅 ??膦呺 ?挫儊??瓴轨箿 氤淀暕 瓴绊暔???暔?滊嫟.
+ ?勳矘毽?瓿检爼?愳劀 8臧?瓴绊暔 ?茧波??氇憪 0??1,000?レ潣 normal/no-defect 
+?橅攲???滌櫢?橁碃, 瓴绊暔??臁挫灛?橂姅 37,015?レ潉 ?毄?橃??? ??欷??澕 
+瓴绊暔?€ 7,015??19.0%), 氤淀暕 瓴绊暔?€ 30,000??81.0%)?措┌, 氤淀暕 瓴绊暔???れ垬毳?
+彀??橂姅 ?办澊?办厠 ?轨劚?€ multi-label 攵勲 ?煬?れ瀯 ?犿儩??攴缄卑臧€ ?滊嫟. 
+?届? 
+臧掛? 
+categorical 
+臧?0,1,2)??
+0/0.5/1.0?茧 
+?曣窚?旐晿?€瓿? 
+?欖姷/瓴€歃??岇姢?鸽姅 70/10/20 牍勳湪搿?seed=42搿?瓿犾爼 攵勴暊?橃???Train 25,910 / 
+Val 3,702 / Test 7,403). 
+3.2. CNN 氇嵏 甑“
+ 氇嵏 甑“??攴鸽 2?€ 臧欕嫟. ?呺牓 52脳52 ?澊??毵奠澊 3臧滌潣 ?╈劚瓿?
+敫旊??瓯办箻氅?甑?唽 ?劥??於旍稖?橁碃 (MaxPool搿??挫儊?勲? ?堧皹??於曥唽), 
+?勳爠?瓣舶 瓿勳傅??8臧?瓴绊暔 ?措灅???曤??於滊牓?滊嫟(multi-label sigmoid). 臧?
+瓿勳傅???侅劯 ?枒?€ ??1瓿?臧欖溂氅? ?槃 臧€?ロ暅 ?垳???曧儨搿?瓿犾爼?橃??? 
+
+[p10]
+6
+攴鸽 2. WaferCNN 甑“. 3臧??╈劚瓿?敫旊??甑?唽 ?劥??於旍稖?橁碃(MaxPool搿??挫儊??陆??
+於曥唽) ?勳爠?瓣舶 瓿勳傅??8臧?瓴绊暔 ?曤??於滊牓?滊嫟(multi-label).
+??1. CNN 氇嵏 甑“. 齑??岆澕氙疙劙 ??319,592.
+ ?愳嫟 ?垬??multi-label 攵勲 ?滌???BCEWithLogitsLoss毳??毄?橃?瓿? 
+斓滌爜?旊姅 Adam(lr=1e-3, batch size=128) ?措嫟. 斓滊? ?欖姷 epoch??20?措┌, 瓴€歃?
+加己阑 汲沥且 荐 绝嚼聪促. 加己 汲沥篮 捞 攫绢 葛靛狼 琴缴 蜡屈俊 措秦辑父 瘤盔邓聪促.
+困摹 临:1 巩磊:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 500ms:
+
+
+    µð·ºÅÍ¸®: C:\Users\ds3owl\Desktop\memristor_pim_capstone\results
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----      2026-05-19   ¿ÀÈÄ 4:51          10857 baseline_results.json                                                
+-a----      2026-05-21  ¿ÀÈÄ 12:50          33925 body_extract.md                                                      
+-a----      2026-05-19   ¿ÀÈÄ 6:35          21635 codex_external_review_v2.md                                          
+-a----      2026-05-19   ¿ÀÈÄ 5:53          93390 codex_final_audit.md                                                 
+-a----      2026-05-19  ¿ÀÈÄ 10:23           1861 codex_final_checklist.md                                             
+-a----      2026-05-19   ¿ÀÈÄ 8:26        1798202 codex_final_optD.md                                                  
+-a----      2026-05-19  ¿ÀÈÄ 10:34           1529 codex_nat.md                                                         
+-a----      2026-05-19   ¿ÀÈÄ 9:40         469000 codex_objective.md                                                   
+-a----      2026-05-19   ¿ÀÈÄ 9:32           3019 codex_opinion.md                                                     
+-a----      2026-05-19   ¿ÀÈÄ 8:56          22459 codex_p3_final.md                                                    
+-a----      2026-05-19   ¿ÀÈÄ 8:58          10382 codex_p3_recheck.md                                                  
+-a----      2026-05-19  ¿ÀÈÄ 10:19           8279 codex_perclass.md                                                    
+-a----      2026-05-19   ¿ÀÈÄ 5:00           3800 codex_phase1_r2.md                                                   
+-a----      2026-05-19   ¿ÀÈÄ 4:54           5229 codex_phase1_review.md                                               
+-a----      2026-05-19   ¿ÀÈÄ 5:45         103847 codex_phase2_review.md                                               
+-a----      2026-05-19   ¿ÀÈÄ 8:40         844825 codex_review_v3.md                                                   
+-a----      2026-05-19   ¿ÀÈÄ 9:13          21542 codex_review_v4.md                                                   
+-a----      2026-05-19   ¿ÀÈÄ 9:25         439438 codex_v4_final.md                                                    
+-a----      2026-05-19   ¿ÀÈÄ 4:35            815 dataset_summary.json                                                 
+-a----      2026-05-19   ¿ÀÈÄ 6:35           4400 external_llm_review_v2.md                                            
+-a----      2026-05-19   ¿ÀÈÄ 8:39           4502 external_llm_review_v3.md                                            
+-a----      2026-05-19   ¿ÀÈÄ 9:13           2818 external_llm_review_v4.md                                            
+-a----      2026-05-21   ¿ÀÈÄ 4:28              0 final2_codex.txt                                                     
+-a----      2026-05-21   ¿ÀÈÄ 4:28              0 final2_gemini.txt                                                    
+-a----      2026-05-21   ¿ÀÈÄ 4:28           1011 final2_prompt.txt                                                    
+-a----      2026-05-21   ¿ÀÈÄ 4:28          35882 final2_text.txt                                                      
+-a----      2026-05-19   ¿ÀÈÄ 8:26           2382 final_audit_after_optD_prompt.md                                     
+-a----      2026-05-19  ¿ÀÈÄ 10:22           1136 final_checklist_prompt.md                                            
+-a----      2026-05-21   ¿ÀÈÄ 4:22         118286 final_codex.txt                                                      
+-a----      2026-05-21   ¿ÀÈÄ 4:21           1900 final_review_prompt.txt                                              
+-a----      2026-05-21   ¿ÀÈÄ 1:34          45511 frontmatter_codex.txt                                                
+-a----      2026-05-19   ¿ÀÈÄ 5:18           7764 gaussian_only_results.json                                           
+-a----      2026-05-19   ¿ÀÈÄ 6:36           1878 gemini_external_review_v2.md                                         
+-a----      2026-05-19   ¿ÀÈÄ 5:57           7174 gemini_final_audit.md                                                
+-a----      2026-05-19   ¿ÀÈÄ 5:55           5402 gemini_final_audit_v2.md                                             
+-a----      2026-05-19   ¿ÀÈÄ 6:00           3049 gemini_final_audit_v3.md                                             
+-a----      2026-05-19  ¿ÀÈÄ 10:23          10576 gemini_final_checklist.md                                            
+-a----      2026-05-19  ¿ÀÈÄ 10:27            433 gemini_final_checklist_v2.md                                         
+-a----      2026-05-19   ¿ÀÈÄ 8:27            320 gemini_final_optD.md                                                 
+-a----      2026-05-19  ¿ÀÈÄ 10:39          58102 gemini_nat.md                                                        
+-a----      2026-05-19   ¿ÀÈÄ 9:40           2509 gemini_objective.md                                                  
+-a----      2026-05-19   ¿ÀÈÄ 9:32           5951 gemini_opinion.md                                                    
+-a----      2026-05-19   ¿ÀÈÄ 9:33            778 gemini_opinion_v2.md                                                 
+-a----      2026-05-19   ¿ÀÈÄ 8:56            549 gemini_p3_final.md                                                   
+-a----      2026-05-19   ¿ÀÈÄ 8:57            292 gemini_p3_recheck.md                                                 
+-a----      2026-05-19  ¿ÀÈÄ 10:19           5525 gemini_perclass.md                                                   
+-a----      2026-05-19   ¿ÀÈÄ 5:00            672 gemini_phase1_r2.md                                                  
+-a----      2026-05-19   ¿ÀÈÄ 4:55            860 gemini_phase1_review.md                                              
+-a----      2026-05-19   ¿ÀÈÄ 5:45            729 gemini_phase2_review.md                                              
+-a----      2026-05-19   ¿ÀÈÄ 5:48           1073 gemini_phase2_review_v2.md                                           
+-a----      2026-05-19   ¿ÀÈÄ 8:40           2181 gemini_review_v3.md                                                  
+-a----      2026-05-19   ¿ÀÈÄ 9:21           1915 gemini_review_v4.md                                                  
+-a----      2026-05-19   ¿ÀÈÄ 9:26          20775 gemini_v4_final.md                                                   
+-a----      2026-05-19   ¿ÀÈÄ 4:58          26711 material_results.json                                                
+-a----      2026-05-19   ¿ÀÈÄ 5:19           1794 method_comparison.md                                                 
+-a----      2026-05-19  ¿ÀÈÄ 10:34            876 nat_decision_prompt.md                                               
+-a----      2026-05-19   ¿ÀÈÄ 9:39           1216 objective_evaluation_prompt.md                                       
+-a----      2026-05-19   ¿ÀÈÄ 9:32           1504 opinion_only_prompt.md                                               
+-a----      2026-05-19   ¿ÀÈÄ 8:55           2266 p3_final_review_prompt.md                                            
+-a----      2026-05-19   ¿ÀÈÄ 8:57           1005 p3_recheck_prompt.md                                                 
+-a----      2026-05-19  ¿ÀÈÄ 10:18           1978 perclass_decision_prompt.md                                          
+-a----      2026-05-19   ¿ÀÈÄ 5:01           1456 per_noise_table.md                                                   
+-a----      2026-05-19   ¿ÀÈÄ 4:52           2928 phase1_checklist.md                                                  
+-a----      2026-05-21  ¿ÀÈÄ 12:40          31453 phase1_codex.txt                                                     
+-a----      2026-05-21  ¿ÀÈÄ 12:40           4653 phase1_gemini.txt                                                    
+-a----      2026-05-19   ¿ÀÈÄ 4:54           3954 phase1_review_prompt.md                                              
+-a----      2026-05-21  ¿ÀÈÄ 12:39           2109 phase1_review_prompt.txt                                             
+-a----      2026-05-19   ¿ÀÈÄ 5:00           2407 phase1_review_r2_prompt.md                                           
+-a----      2026-05-19   ¿ÀÈÄ 5:01           2935 phase1_statistics.json                                               
+-a----      2026-05-21   ¿ÀÈÄ 1:24         111966 phase2_check_codex.txt                                               
+-a----      2026-05-21   ¿ÀÈÄ 1:25           5886 phase2_check_gemini.txt                                              
+-a----      2026-05-21   ¿ÀÈÄ 1:22           1659 phase2_check_prompt.txt                                              
+-a----      2026-05-21  ¿ÀÈÄ 12:52          63074 phase2_codex.txt                                                     
+-a----      2026-05-21  ¿ÀÈÄ 12:51           2403 phase2_discuss_prompt.txt                                            
+-a----      2026-05-21  ¿ÀÈÄ 12:54           8355 phase2_gemini.txt                                                    
+-a----      2026-05-19   ¿ÀÈÄ 5:47           3032 phase2_review_prompt.md                                              
+-a----      2026-05-21   ¿ÀÈÄ 1:46          86552 phase3_codex.txt                                                     
+-a----      2026-05-21   ¿ÀÈÄ 2:01         106417 phase4_codex.txt                                                     
+-a----      2026-05-21   ¿ÀÈÄ 2:13          93098 phase4_recheck2_codex.txt                                            
+-a----      2026-05-21   ¿ÀÈÄ 2:09         100799 phase4_recheck_codex.txt                                             
+-a----      2026-05-21   ¿ÀÈÄ 2:51          78412 phase5_codex.txt                                                     
+-a----      2026-05-19   ¿ÀÈÄ 5:52           1703 phase_final_audit_prompt.md                                          
+-a----      2026-05-19   ¿ÀÈÄ 9:24           1395 v4_final_review_prompt.md                                            
+-a----      2026-05-21   ¿ÀÈÄ 2:55          12361 yangsik_codex.txt                                                    
+-a----      2026-05-21   ¿ÀÈÄ 2:54           2628 yangsik_compare.txt                                                  
+-a----      2026-05-21   ¿ÀÈÄ 1:07          44640 _skeleton.html                                                       
+-a----      2026-05-21   ¿ÀÈÄ 1:05           5175 _tables.html                                                         
+-a----      2026-05-21   ¿ÀÈÄ 2:53           2538 ¾ç½Ä_¿ø¹®.txt                                                        
+39:êµ­ë¬¸ ìš”ì•½Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â· 1
+47:2.4. ì›¨ì´í¼ ê²°í•¨ ë¶„ë¥˜ì™€ CNN Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â· 4
+50:3.2. CNN ëª¨ë¸ êµ¬ì¡°Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â· 5
+58:4.4. ê²°í•¨ ìœ í˜•ë³„ (per-class) F1 ë¶„ì„Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â· 10
+60:5.1. ì €í•­ë¹„ì˜ ì˜í–¥Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â· 11
+64:6. ê²°ë¡ Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â· 13
+77:ì €í•­ë¹„, 
+86:MixedWM38 ì›¨ì´í¼ ê²°í•¨ ë°ì´í„°ì…‹(8ê°œ ê²°í•¨ ë¼ë²¨ì´ ëª¨ë‘ 0ì¸ normal/no-defect 
+87:1,000ìž¥ì„ ì œì™¸í•œ 37,015ìž¥, 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ multi-label)ìœ¼ë¡œ í•™ìŠµëœ ê²½ëŸ‰ CNN 
+89:ë¹„ì´ìƒì„±ì„ ë™ì‹œì— ì ìš©í•˜ì—¬ 9íšŒ Monte Carlo í‰ê°€ë¥¼ ìˆ˜í–‰í•˜ì˜€ë‹¤. ì‹¤í—˜ ê²°ê³¼, 
+90:Roff/Ron ì €í•­ë¹„ê°€ 25ë°° ì´ìƒì¸ ì„¸ ì†Œìž¬(Pt/HfOx/Ti, Ferroelectric, TaOx/Ta)ëŠ” í‰ê·  
+91:macro F1ì´ 0.76~0.87 ìˆ˜ì¤€ì´ì—ˆìœ¼ë‚˜ noise sampleì— ë”°ë¥¸ ë³€ë™ì„±ì´ ë§¤ìš° ì»¸ìœ¼ë©° 
+92:(std 0.13~0.28), ì €í•­ë¹„ 1.97ë°°ì˜ Metallic NanowireëŠ” 4-state ì–‘ìží™”ì™€ì˜ ê²°í•©ìœ¼ë¡œ 
+93:ì¸í•œ í‘œí˜„ í•œê³„ë¡œ ì´ìƒì  ì¡°ê±´ì—ì„œë„ F1 0.38ë¡œ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´í•˜ì˜€ë‹¤. ë˜í•œ 
+94:ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬(Pt/HfOx/Ti, Ferroelectric, TaOx/Ta) ê°ê°ì—ì„œ 9íšŒ Monte Carlo ìƒ˜í”Œ 
+95:ì¤‘ 1íšŒì”© ì¹˜ëª…ì  ì„±ëŠ¥ ë¶•ê´´(catastrophic degradation, F1 < 0.60)ê°€ ê´€ì°°ë˜ì—ˆìœ¼ë©°, 
+101:Neural Network, Wafer defect classification, Stuck-at fault, Quantization 
+111:ìš”êµ¬í•˜ëŠ” ê²ƒìœ¼ë¡œ ë³´ê³ ë˜ë©° [11], ì´ëŠ” ëª¨ë°”ì¼Â·ì—£ì§€ í™˜ê²½ì—ì„œ ì¸ê³µì§€ëŠ¥ 
+129:CNN(convolutional neural network)ì´ ê°•ì ì„ ë³´ì´ëŠ” ë¶„ì•¼ì´ë©°, ê³µìž¥ ë¼ì¸ì—ì„œ 
+144:Metallic Nanowire, TaOx/Ta)ë¥¼ ë™ì¼í•œ CNNÂ·ë°ì´í„°ì…‹Â·ë¹„ì´ìƒì„± ì¡°ê±´ìœ¼ë¡œ ì •ëŸ‰ 
+146:ìž¬ë³´ì •ì„ ê°€ì •í•˜ì§€ ì•ŠëŠ” ë³´ìˆ˜ì  í‰ê°€ë¥¼ ìˆ˜í–‰í•œë‹¤. (3) 3 seed Ã— 3 noise = 9íšŒ 
+147:Monte Carlo í‰ê°€ì—ì„œ ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ì˜ worst-case ë¶•ê´´ í˜„ìƒì„ ê´€ì°°í•˜ê³ , 
+154:ì•„í‚¤í…ì²˜ì´ë‹¤. CNN ì¶”ë¡ ì€ ë³¸ì§ˆì ìœ¼ë¡œ í–‰ë ¬-ë²¡í„° ê³±ì…ˆ(MVM)ì˜ ì—°ì‡„ì´ë©°, 
+156:ì²˜ë¦¬í•  ìˆ˜ ìžˆì–´ PIMì˜ íš¨ê³¼ì ì¸ ë¬¼ë¦¬ êµ¬í˜„ í›„ë³´ë¡œ í‰ê°€ëœë‹¤ [10]. 
+166:ì „ì•• ìž„ê³„ ê¸°ë°˜ì˜ ì¼ë°˜í™”ëœ ë©¤ë¦¬ìŠ¤í„° ê±°ë™ ëª¨ë¸ë¡œ [1], ë‹¤ì–‘í•œ ì†Œìž¬ì˜ ì‹¤ì¸¡ 
+177:2.4. ì›¨ì´í¼ ê²°í•¨ ë¶„ë¥˜ì™€ CNN
+179:ê³µì •ì´ ë‹¤ë¥´ë‹¤. CNNì€ ê³µê°„ì  íŒ¨í„´ì„ ê³„ì¸µì ìœ¼ë¡œ ì¶”ì¶œí•˜ë¯€ë¡œ ê²°í•¨ ë¶„ë¥˜ì— 
+180:íš¨ê³¼ì ì´ë©°, ë³¸ ì—°êµ¬ëŠ” ê²½ëŸ‰ CNNìœ¼ë¡œ 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ë¥¼ multi-label 
+185:ì‚¬ìš©í•˜ì˜€ë‹¤ [2]. ì´ 38,015ìž¥ì˜ 52Ã—52 ì›¨ì´í¼ ë§µìœ¼ë¡œ êµ¬ì„±ë˜ë©°, í”½ì…€ ê°’ì€ 
+190:8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ì˜ ëŒ€í‘œì ì¸ ê³µê°„ íŒ¨í„´ì€ ê·¸ë¦¼ 1ê³¼ ê°™ë‹¤. 
+194:ê·¸ë¦¼ 1. MixedWM38ì˜ 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ ë‹¨ì¼ê²°í•¨ ì˜ˆì‹œ (í°=ì›¨ì´í¼ ë°–, íšŒìƒ‰=ì •ìƒ die, 
+196: ì „ì²˜ë¦¬ ê³¼ì •ì—ì„œ 8ê°œ ê²°í•¨ ë¼ë²¨ì´ ëª¨ë‘ 0ì¸ 1,000ìž¥ì˜ normal/no-defect 
+208:3.2. CNN ëª¨ë¸ êµ¬ì¡°
+209: ëª¨ë¸ êµ¬ì¡°ëŠ” ê·¸ë¦¼ 2ì™€ ê°™ë‹¤. ìž…ë ¥ 52Ã—52 ì›¨ì´í¼ ë§µì´ 3ê°œì˜ í•©ì„±ê³± 
+212:ê³„ì¸µì˜ ìƒì„¸ ì‚¬ì–‘ì€ í‘œ 1ê³¼ ê°™ìœ¼ë©°, ìž¬í˜„ ê°€ëŠ¥í•œ ë‹¨ìˆœí•œ í˜•íƒœë¡œ ê³ ì •í•˜ì˜€ë‹¤. 
+216:ê·¸ë¦¼ 2. WaferCNN êµ¬ì¡°. 3ê°œ í•©ì„±ê³± ë¸”ë¡ì´ êµ­ì†Œ íŒ¨í„´ì„ ì¶”ì¶œí•˜ê³ (MaxPoolë¡œ í•´ìƒë„ Â½ì”© 
+218:í‘œ 1. CNN ëª¨ë¸ êµ¬ì¡°. ì´ íŒŒë¼ë¯¸í„° ìˆ˜ 319,592.
+221:macro F1ì´ 5 epoch ë™ì•ˆ ê°±ì‹ ë˜ì§€ ì•Šìœ¼ë©´ í•™ìŠµì„ ì¡°ê¸° ì¢…ë£Œ(early stopping) 
+226: ë³¸ ì—°êµ¬ì˜ í•µì‹¬ ë¹„êµ ëŒ€ìƒì¸ 4ì¢… ì†Œìž¬ì˜ ë¬¼ë¦¬ íŒŒë¼ë¯¸í„°ëŠ” í‘œ 2ì— 
+230:í‘œ 2. 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ì˜ conductance mapping ë° ë¹„ì´ìƒì„± íŒŒë¼ë¯¸í„°. Ron, RoffëŠ” ì‹¤ì¸¡ ë¬¸í—Œ, 
+301:[6]
+306: ì—°êµ¬ ì „ì²´ íë¦„ì€ ê·¸ë¦¼ 3ê³¼ ê°™ë‹¤. ì´ ì¤‘ í•™ìŠµëœ CNN ê°€ì¤‘ì¹˜ë¥¼ ê° ì†Œìž¬ì˜ 
+310:ê·¸ë¦¼ 3. ì „ì²´ í‰ê°€ íë¦„. ì†Œí”„íŠ¸ì›¨ì–´ì—ì„œ í•™ìŠµí•œ CNN ê°€ì¤‘ì¹˜ë¥¼ ì†Œìž¬ë³„ ë©¤ë¦¬ìŠ¤í„° 
+324:yield ë¬¸í—Œì˜ ë³´ê³  ë²”ìœ„ì— ê¸°ë°˜í•œ ê°€ì •ê°’ìœ¼ë¡œ, ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” 1% ë¯¸ë§Œì„, 
+334: ì´ íŒŒì´í”„ë¼ì¸ì€ ì–‘ìží™”Â·ë³€ë™Â·stuck-at faultì˜ ì„¸ ë¹„ì´ìƒì„±ì„ ë™ì‹œì— 
+340:samplingì€ ë¬´ì˜ë¯¸í•˜ë©°, baseline seedë‹¹ 1íšŒ í‰ê°€í•œë‹¤.
+343:seedë‹¹ noise seedë¥¼ ë¶„ë¦¬í•´ 3íšŒ sampling(ì´ 9íšŒ/ì†Œìž¬) í›„ í‰ê· ê³¼ 
+345: í‰ê°€ ì§€í‘œëŠ” multi-label ë¶„ë¥˜ í‘œì¤€ì¸ Macro F1(í´ëž˜ìŠ¤ ë¶ˆê· í˜•ì— ê°•ê±´)ê³¼ 
+350: 3ê°œì˜ baseline seedì— ëŒ€í•´ í•™ìŠµëœ CNNì˜ í…ŒìŠ¤íŠ¸ ì„±ëŠ¥ì€ í‘œ 3ê³¼ ê°™ë‹¤. 
+351:í‘œ 3. FP32 software baselineì˜ 3 seed ê²°ê³¼. macro F1ì˜ std=0.0032ë¡œ ë§¤ìš° ì•ˆì •ì .
+352: ì„¸ seed ëª¨ë‘ macro F1 0.98 ìˆ˜ì¤€ì˜ ì•ˆì •ì ì¸ baselineì„ í•™ìŠµí•˜ì˜€ìœ¼ë©°, stdê°€ 
+358:Test Macro F1
+371:í‰ê· Â±std
+378: ê° ì†Œìž¬ë³„ ideal ë° realistic ì¡°ê±´ì—ì„œì˜ macro F1 ê²°ê³¼ë¥¼ í‘œ 4ì— 
+380:í‘œ 4. 4ì¢… ì†Œìž¬ì˜ Ideal vs Realistic ë¶„ë¥˜ ì„±ëŠ¥ (Subset Accuracy ë° Macro F1, 3 baseline seed Ã— 
+381:3 noise sample = 9íšŒ í‰ê· ). Î”F1ì€ macro F1 ê¸°ì¤€ì˜ ì ˆëŒ€ ë³€í™”ëŸ‰ê³¼ ìƒëŒ€ ë³€í™”ìœ¨ì„ ë¶„ë¦¬í•˜ì—¬ 
+383: ì €í•­ë¹„ 25ë°° ì´ìƒì˜ ì„¸ ì†Œìž¬(Pt/HfOx/Ti, Ferroelectric, TaOx/Ta)ëŠ” ideal 
+385:ë‹¨ë…ìœ¼ë¡œëŠ” ë¶„ë¥˜ ì„±ëŠ¥ì— í° ì˜í–¥ì„ ë¯¸ì¹˜ì§€ ì•ŠëŠ”ë‹¤ (Pt/HfOx/Tiì˜ ideal F1ì´ 
+386:baseline í‰ê· ì„ ë¯¸ì„¸í•˜ê²Œ ìƒíšŒí•˜ë‚˜ baseline std ë²”ìœ„ ë‚´ ìš°ì—°í•œ ë³€ë™ì´ë‹¤). 
+387:ê·¸ëŸ¬ë‚˜ variationê³¼ stuck-at faultê°€ ë”í•´ì§„ realistic ì¡°ê±´ì—ì„œëŠ” í‰ê·  macro F1ì´ 
+389: Subset Accuracy ê¸°ì¤€ìœ¼ë¡œëŠ” ë” í° ê°ì†Œê°€ ë‚˜íƒ€ë‚˜(í‘œ 4), multi-label 
+393: ì´ì™€ ëŒ€ì¡°ì ìœ¼ë¡œ Metallic NanowireëŠ” ideal ì¡°ê±´ì—ì„œë„ F1 0.38ë¡œ ë¶„ë¥˜ 
+394:ì„±ëŠ¥ì´ ë¶•ê´´í•˜ì˜€ë‹¤. ì´ëŠ” ì €í•­ë¹„ 1.97ë°° + 4-state ì–‘ìží™”ì˜ ì¡°í•©ì´ ê°€ì¤‘ì¹˜ 
+396:í•˜ì—¬ ë” ì•…í™”ë  ì—¬ì§€ê°€ ì ë‹¤(realistic F1 0.33). ì¦‰ Metallic Nanowireì˜ í•œê³„ëŠ” 
+397:ë¹„ì´ìƒì„±ì´ ì•„ë‹ˆë¼ ë‚®ì€ ì €í•­ë¹„(1.97Ã—)ì™€ 4-stateê°€ ê²°í•©í•´ ë§Œë“œëŠ” í‘œí˜„ ê°€ëŠ¥í•œ 
+408:F1
+414:F1
+415:Î”F1 abs
+416:Î”F1 rel
+469: í‘œ 4ì˜ í° í‘œì¤€íŽ¸ì°¨ëŠ” ë‹¨ìˆœí•œ noise varianceê°€ ì•„ë‹ˆë¼, ë™ì¼ ì†Œìž¬ì˜ 9íšŒ 
+471:ì–‘ìƒì—ì„œ ë¹„ë¡¯ëœë‹¤. ë‹¤ë§Œ í‘œë³¸ ìˆ˜ê°€ ì†Œìž¬ë‹¹ 9íšŒë¡œ ì œí•œë˜ë¯€ë¡œ í†µê³„ì  ì˜ë¯¸ì˜ 
+474: F1 â‰¥ 0.88ì„ "good", F1 < 0.60ì„ "catastrophic"ìœ¼ë¡œ ì •ì˜í–ˆì„ ë•Œ 4ì¢… 
+475:ì†Œìž¬ì˜ ë¶„í¬ëŠ” í‘œ 5ì™€ ê°™ë‹¤. 
+476:í‘œ 5. ê° ì†Œìž¬ì˜ per-noise ê²°ê³¼ë¥¼ good / moderate / catastrophic ìž„ê³„ë¡œ ë¶„ë¥˜í•œ ë¹ˆë„.
+477: ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” ì•½ 44~56%ê°€ baselineì˜ 90% ì´ìƒì„ ìœ ì§€(good)í•˜ëŠ” 
+478:í•œíŽ¸, 9íšŒ ì¤‘ 1íšŒ (ì•½ 11%) ë¹„ìœ¨ë¡œ F1ì´ 0.60 ë¯¸ë§Œìœ¼ë¡œ ë¶•ê´´(catastrophic)í•˜ëŠ” 
+480:9íšŒ ìƒ˜í”Œì—ì„œ noise ì¢…ë¥˜ì™€ ë¬´ê´€í•˜ê²Œ ëª¨ë‘ catastrophic êµ¬ê°„ì— ì¡´ìž¬í•˜ì—¬, 4-state 
+490:ì¡°ê±´(variation=0, fault=0)ì—ì„œë„ ì´ë¯¸ F1=0.38ë¡œ ë¶•ê´´í•˜ë¯€ë¡œ, NWì˜ ì„±ëŠ¥ 
+491:ì €í•˜ëŠ” fault rate ì°¨ì´ë³´ë‹¤ëŠ” ë‚®ì€ ì €í•­ë¹„ì™€ 4-state ì–‘ìží™”ì˜ ì˜í–¥ì´ ì§€ë°°ì ì¸ 
+494:4.4. ê²°í•¨ ìœ í˜•ë³„ (per-class) F1 ë¶„ì„
+495: í‘œ 6ì€ 4ì¢… ì†Œìž¬ Ã— ë‘ ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1ì„ ë³´ì—¬ì¤€ë‹¤. 
+499:Good (F1â‰¥0.88)
+501:(0.60â‰¤F1<0.88)
+503:(F1<0.60)
+508:1/9 (11%)
+513:1/9 (11%)
+524:1/9 (11%)
+529:í‘œ 6. 4ì¢… ì†Œìž¬ Ã— Ideal/Realistic ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1 (Idealì€ 3 seed í‰ê· , 
+538:Near-Full(0.4%)Â·Scratch(2.3%)ê°€ ëª¨ë“  ê³ ì €í•­ë¹„ ì†Œìž¬ì—ì„œ ê°€ìž¥ ë‚®ì€ F1ì„ 
+541:F1ì´ ì•½ 0ìœ¼ë¡œ, ë‚®ì€ ì €í•­ë¹„ì™€ 4-state ê²°í•©ì— ë”°ë¥¸ í‘œí˜„ ìžìœ ë„ ë¶€ì¡±ìœ¼ë¡œ 
+544:5.1. ì €í•­ë¹„ì˜ ì˜í–¥
+546:Nanowire ì‚¬ì´ì˜ ì°¨ì´ê°€ ê°€ìž¥ ëšœë ·í•˜ë‹¤. ì €í•­ë¹„ê°€ 25ë°° ì´ìƒì¸ ì„¸ ì†Œìž¬ëŠ” 
+548:ì €í•­ë¹„ 1.97ë°°ì˜ Metallic NanowireëŠ” idealì—ì„œë„ baselineì˜ 39% ìˆ˜ì¤€ìœ¼ë¡œ 
+652:ì–´ë µë‹¤. ë³¸ ì—°êµ¬ëŠ” 4ì¢… ì†Œìž¬ì˜ ì´ì‚°ì ì¸ ë¹„êµì´ë©°, ì €í•­ë¹„ sweep(ì˜ˆ: 5Ã—, 
+655:ê²°ë¡ ì´ë‹¤. 
+657: Metallic NanowireëŠ” ì €í•­ë¹„ê°€ 1.97ë°°ë¡œ ë‚®ì•„ ì»¨ë•í„´ìŠ¤ ë²”ìœ„ê°€ ì¢ì€ ë°ë‹¤, 
+660:CNNì´ í•™ìŠµí•œ ë¯¸ì„¸í•œ ê²°ì • ê²½ê³„ê°€ ëŒ€ë¶€ë¶„ ì†Œì‹¤ëœë‹¤. ì´ í•œê³„ëŠ” ë‹¨ìˆœ ì‚¬í›„ 
+664:ë‹¤ë¥¸ ì‘ìš©ì—ëŠ” ìœ ë¦¬í•  ìˆ˜ ìžˆìœ¼ë©°, ë³¸ ì—°êµ¬ì˜ ê²°ë¡ ì€ "ë‹¤ë‹¨ê³„ ê°€ì¤‘ì¹˜ ì •ë°€ë„ê°€ 
+667: ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” í‰ê·  ì„±ëŠ¥ì´ ë¹„ìŠ·í•´ë„ 9íšŒ ì¤‘ 1íšŒ catastrophic 
+668:degradationì´ ë‚˜íƒ€ë‚¬ë‹¤(í‘œ 5). ì´ëŠ” í‰ê· ë§Œìœ¼ë¡œ ì†Œìž¬ë¥¼ í‰ê°€í•˜ëŠ” ê´€í–‰ì— ëŒ€í•œ 
+683:ë‹¨ì¼ ë°ì´í„°ì…‹Â·ê²½ëŸ‰ CNN. MixedWM38ê³¼ ì•½ 32ë§Œ íŒŒë¼ë¯¸í„°ì˜ ì–•ì€ CNNì— 
+684:í•œì •ëœ ê²°ê³¼ë¡œ, WM-811K [7] ë“± ë‹¤ë¥¸ ë°ì´í„°ì…‹ì´ë‚˜ ResNet ê³„ì—´ ëŒ€ê·œëª¨ 
+687:ì €í•­ë¹„ sweep ë¯¸ìˆ˜í–‰. 4ì¢… ì†Œìž¬ì˜ ì´ì‚° ë¹„êµë§Œ ìˆ˜í–‰í•˜ì—¬ ì €í•­ë¹„-ì„±ëŠ¥ì˜ 
+702:í‘œë³¸ í•œê³„. ì†Œìž¬ë‹¹ 9íšŒ(3 seed Ã— 3 noise)ë¡œ, 9íšŒ ì¤‘ 1íšŒ ì‚¬ê±´ì˜ binomial 95% 
+703:ì‹ ë¢°êµ¬ê°„ì€ ì•½ [0.3%, 48%]ì— ì´ë¥¸ë‹¤. ë”°ë¼ì„œ ë³¸ë¬¸ì˜ "11%"ëŠ” ë°œìƒ í™•ë¥  
+706:6. ê²°ë¡ 
+711:ë™ì‹œì— ì ìš©í•œ 9íšŒ Monte Carlo í‰ê°€ì—ì„œ ë‹¤ìŒ ì„¸ ê°€ì§€ë¥¼ í™•ì¸í•˜ì˜€ë‹¤. 
+713:ë¶„ë¥˜ ì„±ëŠ¥ì„ ìœ ì§€í•˜ì˜€ìœ¼ë‚˜, realistic ì¡°ê±´ì—ì„œëŠ” í‰ê·  macro F1ì´ 0.76~0.87ë¡œ 
+714:í•˜ë½í•˜ì˜€ë‹¤. ë‘˜ì§¸, ì €í•­ë¹„ 1.97ë°°ì˜ Metallic NanowireëŠ” ë‚®ì€ ì €í•­ë¹„ì™€ 4-state 
+715:ì–‘ìží™”ì˜ ê²°í•©ì— ë”°ë¥¸ í‘œí˜„ í•œê³„ë¡œ ideal ì¡°ê±´ì—ì„œë„ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´(F1 
+718:9íšŒ ì¤‘ 1íšŒ (ì•½ 11%) ë¹„ìœ¨ë¡œ catastrophic degradationì´ ê´€ì°°ë˜ì—ˆìœ¼ë©°, ì´ëŠ” 
+730:[1] S. Kvatinsky, M. Ramadan, E. G. Friedman, and A. Kolodny, "VTEAM: A 
+733:[2] J. Wang, C. Xu, Z. Yang, J. Zhang, and X. Li, "Deformable Convolutional 
+737:[3] E. Yalon, A. Gavrilov, S. Cohen, D. Mistele, B. Meyler, J. Salzman, and D. 
+741:[4] A. Chanthbouala, V. Garcia, R. O. Cherifi, K. Bouzehouane, S. Fusil, X. Moya, 
+745:[5] S. L. Johnson, A. Sundararajan, D. P. Hunley, and D. R. Strachan, "Memristive 
+748:[6] C. Yakopcic, T. M. Taha, D. J. Mountain, T. Salter, M. J. Marinella, and M. 
+752:[7] M.-J. Wu, J.-S. R. Jang, and J.-L. Chen, "Wafer Map Failure Pattern Recognition 
+755:[8] C. Lammie, W. Xiang, B. Linares-Barranco, and M. R. Azghadi, "MemTorch: 
+761:[9] S. Yu and P.-Y. Chen, "Emerging Memory Technologies: Recent Trends and 
+764:[10] M. A. Zidan, J. P. Strachan, and W. D. Lu, "The Future of Electronics Based on 
+766:[11] M. Horowitz, "Computing's Energy Problem (and what we can do about it)," in 
+769:[12] Y.-H. Chen, T. Krishna, J. S. Emer, and V. Sze, "Eyeriss: An Energy-Efficient 
+
+
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+PowerShell 출력 인코딩이 깨져 보여서, 파일 자체를 다른 인코딩 후보로 판별한 뒤 읽겠습니다. 내용 판단은 깨진 콘솔 문자열이 아니라 원문 디코딩 기준으로 하겠습니다.
+2026-05-21T07:29:08.095020Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+p=Path('results/final2_text.txt')
+b=p.read_bytes()
+for enc in ['utf-8','utf-16','utf-16le','cp949','euc-kr']:
+    try:
+        s=b.decode(enc)
+        hangul=sum(0xAC00<=ord(c)<=0xD7A3 for c in s)
+        repl=s.count('\\ufffd')
+        print(enc, 'len', len(s), 'hangul', hangul, 'repl', repl, 'sample', s[:80].encode('unicode_escape').decode())
+    except Exception as e:
+        print(enc, 'ERR', type(e).__name__, str(e)[:60])
+'@ | python -"` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+p=Path('results/final2_text.txt')
+b=p.read_bytes()
+for enc in ['utf-8','utf-16','utf-16le','cp949','euc-kr']:
+    try:
+        s=b.decode(enc)
+        hangul=sum(0xAC00<=ord(c)<=0xD7A3 for c in s)
+        repl=s.count('\\ufffd')
+        print(enc, 'len', len(s), 'hangul', hangul, 'repl', repl, 'sample', s[:80].encode('unicode_escape').decode())
+    except Exception as e:
+        print(enc, 'ERR', type(e).__name__, str(e)[:60])
+'@ | python -" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+p=Path('results/final2_text.txt')
+b=p.read_bytes()
+for enc in ['utf-8','utf-16','utf-16le','cp949','euc-kr']:
+    try:
+        s=b.decode(enc)
+        hangul=sum(0xAC00<=ord(c)<=0xD7A3 for c in s)
+        repl=s.count('\\ufffd')
+        print(enc, 'len', len(s), 'hangul', hangul, 'repl', repl, 'sample', s[:80].encode('unicode_escape').decode())
+    except Exception as e:
+        print(enc, 'ERR', type(e).__name__, str(e)[:60])
+'@ | python -"` rejected: blocked by policy
+2026-05-21T07:29:15.628604Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; b=Path('results/final2_text.txt').read_bytes();
+for enc in ['utf-8','utf-16','utf-16le','cp949','euc-kr']:
+    try:
+        s=b.decode(enc); print(enc, len(s), sum(0xAC00<=ord(c)<=0xD7A3 for c in s), s[:40].encode('unicode_escape').decode())
+    except Exception as e: print(enc, 'ERR', type(e).__name__, str(e)[:50])\""` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; b=Path('results/final2_text.txt').read_bytes();
+for enc in ['utf-8','utf-16','utf-16le','cp949','euc-kr']:
+    try:
+        s=b.decode(enc); print(enc, len(s), sum(0xAC00<=ord(c)<=0xD7A3 for c in s), s[:40].encode('unicode_escape').decode())
+    except Exception as e: print(enc, 'ERR', type(e).__name__, str(e)[:50])\"" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; b=Path('results/final2_text.txt').read_bytes();
+for enc in ['utf-8','utf-16','utf-16le','cp949','euc-kr']:
+    try:
+        s=b.decode(enc); print(enc, len(s), sum(0xAC00<=ord(c)<=0xD7A3 for c in s), s[:40].encode('unicode_escape').decode())
+    except Exception as e: print(enc, 'ERR', type(e).__name__, str(e)[:50])\""` rejected: blocked by policy
+2026-05-21T07:29:22.610664Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$b=[System.IO.File]::ReadAllBytes('"'results/final2_text.txt'); "'$encs=@('"'utf-8','utf-16','utf-16LE','ks_c_5601-1987'); foreach("'$e in $encs){ try { $enc=[System.Text.Encoding]::GetEncoding($e); $s=$enc.GetString($b); $h=0; foreach($ch in $s.ToCharArray()){ $o=[int][char]$ch; if($o -ge 44032 -and $o -le 55203){$h++} }; $sample=($s.Substring(0,[Math]::Min(40,$s.Length)).ToCharArray() | ForEach-Object { '"'\\u{0:x4}' -f [int][char]"'$_ }) -join '"''; Write-Output \""'$e len=$($s.Length) hangul=$h sample=$sample" } catch { Write-Output "$e ERR $($_.Exception.Message)" } }'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$b=[System.IO.File]::ReadAllBytes('"'results/final2_text.txt'); "'$encs=@('"'utf-8','utf-16','utf-16LE','ks_c_5601-1987'); foreach("'$e in $encs){ try { $enc=[System.Text.Encoding]::GetEncoding($e); $s=$enc.GetString($b); $h=0; foreach($ch in $s.ToCharArray()){ $o=[int][char]$ch; if($o -ge 44032 -and $o -le 55203){$h++} }; $sample=($s.Substring(0,[Math]::Min(40,$s.Length)).ToCharArray() | ForEach-Object { '"'\\u{0:x4}' -f [int][char]"'$_ }) -join '"''; Write-Output \""'$e len=$($s.Length) hangul=$h sample=$sample" } catch { Write-Output "$e ERR $($_.Exception.Message)" } }' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$b=[System.IO.File]::ReadAllBytes('"'results/final2_text.txt'); "'$encs=@('"'utf-8','utf-16','utf-16LE','ks_c_5601-1987'); foreach("'$e in $encs){ try { $enc=[System.Text.Encoding]::GetEncoding($e); $s=$enc.GetString($b); $h=0; foreach($ch in $s.ToCharArray()){ $o=[int][char]$ch; if($o -ge 44032 -and $o -le 55203){$h++} }; $sample=($s.Substring(0,[Math]::Min(40,$s.Length)).ToCharArray() | ForEach-Object { '"'\\u{0:x4}' -f [int][char]"'$_ }) -join '"''; Write-Output \""'$e len=$($s.Length) hangul=$h sample=$sample" } catch { Write-Output "$e ERR $($_.Exception.Message)" } }'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 results/final2_text.txt -TotalCount 40' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 344ms:
+[p1]
+학사학위논문
+4종 멤리스터 소재 파라미터를 활용한 
+PIM 환경 웨이퍼 결함 분류 성능 비교 연구
+A Comparative Study of Four Memristive Material 
+Candidates for Processing-In-Memory Wafer Defect 
+Classification
+상명대학교 공과대학
+시스템반도체공학과 
+임 창 우
+2026년   5월
+
+[p2]
+4종 멤리스터 소재 파라미터를 활용한
+PIM 환경 웨이퍼 결함 분류 성능 비교 연구
+A Comparative Study of Four Memristive Material 
+Candidates for Processing-In-Memory Wafer Defect 
+Classification
+지도교수  이종환
+본 논문을 학사학위 논문으로 제출함
+상명대학교 공과대학
+시스템반도체공학과
+임 창 우
+2026년  5월
+
+[p3]
+임 창 우의 
+학사학위 논문을 인준함
+               심사위원장              ?
+ 
+심사위원                ?
+ 
+심사위원                ?
+상명대학교 공과대학
+2026년  5월
+
+[p4]
+차  　　례
+국문 요약·················································································································· 1
+1. 서론······················································································································· 2
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+이제 UTF-8로 정상 판독됩니다. 표지 쪽에서 먼저 눈에 띈 것은 인준서 심사위원 서명란이 `?`로 추출된 점인데, 이게 원본 HWP의 도장/서명 자리 표시인지 실제 문자 깨짐인지 확인 대상입니다. 본문 수치와 표를 이어서 대조하겠습니다.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 results/final2_text.txt | Select-Object -Skip 70 -First 170' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 results/final2_text.txt | Select-Object -Skip 240 -First 170' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 results/final2_text.txt | Select-Object -Skip 410 -First 190' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 484ms:
+해결할 차세대 기술로 주목받고 있다. 특히 멤리스터(memristor) 기반 크로스바 
+어레이는 가중치 저장과 곱셈-누적 연산을 동시에 수행할 수 있어 딥러닝 추론에 
+적합하다. 
+그러나 
+멤리스터는 
+소재별로 
+저항비, 
+표현 
+가능한 
+상태 
+수, 
+변동(variation), 결함률(stuck-at fault) 등 물리적 특성이 크게 다르며, 이는 분류 
+성능에 직접적인 영향을 미친다. 본 연구에서는 VTEAM 모델의 문헌 파라미터를 
+활용하여 Pt/HfOx/Ti, Ferroelectric, Metallic Nanowire, TaOx/Ta의 4종 멤리스터 
+소재를 동일한 정적 conductance mapping 기반 시뮬레이션 환경에서 비교하였다. 
+MixedWM38 웨이퍼 결함 데이터셋(8개 결함 라벨이 모두 0인 normal/no-defect 
+1,000장을 제외한 37,015장, 8개 결함 클래스 multi-label)으로 학습된 경량 CNN 
+모델을 각 소재의 크로스바 어레이에 매핑하고, 양자화·변동·stuck-at fault의 세 
+비이상성을 동시에 적용하여 9회 Monte Carlo 평가를 수행하였다. 실험 결과, 
+Roff/Ron 저항비가 25배 이상인 세 소재(Pt/HfOx/Ti, Ferroelectric, TaOx/Ta)는 평균 
+macro F1이 0.76~0.87 수준이었으나 noise sample에 따른 변동성이 매우 컸으며 
+(std 0.13~0.28), 저항비 1.97배의 Metallic Nanowire는 4-state 양자화와의 결합으로 
+인한 표현 한계로 이상적 조건에서도 F1 0.38로 분류 성능이 붕괴하였다. 또한 
+고저항비 세 소재(Pt/HfOx/Ti, Ferroelectric, TaOx/Ta) 각각에서 9회 Monte Carlo 샘플 
+중 1회씩 치명적 성능 붕괴(catastrophic degradation, F1 < 0.60)가 관찰되었으며, 
+이는 stuck-at fault 위치 무작위성에 의한 worst-case 붕괴 위험의 가능성을 
+시사한다(다만 실제 발생 확률 추정에는 더 많은 반복이 필요하다). 이는 PIM 
+응용에서 평균 성능뿐 아니라 결함 분포에 따른 worst-case 위험까지 함께 
+고려해야 함을 시사한다. 
+ Keywords : Memristor, Processing-In-Memory (PIM), VTEAM model, Convolutional 
+Neural Network, Wafer defect classification, Stuck-at fault, Quantization 
+
+[p6]
+2
+1. 서론
+1.1. 연구 배경
+ 딥러닝 모델의 규모가 급격히 커지면서 전통적인 von Neumann 구조의 
+메모리-연산 분리에 의한 데이터 이동 비용이 시스템 전체 성능과 전력 
+효율을 좌우하는 주된 병목으로 떠올랐다. 추론 단계에서 발생하는 메모리 
+접근은 실제 계산 자원이 소비하는 에너지보다 수십 배 이상의 전력을 
+요구하는 것으로 보고되며 [11], 이는 모바일·엣지 환경에서 인공지능 
+가속기를 구현할 때 가장 큰 걸림돌이 된다 [10, 8, 12]. 
+ Processing-In-Memory (PIM)는 가중치 저장 셀이 동시에 곱셈-누적(MAC) 
+연산을 
+수행하도록 
+함으로써 
+위의 
+데이터 
+이동 
+병목을 
+완화하는 
+아키텍처이다. 그중에서도 멤리스터(memristor) 기반 크로스바 어레이는 옴의 
+법칙과 키르히호프 전류 법칙만으로 단일 사이클 안에 행렬-벡터 곱셈을 
+완성할 수 있어 딥러닝 추론용 PIM 가속기의 대표 후보로 연구되어 왔다 [1, 
+8, 9, 10]. 
+ 반도체 제조 공정에서는 웨이퍼 표면의 결함 패턴(Center, Donut, Edge-Ring 
+등)을 자동 분류하는 작업이 수율 관리에 필수적이다. 
+이 작업은 
+CNN(convolutional neural network)이 강점을 보이는 분야이며, 공장 라인에서 
+실시간으로 요구되는 만큼 저전력 엣지 추론 가속기와 결합할 수 있다면 
+실용적 가치가 크다. 
+ 멤리스터 PIM에서 분류 정확도를 떨어뜨리는 비이상성은 크게 세 가지다 
+? 컨덕턴스 상태 수가 유한해 발생하는 양자화 손실, 소자 간 저항 
+편차(device-to-device variation), 일부 셀이 저저항/고저항에 고착되는 stuck-at 
+fault [1, 8]. 선행 연구의 다수는 이들 중 한두 가지만 부분적으로 
+모델링하거나 매핑 후 출력 재보정(tune)을 가정해 그 영향을 과소평가하여, 
+실제 PIM 칩에서 발생할 수 있는 심각한 성능 저하를 사전 평가하지 못했다. 
+1.2. 본 연구의 기여
+
+[p7]
+3
+ 본 연구의 기여는 다음과 같다. (1) VTEAM 문헌 파라미터 기반 정적 
+conductance mapping 환경에서 4종 멤리스터 소재 (Pt/HfOx/Ti, Ferroelectric, 
+Metallic Nanowire, TaOx/Ta)를 동일한 CNN·데이터셋·비이상성 조건으로 정량 
+비교한다. (2) 양자화·variation·stuck-at fault를 동시에 적용하고 매핑 후 출력 
+재보정을 가정하지 않는 보수적 평가를 수행한다. (3) 3 seed × 3 noise = 9회 
+Monte Carlo 평가에서 고저항비 세 소재의 worst-case 붕괴 현상을 관찰하고, 
+PIM 소재 평가에 평균 성능뿐 아니라 worst-case 위험을 함께 고려해야 함을 
+제시한다. 
+2. 이론적 배경
+2.1. Processing-In-Memory (PIM)
+ PIM은 메모리 셀이 저장 기능과 함께 연산 기능을 수행하도록 하여 
+가중치 데이터를 별도 연산 유닛으로 이동시키는 비용을 제거하는 
+아키텍처이다. CNN 추론은 본질적으로 행렬-벡터 곱셈(MVM)의 연쇄이며, 
+멤리스터 크로스바 어레이는 단일 사이클의 아날로그 연산으로 MVM을 
+처리할 수 있어 PIM의 효과적인 물리 구현 후보로 평가된다 [10]. 
+2.2. 멤리스터 크로스바 어레이
+ 멤리스터는 인가 전압 이력에 따라 저항 상태가 변화하고, 전원이 차단된 
+이후에도 마지막 저항 상태를 유지하는 2단자 비휘발성 소자이다. 행과 열이 
+격자형으로 교차하는 크로스바 어레이에서 각 교차점에 멤리스터를 배치하면, 
+행 라인에 입력 전압 Vi를 인가했을 때 열 라인에 흐르는 전류는 Ij = Σi Gij Vi 
+가 되어 옴의 법칙과 키르히호프 전류 법칙만으로 가중치 행렬 G와 입력 
+벡터의 곱이 즉시 얻어진다. 
+2.3. VTEAM 모델
+ VTEAM(Voltage Threshold Adaptive Memristor)은 Kvatinsky 등이 제안한 
+전압 임계 기반의 일반화된 멤리스터 거동 모델로 [1], 다양한 소재의 실측 
+특성을 동일한 수식 형태 안에서 파라미터만 바꾸어 표현할 수 있다. 본 
+
+[p8]
+4
+연구는 시간 동역학 방정식을 직접 적분하지 않고, 이 모델 및 관련 소자 
+문헌이 제시한 소재별 저항 범위·스위칭 특성을 정적 conductance mapping의 
+기준 파라미터로만 활용하였다. 정적 상태에서 멤리스터의 저항은 
+ R(w) = Ron + (Roff ? Ron) w (0 ≤ w ≤ 1) 
+ 로 표현되며(w는 정규화된 내부 상태 변수), 이 식이 소재별 Ron·Roff만으로 
+통일된 비교 환경을 구성하는 기반이 된다. 
+2.4. 웨이퍼 결함 분류와 CNN
+ 웨이퍼 결함 패턴은 공정 이상의 1차 신호로서 패턴 종류에 따라 원인 
+공정이 다르다. CNN은 공간적 패턴을 계층적으로 추출하므로 결함 분류에 
+효과적이며, 본 연구는 경량 CNN으로 8개 결함 클래스를 multi-label 
+분류한다(상세 구조는 3.2절). 
+3. 방법론
+3.1. 데이터셋
+ 본 연구에서는 Wang 등이 공개한 MixedWM38 웨이퍼 결함 데이터셋을 
+사용하였다 [2]. 총 38,015장의 52×52 웨이퍼 맵으로 구성되며, 픽셀 값은 
+배경(0), 정상 다이(1), 결함 다이(2)의 정수 categorical 값이다. 라벨은 8개 
+결함 클래스(Center, Donut, Edge-Loc, Edge-Ring, Loc, Near-Full, Random, 
+Scratch)에 대한 multi-hot 벡터로, 단일 결함뿐 아니라 두 종류 이상의 결함이 
+동시에 존재하는 복합 결함(mixed-type) 패턴을 포함한다는 점이 특징이다. 
+8개 결함 클래스의 대표적인 공간 패턴은 그림 1과 같다. 
+
+[p9]
+5
+그림 1. MixedWM38의 8개 결함 클래스 단일결함 예시 (흰=웨이퍼 밖, 회색=정상 die, 
+빨강=결함 die). 실제 데이터는 두 종류 이상이 겹친 복합 결함을 포함한다.
+ 전처리 과정에서 8개 결함 라벨이 모두 0인 1,000장의 normal/no-defect 
+샘플을 제외하고, 결함이 존재하는 37,015장을 사용하였다. 이 중 단일 
+결함은 7,015장(19.0%), 복합 결함은 30,000장(81.0%)이며, 복합 결함이 다수를 
+차지하는 데이터셋 특성은 multi-label 분류 패러다임 선택의 근거가 된다. 
+픽셀 
+값은 
+categorical 
+값(0,1,2)을 
+0/0.5/1.0으로 
+정규화하였고, 
+학습/검증/테스트는 70/10/20 비율로 seed=42로 고정 분할하였다(Train 25,910 / 
+Val 3,702 / Test 7,403). 
+3.2. CNN 모델 구조
+ 모델 구조는 그림 2와 같다. 입력 52×52 웨이퍼 맵이 3개의 합성곱 
+블록을 거치며 국소 패턴을 추출하고 (MaxPool로 해상도를 절반씩 축소), 
+완전연결 계층이 8개 결함 클래스 확률을 출력한다(multi-label sigmoid). 각 
+계층의 상세 사양은 표 1과 같으며, 재현 가능한 단순한 형태로 고정하였다. 
+
+[p10]
+6
+그림 2. WaferCNN 구조. 3개 합성곱 블록이 국소 패턴을 추출하고(MaxPool로 해상도 ½씩 
+축소) 완전연결 계층이 8개 결함 확률을 출력한다(multi-label).
+표 1. CNN 모델 구조. 총 파라미터 수 319,592.
+ 손실 함수는 multi-label 분류 표준인 BCEWithLogitsLoss를 사용하였고, 
+최적화는 Adam(lr=1e-3, batch size=128) 이다. 최대 학습 epoch는 20이며, 검증 
+macro F1이 5 epoch 동안 갱신되지 않으면 학습을 조기 종료(early stopping) 
+하였다. 동일 모델 구조를 3개의 baseline seed(42, 123, 456)에 대해 독립적으로 
+학습하여 평가 결과가 특정 초기화 seed에만 의존하지 않는지(baseline 
+변동성)를 확인하였다. 
+3.3. 4종 소재 파라미터
+ 본 연구의 핵심 비교 대상인 4종 소재의 물리 파라미터는 표 2에 
+정리하였다. Ron, Roff 등 거시 특성은 각 소재의 실측 문헌에서 가져왔으며, 
+device-to-device variation(σ/μ)과 stuck-at fault 비율은 문헌에서 보고된 범위에 
+기반한 시뮬레이션 가정값이다. 
+표 2. 4종 멤리스터 소재의 conductance mapping 및 비이상성 파라미터. Ron, Roff는 실측 문헌, 
+variation/fault는 가정값.
+계층
+구성
+출력 크기
+Conv1
+3×3, 16ch, BN, ReLU, 
+MaxPool(2)
+26×26×16
+Conv2
+3×3, 32ch, BN, ReLU, 
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 485ms:
+MaxPool(2)
+13×13×32
+Conv3
+3×3, 64ch, BN, ReLU, 
+MaxPool(2)
+6×6×64
+FC1
+Linear(2304→128), ReLU, 
+Dropout(0.3)
+128
+FC2
+Linear(128→8)
+8 (logits)
+Parameter
+Pt/HfOx/Ti
+Ferroelectric
+Metallic 
+Nanowire
+TaOx/Ta
+Ron (Ω)
+100
+150,000
+17.3
+4,800
+Roff (Ω)
+2,500
+50,000,000
+34
+700,000
+Roff/Ron
+25.0×
+333.3×
+1.97×
+145.8×
+Conductance 
+states
+64
+128
+4
+32
+Variation σR_on
+10%
+8%
+5%
+8%
+Variation σR_off
+15%
+12%
+8%
+10%
+Stuck-at fault 
+rate
+0.5%
+0.3%
+5.0%
+0.3%
+출처(Ron, Roff)
+[1, 3]
+[1, 4]
+[1, 5]
+[6]
+
+[p11]
+7
+3.4. 매핑·양자화 및 비이상성 모델
+ 연구 전체 흐름은 그림 3과 같다. 이 중 학습된 CNN 가중치를 각 소재의 
+멤리스터 크로스바로 옮기는 매핑 절차는 다음 4단계로 구성된다. 평가의 
+ideal 조건은 양자화만 적용한 것이고, realistic 조건은 여기에 variation과 
+stuck-at fault를 더한 것이다. 
+그림 3. 전체 평가 흐름. 소프트웨어에서 학습한 CNN 가중치를 소재별 멤리스터 
+컨덕턴스로 매핑·양자화하고 비이상성을 주입해 추론 단계만 PIM 환경에서 평가한다.
+ 1) 레이어별 정규화 및 부호 분리. 각 Conv/Linear 계층의 가중치 W를 
+부호 비트 sign(W)와 크기 |W|로 분리한 뒤 |W|/max(|W|)로 정규화한다. 
+멤리스터 컨덕턴스는 양의 값만 가지므로, 실제 PIM 회로에서는 양·음 
+가중치를 두 개의 멤리스터 컬럼(differential pair: W+ ? W?)으로 구현해야 한다. 
+본 시뮬레이션에서는 |W|만 컨덕턴스로 매핑하고 부호 정보는 외부에서 
+유지하는 방식으로 단순화하였다. 
+ 2) 선형 매핑. 정규화된 값을 Gmin=1/Roff, Gmax=1/Ron 범위로 선형 매핑한다. 
+ 3) 비이상성 주입 (Realistic 조건만 해당). (i) Device-to-device variation: g ← 
+g·(1 + N(0, σ)). σ는 σR_on과 σR_off의 산술 평균을 단일 가우시안 분산으로 
+사용해 소재 간 비교 변수를 통제하였다(LRS/HRS 분리 적용 시의 변동 
+가능성은 5.4에 명시). (ii) Stuck-at fault: 전체 셀 중 fault rate 비율을 무작위로 
+골라 절반은 Gmax, 절반은 Gmin으로 고착시킨다. fault rate(0.3~5%)는 크로스바 
+yield 문헌의 보고 범위에 기반한 가정값으로, 고저항비 세 소재는 1% 미만을, 
+Metallic Nanowire는 worst-case sensitivity bound로서 보수적인 5%를 적용하였다. 
+소재 간 fault rate가 동일하지 않으므로 NW의 realistic 값은 수평 비교가 아닌 
+sensitivity 시나리오로 해석한다. 
+
+[p12]
+8
+ 4) N-state 양자화. 각 셀의 컨덕턴스를 등간격 N개의 levels = linspace(Gmin, 
+Gmax, N) 중 가장 가까운 값으로 반올림한다(nearest-state rounding). 양자화는 
+ideal/realistic 두 조건 모두에 적용된다. 
+ 이 파이프라인은 양자화·변동·stuck-at fault의 세 비이상성을 동시에 
+반영하며, 매핑 후 출력 재보정(tune)은 수행하지 않는다. 
+3.5. 평가 프로토콜
+ 평가는 다음 두 조건에서 수행된다. 
+·
+Ideal: 변동·고장 없이 양자화만 적용. 양자화는 결정론적이므로 noise 
+sampling은 무의미하며, baseline seed당 1회 평가한다.
+·
+Realistic: 양자화 + 변동 + stuck-at fault. noise 위치는 무작위이므로 baseline 
+seed당 noise seed를 분리해 3회 sampling(총 9회/소재) 후 평균과 
+표준편차를 보고한다.
+ 평가 지표는 multi-label 분류 표준인 Macro F1(클래스 불균형에 강건)과 
+Subset Accuracy(모든 라벨이 정확히 일치한 샘플 비율)를 모두 측정한다. 
+Threshold는 0.5로 고정하였다. 
+4. 결과
+4.1. Baseline (FP32 software) 성능
+ 3개의 baseline seed에 대해 학습된 CNN의 테스트 성능은 표 3과 같다. 
+표 3. FP32 software baseline의 3 seed 결과. macro F1의 std=0.0032로 매우 안정적.
+ 세 seed 모두 macro F1 0.98 수준의 안정적인 baseline을 학습하였으며, std가 
+0.003 수준으로 매우 작아 이후 소재 비교의 신뢰성 기반으로 사용 가능하다. 
+4.2. 4종 소재 Ideal vs Realistic 비교
+Seed
+Best epoch
+Test Subset Acc
+Test Macro F1
+42
+9
+0.9568
+0.9780
+123
+11
+0.9446
+0.9800
+456
+13
+0.9588
+0.9856
+평균±std
+?
+0.9534 ± 0.0063
+0.9812 ± 0.0032
+
+[p13]
+9
+ 각 소재별 ideal 및 realistic 조건에서의 macro F1 결과를 표 4에 
+정리하였다. 
+표 4. 4종 소재의 Ideal vs Realistic 분류 성능 (Subset Accuracy 및 Macro F1, 3 baseline seed × 
+3 noise sample = 9회 평균). ΔF1은 macro F1 기준의 절대 변화량과 상대 변화율을 분리하여 
+표기.
+ 저항비 25배 이상의 세 소재(Pt/HfOx/Ti, Ferroelectric, TaOx/Ta)는 ideal 
+조건에서 0.98 수준의 baseline에 거의 근접한 성능을 보였다. 즉 양자화 
+단독으로는 분류 성능에 큰 영향을 미치지 않는다 (Pt/HfOx/Ti의 ideal F1이 
+baseline 평균을 미세하게 상회하나 baseline std 범위 내 우연한 변동이다). 
+그러나 variation과 stuck-at fault가 더해진 realistic 조건에서는 평균 macro F1이 
+0.76~0.87로 하락하고 표준편차가 0.13~0.28로 매우 컸다. 
+ Subset Accuracy 기준으로는 더 큰 감소가 나타나(표 4), multi-label 
+분류에서 8개 결함을 동시에 정확히 맞히는 것이 부분 일치보다 훨씬 
+어려움을 보여준다. Metallic Nanowire는 ideal에서도 Subset Acc 0.08로 사실상 
+분류가 성립하지 않았다. 
+ 이와 대조적으로 Metallic Nanowire는 ideal 조건에서도 F1 0.38로 분류 
+성능이 붕괴하였다. 이는 저항비 1.97배 + 4-state 양자화의 조합이 가중치 
+분포의 대부분의 정보를 손실시키기 때문이며, realistic 조건이 추가된다고 
+하여 더 악화될 여지가 적다(realistic F1 0.33). 즉 Metallic Nanowire의 한계는 
+비이상성이 아니라 낮은 저항비(1.97×)와 4-state가 결합해 만드는 표현 가능한 
+가중치 자유도 부족 자체에 있다(두 요인의 완전한 분리는 ablation이 
+필요하며 5.4에 향후 과제로 명시). 
+Material
+Roff/Ron
+States
+Ideal 
+Subset 
+Acc
+Ideal 
+Macro 
+F1
+Realistic 
+Subset 
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 509ms:
+Acc
+Realistic 
+Macro 
+F1
+ΔF1 abs
+ΔF1 rel
+Pt/HfOx/
+Ti
+25.0×
+64
+0.9578
+0.9826
+0.5601 ± 
+0.2779
+0.7578 ± 
+0.2759
+?0.2248
+?22.88%
+Ferroelec
+tric
+333.3×
+128
+0.9526
+0.9805
+0.6992 ± 
+0.2660
+0.8570 ± 
+0.1632
+?0.1235
+?12.60%
+Metallic 
+Nanowir
+e
+1.97×
+4
+0.0813
+0.3847
+0.0518 ± 
+0.0413
+0.3288 ± 
+0.1286
+?0.0559
+?14.53%
+TaOx/Ta
+145.8×
+32
+0.9458
+0.9770
+0.7258 ± 
+0.2431
+0.8726 ± 
+0.1364
+?0.1044
+?10.69%
+
+[p14]
+10
+4.3. Worst-case 붕괴 현상 분석
+ 표 4의 큰 표준편차는 단순한 noise variance가 아니라, 동일 소재의 9회 
+noise sampling 결과가 "정상 영역"과 "붕괴 영역"의 두 그룹으로 갈리는 
+양상에서 비롯된다. 다만 표본 수가 소재당 9회로 제한되므로 통계적 의미의 
+bimodal 분포로 단정할 수는 없으며, 본 절에서는 "worst-case 붕괴 현상"으로 
+표현한다. 
+ F1 ≥ 0.88을 "good", F1 < 0.60을 "catastrophic"으로 정의했을 때 4종 
+소재의 분포는 표 5와 같다. 
+표 5. 각 소재의 per-noise 결과를 good / moderate / catastrophic 임계로 분류한 빈도.
+ 고저항비 세 소재는 약 44~56%가 baseline의 90% 이상을 유지(good)하는 
+한편, 9회 중 1회 (약 11%) 비율로 F1이 0.60 미만으로 붕괴(catastrophic)하는 
+결과가 세 소재 모두에서 일관되게 관찰되었다. Metallic Nanowire는 본 실험의 
+9회 샘플에서 noise 종류와 무관하게 모두 catastrophic 구간에 존재하여, 4-state 
+양자화에 
+따른 
+본질적 
+표현 
+한계를 
+보여준다. 
+또한 
+NW는 
+ideal 
+조건(variation=0, fault=0)에서도 이미 F1=0.38로 붕괴하므로, NW의 성능 
+저하는 fault rate 차이보다는 낮은 저항비와 4-state 양자화의 영향이 지배적인 
+것으로 해석된다(두 요인의 완전한 분리를 위한 강제 ablation은 본 연구 범위 
+외이며, 5.4에 향후 과제로 명시한다). 
+4.4. 결함 유형별 (per-class) F1 분석
+ 표 6은 4종 소재 × 두 조건에서의 결함 클래스별 F1을 보여준다. 
+데이터셋의 클래스 빈도가 균일하지 않음을 유의해야 한다(Near-Full 0.4%, 
+Scratch 2.3%로 가장 적음, Loc 48.6%, Random 51.3%로 가장 많음). 
+Material
+Good (F1≥0.88)
+Moderate 
+(0.60≤F1<0.88)
+Catastrophic 
+(F1<0.60)
+Total
+Pt/HfOx/Ti
+4/9 (44%)
+4/9 (44%)
+1/9 (11%)
+9
+Ferroelectric
+5/9 (56%)
+3/9 (33%)
+1/9 (11%)
+9
+Metallic 
+Nanowire
+0/9 (0%)
+0/9 (0%)
+9/9 (100%)
+9
+TaOx/Ta
+5/9 (56%)
+3/9 (33%)
+1/9 (11%)
+9
+
+[p15]
+11
+표 6. 4종 소재 × Ideal/Realistic 조건에서의 결함 클래스별 F1 (Ideal은 3 seed 평균, 
+Realistic은 9 sample 평균).
+ 두 
+가지 
+패턴이 
+관찰된다. 
+첫째, 
+minority 
+class인 
+Near-Full(0.4%)·Scratch(2.3%)가 모든 고저항비 소재에서 가장 낮은 F1을 
+보여(realistic Scratch 0.59~0.70), 클래스 불균형이 비이상성 조건에서 증폭됨을 
+시사한다. 둘째, Metallic Nanowire는 ideal에서도 Edge-Ring·Near-Full·Scratch의 
+F1이 약 0으로, 낮은 저항비와 4-state 결합에 따른 표현 자유도 부족으로 
+공간적으로 미세한 패턴을 식별하지 못한다. 
+5. 논의
+5.1. 저항비의 영향
+ 본 비교 조건에서는 Roff/Ron 25배 이상인 세 소재와 1.97배인 Metallic 
+Nanowire 사이의 차이가 가장 뚜렷하다. 저항비가 25배 이상인 세 소재는 
+ideal 조건에서 baseline 대비 1% 이내의 손실로 가중치 정보를 잘 보존하지만, 
+저항비 1.97배의 Metallic Nanowire는 ideal에서도 baseline의 39% 수준으로 
+추락한다. 이 차이는 컨덕턴스 범위가 좁을수록 동일한 절대 noise/양자화 
+간격이 가중치 표현에 미치는 상대 오차가 커지기 때문이다. 
+Material / 
+Condition
+Center
+Donut
+Edge-
+Loc
+Edge-
+Ring
+Loc
+Near-F
+ull
+Rando
+m
+Scratc
+h
+Pt/HfOx/Ti - 
+Ideal
+1.00
+1.00
+0.98
+0.99
+0.99
+0.93
+0.99
+0.98
+Pt/HfOx/Ti - 
+Realistic
+0.86
+0.87
+0.74
+0.78
+0.76
+0.64
+0.82
+0.59
+Ferroelectric - 
+Ideal
+1.00
+1.00
+0.98
+0.99
+0.98
+0.92
+0.99
+0.98
+Ferroelectric -
+Realistic
+0.94
+0.90
+0.90
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 results/final2_text.txt | Select-Object -Skip 590 -First 190' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 results/final2_text.txt | Select-Object -Skip 520 -First 90' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n --encoding utf-8 \"\\?|표 [0-9]|그림 [0-9]|\\[[0-9]+\\]|R\\(w\\)|Δ|\\?|\\?\" results/final2_text.txt" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 451ms:
+111:ìš”êµ¬í•˜ëŠ” ê²ƒìœ¼ë¡œ ë³´ê³ ë˜ë©° [11], ì´ëŠ” ëª¨ë°”ì¼Â·ì—£ì§€ í™˜ê²½ì—ì„œ ì¸ê³µì§€ëŠ¥ 
+156:ì²˜ë¦¬í•  ìˆ˜ ìžˆì–´ PIMì˜ íš¨ê³¼ì ì¸ ë¬¼ë¦¬ êµ¬í˜„ í›„ë³´ë¡œ í‰ê°€ëœë‹¤ [10]. 
+166:ì „ì•• ìž„ê³„ ê¸°ë°˜ì˜ ì¼ë°˜í™”ëœ ë©¤ë¦¬ìŠ¤í„° ê±°ë™ ëª¨ë¸ë¡œ [1], ë‹¤ì–‘í•œ ì†Œìž¬ì˜ ì‹¤ì¸¡ 
+174: R(w) = Ron + (Roff âˆ’ Ron) w (0 â‰¤ w â‰¤ 1) 
+185:ì‚¬ìš©í•˜ì˜€ë‹¤ [2]. ì´ 38,015ìž¥ì˜ 52Ã—52 ì›¨ì´í¼ ë§µìœ¼ë¡œ êµ¬ì„±ë˜ë©°, í”½ì…€ ê°’ì€ 
+190:8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ì˜ ëŒ€í‘œì ì¸ ê³µê°„ íŒ¨í„´ì€ ê·¸ë¦¼ 1ê³¼ ê°™ë‹¤. 
+194:ê·¸ë¦¼ 1. MixedWM38ì˜ 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ ë‹¨ì¼ê²°í•¨ ì˜ˆì‹œ (í°=ì›¨ì´í¼ ë°–, íšŒìƒ‰=ì •ìƒ die, 
+209: ëª¨ë¸ êµ¬ì¡°ëŠ” ê·¸ë¦¼ 2ì™€ ê°™ë‹¤. ìž…ë ¥ 52Ã—52 ì›¨ì´í¼ ë§µì´ 3ê°œì˜ í•©ì„±ê³± 
+212:ê³„ì¸µì˜ ìƒì„¸ ì‚¬ì–‘ì€ í‘œ 1ê³¼ ê°™ìœ¼ë©°, ìž¬í˜„ ê°€ëŠ¥í•œ ë‹¨ìˆœí•œ í˜•íƒœë¡œ ê³ ì •í•˜ì˜€ë‹¤. 
+216:ê·¸ë¦¼ 2. WaferCNN êµ¬ì¡°. 3ê°œ í•©ì„±ê³± ë¸”ë¡ì´ êµ­ì†Œ íŒ¨í„´ì„ ì¶”ì¶œí•˜ê³ (MaxPoolë¡œ í•´ìƒë„ Â½ì”© 
+218:í‘œ 1. CNN ëª¨ë¸ êµ¬ì¡°. ì´ íŒŒë¼ë¯¸í„° ìˆ˜ 319,592.
+226: ë³¸ ì—°êµ¬ì˜ í•µì‹¬ ë¹„êµ ëŒ€ìƒì¸ 4ì¢… ì†Œìž¬ì˜ ë¬¼ë¦¬ íŒŒë¼ë¯¸í„°ëŠ” í‘œ 2ì— 
+230:í‘œ 2. 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ì˜ conductance mapping ë° ë¹„ì´ìƒì„± íŒŒë¼ë¯¸í„°. Ron, RoffëŠ” ì‹¤ì¸¡ ë¬¸í—Œ, 
+301:[6]
+306: ì—°êµ¬ ì „ì²´ íë¦„ì€ ê·¸ë¦¼ 3ê³¼ ê°™ë‹¤. ì´ ì¤‘ í•™ìŠµëœ CNN ê°€ì¤‘ì¹˜ë¥¼ ê° ì†Œìž¬ì˜ 
+310:ê·¸ë¦¼ 3. ì „ì²´ í‰ê°€ íë¦„. ì†Œí”„íŠ¸ì›¨ì–´ì—ì„œ í•™ìŠµí•œ CNN ê°€ì¤‘ì¹˜ë¥¼ ì†Œìž¬ë³„ ë©¤ë¦¬ìŠ¤í„° 
+350: 3ê°œì˜ baseline seedì— ëŒ€í•´ í•™ìŠµëœ CNNì˜ í…ŒìŠ¤íŠ¸ ì„±ëŠ¥ì€ í‘œ 3ê³¼ ê°™ë‹¤. 
+351:í‘œ 3. FP32 software baselineì˜ 3 seed ê²°ê³¼. macro F1ì˜ std=0.0032ë¡œ ë§¤ìš° ì•ˆì •ì .
+378: ê° ì†Œìž¬ë³„ ideal ë° realistic ì¡°ê±´ì—ì„œì˜ macro F1 ê²°ê³¼ë¥¼ í‘œ 4ì— 
+380:í‘œ 4. 4ì¢… ì†Œìž¬ì˜ Ideal vs Realistic ë¶„ë¥˜ ì„±ëŠ¥ (Subset Accuracy ë° Macro F1, 3 baseline seed Ã— 
+381:3 noise sample = 9íšŒ í‰ê· ). Î”F1ì€ macro F1 ê¸°ì¤€ì˜ ì ˆëŒ€ ë³€í™”ëŸ‰ê³¼ ìƒëŒ€ ë³€í™”ìœ¨ì„ ë¶„ë¦¬í•˜ì—¬ 
+389: Subset Accuracy ê¸°ì¤€ìœ¼ë¡œëŠ” ë” í° ê°ì†Œê°€ ë‚˜íƒ€ë‚˜(í‘œ 4), multi-label 
+415:Î”F1 abs
+416:Î”F1 rel
+469: í‘œ 4ì˜ í° í‘œì¤€íŽ¸ì°¨ëŠ” ë‹¨ìˆœí•œ noise varianceê°€ ì•„ë‹ˆë¼, ë™ì¼ ì†Œìž¬ì˜ 9íšŒ 
+475:ì†Œìž¬ì˜ ë¶„í¬ëŠ” í‘œ 5ì™€ ê°™ë‹¤. 
+476:í‘œ 5. ê° ì†Œìž¬ì˜ per-noise ê²°ê³¼ë¥¼ good / moderate / catastrophic ìž„ê³„ë¡œ ë¶„ë¥˜í•œ ë¹ˆë„.
+495: í‘œ 6ì€ 4ì¢… ì†Œìž¬ Ã— ë‘ ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1ì„ ë³´ì—¬ì¤€ë‹¤. 
+529:í‘œ 6. 4ì¢… ì†Œìž¬ Ã— Ideal/Realistic ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1 (Idealì€ 3 seed í‰ê· , 
+668:degradationì´ ë‚˜íƒ€ë‚¬ë‹¤(í‘œ 5). ì´ëŠ” í‰ê· ë§Œìœ¼ë¡œ ì†Œìž¬ë¥¼ í‰ê°€í•˜ëŠ” ê´€í–‰ì— ëŒ€í•œ 
+684:í•œì •ëœ ê²°ê³¼ë¡œ, WM-811K [7] ë“± ë‹¤ë¥¸ ë°ì´í„°ì…‹ì´ë‚˜ ResNet ê³„ì—´ ëŒ€ê·œëª¨ 
+730:[1] S. Kvatinsky, M. Ramadan, E. G. Friedman, and A. Kolodny, "VTEAM: A 
+733:[2] J. Wang, C. Xu, Z. Yang, J. Zhang, and X. Li, "Deformable Convolutional 
+737:[3] E. Yalon, A. Gavrilov, S. Cohen, D. Mistele, B. Meyler, J. Salzman, and D. 
+741:[4] A. Chanthbouala, V. Garcia, R. O. Cherifi, K. Bouzehouane, S. Fusil, X. Moya, 
+745:[5] S. L. Johnson, A. Sundararajan, D. P. Hunley, and D. R. Strachan, "Memristive 
+748:[6] C. Yakopcic, T. M. Taha, D. J. Mountain, T. Salter, M. J. Marinella, and M. 
+752:[7] M.-J. Wu, J.-S. R. Jang, and J.-L. Chen, "Wafer Map Failure Pattern Recognition 
+755:[8] C. Lammie, W. Xiang, B. Linares-Barranco, and M. R. Azghadi, "MemTorch: 
+761:[9] S. Yu and P.-Y. Chen, "Emerging Memory Technologies: Recent Trends and 
+764:[10] M. A. Zidan, J. P. Strachan, and W. D. Lu, "The Future of Electronics Based on 
+766:[11] M. Horowitz, "Computing's Energy Problem (and what we can do about it)," in 
+769:[12] Y.-H. Chen, T. Krishna, J. S. Emer, and V. Sze, "Eyeriss: An Energy-Efficient 
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 487ms:
+TaOx/Ta
+5/9 (56%)
+3/9 (33%)
+1/9 (11%)
+9
+
+[p15]
+11
+표 6. 4종 소재 × Ideal/Realistic 조건에서의 결함 클래스별 F1 (Ideal은 3 seed 평균, 
+Realistic은 9 sample 평균).
+ 두 
+가지 
+패턴이 
+관찰된다. 
+첫째, 
+minority 
+class인 
+Near-Full(0.4%)·Scratch(2.3%)가 모든 고저항비 소재에서 가장 낮은 F1을 
+보여(realistic Scratch 0.59~0.70), 클래스 불균형이 비이상성 조건에서 증폭됨을 
+시사한다. 둘째, Metallic Nanowire는 ideal에서도 Edge-Ring·Near-Full·Scratch의 
+F1이 약 0으로, 낮은 저항비와 4-state 결합에 따른 표현 자유도 부족으로 
+공간적으로 미세한 패턴을 식별하지 못한다. 
+5. 논의
+5.1. 저항비의 영향
+ 본 비교 조건에서는 Roff/Ron 25배 이상인 세 소재와 1.97배인 Metallic 
+Nanowire 사이의 차이가 가장 뚜렷하다. 저항비가 25배 이상인 세 소재는 
+ideal 조건에서 baseline 대비 1% 이내의 손실로 가중치 정보를 잘 보존하지만, 
+저항비 1.97배의 Metallic Nanowire는 ideal에서도 baseline의 39% 수준으로 
+추락한다. 이 차이는 컨덕턴스 범위가 좁을수록 동일한 절대 noise/양자화 
+간격이 가중치 표현에 미치는 상대 오차가 커지기 때문이다. 
+Material / 
+Condition
+Center
+Donut
+Edge-
+Loc
+Edge-
+Ring
+Loc
+Near-F
+ull
+Rando
+m
+Scratc
+h
+Pt/HfOx/Ti - 
+Ideal
+1.00
+1.00
+0.98
+0.99
+0.99
+0.93
+0.99
+0.98
+Pt/HfOx/Ti - 
+Realistic
+0.86
+0.87
+0.74
+0.78
+0.76
+0.64
+0.82
+0.59
+Ferroelectric - 
+Ideal
+1.00
+1.00
+0.98
+0.99
+0.98
+0.92
+0.99
+0.98
+Ferroelectric -
+Realistic
+0.94
+0.90
+0.90
+0.94
+0.81
+0.79
+0.87
+0.69
+Metallic 
+Nanowire -
+Ideal
+0.29
+0.73
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 501ms:
+0.99
+0.98
+0.92
+0.99
+0.98
+Ferroelectric -
+Realistic
+0.94
+0.90
+0.90
+0.94
+0.81
+0.79
+0.87
+0.69
+Metallic 
+Nanowire -
+Ideal
+0.29
+0.73
+0.67
+0.00
+0.67
+0.00
+0.72
+0.01
+Metallic 
+Nanowire - 
+Realistic
+0.19
+0.44
+0.38
+0.27
+0.57
+0.15
+0.46
+0.17
+TaOx/Ta -
+Ideal
+1.00
+1.00
+0.98
+0.99
+0.98
+0.92
+0.99
+0.97
+TaOx/Ta -
+Realistic
+0.98
+0.92
+0.92
+0.95
+0.83
+0.80
+0.89
+0.70
+
+[p16]
+12
+ 다만 본 연구의 실험만으로 "25배가 보편적 문턱값"이라 단정하기는 
+어렵다. 본 연구는 4종 소재의 이산적인 비교이며, 저항비 sweep(예: 5×, 
+10×, 20×, 50×)을 수행하지 않았기 때문이다. "본 연구의 조건에서 25배 
+이상이면 양자화로 인한 ideal 성능 손실이 1% 이내였다"가 정직한 
+결론이다. 
+5.2. Metallic Nanowire의 본질적 한계
+ Metallic Nanowire는 저항비가 1.97배로 낮아 컨덕턴스 범위가 좁은 데다, 
+4-state 양자화가 가중치를 4개의 칸으로 압축한다. 32만 개의 부동소수점 
+가중치가 가질 수 있는 다양한 값이 4개의 이산 값으로 반올림되는 과정에서, 
+CNN이 학습한 미세한 결정 경계가 대부분 소실된다. 이 한계는 단순 사후 
+보정만으로는 회복하기 어렵고, quantization-aware training(QAT)이나 더 많은 
+conductance level을 갖는 변형 구조 등이 필요하다. 
+ 다만 Metallic Nanowire는 동작 전압이 낮고(voff=0.145 V) variation이 작아 
+다른 응용에는 유리할 수 있으며, 본 연구의 결론은 "다단계 가중치 정밀도가 
+필요한 PIM 추론에 부적합"하다는 것이지 소재 자체의 부정은 아니다. 
+5.3. Worst-case 붕괴 현상의 PIM 함의
+ 고저항비 세 소재는 평균 성능이 비슷해도 9회 중 1회 catastrophic 
+degradation이 나타났다(표 5). 이는 평균만으로 소재를 평가하는 관행에 대한 
+경고로, 그 원인은 stuck-at fault가 가중치 행렬의 어느 위치에 박히는지에 
+있다 ? 핵심 가중치를 hit하면 분류기 전체가 무너지지만, 중요도가 낮은 
+가중치를 hit하면 거의 영향이 없다. 
+ 따라서 실제 PIM 가속기 설계에서는 (i) write-verify를 통한 stuck-at 셀의 
+사전 검출, (ii) row/column-shifting 같은 매핑 다양화, (iii) ECC나 redundancy 
+같은 fault tolerance 메커니즘이 동반되어야 한다. 본 연구는 이러한 대책이 
+적용되지 않은 보수적 베이스라인이며, 향후 fault tolerance 적용 후 worst-case 
+붕괴 빈도가 어떻게 변화하는지를 충분한 표본으로 정량화하는 후속 연구가 
+필요하다. 
+
+[p17]
+13
+5.4. 한계 및 향후 과제
+·
+단일 데이터셋·경량 CNN. MixedWM38과 약 32만 파라미터의 얕은 CNN에 
+한정된 결과로, WM-811K [7] 등 다른 데이터셋이나 ResNet 계열 대규모 
+모델에서의 소재 간 순위 보존은 검증되지 않았다.
+·
+저항비 sweep 미수행. 4종 소재의 이산 비교만 수행하여 저항비-성능의 
+연속적 함수 형태는 결정할 수 없다.
+·
+회로·시간적 비이상성 미반영. sneak path·IR drop·ADC 양자화 등 어레이 
+수준 
+비이상성과 
+drift·endurance 
+같은 
+장기 
+변화는 
+본 
+가중치 
+수준·inference-only 평가에서 제외하였고, LRS/HRS variation도 단일 
+가우시안으로 단순화하였다.
+·
+표본 한계. 소재당 9회(3 seed × 3 noise)로, 9회 중 1회 사건의 binomial 95% 
+신뢰구간은 약 [0.3%, 48%]에 이른다. 따라서 본문의 "11%"는 발생 확률 
+추정치가 아니라 본 표본의 관찰 빈도이며, 정량적 확률 추정·통계적 
+유의성 검정에는 더 많은 Monte Carlo 반복이 필요하다.
+6. 결론
+ 본 연구는 VTEAM 모델 문헌의 소재별 파라미터를 활용한 정적 
+conductance mapping 환경에서 4종 멤리스터 소재 (Pt/HfOx/Ti, Ferroelectric, 
+Metallic Nanowire, TaOx/Ta)의 PIM 환경 웨이퍼 결함 분류 성능을 정량 
+비교하였다. 양자화, device-to-device variation, stuck-at fault의 세 비이상성을 
+동시에 적용한 9회 Monte Carlo 평가에서 다음 세 가지를 확인하였다. 
+ 첫째, Roff/Ron 25배 이상의 세 소재는 ideal 조건에서 baseline의 99% 이상의 
+분류 성능을 유지하였으나, realistic 조건에서는 평균 macro F1이 0.76~0.87로 
+하락하였다. 둘째, 저항비 1.97배의 Metallic Nanowire는 낮은 저항비와 4-state 
+양자화의 결합에 따른 표현 한계로 ideal 조건에서도 분류 성능이 붕괴(F1 
+0.38)하여, 다단계 가중치 정밀도가 필요한 PIM 추론 응용에는 부적합함을 
+확인하였다. 셋째, 동일 소재 내에서도 stuck-at fault의 위치 무작위성에 의해 
+9회 중 1회 (약 11%) 비율로 catastrophic degradation이 관찰되었으며, 이는 
+
+[p18]
+14
+worst-case 붕괴 위험을 정성적으로 시사한다(표본 9개 한계상 통계적 분포 
+형태로는 단정하지 않는다). 
+ 본 연구의 결과는 PIM용 멤리스터 소재 선정에서 (i) Roff/Ron 충분한 동적 
+범위 확보, (ii) 평균 성능과 함께 worst-case 위험에 대한 평가, (iii) fault 
+tolerance 메커니즘 병행의 필요성을 제안한다. 본 연구의 보수적 평가 
+프로토콜은 향후 PIM 기반 결함 분류 시스템을 설계할 때 평균 성능과 
+worst-case 위험을 함께 검토하는 기초 검증 절차로 활용될 수 있다. 
+참 고 문 헌
+[1] S. Kvatinsky, M. Ramadan, E. G. Friedman, and A. Kolodny, "VTEAM: A 
+General Model for Voltage-Controlled Memristors," IEEE Transactions on 
+Circuits and Systems II: Express Briefs, vol. 62, no. 8, pp. 786-790, Aug. 2015.
+[2] J. Wang, C. Xu, Z. Yang, J. Zhang, and X. Li, "Deformable Convolutional 
+Networks for Efficient Mixed-type Wafer Defect Pattern Recognition," IEEE 
+Transactions on Semiconductor Manufacturing, vol. 33, no. 4, pp. 587-596, Nov. 
+2020. DOI: 10.1109/TSM.2020.3020985
+[3] E. Yalon, A. Gavrilov, S. Cohen, D. Mistele, B. Meyler, J. Salzman, and D. 
+Ritter, "Resistive Switching in HfO2 Probed by a Metal-Insulator-Semiconductor 
+Bipolar Transistor," IEEE Electron Device Letters, vol. 33, no. 1, pp. 11-13, Jan. 
+2012.
+[4] A. Chanthbouala, V. Garcia, R. O. Cherifi, K. Bouzehouane, S. Fusil, X. Moya, 
+S. Xavier, H. Yamada, C. Deranlot, N. D. Mathur, M. Bibes, A. Barthelemy, and 
+J. Grollier, "A Ferroelectric Memristor," Nature Materials, vol. 11, no. 10, pp. 
+860-864, Oct. 2012.
+[5] S. L. Johnson, A. Sundararajan, D. P. Hunley, and D. R. Strachan, "Memristive 
+Switching of Single-Component Metallic Nanowires," Nanotechnology, vol. 21, 
+no. 12, Art. no. 125204, Mar. 2010.
+[6] C. Yakopcic, T. M. Taha, D. J. Mountain, T. Salter, M. J. Marinella, and M. 
+McLean, "Memristor Model Optimization Based on Parameter Extraction from 
+Device Characterization Data," IEEE Transactions on Computer-Aided Design of 
+Integrated Circuits and Systems, vol. 39, no. 5, pp. 1084-1095, May 2020.
+[7] M.-J. Wu, J.-S. R. Jang, and J.-L. Chen, "Wafer Map Failure Pattern Recognition 
+and Similarity Ranking for Large-Scale Data Sets," IEEE Transactions on 
+Semiconductor Manufacturing, vol. 28, no. 1, pp. 1-12, Feb. 2015.
+[8] C. Lammie, W. Xiang, B. Linares-Barranco, and M. R. Azghadi, "MemTorch: 
+
+[p19]
+15
+An Open-Source Simulation Framework for Memristive Deep Learning 
+Systems," Neurocomputing, vol. 485, pp. 124-133, May 2022.
+[9] S. Yu and P.-Y. Chen, "Emerging Memory Technologies: Recent Trends and 
+Prospects," IEEE Solid-State Circuits Magazine, vol. 8, no. 2, pp. 43-56, Spring 
+2016.
+[10] M. A. Zidan, J. P. Strachan, and W. D. Lu, "The Future of Electronics Based on 
+Memristive Systems," Nature Electronics, vol. 1, no. 1, pp. 22-29, Jan. 2018.
+[11] M. Horowitz, "Computing's Energy Problem (and what we can do about it)," in 
+Proc. IEEE International Solid-State Circuits Conference (ISSCC), Feb. 2014, pp. 
+10-14.
+[12] Y.-H. Chen, T. Krishna, J. S. Emer, and V. Sze, "Eyeriss: An Energy-Efficient 
+Reconfigurable Accelerator for Deep Convolutional Neural Networks," IEEE 
+Journal of Solid-State Circuits, vol. 52, no. 1, pp. 127-138, Jan. 2017.
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+2026-05-21T07:29:56.311136Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Encoding UTF8 -Path results/final2_text.txt -Pattern '\\?' | ForEach-Object { \""'$($_.LineNumber): $($_.Line)" }'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Encoding UTF8 -Path results/final2_text.txt -Pattern '\\?' | ForEach-Object { \""'$($_.LineNumber): $($_.Line)" }' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Encoding UTF8 -Path results/final2_text.txt -Pattern '\\?' | ForEach-Object { \""'$($_.LineNumber): $($_.Line)" }'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Encoding UTF8 -Path results/final2_text.txt -Pattern '\\?'" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 358ms:
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+2026-05-21T07:30:10.531333Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 results/final2_text.txt | Select-Object -Skip 18 -First 12 | Format-Hex'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 results/final2_text.txt | Select-Object -Skip 18 -First 12 | Format-Hex' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 results/final2_text.txt | Select-Object -Skip 18 -First 12 | Format-Hex'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "findstr /n \"심사위원\" results\\final2_text.txt" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+2026-05-21T07:30:18.773519Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.3 seconds
+Output:
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ exited 1 in 346ms:
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 results/final2_text.txt | Select-Object -Skip 15 -First 18' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 446ms:
+A Comparative Study of Four Memristive Material 
+Candidates for Processing-In-Memory Wafer Defect 
+Classification
+지도교수  이종환
+본 논문을 학사학위 논문으로 제출함
+상명대학교 공과대학
+시스템반도체공학과
+임 창 우
+2026년  5월
+
+[p3]
+임 창 우의 
+학사학위 논문을 인준함
+               심사위원장              ?
+ 
+심사위원                ?
+ 
+심사위원                ?
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+수치 자체는 큰 틀에서 초록·결과·결론이 서로 맞습니다. 다만 추출 순서상 표 캡션과 표 본문이 분리되어 보이는 곳이 있어, 원본 HWP에서 실제 시각 배치가 붙어 있는지 확인해야 합니다.
+codex
+내용 기준으로는 **제출 가능**입니다. 치명적 수치 불일치, 깨진 표/그림 참조, 초록-본문-결론 간 핵심 주장 불일치는 보이지 않습니다.
+
+다만 제출 직전 원본 HWP에서 아래 2개만 반드시 눈으로 확인하세요.
+
+1. **표 배치/캡션 연결 확인 필요**
+   - 추출 텍스트 기준으로 `표 1`의 표 본문이 `표 2` 캡션 뒤에 나오고, `표 6`의 표 본문이 `5.1 저항비의 영향` 문단 뒤에 나옵니다.
+   - HWP 원본에서 캡션과 표가 시각적으로 붙어 있으면 문제 없습니다. 실제로 떨어져 있으면 양식상 감점 리스크가 큽니다.
+
+2. **인준서 심사위원 서명란 `?` 확인**
+   - `[p3]`에서 `심사위원장 ?`, `심사위원 ?`로 추출됩니다.
+   - 원본에서 도장/서명 자리 표시가 정상이라면 문제 없습니다. 실제 물음표 문자가 인쇄된다면 수정해야 합니다.
+
+수치 검산은 문제 없습니다. `F1 0.76~0.87`, `std 0.13~0.28`, `Metallic Nanowire ideal F1 0.38`, `9회 중 1회 = 약 11%`, baseline `0.9812 ± 0.0032` 모두 본문·표·결론에서 일관됩니다. 결론의 핵심 3가지도 명확하고, “11%는 확률 추정이 아니라 관찰 빈도”라고 한계까지 방어되어 있어 디펜스 리스크도 낮습니다.
+tokens used
+129,043
+내용 기준으로는 **제출 가능**입니다. 치명적 수치 불일치, 깨진 표/그림 참조, 초록-본문-결론 간 핵심 주장 불일치는 보이지 않습니다.
+
+다만 제출 직전 원본 HWP에서 아래 2개만 반드시 눈으로 확인하세요.
+
+1. **표 배치/캡션 연결 확인 필요**
+   - 추출 텍스트 기준으로 `표 1`의 표 본문이 `표 2` 캡션 뒤에 나오고, `표 6`의 표 본문이 `5.1 저항비의 영향` 문단 뒤에 나옵니다.
+   - HWP 원본에서 캡션과 표가 시각적으로 붙어 있으면 문제 없습니다. 실제로 떨어져 있으면 양식상 감점 리스크가 큽니다.
+
+2. **인준서 심사위원 서명란 `?` 확인**
+   - `[p3]`에서 `심사위원장 ?`, `심사위원 ?`로 추출됩니다.
+   - 원본에서 도장/서명 자리 표시가 정상이라면 문제 없습니다. 실제 물음표 문자가 인쇄된다면 수정해야 합니다.
+
+수치 검산은 문제 없습니다. `F1 0.76~0.87`, `std 0.13~0.28`, `Metallic Nanowire ideal F1 0.38`, `9회 중 1회 = 약 11%`, baseline `0.9812 ± 0.0032` 모두 본문·표·결론에서 일관됩니다. 결론의 핵심 3가지도 명확하고, “11%는 확률 추정이 아니라 관찰 빈도”라고 한계까지 방어되어 있어 디펜스 리스크도 낮습니다.

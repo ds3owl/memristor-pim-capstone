@@ -1,0 +1,1154 @@
+Reading additional input from stdin...
+OpenAI Codex v0.124.0 (research preview)
+--------
+workdir: C:\Users\ds3owl\Desktop\memristor_pim_capstone
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: none
+reasoning summaries: none
+session id: 019e48c5-ba83-7a83-ac54-e77d7377da31
+--------
+user
+[검토 요청] 학부 졸업논문 본문을 합의된 전략대로 1차 압축했다. 압축본을 검토해줘.
+
+대상 파일: paper_b5.html (base64 없음, 직접 읽어줘. <main class="flow"> 안이 본문, 그 앞은 양식 front matter)
+
+압축 전/후: 본문 순수 산문 11,917자 -> 9,026자 (약 24% 감축).
+
+이번에 적용한 변경(합의 사항):
+1. VTEAM 동역학 미분방정식 3줄 삭제, 정적식 R(w)=Ron+(Roff-Ron)w만 유지(2.3)
+2. "논문 구성 안내" 문단 삭제(1.3 끝)
+3. 3.4 비이상성 주입: LRS/HRS variation 장황한 설명·NW sensitivity 반복 축약
+4. 4.2/4.4: 표 수치를 줄글로 반복한 부분 삭제, 해석만 남김
+5. 5.3: 4.3과 중복되는 11% 서술 축약(메커니즘 통찰만)
+6. 5.4: 한계 6개 불릿 -> 4개 통합, "11%=binomial CI [0.3%,48%], 관찰빈도(확률추정 아님)" 정직성 서술을 이 한 곳으로 격리
+
+보존 의도: 핵심 발견 3개(저항비 25x 임계분기 / NW 4-state 본질 한계 / 9회중 1회 worst-case 붕괴), 표 1~6, 동일조건 비교, "11%=관찰빈도" 정직성.
+
+평가해줘 (간결하게, 항목별):
+A. 핵심 내용 보존 — 3대 발견·표·정직성 서술이 다 살아있나? 압축으로 사라지면 안 될 게 사라졌나?
+B. 정확성 — 압축 과정에서 수치/논리 오류나 어색한 연결, 끊긴 문맥 생겼나?
+C. 입문자 가독성 — 처음 보는 사람이 흐름을 따라갈 수 있나? (그림 3개는 아직 미삽입, 다음 단계 예정)
+D. 추가 압축 여지 / 과압축 — 더 줄여도 되는 곳, 혹은 너무 줄여서 복원이 필요한 곳.
+칭찬 말고 고칠 점 위주로.
+codex
+`paper_b5.html`의 본문만 기준으로 읽고, 압축으로 생긴 누락·논리 단절·수치 보존 여부를 먼저 확인하겠습니다. 쓰기 작업 없이 검토만 진행합니다.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Raw -LiteralPath 'paper_b5.html'" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"25|4-state|4 state|11%|0\\.3|48|표|Table|worst|Worst|9회|1회|VTEAM|R\\(w\\)|Ron|Roff|NW|variation|LRS|HRS\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 388ms:
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬ ?Œë¼ë¯¸í„°ë¥??œìš©??PIM ?˜ê²½ ?¨ì´??ê²°í•¨ ë¶„ë¥˜ ?±ëŠ¥ ë¹„êµ ?°êµ¬</title>
+<style>
+  @page { size: 182mm 257mm; margin: 15mm 25mm 15mm 25mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "?¨ì´ˆë¡¬ë°”??, "ë°”íƒ•", Batang, "Times New Roman", serif;
+    font-size: 10.5pt; line-height: 1.6; color: #111; margin: 0;
+    background: #8a9099;
+  }
+  /* ?”ë©´: ì¢…ì´ ???¥ì²˜??ë³´ì´ê²?*/
+  .sheet {
+    width: 182mm; min-height: 257mm; padding: 15mm 25mm;
+    margin: 8mm auto; background: #fff;
+    box-shadow: 0 1px 8px rgba(0,0,0,.45);
+  }
+  .flow {                      /* ë³¸ë¬¸(?¬ëŸ¬ ?˜ì´ì§€ê°€ ?´ì–´ì§? */
+    width: 182mm; padding: 15mm 25mm; margin: 8mm auto;
+    background: #fff; box-shadow: 0 1px 8px rgba(0,0,0,.45);
+  }
+  h1 { font-size: 15pt; font-weight: bold; margin: 9mm 0 4mm; }
+  h2 { font-size: 12pt; font-weight: bold; margin: 6mm 0 3mm; }
+  h3 { font-size: 11pt; margin: 5mm 0 2mm; }
+  p { text-align: justify; margin: 4px 0; text-indent: 1em; }
+  p.noindent { text-indent: 0; }
+  table { border-collapse: collapse; margin: 6px auto; font-size: 9pt; }
+  th, td { border: 1px solid #555; padding: 3px 7px; text-align: center; }
+  th { background: #eee; }
+  .caption { text-align: center; font-size: 9pt; font-style: italic; color: #444; margin: 3px 0 10px; }
+  .figure { text-align: center; margin: 10px 0; page-break-inside: avoid; }
+  .figure img { max-width: 95%; border: 1px solid #ccc; }
+  .equation { text-align: center; font-style: italic; margin: 6px 0; }
+  .keywords { font-size: 9.5pt; color: #333; }
+  .references { font-size: 9.5pt; }
+  .references ol { padding-left: 20px; }
+  .references li { margin: 3px 0; text-align: left; text-indent: 0; }
+  /* front matter */
+  .cover, .inner, .approval { text-align: center; }
+  .cover .deg { font-size: 16pt; font-weight: bold; margin: 18mm 0 28mm; letter-spacing: 4px; }
+  .ko-title { font-size: 17pt; font-weight: bold; line-height: 1.6; margin: 8mm 0; }
+  .en-title { font-size: 11pt; color: #444; line-height: 1.5; margin: 6mm 0; }
+  .fm-info { font-size: 12pt; line-height: 2.2; margin-top: 16mm; }
+  .approval .judge { text-align: left; width: 70%; margin: 6mm auto; font-size: 12pt; line-height: 3; }
+  .toc h1 { text-align:center; border:none; }
+  .toc ul { list-style: none; padding-left: 0; font-size: 10.5pt; }
+  .toc li { padding: 2.5px 0; }
+  .toc li.s1 { padding-left: 14px; }
+  .toc li.s2 { padding-left: 30px; color:#333; }
+  @media print {
+    body { background: #fff; }
+    .sheet, .flow { width: auto; min-height: 0; margin: 0; padding: 0; box-shadow: none; }
+    .sheet { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+<section class="sheet cover">
+  <div class="deg">?™ì‚¬?™ìœ„?¼ë¬¸</div>
+  <div class="ko-title">4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬ ?Œë¼ë¯¸í„°ë¥??œìš©??br>PIM ?˜ê²½ ?¨ì´??ê²°í•¨ ë¶„ë¥˜ ?±ëŠ¥ ë¹„êµ ?°êµ¬</div>
+  <div class="en-title">A Comparative Study of Four Memristive Material Candidates<br>for Processing-In-Memory Wafer Defect Classification</div>
+  <div class="fm-info">
+    ?ëª…?€?™êµ ê³µê³¼?€??br>?œìŠ¤?œë°˜?„ì²´ê³µí•™ê³?br>??ì°???br><br>2026?„ã€€ ?€??
+  </div>
+</section>
+<section class="sheet inner">
+  <div class="ko-title" style="margin-top:14mm">4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬ ?Œë¼ë¯¸í„°ë¥??œìš©??br>PIM ?˜ê²½ ?¨ì´??ê²°í•¨ ë¶„ë¥˜ ?±ëŠ¥ ë¹„êµ ?°êµ¬</div>
+  <div class="en-title">A Comparative Study of Four Memristive Material Candidates<br>for Processing-In-Memory Wafer Defect Classification</div>
+  <div class="fm-info" style="margin-top:10mm">
+    ì§€?„êµ?˜ã€€??ì¢???br><br>
+    ???¼ë¬¸???™ì‚¬?™ìœ„ ?¼ë¬¸?¼ë¡œ ?œì¶œ??br><br>
+    2026?„ã€€ ?€??br><br>
+    ?ëª…?€?™êµ ê³µê³¼?€??br>?œìŠ¤?œë°˜?„ì²´ê³µí•™ê³?br>??ì°???
+  </div>
+</section>
+<section class="sheet approval">
+  <div class="ko-title" style="margin-top:30mm">?„ì°½?°ì˜ ?™ì‚¬?™ìœ„ ?¼ë¬¸??br>?¸ì???/div>
+  <div class="judge" style="margin-top:24mm">
+    ?¬ì‚¬?„ì›?¥ã€€?€?€?€?€?€?€?€?€?€(??<br>
+    ?¬ì‚¬?„ì›?€?€?€?€?€?€?€?€?€?€?€(??<br>
+    ?¬ì‚¬?„ì›?€?€?€?€?€?€?€?€?€?€?€(??
+  </div>
+  <div class="fm-info" style="margin-top:20mm">?ëª…?€?™êµ ê³µê³¼?€??br><br>2026?„ã€€ ?€??/div>
+</section>
+<section class="sheet toc">
+  <h1>ì°¨ã€€?€ë¡€</h1>
+  <ul>
+    <li><b>êµ?¬¸ ?”ì•½</b></li>
+    <li><b>1. ?œë¡ </b></li>
+    <li class="s1">1.1 ?°êµ¬ ë°°ê²½</li>
+    <li class="s1">1.2 ? í–‰ ?°êµ¬???œê³„</li>
+    <li class="s1">1.3 ë³??°êµ¬??ê¸°ì—¬</li>
+    <li><b>2. ?´ë¡ ??ë°°ê²½</b></li>
+    <li class="s1">2.1 Processing-In-Memory (PIM)</li>
+    <li class="s1">2.2 ë©¤ë¦¬?¤í„° ?¬ë¡œ?¤ë°” ?´ë ˆ??/li>
+    <li class="s1">2.3 VTEAM ëª¨ë¸</li>
+    <li class="s1">2.4 ?¨ì´??ê²°í•¨ ë¶„ë¥˜?€ CNN</li>
+    <li><b>3. ë°©ë²•ë¡?/b></li>
+    <li class="s1">3.1 ?°ì´?°ì…‹</li>
+    <li class="s1">3.2 CNN ëª¨ë¸ êµ¬ì¡°</li>
+    <li class="s1">3.3 4ì¢??Œìž¬ ?Œë¼ë¯¸í„°</li>
+    <li class="s1">3.4 ë§¤í•‘Â·?‘ìž??ë°?ë¹„ì´?ì„± ëª¨ë¸</li>
+    <li class="s1">3.5 ?‰ê? ?„ë¡œ? ì½œ</li>
+    <li><b>4. ê²°ê³¼</b></li>
+    <li class="s1">4.1 Baseline (FP32 software) ?±ëŠ¥</li>
+    <li class="s1">4.2 4 ?Œìž¬ Ideal vs Realistic ë¹„êµ</li>
+    <li class="s1">4.3 Worst-case ë¶•ê´´ ?„ìƒ ë¶„ì„</li>
+    <li class="s1">4.4 ê²°í•¨ ? í˜•ë³?(per-class) F1 ë¶„ì„</li>
+    <li><b>5. ?¼ì˜</b></li>
+    <li class="s1">5.1 ?€??¹„???í–¥</li>
+    <li class="s1">5.2 Metallic Nanowire??ë³¸ì§ˆ???œê³„</li>
+    <li class="s1">5.3 Worst-case ë¶•ê´´ ?„ìƒ??PIM ?¨ì˜</li>
+    <li class="s1">5.4 ?œê³„ ë°??¥í›„ ê³¼ì œ</li>
+    <li><b>6. ê²°ë¡ </b></li>
+    <li><b>ì°¸ê³ ë¬¸í—Œ</b></li>
+  </ul>
+</section>
+<section class="sheet summary">
+  <h1 style="text-align:center;border:none">êµ?ë¬?????/h1>
+  <p class="noindent"><p class="noindent">
+  Processing-In-Memory (PIM) ?„í‚¤?ì²˜???¸ê³µì§€??ê°€?ê¸°??ë©”ëª¨ë¦??°ì‚° ë³‘ëª©???´ê²°??ì°¨ì„¸?€ ê¸°ìˆ ë¡?ì£¼ëª©ë°›ê³  ?ˆë‹¤.
+  ?¹ížˆ ë©¤ë¦¬?¤í„°(memristor) ê¸°ë°˜ ?¬ë¡œ?¤ë°” ?´ë ˆ?´ëŠ” ê°€ì¤‘ì¹˜ ?€?¥ê³¼ ê³±ì…ˆ-?„ì  ?°ì‚°???™ì‹œ???˜í–‰?????ˆì–´
+  ?¥ëŸ¬??ì¶”ë¡ ???í•©?˜ë‹¤.
+  ê·¸ëŸ¬??ë©¤ë¦¬?¤í„°???Œìž¬ë³„ë¡œ ?€??¹„, ?œí˜„ ê°€?¥í•œ ?íƒœ ?? ë³€??variation), ê²°í•¨ë¥?stuck-at fault) ??ë¬¼ë¦¬??
+  ?¹ì„±???¬ê²Œ ?¤ë¥´ë©? ?´ëŠ” ë¶„ë¥˜ ?±ëŠ¥??ì§ì ‘?ì¸ ?í–¥??ë¯¸ì¹œ??
+  ë³??°êµ¬?ì„œ??VTEAM ëª¨ë¸??ë¬¸í—Œ ?Œë¼ë¯¸í„°ë¥??œìš©?˜ì—¬ Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire,
+  TaO<sub>x</sub>/Ta??4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬ë¥??™ì¼???•ì  conductance mapping ê¸°ë°˜ ?œë??ˆì´???˜ê²½?ì„œ ë¹„êµ?˜ì???
+  MixedWM38 ?¨ì´??ê²°í•¨ ?°ì´?°ì…‹(8ê°?ê²°í•¨ ?¼ë²¨??ëª¨ë‘ 0??normal/no-defect 1,000?¥ì„ ?œì™¸??37,015?? 8ê°?ê²°í•¨ ?´ëž˜??multi-label)?¼ë¡œ
+  ?™ìŠµ??ê²½ëŸ‰ CNN ëª¨ë¸??ê°??Œìž¬???¬ë¡œ?¤ë°” ?´ë ˆ?´ì— ë§¤í•‘?˜ê³ , ?‘ìž?”Â·ë??™Â·stuck-at fault????ë¹„ì´?ì„±???™ì‹œ??
+  ?ìš©?˜ì—¬ 9??Monte Carlo ?‰ê?ë¥??˜í–‰?˜ì???
+  ?¤í—˜ ê²°ê³¼, R<sub>off</sub>/R<sub>on</sub> ?€??¹„ê°€ 25ë°??´ìƒ?????Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric,
+  TaO<sub>x</sub>/Ta)???‰ê·  macro F1??0.76~0.88 ?˜ì??´ì—ˆ?¼ë‚˜ noise sample???°ë¥¸ ë³€?™ì„±??ë§¤ìš° ì»¸ìœ¼ë©?
+  (std 0.13~0.28), ?€??¹„ 1.97ë°°ì˜
+  Metallic Nanowire??4-state ?‘ìž?”ì˜ ë³¸ì§ˆ???œê³„ë¡??¸í•´ ?´ìƒ??ì¡°ê±´?ì„œ??F1 0.38ë¡?ë¶„ë¥˜ ?±ëŠ¥??ë¶•ê´´?˜ì???
+  ?í•œ ê³ ì???¹„ ???Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta) ê°ê°?ì„œ 9??Monte Carlo
+  ?˜í”Œ ì¤?1?Œì”© ì¹˜ëª…???±ëŠ¥ ë¶•ê´´(catastrophic degradation, F1 &lt; 0.60)ê°€ ê´€ì°°ë˜?ˆìœ¼ë©?
+  ?´ëŠ” stuck-at fault ?„ì¹˜ ë¬´ìž‘?„ì„±???˜í•œ worst-case ë¶•ê´´ ?„í—˜??ê°€?¥ì„±???œì‚¬?œë‹¤(?¤ë§Œ ?¤ì œ ë°œìƒ ?•ë¥  ì¶”ì •?ëŠ”
+  ??ë§Žì? ë°˜ë³µ???„ìš”?˜ë‹¤).
+  ?´ëŠ” PIM ?‘ìš©?ì„œ ?‰ê·  ?±ëŠ¥ë¿??„ë‹ˆ??ê²°í•¨ ë¶„í¬???°ë¥¸ worst-case ?„í—˜ê¹Œì? ?¨ê»˜ ê³ ë ¤?´ì•¼ ?¨ì„ ?œì‚¬?œë‹¤.
+  </p>
+  <p class="noindent keywords">
+  <b>Keywords</b> : Memristor, Processing-In-Memory (PIM), VTEAM model, Convolutional Neural Network,
+  Wafer defect classification, Stuck-at fault, Quantization
+  </p></p>
+</section>
+<main class="flow">
+<h1>1. ?œë¡ </h1>
+
+<h2>1.1 ?°êµ¬ ë°°ê²½</h2>
+<p>
+?¥ëŸ¬??ëª¨ë¸??ê·œëª¨ê°€ ê¸‰ê²©??ì»¤ì?ë©´ì„œ ?„í†µ?ì¸ von Neumann êµ¬ì¡°??ë©”ëª¨ë¦??°ì‚° ë¶„ë¦¬???˜í•œ ?°ì´???´ë™ ë¹„ìš©??
+?œìŠ¤???„ì²´ ?±ëŠ¥ê³??„ë ¥ ?¨ìœ¨??ì¢Œìš°?˜ëŠ” ì£¼ëœ ë³‘ëª©?¼ë¡œ ? ì˜¬?ë‹¤. ì¶”ë¡  ?¨ê³„?ì„œ ë°œìƒ?˜ëŠ” ë©”ëª¨ë¦??‘ê·¼?€ ?¤ì œ ê³„ì‚°
+?ì›???Œë¹„?˜ëŠ” ?ë„ˆì§€ë³´ë‹¤ ?˜ì‹­ ë°??´ìƒ???„ë ¥???”êµ¬?˜ëŠ” ê²ƒìœ¼ë¡?ë³´ê³ ?˜ë©° [11], ?´ëŠ” ëª¨ë°”?¼Â·ì—£ì§€ ?˜ê²½?ì„œ
+?¸ê³µì§€??ê°€?ê¸°ë¥?êµ¬í˜„????ê°€????ê±¸ë¦¼?Œì´ ?œë‹¤ [10, 8, 12].
+</p>
+<p>
+Processing-In-Memory (PIM)??ê°€ì¤‘ì¹˜ ?€???€???™ì‹œ??ê³±ì…ˆ-?„ì (MAC) ?°ì‚°???˜í–‰?˜ë„ë¡??¨ìœ¼ë¡œì¨ ?„ì˜ ?°ì´??
+?´ë™ ë³‘ëª©???„í™”?˜ëŠ” ?„í‚¤?ì²˜?´ë‹¤. ê·¸ì¤‘?ì„œ??ë©¤ë¦¬?¤í„°(memristor) ê¸°ë°˜ ?¬ë¡œ?¤ë°” ?´ë ˆ?´ëŠ” ?´ì˜ ë²•ì¹™ê³??¤ë¥´?ˆí˜¸??
+?„ë¥˜ ë²•ì¹™ë§Œìœ¼ë¡??¨ì¼ ?¬ì´???ˆì— ?‰ë ¬-ë²¡í„° ê³±ì…ˆ???„ì„±?????ˆì–´ ?¥ëŸ¬??ì¶”ë¡ ??PIM ê°€?ê¸°???€???„ë³´ë¡?
+?°êµ¬?˜ì–´ ?”ë‹¤ [1, 8, 9, 10].
+</p>
+<p>
+ë°˜ë„ì²??œì¡° ê³µì •?ì„œ???¨ì´???œë©´??ê²°í•¨ ?¨í„´(Center, Donut, Edge-Ring ?????ë™ ë¶„ë¥˜?˜ëŠ” ?‘ì—…???˜ìœ¨ ê´€ë¦¬ì—
+?„ìˆ˜?ì´?? ???‘ì—…?€ CNN(convolutional neural network)??ê°•ì ??ë³´ì´??ë¶„ì•¼?´ë©°, ê³µìž¥ ?¼ì¸?ì„œ ?¤ì‹œê°„ìœ¼ë¡?
+?”êµ¬?˜ëŠ” ë§Œí¼ ?€?„ë ¥ ?£ì? ì¶”ë¡  ê°€?ê¸°?€ ê²°í•©?????ˆë‹¤ë©??¤ìš©??ê°€ì¹˜ê? ?¬ë‹¤.
+</p>
+
+<h2>1.2 ? í–‰ ?°êµ¬???œê³„</h2>
+<p>
+ë©¤ë¦¬?¤í„° ê¸°ë°˜ PIM?ì„œ ë¶„ë¥˜ ?•í™•?„ì— ?í–¥??ì£¼ëŠ” ë¹„ì´?ì„±(non-ideality)?€ ?¬ê²Œ ??ê°€ì§€ë¡??•ë¦¬?œë‹¤.
+ì²«ì§¸, ë©¤ë¦¬?¤í„°ê°€ ?ˆì •?ìœ¼ë¡?êµ¬ë¶„?????ˆëŠ” ì»¨ë•?´ìŠ¤ ?íƒœ???˜ê? ? í•œ?˜ë?ë¡?ê°€ì¤‘ì¹˜ë¥??œí˜„?????‘ìž???ì‹¤??
+ë°œìƒ?œë‹¤. ?˜ì§¸, ?™ì¼ ê³µì •?ì„œ ?œì¡°???€??ê°„ì—???€??°’??ê°€?°ì‹œ??ë¶„í¬ë¡?ë³€??device-to-device variation)
+?œë‹¤. ?‹ì§¸, ?¼ë? ?€?€ ?êµ¬?ìœ¼ë¡??€?€??LRS) ?ëŠ” ê³ ì???HRS) ?íƒœ??ê³ ì°©?˜ëŠ” stuck-at faultë¥?ë³´ì¸??[1, 8].
+</p>
+<p>
+? í–‰ ?°êµ¬???¤ìˆ˜??????ê°€ì§€ ë¹„ì´?ì„± ì¤??œë‘ ê°€ì§€ë§Œì„ ë¶€ë¶„ì ?¼ë¡œ ëª¨ë¸ë§í•˜ê±°ë‚˜, ë§¤í•‘ ??ì¶œë ¥ ?¬ë³´??tune)??
+ê°€?•í•´ ë¹„ì´?ì„±???í–¥??ê³¼ì†Œ?‰ê??˜ëŠ” ê²½í–¥???ˆì—ˆ?? ?´ëŠ” ?¤ì œ PIM ì¹©ì—??ë°œìƒ?????ˆëŠ” ?¬ê°???±ëŠ¥ ?€??
+(catastrophic degradation)ë¥??œë??ˆì´???¨ê³„?ì„œ ?¬ì „ ?‰ê??˜ì? ëª»í•˜ê²?ë§Œë“ ??
+</p>
+
+<h2>1.3 ë³??°êµ¬??ê¸°ì—¬</h2>
+<p>ë³??°êµ¬???¤ìŒê³?ê°™ì? ê¸°ì—¬ë¥??œì‹œ?œë‹¤.</p>
+<p>
+<b>1) VTEAM ë¬¸í—Œ ?Œë¼ë¯¸í„°ë¥?ì°¸ê³ ???•ì  conductance mapping ?˜ê²½?ì„œ 4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬???•ëŸ‰ ë¹„êµ.</b>
+Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire, TaO<sub>x</sub>/Ta???€???™ì¼??CNN, ?™ì¼???°ì´?°ì…‹,
+?™ì¼??ë¹„ì´?ì„± ëª¨ë¸???ìš©?˜ì—¬ ?Œìž¬ ê°?PIM ?í•©?±ì„ macro F1 ì§€?œë¡œ ë¹„êµ?œë‹¤.
+</p>
+<p>
+<b>2) ??ë¹„ì´?ì„±???™ì‹œ ?ìš©.</b>
+?‘ìž?”Â·ë??™Â·stuck-at faultë¥?ë§¤í•‘ ?Œì´?„ë¼?¸ì— ?™ì‹œ??ë°˜ì˜?¨ìœ¼ë¡œì¨ ?¤ì œ ë©¤ë¦¬?¤í„° ì¹©ì˜ ?™ìž‘????ê°€ê¹Œìš´
+ë³´ìˆ˜???‰ê?ë¥??˜í–‰?œë‹¤. ë§¤í•‘ ??ì¶œë ¥ ?¬ë³´?•ì? ê°€?•í•˜ì§€ ?ŠëŠ”??
+</p>
+<p>
+<b>3) Worst-case ë¶•ê´´ ?„ìƒ ê´€ì°?</b>
+3ê°œì˜ baseline seed?€ 3ê°œì˜ noise sample??ê²°í•©??9??Monte Carlo ?‰ê??ì„œ, ê³ ì???¹„ ???Œìž¬ ëª¨ë‘?ì„œ
+9??ì¤?1??ë¹„ìœ¨ë¡?catastrophic degradation??ê´€ì°°ë˜?ˆë‹¤. ?œë³¸???‘ì•„ ë¶„í¬ ?•íƒœë¥??¨ì •???˜ëŠ” ?†ìœ¼??
+stuck-at fault ?„ì¹˜ ë¬´ìž‘?„ì„±???°ë¼ ?™ì¼ ?Œìž¬ê°€ worst-case??ê°€ê¹Œìš´ ë¶•ê´´ ê²°ê³¼ë¥?ë³´ì¼ ???ˆìŒ???œì‚¬?œë‹¤.
+?´ëŠ” PIM ?‘ìš©?ì„œ ?‰ê·  ?±ëŠ¥ë¿??„ë‹ˆ??worst-case ?„í—˜ê¹Œì? ê³ ë ¤?´ì•¼ ?¨ì„ ?•ì„±?ìœ¼ë¡??·ë°›ì¹¨í•œ??
+</p>
+
+<!-- ============================================================== -->
+<!--  II. ?´ë¡ ??ë°°ê²½                                               -->
+<!-- ============================================================== -->
+<h1>2. ?´ë¡ ??ë°°ê²½</h1>
+
+<h2>2.1 Processing-In-Memory (PIM)</h2>
+<p>
+PIM?€ ë©”ëª¨ë¦??€???€??ê¸°ëŠ¥ê³??¨ê»˜ ?°ì‚° ê¸°ëŠ¥???˜í–‰?˜ë„ë¡??˜ì—¬ ê°€ì¤‘ì¹˜ ?°ì´?°ë? ë³„ë„ ?°ì‚° ? ë‹›?¼ë¡œ ?´ë™?œí‚¤??
+ë¹„ìš©???œê±°?˜ëŠ” ?„í‚¤?ì²˜?´ë‹¤. CNN ì¶”ë¡ ?€ ë³¸ì§ˆ?ìœ¼ë¡??‰ë ¬-ë²¡í„° ê³±ì…ˆ(MVM)???°ì‡„?´ë©°, ë©¤ë¦¬?¤í„° ?¬ë¡œ?¤ë°”
+?´ë ˆ?´ëŠ” ?¨ì¼ ?¬ì´?´ì˜ ?„ë‚ ë¡œê·¸ ?°ì‚°?¼ë¡œ MVM??ì²˜ë¦¬?????ˆì–´ PIM???¨ê³¼?ì¸ ë¬¼ë¦¬ êµ¬í˜„ ?„ë³´ë¡??‰ê??œë‹¤ [10].
+</p>
+
+<h2>2.2 ë©¤ë¦¬?¤í„° ?¬ë¡œ?¤ë°” ?´ë ˆ??/h2>
+<p>
+ë©¤ë¦¬?¤í„°???¸ê? ?„ì•• ?´ë ¥???°ë¼ ?€???íƒœê°€ ë³€?”í•˜ê³? ?„ì›??ì°¨ë‹¨???´í›„?ë„ ë§ˆì?ë§??€???íƒœë¥?? ì??˜ëŠ”
+2?¨ìž ë¹„íœ˜ë°œì„± ?Œìž?´ë‹¤. ?‰ê³¼ ?´ì´ ê²©ìž?•ìœ¼ë¡?êµì°¨?˜ëŠ” ?¬ë¡œ?¤ë°” ?´ë ˆ?´ì—??ê°?êµì°¨?ì— ë©¤ë¦¬?¤í„°ë¥?ë°°ì¹˜?˜ë©´, ???¼ì¸??
+?…ë ¥ ?„ì•• <i>V<sub>i</sub></i>ë¥??¸ê??ˆì„ ?????¼ì¸???ë¥´???„ë¥˜??<i>I<sub>j</sub> = Î£<sub>i</sub> G<sub>ij</sub> V<sub>i</sub></i>
+ê°€ ?˜ì–´ ?´ì˜ ë²•ì¹™ê³??¤ë¥´?ˆí˜¸???„ë¥˜ ë²•ì¹™ë§Œìœ¼ë¡?ê°€ì¤‘ì¹˜ ?‰ë ¬ <b>G</b>?€ ?…ë ¥ ë²¡í„°??ê³±ì´ ì¦‰ì‹œ ?»ì–´ì§„ë‹¤.
+</p>
+
+<h2>2.3 VTEAM ëª¨ë¸</h2>
+<p>
+VTEAM(Voltage Threshold Adaptive Memristor)?€ Kvatinsky ?±ì´ ?œì•ˆ???„ì•• ?„ê³„ ê¸°ë°˜???¼ë°˜?”ëœ ë©¤ë¦¬?¤í„° ê±°ë™
+ëª¨ë¸ë¡?[1], ?¤ì–‘???Œìž¬???¤ì¸¡ ?¹ì„±???™ì¼???˜ì‹ ?•íƒœ ?ˆì—???Œë¼ë¯¸í„°ë§?ë°”ê¾¸???œí˜„?????ˆë‹¤. ë³??°êµ¬???œê°„
+?™ì—­??ë°©ì •?ì„ ì§ì ‘ ?ë¶„?˜ì? ?Šê³ , ??ëª¨ë¸ ë°?ê´€???Œìž ë¬¸í—Œ???œì‹œ???Œìž¬ë³??€??ë²”ìœ„Â·?¤ìœ„ì¹??¹ì„±???•ì 
+conductance mapping??ê¸°ì? ?Œë¼ë¯¸í„°ë¡œë§Œ ?œìš©?˜ì??? ?•ì  ?íƒœ?ì„œ ë©¤ë¦¬?¤í„°???€???
+</p>
+<div class="equation">
+  <i>R</i>(<i>w</i>) = <i>R<sub>on</sub></i> + (<i>R<sub>off</sub></i> ??<i>R<sub>on</sub></i>) <i>w</i> &nbsp;&nbsp; (0 ??<i>w</i> ??1)
+</div>
+<p>
+ë¡??œí˜„?˜ë©°(<i>w</i>???•ê·œ?”ëœ ?´ë? ?íƒœ ë³€??, ???ì´ ?Œìž¬ë³?R<sub>on</sub>Â·R<sub>off</sub>ë§Œìœ¼ë¡??µì¼??ë¹„êµ ?˜ê²½??êµ¬ì„±?˜ëŠ” ê¸°ë°˜???œë‹¤.
+</p>
+
+<h2>2.4 ?¨ì´??ê²°í•¨ ë¶„ë¥˜?€ CNN</h2>
+<p>
+?¨ì´??ê²°í•¨ ?¨í„´?€ ê³µì • ?´ìƒ??1ì°?? í˜¸ë¡œì„œ, ?¨í„´ ì¢…ë¥˜???°ë¼ ?ì¸ ê³µì •???¤ë¥´??
+CNN?€ ê³µê°„???¨í„´??ê³„ì¸µ?ìœ¼ë¡?ì¶”ì¶œ?˜ë?ë¡?ê²°í•¨ ë¶„ë¥˜???¨ê³¼?ì´ë©? ë³??°êµ¬?ì„œ??3ê°œì˜ ?©ì„±ê³?ê³„ì¸µê³?1ê°œì˜
+?€???„ì „?°ê²° ê³„ì¸µ, ìµœì¢… ë¶„ë¥˜ ê³„ì¸µ?¼ë¡œ êµ¬ì„±??ê²½ëŸ‰ CNN(??32ë§??Œë¼ë¯¸í„°)???¬ìš©?œë‹¤. ?…ë ¥?€ 52Ã—52 ?½ì???
+3-level categorical wafer map(ë°°ê²½/?•ìƒ ?¤ì´/ê²°í•¨ ?¤ì´ë¥?0/0.5/1.0?¼ë¡œ ?•ê·œ???´ê³ , ì¶œë ¥?€ 8ê°?ê²°í•¨ ?´ëž˜??ê°ê°??
+?€??multi-label sigmoid ?•ë¥ ?´ë‹¤.
+</p>
+
+<!-- ============================================================== -->
+<!--  III. ë°©ë²•ë¡?                                                  -->
+<!-- ============================================================== -->
+<h1>3. ë°©ë²•ë¡?/h1>
+
+<h2>3.1 ?°ì´?°ì…‹</h2>
+<p>
+ë³??°êµ¬?ì„œ??Wang ?±ì´ ê³µê°œ??MixedWM38 ?¨ì´??ê²°í•¨ ?°ì´?°ì…‹???¬ìš©?˜ì???[2].
+ì´?38,015?¥ì˜ 52Ã—52 ?¨ì´??ë§µìœ¼ë¡?êµ¬ì„±?˜ë©°, ?½ì? ê°’ì? ë°°ê²½(0), ?•ìƒ ?¤ì´(1), ê²°í•¨ ?¤ì´(2)???•ìˆ˜ categorical
+ê°’ì´?? ?¼ë²¨?€ 8ê°?ê²°í•¨ ?´ëž˜??Center, Donut, Edge-Loc, Edge-Ring, Loc, Near-Full, Random, Scratch)???€??
+multi-hot ë²¡í„°ë¡? ?¨ì¼ ê²°í•¨ë¿??„ë‹ˆ????ì¢…ë¥˜ ?´ìƒ??ê²°í•¨???™ì‹œ??ì¡´ìž¬?˜ëŠ” ë³µí•© ê²°í•¨(mixed-type) ?¨í„´??
+?¬í•¨?œë‹¤???ì´ ?¹ì§•?´ë‹¤.
+</p>
+<p>
+?„ì²˜ë¦?ê³¼ì •?ì„œ 8ê°?ê²°í•¨ ?¼ë²¨??ëª¨ë‘ 0??1,000?¥ì˜ normal/no-defect ?˜í”Œ???œì™¸?˜ê³ , ê²°í•¨??ì¡´ìž¬?˜ëŠ” 37,015?¥ì„
+?¬ìš©?˜ì??? ??ì¤??¨ì¼ ê²°í•¨?€ 7,015??19.0%), ë³µí•© ê²°í•¨?€ 30,000??81.0%)?´ë©°, ë³µí•© ê²°í•¨???¤ìˆ˜ë¥?ì°¨ì??˜ëŠ”
+?°ì´?°ì…‹ ?¹ì„±?€ multi-label ë¶„ë¥˜ ?¨ëŸ¬?¤ìž„ ? íƒ??ê·¼ê±°ê°€ ?œë‹¤. ?½ì? ê°’ì? categorical ê°?0,1,2)??0/0.5/1.0?¼ë¡œ
+?•ê·œ?”í•˜?€ê³? ?™ìŠµ/ê²€ì¦??ŒìŠ¤?¸ëŠ” 70/10/20 ë¹„ìœ¨ë¡?seed=42ë¡?ê³ ì • ë¶„í• ?˜ì???Train 25,910 / Val 3,702 / Test 7,403).
+</p>
+
+<h2>3.2 CNN ëª¨ë¸ êµ¬ì¡°</h2>
+<p>
+ëª¨ë¸ êµ¬ì¡°???¤ìŒê³?ê°™ì´ ?¨ìˆœ?˜ê³  ?¬í˜„ ê°€?¥í•œ ?•íƒœë¡?ê³ ì •?˜ì???
+</p>
+<table>
+  <tr><th>ê³„ì¸µ</th><th>êµ¬ì„±</th><th>ì¶œë ¥ ?¬ê¸°</th></tr>
+  <tr><td>Conv1</td><td>3Ã—3, 16ch, BN, ReLU, MaxPool(2)</td><td>26Ã—26Ã—16</td></tr>
+  <tr><td>Conv2</td><td>3Ã—3, 32ch, BN, ReLU, MaxPool(2)</td><td>13Ã—13Ã—32</td></tr>
+  <tr><td>Conv3</td><td>3Ã—3, 64ch, BN, ReLU, MaxPool(2)</td><td>6Ã—6Ã—64</td></tr>
+  <tr><td>FC1</td><td>Linear(2304??28), ReLU, Dropout(0.3)</td><td>128</td></tr>
+  <tr><td>FC2</td><td>Linear(128??)</td><td>8 (logits)</td></tr>
+</table>
+<p class="caption">Table 1. CNN ëª¨ë¸ êµ¬ì¡°. ì´??Œë¼ë¯¸í„° ??319,592.</p>
+<p>
+?ì‹¤ ?¨ìˆ˜??multi-label ë¶„ë¥˜ ?œì???BCEWithLogitsLossë¥??¬ìš©?˜ì?ê³? ìµœì ?”ëŠ” Adam(lr=1e-3, batch size=128)
+?´ë‹¤. ìµœë? ?™ìŠµ epoch??20?´ë©°, ê²€ì¦?macro F1??5 epoch ?™ì•ˆ ê°±ì‹ ?˜ì? ?Šìœ¼ë©??™ìŠµ??ì¡°ê¸° ì¢…ë£Œ(early stopping)
+?˜ì??? ?™ì¼ ëª¨ë¸ êµ¬ì¡°ë¥?3ê°œì˜ baseline seed(42, 123, 456)???€???…ë¦½?ìœ¼ë¡??™ìŠµ?˜ì—¬ ?‰ê? ê²°ê³¼ê°€ ?¹ì • ì´ˆê¸°??
+seed?ë§Œ ?˜ì¡´?˜ì? ?ŠëŠ”ì§€(baseline ë³€?™ì„±)ë¥??•ì¸?˜ì???
+</p>
+
+<h2>3.3 4ì¢??Œìž¬ ?Œë¼ë¯¸í„°</h2>
+<p>
+ë³??°êµ¬???µì‹¬ ë¹„êµ ?€?ì¸ 4ì¢??Œìž¬??ë¬¼ë¦¬ ?Œë¼ë¯¸í„°????2???•ë¦¬?˜ì???
+R<sub>on</sub>, R<sub>off</sub> ??ê±°ì‹œ ?¹ì„±?€ ê°??Œìž¬???¤ì¸¡ ë¬¸í—Œ?ì„œ ê°€?¸ì™”?¼ë©°,
+device-to-device variation(?/Î¼)ê³?stuck-at fault ë¹„ìœ¨?€ ë¬¸í—Œ?ì„œ ë³´ê³ ??ë²”ìœ„??ê¸°ë°˜???œë??ˆì´??ê°€?•ê°’?´ë‹¤.
+</p>
+<table>
+  <tr><th>Parameter</th><th>Pt/HfO<sub>x</sub>/Ti</th><th>Ferroelectric</th><th>Metallic Nanowire</th><th>TaO<sub>x</sub>/Ta</th></tr>
+  <tr><td>R<sub>on</sub> (Î©)</td><td>100</td><td>150,000</td><td>17.3</td><td>4,800</td></tr>
+  <tr><td>R<sub>off</sub> (Î©)</td><td>2,500</td><td>50,000,000</td><td>34</td><td>700,000</td></tr>
+  <tr><td><b>R<sub>off</sub>/R<sub>on</sub></b></td><td><b>25.0Ã—</b></td><td><b>333.3Ã—</b></td><td><b>1.97Ã—</b></td><td><b>145.8Ã—</b></td></tr>
+  <tr><td>Conductance states</td><td>64</td><td>128</td><td>4</td><td>32</td></tr>
+  <tr><td>Variation ?<sub>R_on</sub></td><td>10%</td><td>8%</td><td>5%</td><td>8%</td></tr>
+  <tr><td>Variation ?<sub>R_off</sub></td><td>15%</td><td>12%</td><td>8%</td><td>10%</td></tr>
+  <tr><td>Stuck-at fault rate</td><td>0.5%</td><td>0.3%</td><td>5.0%</td><td>0.3%</td></tr>
+  <tr><td>ì¶œì²˜(R<sub>on</sub>, R<sub>off</sub>)</td><td>[1, 3]</td><td>[1, 4]</td><td>[1, 5]</td><td>[6]</td></tr>
+</table>
+<p class="caption">Table 2. 4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬??conductance mapping ë°?ë¹„ì´?ì„± ?Œë¼ë¯¸í„°. R<sub>on</sub>/R<sub>off</sub>???¤ì¸¡ ë¬¸í—Œ, variation/fault??ê°€?•ê°’.</p>
+
+<h2>3.4 ë§¤í•‘Â·?‘ìž??ë°?ë¹„ì´?ì„± ëª¨ë¸</h2>
+<p>
+?™ìŠµ??CNN??ê°€ì¤‘ì¹˜???¤ìŒ 4?¨ê³„ ?Œì´?„ë¼?¸ì„ ?µí•´ ê°??Œìž¬??ë©¤ë¦¬?¤í„° ?¬ë¡œ?¤ë°”??ë§¤í•‘?œë‹¤.
+</p>
+<p>
+<b>1) ?ˆì´?´ë³„ ?•ê·œ??ë°?ë¶€??ë¶„ë¦¬.</b> ê°?Conv/Linear ê³„ì¸µ??ê°€ì¤‘ì¹˜ Wë¥?ë¶€??ë¹„íŠ¸ sign(W)?€ ?¬ê¸° |W|ë¡?ë¶„ë¦¬????
+|W|/max(|W|)ë¡??•ê·œ?”í•œ?? ë©¤ë¦¬?¤í„° ì»¨ë•?´ìŠ¤???‘ì˜ ê°’ë§Œ ê°€ì§€ë¯€ë¡? ?¤ì œ PIM ?Œë¡œ?ì„œ???‘Â·ìŒ ê°€ì¤‘ì¹˜ë¥???ê°œì˜
+ë©¤ë¦¬?¤í„° ì»¬ëŸ¼(differential pair: W<sup>+</sup> ??W<sup>??/sup>)?¼ë¡œ êµ¬í˜„?´ì•¼ ?œë‹¤. ë³??œë??ˆì´?˜ì—?œëŠ” |W|ë§?
+ì»¨ë•?´ìŠ¤ë¡?ë§¤í•‘?˜ê³  ë¶€???•ë³´???¸ë??ì„œ ? ì??˜ëŠ” ë°©ì‹?¼ë¡œ ?¨ìˆœ?”í•˜?€??
+</p>
+<p>
+<b>2) ? í˜• ë§¤í•‘.</b> ?•ê·œ?”ëœ ê°’ì„ G<sub>min</sub>=1/R<sub>off</sub>, G<sub>max</sub>=1/R<sub>on</sub> ë²”ìœ„ë¡?
+? í˜• ë§¤í•‘?œë‹¤.
+</p>
+<p>
+<b>3) ë¹„ì´?ì„± ì£¼ìž… (Realistic ì¡°ê±´ë§??´ë‹¹).</b>
+(i) Device-to-device variation: g ??gÂ·(1 + N(0, ?)). ????<sub>R_on</sub>ê³??<sub>R_off</sub>???°ìˆ  ?‰ê· ???¨ì¼
+ê°€?°ì‹œ??ë¶„ì‚°?¼ë¡œ ?¬ìš©???Œìž¬ ê°?ë¹„êµ ë³€?˜ë? ?µì œ?˜ì???LRS/HRS ë¶„ë¦¬ ?ìš© ?œì˜ ë³€??ê°€?¥ì„±?€ 5.4??ëª…ì‹œ).
+(ii) Stuck-at fault: ?„ì²´ ?€ ì¤?fault rate ë¹„ìœ¨??ë¬´ìž‘?„ë¡œ ê³¨ë¼ ?ˆë°˜?€ G<sub>max</sub>, ?ˆë°˜?€ G<sub>min</sub>?¼ë¡œ
+ê³ ì°©?œí‚¨?? fault rate(0.3~5%)???¬ë¡œ?¤ë°” yield ë¬¸í—Œ??ë³´ê³  ë²”ìœ„??ê¸°ë°˜??ê°€?•ê°’?¼ë¡œ, ê³ ì???¹„ ???Œìž¬??
+1% ë¯¸ë§Œ?? Metallic Nanowire??worst-case sensitivity boundë¡œì„œ ë³´ìˆ˜?ì¸ 5%ë¥??ìš©?˜ì??? ?Œìž¬ ê°?fault rateê°€
+?™ì¼?˜ì? ?Šìœ¼ë¯€ë¡?NW??realistic ê°’ì? ?˜í‰ ë¹„êµê°€ ?„ë‹Œ sensitivity ?œë‚˜ë¦¬ì˜¤ë¡??´ì„?œë‹¤.
+</p>
+<p>
+<b>4) N-state ?‘ìž??</b> ê°??€??ì»¨ë•?´ìŠ¤ë¥??±ê°„ê²?Nê°œì˜ levels = linspace(G<sub>min</sub>, G<sub>max</sub>, N)
+ì¤?ê°€??ê°€ê¹Œìš´ ê°’ìœ¼ë¡?ë°˜ì˜¬ë¦¼í•œ??nearest-state rounding). ?‘ìž?”ëŠ” ideal/realistic ??ì¡°ê±´ ëª¨ë‘???ìš©?œë‹¤.
+</p>
+<p>
+???Œì´?„ë¼?¸ì? ?‘ìž?”Â·ë??™Â·stuck-at fault????ë¹„ì´?ì„±???™ì‹œ??ë°˜ì˜?˜ë©°, ë§¤í•‘ ??ì¶œë ¥ ?¬ë³´??tune)?€
+?˜í–‰?˜ì? ?ŠëŠ”??
+</p>
+
+<h2>3.5 ?‰ê? ?„ë¡œ? ì½œ</h2>
+<p>
+?‰ê????¤ìŒ ??ì¡°ê±´?ì„œ ?˜í–‰?œë‹¤.
+</p>
+<ul>
+  <li><b>Ideal</b>: ë³€?™Â·ê³ ???†ì´ ?‘ìž?”ë§Œ ?ìš©. ?‘ìž?”ëŠ” ê²°ì •ë¡ ì ?´ë?ë¡?noise sampling?€ ë¬´ì˜ë¯¸í•˜ë©?
+  baseline seed??1???‰ê??œë‹¤.</li>
+  <li><b>Realistic</b>: ?‘ìž??+ ë³€??+ stuck-at fault. noise ?„ì¹˜??ë¬´ìž‘?„ì´ë¯€ë¡?baseline seed??noise seedë¥?
+  ë¶„ë¦¬??3??sampling(ì´?9???Œìž¬) ???‰ê· ê³??œì??¸ì°¨ë¥?ë³´ê³ ?œë‹¤.</li>
+</ul>
+<p>
+?‰ê? ì§€?œëŠ” multi-label ë¶„ë¥˜ ?œì???<b>Macro F1</b>(?´ëž˜??ë¶ˆê· ?•ì— ê°•ê±´)ê³?<b>Subset Accuracy</b>(ëª¨ë“  ?¼ë²¨??
+?•í™•???¼ì¹˜???˜í”Œ ë¹„ìœ¨)ë¥?ëª¨ë‘ ì¸¡ì •?œë‹¤. Threshold??0.5ë¡?ê³ ì •?˜ì???
+</p>
+
+<!-- ============================================================== -->
+<!--  IV. ê²°ê³¼                                                      -->
+<!-- ============================================================== -->
+<h1>4. ê²°ê³¼</h1>
+
+<h2>4.1 Baseline (FP32 software) ?±ëŠ¥</h2>
+<p>
+3ê°œì˜ baseline seed???€???™ìŠµ??CNN???ŒìŠ¤???±ëŠ¥?€ ??3ê³?ê°™ë‹¤.
+</p>
+<table>
+  <tr><th>Seed</th><th>Best epoch</th><th>Test Subset Acc</th><th>Test Macro F1</th></tr>
+  <tr><td>42</td><td>9</td><td>0.9568</td><td>0.9780</td></tr>
+  <tr><td>123</td><td>11</td><td>0.9446</td><td>0.9800</td></tr>
+  <tr><td>456</td><td>13</td><td>0.9588</td><td>0.9856</td></tr>
+  <tr><td><b>?‰ê· Â±std</b></td><td>??/td><td><b>0.9534 Â± 0.0063</b></td><td><b>0.9812 Â± 0.0032</b></td></tr>
+</table>
+<p class="caption">Table 3. FP32 software baseline??3 seed ê²°ê³¼. macro F1??std=0.0032ë¡?ë§¤ìš° ?ˆì •??</p>
+<p>
+??seed ëª¨ë‘ macro F1 0.98 ?˜ì????ˆì •?ì¸ baseline???™ìŠµ?˜ì??¼ë©°, stdê°€ 0.003 ?˜ì??¼ë¡œ ë§¤ìš° ?‘ì•„ ?´í›„
+?Œìž¬ ë¹„êµ??? ë¢°??ê¸°ë°˜?¼ë¡œ ?¬ìš© ê°€?¥í•˜??
+</p>
+
+<h2>4.2 4 ?Œìž¬ Ideal vs Realistic ë¹„êµ</h2>
+<p>
+ê°??Œìž¬ë³?ideal ë°?realistic ì¡°ê±´?ì„œ??macro F1 ê²°ê³¼ë¥???4?€ ê·¸ë¦¼ 1???•ë¦¬?˜ì???
+</p>
+<table>
+  <tr><th rowspan="2">Material</th><th rowspan="2">R<sub>off</sub>/R<sub>on</sub></th><th rowspan="2">States</th><th colspan="2">Ideal</th><th colspan="2">Realistic (mean Â± std)</th><th colspan="2">?F1</th></tr>
+  <tr><th>Subset Acc</th><th>Macro F1</th><th>Subset Acc</th><th>Macro F1</th><th>absolute</th><th>relative</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>25.0Ã—</td><td>64</td><td>0.9578</td><td>0.9826</td><td>0.5601 Â± 0.2779</td><td>0.7578 Â± 0.2759</td><td>??.2248</td><td>??2.88%</td></tr>
+  <tr><td>Ferroelectric</td><td>333.3Ã—</td><td>128</td><td>0.9526</td><td>0.9805</td><td>0.6992 Â± 0.2660</td><td>0.8570 Â± 0.1632</td><td>??.1235</td><td>??2.60%</td></tr>
+  <tr><td>Metallic Nanowire</td><td>1.97Ã—</td><td>4</td><td>0.0813</td><td>0.3847</td><td>0.0518 Â± 0.0413</td><td>0.3288 Â± 0.1286</td><td>??.0559</td><td>??4.53%</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta</td><td>145.8Ã—</td><td>32</td><td>0.9458</td><td>0.9770</td><td>0.7258 Â± 0.2431</td><td>0.8726 Â± 0.1364</td><td>??.1044</td><td>??0.69%</td></tr>
+</table>
+<p class="caption">Table 4. 4 ?Œìž¬??Ideal vs Realistic ë¶„ë¥˜ ?±ëŠ¥ (Subset Accuracy ë°?Macro F1, 3 baseline seed Ã— 3 noise sample = 9???‰ê· ). ?F1?€ macro F1 ê¸°ì????ˆë? ë³€?”ëŸ‰ê³??ë? ë³€?”ìœ¨??ë¶„ë¦¬?˜ì—¬ ?œê¸°.</p>
+
+<div class="figure">
+  <img src="figures/material_comparison.png" alt="Material comparison">
+  <div class="caption">Figure 1. 4 ?Œìž¬??Ideal(?Œëž‘) vs Realistic(ì£¼í™©) macro F1 ë¹„êµ. ?¤ì°¨ë§‰ë???9???œì??¸ì°¨. ?Œìƒ‰ ?ì„ ?€ FP32 baseline.</div>
+</div>
+
+<p>
+?€??¹„ 25ë°??´ìƒ?????Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta)??ideal ì¡°ê±´?ì„œ
+0.98 ?˜ì???baseline??ê±°ì˜ ê·¼ì ‘???±ëŠ¥??ë³´ì??? ì¦??‘ìž???¨ë…?¼ë¡œ??ë¶„ë¥˜ ?±ëŠ¥?????í–¥??ë¯¸ì¹˜ì§€
+?ŠëŠ”?? ?í•œ Pt/HfO<sub>x</sub>/Ti??ideal F1(0.9826)??baseline ?‰ê· (0.9812)??ë¯¸ì„¸?˜ê²Œ ?íšŒ?˜ëŠ” ?„ìƒ??
+ê´€ì°°ë˜?ˆìœ¼?? ?´ëŠ” baseline ?œì??¸ì°¨(0.0032) ë²”ìœ„ ?´ì— ?¤ì–´ê°€???°ì—°??ë³€?™ìœ¼ë¡??´ì„?œë‹¤. ê·¸ëŸ¬??variationê³?
+stuck-at faultê°€ ?”í•´ì§?realistic ì¡°ê±´?ì„œ???‰ê·  macro F1??0.76~0.87 ?˜ì??¼ë¡œ ?˜ë½?˜ì??¼ë©°, ?œì??¸ì°¨ê°€
+0.13~0.28ë¡?ë§¤ìš° ì»¸ë‹¤.
+</p>
+<p>
+Subset Accuracy ê¸°ì??¼ë¡œ??????ê°ì†Œê°€ ?˜í?????4), multi-label ë¶„ë¥˜?ì„œ 8ê°?ê²°í•¨???™ì‹œ???•í™•??ë§žížˆ??ê²ƒì´
+ë¶€ë¶??¼ì¹˜ë³´ë‹¤ ?¨ì”¬ ?´ë ¤?€??ë³´ì—¬ì¤€?? Metallic Nanowire??ideal?ì„œ??Subset Acc 0.08ë¡??¬ì‹¤??ë¶„ë¥˜ê°€ ?±ë¦½?˜ì? ?Šì•˜??
+</p>
+<p>
+?´ì? ?€ì¡°ì ?¼ë¡œ Metallic Nanowire??ideal ì¡°ê±´?ì„œ??F1 0.38ë¡?ë¶„ë¥˜ ?±ëŠ¥??ë¶•ê´´?˜ì??? ?´ëŠ” ?€??¹„ 1.97ë°?
++ 4-state ?‘ìž?”ì˜ ì¡°í•©??ê°€ì¤‘ì¹˜ ë¶„í¬???€ë¶€ë¶„ì˜ ?•ë³´ë¥??ì‹¤?œí‚¤ê¸??Œë¬¸?´ë©°, realistic ì¡°ê±´??ì¶”ê??œë‹¤ê³?
+?˜ì—¬ ???…í™”???¬ì?ê°€ ?ë‹¤(realistic F1 0.33). ì¦?Metallic Nanowire???œê³„??ë¹„ì´?ì„±???„ë‹ˆ??
+<b>?œí˜„ ê°€?¥í•œ ê°€ì¤‘ì¹˜ ?ìœ ???ì²´</b>???ˆë‹¤.
+</p>
+
+<h2>4.3 Worst-case ë¶•ê´´ ?„ìƒ ë¶„ì„</h2>
+<p>
+??4?????œì??¸ì°¨???¨ìˆœ??noise varianceê°€ ?„ë‹ˆ?? ?™ì¼ ?Œìž¬??9??noise sampling ê²°ê³¼ê°€ "?•ìƒ ?ì—­"ê³?
+"ë¶•ê´´ ?ì—­"????ê·¸ë£¹?¼ë¡œ ê°ˆë¦¬???‘ìƒ?ì„œ ë¹„ë¡¯?œë‹¤. ê·¸ë¦¼ 2??4 ?Œìž¬??per-noise F1 ë¶„í¬ë¥??ˆìŠ¤? ê·¸?¨ìœ¼ë¡?
+?˜í???ê²ƒì´?? ?¤ë§Œ ?œë³¸ ?˜ê? ?Œìž¬??9?Œë¡œ ?œí•œ?˜ë?ë¡??µê³„???˜ë???bimodal ë¶„í¬ë¡??¨ì •???˜ëŠ” ?†ìœ¼ë©?
+ë³??ˆì—?œëŠ” "worst-case ë¶•ê´´ ?„ìƒ"?¼ë¡œ ?œí˜„?œë‹¤.
+</p>
+<div class="figure">
+  <img src="figures/bimodal_distribution.png" alt="Bimodal distribution">
+  <div class="caption">Figure 2. 4 ?Œìž¬??realistic per-noise macro F1 ë¶„í¬ (9 samples). ê²€???ì„ : ideal F1, ë¹¨ê°• ?ì„ : realistic mean.</div>
+</div>
+
+<p>
+F1 ??0.88??"good", F1 &lt; 0.60??"catastrophic"?¼ë¡œ ?•ì˜?ˆì„ ??4 ?Œìž¬??ë¶„í¬????5?€ ê°™ë‹¤.
+</p>
+<table>
+  <tr><th>Material</th><th>Good (F1??.88)</th><th>Moderate (0.60?¤F1&lt;0.88)</th><th>Catastrophic (F1&lt;0.60)</th><th>Total</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>4/9 (44%)</td><td>4/9 (44%)</td><td>1/9 (11%)</td><td>9</td></tr>
+  <tr><td>Ferroelectric</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+  <tr><td>Metallic Nanowire</td><td>0/9 (0%)</td><td>0/9 (0%)</td><td>9/9 (100%)</td><td>9</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+</table>
+<p class="caption">Table 5. ê°??Œìž¬??per-noise ê²°ê³¼ë¥?good / moderate / catastrophic ?„ê³„ë¡?ë¶„ë¥˜??ë¹ˆë„.</p>
+
+<p>
+ê³ ì???¹„ ???Œìž¬????44~56%ê°€ baseline??90% ?´ìƒ??? ì?(good)?˜ëŠ” ?œíŽ¸, 9??ì¤?1??(??11%) ë¹„ìœ¨ë¡?F1??
+0.60 ë¯¸ë§Œ?¼ë¡œ ë¶•ê´´(catastrophic)?˜ëŠ” ê²°ê³¼ê°€ ???Œìž¬ ëª¨ë‘?ì„œ ?¼ê??˜ê²Œ ê´€ì°°ë˜?ˆë‹¤. Metallic Nanowire??9??ëª¨ë‘
+catastrophic êµ¬ê°„??ì¡´ìž¬?˜ì—¬, ë³¸ì§ˆ???œí˜„ ?œê³„ê°€ noise ì¢…ë¥˜?€ ë¬´ê??˜ê²Œ ??ƒ ?±ëŠ¥ ë¶•ê´´ë¥?ì´ˆëž˜?¨ì„ ë³´ì—¬ì¤€??
+?í•œ NW??ideal ì¡°ê±´(variation=0, fault=0)?ì„œ???´ë? F1=0.38ë¡?ë¶•ê´´?˜ë?ë¡? NW??ê²°ê³¼??fault rate ì°¨ì´ê°€
+?„ë‹Œ 4-state ?‘ìž???¨ê³¼ë¡??´ì„?œë‹¤(NW???€??4-state vs. ??ë§Žì? ?íƒœ ?˜ì˜ ê°•ì œ ablation?€ ë³??°êµ¬ ë²”ìœ„ ?¸ì´ë©?
+V.D???¥í›„ ê³¼ì œë¡?ëª…ì‹œ?œë‹¤).
+</p>
+
+<h2>4.4 ê²°í•¨ ? í˜•ë³?(per-class) F1 ë¶„ì„</h2>
+<p>
+??6?€ 4 ?Œìž¬ Ã— ??ì¡°ê±´?ì„œ??ê²°í•¨ ?´ëž˜?¤ë³„ macro F1??ë³´ì—¬ì¤€?? ?°ì´?°ì…‹???´ëž˜??ë¹ˆë„ê°€ ê· ì¼?˜ì? ?ŠìŒ??
+? ì˜?´ì•¼ ?œë‹¤(Near-Full 0.4%, Scratch 2.3%ë¡?ê°€???ìŒ, Loc 48.6%, Random 51.3%ë¡?ê°€??ë§ŽìŒ).
+</p>
+<table>
+  <tr><th>Material / Condition</th><th>Center</th><th>Donut</th><th>Edge-Loc</th><th>Edge-Ring</th><th>Loc</th><th>Near-Full</th><th>Random</th><th>Scratch</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti ??Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.99</td><td>0.93</td><td>0.99</td><td>0.98</td></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti ??Realistic</td><td>0.86</td><td>0.87</td><td>0.74</td><td>0.78</td><td>0.76</td><td><b>0.64</b></td><td>0.82</td><td><b>0.59</b></td></tr>
+  <tr><td>Ferroelectric ??Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.98</td></tr>
+  <tr><td>Ferroelectric ??Realistic</td><td>0.94</td><td>0.90</td><td>0.90</td><td>0.94</td><td>0.81</td><td>0.79</td><td>0.87</td><td><b>0.69</b></td></tr>
+  <tr><td>Metallic Nanowire ??Ideal</td><td>0.29</td><td>0.73</td><td>0.67</td><td><b>0.00</b></td><td>0.67</td><td><b>0.00</b></td><td>0.72</td><td><b>0.01</b></td></tr>
+  <tr><td>Metallic Nanowire ??Realistic</td><td>0.19</td><td>0.44</td><td>0.38</td><td>0.27</td><td>0.57</td><td><b>0.15</b></td><td>0.46</td><td><b>0.17</b></td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta ??Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.97</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta ??Realistic</td><td>0.98</td><td>0.92</td><td>0.92</td><td>0.95</td><td>0.83</td><td>0.80</td><td>0.89</td><td><b>0.70</b></td></tr>
+</table>
+<p class="caption">Table 6. 4 ?Œìž¬ Ã— Ideal/Realistic ì¡°ê±´?ì„œ??ê²°í•¨ ?´ëž˜?¤ë³„ F1 (Ideal?€ 3 seed ?‰ê· , Realistic?€ 9 sample ?‰ê· ).</p>
+
+<p>
+??ê°€ì§€ ?¨í„´??ê´€ì°°ëœ?? ì²«ì§¸, <b>minority class??Near-Full(0.4%)ê³?Scratch(2.3%)ê°€ ëª¨ë“  ê³ ì???¹„ ?Œìž¬?ì„œ
+ê°€????? F1??ë³´ì???/b>. ?¹ížˆ realistic ì¡°ê±´??Scratch??Pt/HfO<sub>x</sub>/Ti 0.59, Ferroelectric 0.69,
+TaO<sub>x</sub>/Ta 0.70?¼ë¡œ ?¨ì–´?? ?¤ë¥¸ ?¤ìˆ˜ ?´ëž˜??Loc, Random ???€ ??0.15~0.25??F1 ê²©ì°¨ë¥?ë³´ì¸?? ?´ëŠ”
+multi-label ë¶„ë¥˜?ì„œ ?´ëž˜??ë¶ˆê· ?•ì´ ë¹„ì´?ì„± ì¡°ê±´?ì„œ ??ì¦í­?¨ì„ ?œì‚¬?œë‹¤.
+</p>
+<p>
+?˜ì§¸, <b>Metallic Nanowire??ideal ì¡°ê±´?ì„œ??Edge-Ring, Near-Full, Scratch??F1????0?¼ë¡œ ?¬ì‹¤??ë¶„ë¥˜
+?¤íŒ¨</b>?´ë‹¤. ?´ëŠ” 4-state ?‘ìž?”ë¡œ ?¸í•´ ê°€ì¤‘ì¹˜ ?œí˜„ ?ìœ ?„ê? ë¶€ì¡±í•´ minority ?ëŠ” ê³µê°„?ìœ¼ë¡?ë¯¸ì„¸??
+?¨í„´(Edge-Ring ê°™ì? ê°€?¥ìžë¦?ê³ ë¦¬)???ë³„?????†ìŒ??ë³´ì—¬ì¤€?? realistic ì¡°ê±´?ì„œ ?¼ë? ?´ëž˜?¤ì˜ F1???´ì§
+ì¦ê??˜ëŠ” ?„ìƒ?€ ?‘ìž?”ë¡œ ?´ë? ë¬´ë„ˆì§?ê²°ì • ê²½ê³„ê°€ random noiseë¡??°ì—°???¼ë? ?•ë‹µ??ë§žížˆ???µê³„???¨ê³¼ë¡?
+?´ì„?œë‹¤.
+</p>
+
+<!-- ============================================================== -->
+<!--  V. ?¼ì˜                                                       -->
+<!-- ============================================================== -->
+<h1>5. ?¼ì˜</h1>
+
+<h2>5.1 ?€??¹„(R<sub>off</sub>/R<sub>on</sub>)???í–¥</h2>
+<p>
+?¤í—˜ ê²°ê³¼?ì„œ ê°€??ëª…í™•??ê²½ê³„??R<sub>off</sub>/R<sub>on</sub> ??25ë°?ë¶€ê·¼ì— ì¡´ìž¬?œë‹¤. ?€??¹„ê°€ 25ë°??´ìƒ?????Œìž¬??
+ideal ì¡°ê±´?ì„œ baseline ?€ë¹?1% ?´ë‚´???ì‹¤ë¡?ê°€ì¤‘ì¹˜ ?•ë³´ë¥???ë³´ì¡´?˜ì?ë§? ?€??¹„ 1.97ë°°ì˜ Metallic Nanowire??
+ideal?ì„œ??baseline??39% ?˜ì??¼ë¡œ ì¶”ë½?œë‹¤. ??ì°¨ì´??ì»¨ë•?´ìŠ¤ ë²”ìœ„ê°€ ì¢ì„?˜ë¡ ?™ì¼???ˆë? noise/?‘ìž??
+ê°„ê²©??ê°€ì¤‘ì¹˜ ?œí˜„??ë¯¸ì¹˜???ë? ?¤ì°¨ê°€ ì»¤ì?ê¸??Œë¬¸?´ë‹¤.
+</p>
+<p>
+?¤ë§Œ ë³??°êµ¬???¤í—˜ë§Œìœ¼ë¡?"25ë°°ê? ë³´íŽ¸??ë¬¸í„±ê°??´ë¼ ?¨ì •?˜ê¸°???´ë µ?? ë³??°êµ¬??4 ?Œìž¬???´ì‚°?ì¸ ë¹„êµ?´ë©°,
+?€??¹„ sweep(?? 5Ã—, 10Ã—, 20Ã—, 50Ã—)???˜í–‰?˜ì? ?Šì•˜ê¸??Œë¬¸?´ë‹¤. "ë³??°êµ¬??ì¡°ê±´?ì„œ 25ë°??´ìƒ?´ë©´ ?‘ìž?”ë¡œ
+?¸í•œ ideal ?±ëŠ¥ ?ì‹¤??1% ?´ë‚´?€??ê°€ ?•ì§??ê²°ë¡ ?´ë‹¤.
+</p>
+
+<h2>5.2 Metallic Nanowire??ë³¸ì§ˆ???œê³„</h2>
+<p>
+Metallic Nanowire??4-state ?‘ìž?”ëŠ” ê°€ì¤‘ì¹˜ë¥?4ê°œì˜ ì¹¸ìœ¼ë¡??•ì¶•?œë‹¤??ê²ƒì„ ?˜ë??œë‹¤. 32ë§?ê°œì˜ ë¶€?™ì†Œ?˜ì 
+ê°€ì¤‘ì¹˜ê°€ ê°€ì§????ˆëŠ” ?¤ì–‘??ê°’ì´ 4ê°œì˜ ?´ì‚° ê°’ìœ¼ë¡?ë°˜ì˜¬ë¦¼ë˜??ê³¼ì •?ì„œ, CNN???™ìŠµ??ë¯¸ì„¸??ê²°ì • ê²½ê³„ê°€
+?€ë¶€ë¶??Œì‹¤?œë‹¤. ???œê³„???¨ìˆœ ?¬í›„ ë³´ì •ë§Œìœ¼ë¡œëŠ” ?Œë³µ?˜ê¸° ?´ë µê³? ?„í™”ë¥??„í•´?œëŠ” quantization-aware training
+(QAT)?´ë‚˜ ?Œìž¬Â·?Œë¡œ ?˜ì???ì¶”ê? ë³´ì •(?? ??ë§Žì? conductance level??ê°–ëŠ” ë³€??nanowire êµ¬ì¡°)???„ìš”??
+ê°€?¥ì„±???¬ë‹¤.
+</p>
+<p>
+?œíŽ¸ Metallic Nanowire???™ìž‘ ?„ì••??ë§¤ìš° ??³  (v<sub>off</sub>=0.145 V) variation???‘ì•„ (5~8%) ë³„ë„ ?‘ìš©
+?ì—­?ì„œ??? ë¦¬??ë©´ì´ ?ˆì„ ???ˆë‹¤. ë³??°êµ¬ê°€ ë³´ì´??ê²ƒì? "?¤ë‹¨ê³?ê°€ì¤‘ì¹˜ ?•ë??„ê? ?„ìš”??PIM ì¶”ë¡  ?‘ìš©?ì„œ
+ë¶€?í•©"?˜ë‹¤??ê²ƒì´ì§€, ?Œìž¬ ?ì²´??ë¶€?•ì´ ?„ë‹ˆ??
+</p>
+
+<h2>5.3 Worst-case ë¶•ê´´ ?„ìƒ??PIM ?¨ì˜</h2>
+<p>
+ê³ ì???¹„ ???Œìž¬???‰ê·  ?±ëŠ¥??ë¹„ìŠ·?´ë„ 9??ì¤?1??catastrophic degradation???˜í??¬ë‹¤(??5). ?´ëŠ” ?‰ê· ë§Œìœ¼ë¡?
+?Œìž¬ë¥??‰ê??˜ëŠ” ê´€?‰ì— ?€??ê²½ê³ ë¡? ê·??ì¸?€ stuck-at faultê°€ ê°€ì¤‘ì¹˜ ?‰ë ¬???´ëŠ ?„ì¹˜??ë°•ížˆ?”ì????ˆë‹¤ ??
+?µì‹¬ ê°€ì¤‘ì¹˜ë¥?hit?˜ë©´ ë¶„ë¥˜ê¸??„ì²´ê°€ ë¬´ë„ˆì§€ì§€ë§? ì¤‘ìš”?„ê? ??? ê°€ì¤‘ì¹˜ë¥?hit?˜ë©´ ê±°ì˜ ?í–¥???†ë‹¤.
+</p>
+<p>
+?°ë¼???¤ì œ PIM ê°€?ê¸° ?¤ê³„?ì„œ??(i) write-verifyë¥??µí•œ stuck-at ?€???¬ì „ ê²€ì¶? (ii) row/column-shifting
+ê°™ì? ë§¤í•‘ ?¤ì–‘?? (iii) ECC??redundancy ê°™ì? fault tolerance ë©”ì»¤?ˆì¦˜???™ë°˜?˜ì–´???œë‹¤. ë³??°êµ¬???´ëŸ¬??
+?€ì±…ì´ ?ìš©?˜ì? ?Šì? ë³´ìˆ˜??ë² ì´?¤ë¼?¸ì´ë©? ?¥í›„ fault tolerance ?ìš© ??worst-case ë¶•ê´´ ë¹ˆë„ê°€ ?´ë–»ê²?
+ë³€?”í•˜?”ì?ë¥?ì¶©ë¶„???œë³¸?¼ë¡œ ?•ëŸ‰?”í•˜???„ì† ?°êµ¬ê°€ ?„ìš”?˜ë‹¤.
+</p>
+
+<h2>5.4 ?œê³„ ë°??¥í›„ ê³¼ì œ</h2>
+<ul>
+  <li><b>?¨ì¼ ?°ì´?°ì…‹Â·ê²½ëŸ‰ CNN.</b> MixedWM38ê³???32ë§??Œë¼ë¯¸í„°???•ì? CNN???œì •??ê²°ê³¼ë¡? WM-811K [7] ??
+  ?¤ë¥¸ ?°ì´?°ì…‹?´ë‚˜ ResNet ê³„ì—´ ?€ê·œëª¨ ëª¨ë¸?ì„œ???Œìž¬ ê°??œìœ„ ë³´ì¡´?€ ê²€ì¦ë˜ì§€ ?Šì•˜??</li>
+  <li><b>?€??¹„ sweep ë¯¸ìˆ˜??</b> 4 ?Œìž¬???´ì‚° ë¹„êµë§??˜í–‰?˜ì—¬ ?€??¹„-?±ëŠ¥???°ì†???¨ìˆ˜ ?•íƒœ??ê²°ì •?????†ë‹¤.</li>
+  <li><b>?Œë¡œÂ·?œê°„??ë¹„ì´?ì„± ë¯¸ë°˜??</b> sneak pathÂ·IR dropÂ·ADC ?‘ìž?????´ë ˆ???˜ì? ë¹„ì´?ì„±ê³?driftÂ·endurance
+  ê°™ì? ?¥ê¸° ë³€?”ëŠ” ë³?ê°€ì¤‘ì¹˜ ?˜ì?Â·inference-only ?‰ê??ì„œ ?œì™¸?˜ì?ê³? LRS/HRS variation???¨ì¼ ê°€?°ì‹œ?ˆìœ¼ë¡??¨ìˆœ?”í•˜?€??</li>
+  <li><b>?œë³¸ ?œê³„.</b> ?Œìž¬??9??3 seed Ã— 3 noise)ë¡? 9??ì¤?1???¬ê±´??binomial 95% ? ë¢°êµ¬ê°„?€ ??[0.3%, 48%]??
+  ?´ë¥¸?? ?°ë¼??ë³¸ë¬¸??"11%"??ë°œìƒ ?•ë¥  ì¶”ì •ì¹˜ê? ?„ë‹ˆ??ë³??œë³¸??ê´€ì°?ë¹ˆë„?´ë©°, ?•ëŸ‰???•ë¥  ì¶”ì •Â·?µê³„??? ì˜??
+  ê²€?•ì—????ë§Žì? Monte Carlo ë°˜ë³µ???„ìš”?˜ë‹¤.</li>
+</ul>
+
+<!-- ============================================================== -->
+<!--  VI. ê²°ë¡                                                       -->
+<!-- ============================================================== -->
+<h1>6. ê²°ë¡ </h1>
+<p>
+ë³??°êµ¬??VTEAM ëª¨ë¸ ë¬¸í—Œ???Œìž¬ë³??Œë¼ë¯¸í„°ë¥??œìš©???•ì  conductance mapping ?˜ê²½?ì„œ 4ì¢?ë©¤ë¦¬?¤í„° ?Œìž¬
+(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire, TaO<sub>x</sub>/Ta)??PIM ?˜ê²½ ?¨ì´??ê²°í•¨ ë¶„ë¥˜ ?±ëŠ¥??
+?•ëŸ‰ ë¹„êµ?˜ì??? ?‘ìž?? device-to-device variation, stuck-at fault????ë¹„ì´?ì„±???™ì‹œ???ìš©??9??
+Monte Carlo ?‰ê??ì„œ ?¤ìŒ ??ê°€ì§€ë¥??•ì¸?˜ì???
+</p>
+<p>
+ì²«ì§¸, R<sub>off</sub>/R<sub>on</sub> 25ë°??´ìƒ?????Œìž¬??ideal ì¡°ê±´?ì„œ baseline??99% ?´ìƒ??ë¶„ë¥˜ ?±ëŠ¥??? ì??˜ì??¼ë‚˜,
+realistic ì¡°ê±´?ì„œ???‰ê·  macro F1??0.76~0.87ë¡??˜ë½?˜ì??? ?˜ì§¸, ?€??¹„ 1.97ë°°ì˜ Metallic Nanowire??
+4-state ?‘ìž?”ì˜ ë³¸ì§ˆ???œê³„ë¡?ideal ì¡°ê±´?ì„œ??ë¶„ë¥˜ ?±ëŠ¥??ë¶•ê´´(F1 0.38)?˜ì—¬, ?¤ë‹¨ê³?ê°€ì¤‘ì¹˜ ?•ë??„ê?
+?„ìš”??PIM ì¶”ë¡  ?‘ìš©?ëŠ” ë¶€?í•©?¨ì„ ?•ì¸?˜ì??? ?‹ì§¸, ?™ì¼ ?Œìž¬ ?´ì—?œë„ stuck-at fault???„ì¹˜ ë¬´ìž‘?„ì„±??
+?˜í•´ 9??ì¤?1??(??11%) ë¹„ìœ¨ë¡?catastrophic degradation??ê´€ì°°ë˜?ˆìœ¼ë©? ?´ëŠ” worst-case ë¶•ê´´ ?„í—˜???•ì„±?ìœ¼ë¡?
+?œì‚¬?œë‹¤(?œë³¸ 9ê°??œê³„???µê³„??ë¶„í¬ ?•íƒœë¡œëŠ” ?¨ì •?˜ì? ?ŠëŠ”??.
+</p>
+<p>
+ë³??°êµ¬??ê²°ê³¼??PIM??ë©¤ë¦¬?¤í„° ?Œìž¬ ? ì •?ì„œ (i) R<sub>off</sub>/R<sub>on</sub> ì¶©ë¶„???™ì  ë²”ìœ„ ?•ë³´,
+(ii) ?‰ê·  ?±ëŠ¥ê³??¨ê»˜ worst-case ?„í—˜???€???‰ê?, (iii) fault tolerance ë©”ì»¤?ˆì¦˜ ë³‘í–‰???„ìš”?±ì„ ?œì•ˆ?œë‹¤.
+ë³??°êµ¬??ë³´ìˆ˜???‰ê? ?„ë¡œ? ì½œ?€ ?¥í›„ PIM ê¸°ë°˜ ê²°í•¨ ë¶„ë¥˜ ?œìŠ¤?œì„ ?¤ê³„?????‰ê·  ?±ëŠ¥ê³?worst-case ?„í—˜??
+?¨ê»˜ ê²€? í•˜??ê¸°ì´ˆ ê²€ì¦??ˆì°¨ë¡??œìš©?????ˆë‹¤.
+</p>
+
+<!-- ============================================================== -->
+<!--  ì°¸ê³ ë¬¸í—Œ                                                      -->
+<!-- ============================================================== -->
+<h1>ì°¸ê³ ë¬¸í—Œ</h1>
+<div class="references">
+<ol>
+<li>S. Kvatinsky, M. Ramadan, E. G. Friedman, and A. Kolodny, "VTEAM: A General Model for Voltage-Controlled Memristors," <i>IEEE Transactions on Circuits and Systems II: Express Briefs</i>, vol. 62, no. 8, pp. 786-790, Aug. 2015.</li>
+<li>J. Wang, C. Xu, Z. Yang, J. Zhang, and X. Li, "Deformable Convolutional Networks for Efficient Mixed-type Wafer Defect Pattern Recognition," <i>IEEE Transactions on Semiconductor Manufacturing</i>, vol. 33, no. 4, pp. 587-596, Nov. 2020. DOI: 10.1109/TSM.2020.3020985</li>
+<li>E. Yalon, A. Gavrilov, S. Cohen, D. Mistele, B. Meyler, J. Salzman, and D. Ritter, "Resistive Switching in HfO<sub>2</sub> Probed by a Metal-Insulator-Semiconductor Bipolar Transistor," <i>IEEE Electron Device Letters</i>, vol. 33, no. 1, pp. 11-13, Jan. 2012.</li>
+<li>A. Chanthbouala, V. Garcia, R. O. Cherifi, K. Bouzehouane, S. Fusil, X. Moya, S. Xavier, H. Yamada, C. Deranlot, N. D. Mathur, M. Bibes, A. BarthÃ©lÃ©my, and J. Grollier, "A Ferroelectric Memristor," <i>Nature Materials</i>, vol. 11, no. 10, pp. 860-864, Oct. 2012.</li>
+<li>S. L. Johnson, A. Sundararajan, D. P. Hunley, and D. R. Strachan, "Memristive Switching of Single-Component Metallic Nanowires," <i>Nanotechnology</i>, vol. 21, no. 12, Art. no. 125204, Mar. 2010.</li>
+<li>C. Yakopcic, T. M. Taha, D. J. Mountain, T. Salter, M. J. Marinella, and M. McLean, "Memristor Model Optimization Based on Parameter Extraction from Device Characterization Data," <i>IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems</i>, vol. 39, no. 5, pp. 1084-1095, May 2020.</li>
+<li>M.-J. Wu, J.-S. R. Jang, and J.-L. Chen, "Wafer Map Failure Pattern Recognition and Similarity Ranking for Large-Scale Data Sets," <i>IEEE Transactions on Semiconductor Manufacturing</i>, vol. 28, no. 1, pp. 1-12, Feb. 2015.</li>
+<li>C. Lammie, W. Xiang, B. Linares-Barranco, and M. R. Azghadi, "MemTorch: An Open-Source Simulation Framework for Memristive Deep Learning Systems," <i>Neurocomputing</i>, vol. 485, pp. 124-133, May 2022.</li>
+<li>S. Yu and P.-Y. Chen, "Emerging Memory Technologies: Recent Trends and Prospects," <i>IEEE Solid-State Circuits Magazine</i>, vol. 8, no. 2, pp. 43-56, Spring 2016.</li>
+<li>M. A. Zidan, J. P. Strachan, and W. D. Lu, "The Future of Electronics Based on Memristive Systems," <i>Nature Electronics</i>, vol. 1, no. 1, pp. 22-29, Jan. 2018.</li>
+<li>M. Horowitz, "Computing's Energy Problem (and what we can do about it)," in <i>Proc. IEEE International Solid-State Circuits Conference (ISSCC)</i>, Feb. 2014, pp. 10-14.</li>
+<li>Y.-H. Chen, T. Krishna, J. S. Emer, and V. Sze, "Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks," <i>IEEE Journal of Solid-State Circuits</i>, vol. 52, no. 1, pp. 127-138, Jan. 2017.</li>
+</ol>
+</div>
+
+<div class="footer">
+??Manuscript draft, Sangmyung University Capstone Project, 2026 ??
+</div>
+
+
+</main>
+</body>
+</html>
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 750ms:
+7:  @page { size: 182mm 257mm; margin: 15mm 25mm 15mm 25mm; }
+16:    width: 182mm; min-height: 257mm; padding: 15mm 25mm;
+21:    width: 182mm; padding: 15mm 25mm; margin: 8mm auto;
+98:    <li class="s1">2.3 VTEAM ëª¨ë¸</li>
+109:    <li class="s1">4.3 Worst-case ë¶•ê´´ í˜„ìƒ ë¶„ì„</li>
+114:    <li class="s1">5.3 Worst-case ë¶•ê´´ í˜„ìƒì˜ PIM í•¨ì˜</li>
+126:  ê·¸ëŸ¬ë‚˜ ë©¤ë¦¬ìŠ¤í„°ëŠ” ì†Œìž¬ë³„ë¡œ ì €í•­ë¹„, í‘œí˜„ ê°€ëŠ¥í•œ ìƒíƒœ ìˆ˜, ë³€ë™(variation), ê²°í•¨ë¥ (stuck-at fault) ë“± ë¬¼ë¦¬ì 
+128:  ë³¸ ì—°êµ¬ì—ì„œëŠ” VTEAM ëª¨ë¸ì˜ ë¬¸í—Œ íŒŒë¼ë¯¸í„°ë¥¼ í™œìš©í•˜ì—¬ Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire,
+132:  ì ìš©í•˜ì—¬ 9íšŒ Monte Carlo í‰ê°€ë¥¼ ìˆ˜í–‰í•˜ì˜€ë‹¤.
+133:  ì‹¤í—˜ ê²°ê³¼, R<sub>off</sub>/R<sub>on</sub> ì €í•­ë¹„ê°€ 25ë°° ì´ìƒì¸ ì„¸ ì†Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric,
+136:  Metallic NanowireëŠ” 4-state ì–‘ìží™”ì˜ ë³¸ì§ˆì  í•œê³„ë¡œ ì¸í•´ ì´ìƒì  ì¡°ê±´ì—ì„œë„ F1 0.38ë¡œ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´í•˜ì˜€ë‹¤.
+137:  ë˜í•œ ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta) ê°ê°ì—ì„œ 9íšŒ Monte Carlo
+138:  ìƒ˜í”Œ ì¤‘ 1íšŒì”© ì¹˜ëª…ì  ì„±ëŠ¥ ë¶•ê´´(catastrophic degradation, F1 &lt; 0.60)ê°€ ê´€ì°°ë˜ì—ˆìœ¼ë©°,
+139:  ì´ëŠ” stuck-at fault ìœ„ì¹˜ ë¬´ìž‘ìœ„ì„±ì— ì˜í•œ worst-case ë¶•ê´´ ìœ„í—˜ì˜ ê°€ëŠ¥ì„±ì„ ì‹œì‚¬í•œë‹¤(ë‹¤ë§Œ ì‹¤ì œ ë°œìƒ í™•ë¥  ì¶”ì •ì—ëŠ”
+141:  ì´ëŠ” PIM ì‘ìš©ì—ì„œ í‰ê·  ì„±ëŠ¥ë¿ ì•„ë‹ˆë¼ ê²°í•¨ ë¶„í¬ì— ë”°ë¥¸ worst-case ìœ„í—˜ê¹Œì§€ í•¨ê»˜ ê³ ë ¤í•´ì•¼ í•¨ì„ ì‹œì‚¬í•œë‹¤.
+144:  <b>Keywords</b> : Memristor, Processing-In-Memory (PIM), VTEAM model, Convolutional Neural Network,
+161:ì „ë¥˜ ë²•ì¹™ë§Œìœ¼ë¡œ ë‹¨ì¼ ì‚¬ì´í´ ì•ˆì— í–‰ë ¬-ë²¡í„° ê³±ì…ˆì„ ì™„ì„±í•  ìˆ˜ ìžˆì–´ ë”¥ëŸ¬ë‹ ì¶”ë¡ ìš© PIM ê°€ì†ê¸°ì˜ ëŒ€í‘œ í›„ë³´ë¡œ
+165:ë°˜ë„ì²´ ì œì¡° ê³µì •ì—ì„œëŠ” ì›¨ì´í¼ í‘œë©´ì˜ ê²°í•¨ íŒ¨í„´(Center, Donut, Edge-Ring ë“±)ì„ ìžë™ ë¶„ë¥˜í•˜ëŠ” ìž‘ì—…ì´ ìˆ˜ìœ¨ ê´€ë¦¬ì—
+173:ì²«ì§¸, ë©¤ë¦¬ìŠ¤í„°ê°€ ì•ˆì •ì ìœ¼ë¡œ êµ¬ë¶„í•  ìˆ˜ ìžˆëŠ” ì»¨ë•í„´ìŠ¤ ìƒíƒœì˜ ìˆ˜ê°€ ìœ í•œí•˜ë¯€ë¡œ ê°€ì¤‘ì¹˜ë¥¼ í‘œí˜„í•  ë•Œ ì–‘ìží™” ì†ì‹¤ì´
+174:ë°œìƒí•œë‹¤. ë‘˜ì§¸, ë™ì¼ ê³µì •ì—ì„œ ì œì¡°ëœ ì…€ë“¤ ê°„ì—ë„ ì €í•­ê°’ì´ ê°€ìš°ì‹œì•ˆ ë¶„í¬ë¡œ ë³€ë™(device-to-device variation)
+175:í•œë‹¤. ì…‹ì§¸, ì¼ë¶€ ì…€ì€ ì˜êµ¬ì ìœ¼ë¡œ ì €ì €í•­(LRS) ë˜ëŠ” ê³ ì €í•­(HRS) ìƒíƒœì— ê³ ì°©ë˜ëŠ” stuck-at faultë¥¼ ë³´ì¸ë‹¤ [1, 8].
+186:<b>1) VTEAM ë¬¸í—Œ íŒŒë¼ë¯¸í„°ë¥¼ ì°¸ê³ í•œ ì •ì  conductance mapping í™˜ê²½ì—ì„œ 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ì˜ ì •ëŸ‰ ë¹„êµ.</b>
+188:ë™ì¼í•œ ë¹„ì´ìƒì„± ëª¨ë¸ì„ ì ìš©í•˜ì—¬ ì†Œìž¬ ê°„ PIM ì í•©ì„±ì„ macro F1 ì§€í‘œë¡œ ë¹„êµí•œë‹¤.
+196:<b>3) Worst-case ë¶•ê´´ í˜„ìƒ ê´€ì°°.</b>
+197:3ê°œì˜ baseline seedì™€ 3ê°œì˜ noise sampleì„ ê²°í•©í•œ 9íšŒ Monte Carlo í‰ê°€ì—ì„œ, ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ ëª¨ë‘ì—ì„œ
+198:9íšŒ ì¤‘ 1íšŒ ë¹„ìœ¨ë¡œ catastrophic degradationì´ ê´€ì°°ë˜ì—ˆë‹¤. í‘œë³¸ì´ ìž‘ì•„ ë¶„í¬ í˜•íƒœë¥¼ ë‹¨ì •í•  ìˆ˜ëŠ” ì—†ìœ¼ë‚˜,
+199:stuck-at fault ìœ„ì¹˜ ë¬´ìž‘ìœ„ì„±ì— ë”°ë¼ ë™ì¼ ì†Œìž¬ê°€ worst-caseì— ê°€ê¹Œìš´ ë¶•ê´´ ê²°ê³¼ë¥¼ ë³´ì¼ ìˆ˜ ìžˆìŒì„ ì‹œì‚¬í•œë‹¤.
+200:ì´ëŠ” PIM ì‘ìš©ì—ì„œ í‰ê·  ì„±ëŠ¥ë¿ ì•„ë‹ˆë¼ worst-case ìœ„í—˜ê¹Œì§€ ê³ ë ¤í•´ì•¼ í•¨ì„ ì •ì„±ì ìœ¼ë¡œ ë’·ë°›ì¹¨í•œë‹¤.
+223:<h2>2.3 VTEAM ëª¨ë¸</h2>
+225:VTEAM(Voltage Threshold Adaptive Memristor)ì€ Kvatinsky ë“±ì´ ì œì•ˆí•œ ì „ì•• ìž„ê³„ ê¸°ë°˜ì˜ ì¼ë°˜í™”ëœ ë©¤ë¦¬ìŠ¤í„° ê±°ë™
+226:ëª¨ë¸ë¡œ [1], ë‹¤ì–‘í•œ ì†Œìž¬ì˜ ì‹¤ì¸¡ íŠ¹ì„±ì„ ë™ì¼í•œ ìˆ˜ì‹ í˜•íƒœ ì•ˆì—ì„œ íŒŒë¼ë¯¸í„°ë§Œ ë°”ê¾¸ì–´ í‘œí˜„í•  ìˆ˜ ìžˆë‹¤. ë³¸ ì—°êµ¬ëŠ” ì‹œê°„
+234:ë¡œ í‘œí˜„ë˜ë©°(<i>w</i>ëŠ” ì •ê·œí™”ëœ ë‚´ë¶€ ìƒíƒœ ë³€ìˆ˜), ì´ ì‹ì´ ì†Œìž¬ë³„ R<sub>on</sub>Â·R<sub>off</sub>ë§Œìœ¼ë¡œ í†µì¼ëœ ë¹„êµ í™˜ê²½ì„ êµ¬ì„±í•˜ëŠ” ê¸°ë°˜ì´ ëœë‹¤.
+263:ì •ê·œí™”í•˜ì˜€ê³ , í•™ìŠµ/ê²€ì¦/í…ŒìŠ¤íŠ¸ëŠ” 70/10/20 ë¹„ìœ¨ë¡œ seed=42ë¡œ ê³ ì • ë¶„í• í•˜ì˜€ë‹¤(Train 25,910 / Val 3,702 / Test 7,403).
+275:  <tr><td>FC1</td><td>Linear(2304â†’128), ReLU, Dropout(0.3)</td><td>128</td></tr>
+278:<p class="caption">Table 1. CNN ëª¨ë¸ êµ¬ì¡°. ì´ íŒŒë¼ë¯¸í„° ìˆ˜ 319,592.</p>
+280:ì†ì‹¤ í•¨ìˆ˜ëŠ” multi-label ë¶„ë¥˜ í‘œì¤€ì¸ BCEWithLogitsLossë¥¼ ì‚¬ìš©í•˜ì˜€ê³ , ìµœì í™”ëŠ” Adam(lr=1e-3, batch size=128)
+288:ë³¸ ì—°êµ¬ì˜ í•µì‹¬ ë¹„êµ ëŒ€ìƒì¸ 4ì¢… ì†Œìž¬ì˜ ë¬¼ë¦¬ íŒŒë¼ë¯¸í„°ëŠ” í‘œ 2ì— ì •ë¦¬í•˜ì˜€ë‹¤.
+290:device-to-device variation(Ïƒ/Î¼)ê³¼ stuck-at fault ë¹„ìœ¨ì€ ë¬¸í—Œì—ì„œ ë³´ê³ ëœ ë²”ìœ„ì— ê¸°ë°˜í•œ ì‹œë®¬ë ˆì´ì…˜ ê°€ì •ê°’ì´ë‹¤.
+296:  <tr><td><b>R<sub>off</sub>/R<sub>on</sub></b></td><td><b>25.0Ã—</b></td><td><b>333.3Ã—</b></td><td><b>1.97Ã—</b></td><td><b>145.8Ã—</b></td></tr>
+300:  <tr><td>Stuck-at fault rate</td><td>0.5%</td><td>0.3%</td><td>5.0%</td><td>0.3%</td></tr>
+303:<p class="caption">Table 2. 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ì˜ conductance mapping ë° ë¹„ì´ìƒì„± íŒŒë¼ë¯¸í„°. R<sub>on</sub>/R<sub>off</sub>ëŠ” ì‹¤ì¸¡ ë¬¸í—Œ, variation/faultëŠ” ê°€ì •ê°’.</p>
+321:(i) Device-to-device variation: g â† gÂ·(1 + N(0, Ïƒ)). ÏƒëŠ” Ïƒ<sub>R_on</sub>ê³¼ Ïƒ<sub>R_off</sub>ì˜ ì‚°ìˆ  í‰ê· ì„ ë‹¨ì¼
+322:ê°€ìš°ì‹œì•ˆ ë¶„ì‚°ìœ¼ë¡œ ì‚¬ìš©í•´ ì†Œìž¬ ê°„ ë¹„êµ ë³€ìˆ˜ë¥¼ í†µì œí•˜ì˜€ë‹¤(LRS/HRS ë¶„ë¦¬ ì ìš© ì‹œì˜ ë³€ë™ ê°€ëŠ¥ì„±ì€ 5.4ì— ëª…ì‹œ).
+324:ê³ ì°©ì‹œí‚¨ë‹¤. fault rate(0.3~5%)ëŠ” í¬ë¡œìŠ¤ë°” yield ë¬¸í—Œì˜ ë³´ê³  ë²”ìœ„ì— ê¸°ë°˜í•œ ê°€ì •ê°’ìœ¼ë¡œ, ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ”
+325:1% ë¯¸ë§Œì„, Metallic NanowireëŠ” worst-case sensitivity boundë¡œì„œ ë³´ìˆ˜ì ì¸ 5%ë¥¼ ì ìš©í•˜ì˜€ë‹¤. ì†Œìž¬ ê°„ fault rateê°€
+326:ë™ì¼í•˜ì§€ ì•Šìœ¼ë¯€ë¡œ NWì˜ realistic ê°’ì€ ìˆ˜í‰ ë¹„êµê°€ ì•„ë‹Œ sensitivity ì‹œë‚˜ë¦¬ì˜¤ë¡œ í•´ì„í•œë‹¤.
+343:  baseline seedë‹¹ 1íšŒ í‰ê°€í•œë‹¤.</li>
+345:  ë¶„ë¦¬í•´ 3íšŒ sampling(ì´ 9íšŒ/ì†Œìž¬) í›„ í‰ê· ê³¼ í‘œì¤€íŽ¸ì°¨ë¥¼ ë³´ê³ í•œë‹¤.</li>
+348:í‰ê°€ ì§€í‘œëŠ” multi-label ë¶„ë¥˜ í‘œì¤€ì¸ <b>Macro F1</b>(í´ëž˜ìŠ¤ ë¶ˆê· í˜•ì— ê°•ê±´)ê³¼ <b>Subset Accuracy</b>(ëª¨ë“  ë¼ë²¨ì´
+359:3ê°œì˜ baseline seedì— ëŒ€í•´ í•™ìŠµëœ CNNì˜ í…ŒìŠ¤íŠ¸ ì„±ëŠ¥ì€ í‘œ 3ê³¼ ê°™ë‹¤.
+368:<p class="caption">Table 3. FP32 software baselineì˜ 3 seed ê²°ê³¼. macro F1ì˜ std=0.0032ë¡œ ë§¤ìš° ì•ˆì •ì .</p>
+376:ê° ì†Œìž¬ë³„ ideal ë° realistic ì¡°ê±´ì—ì„œì˜ macro F1 ê²°ê³¼ë¥¼ í‘œ 4ì™€ ê·¸ë¦¼ 1ì— ì •ë¦¬í•˜ì˜€ë‹¤.
+381:  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>25.0Ã—</td><td>64</td><td>0.9578</td><td>0.9826</td><td>0.5601 Â± 0.2779</td><td>0.7578 Â± 0.2759</td><td>âˆ’0.2248</td><td>âˆ’22.88%</td></tr>
+383:  <tr><td>Metallic Nanowire</td><td>1.97Ã—</td><td>4</td><td>0.0813</td><td>0.3847</td><td>0.0518 Â± 0.0413</td><td>0.3288 Â± 0.1286</td><td>âˆ’0.0559</td><td>âˆ’14.53%</td></tr>
+384:  <tr><td>TaO<sub>x</sub>/Ta</td><td>145.8Ã—</td><td>32</td><td>0.9458</td><td>0.9770</td><td>0.7258 Â± 0.2431</td><td>0.8726 Â± 0.1364</td><td>âˆ’0.1044</td><td>âˆ’10.69%</td></tr>
+386:<p class="caption">Table 4. 4 ì†Œìž¬ì˜ Ideal vs Realistic ë¶„ë¥˜ ì„±ëŠ¥ (Subset Accuracy ë° Macro F1, 3 baseline seed Ã— 3 noise sample = 9íšŒ í‰ê· ). Î”F1ì€ macro F1 ê¸°ì¤€ì˜ ì ˆëŒ€ ë³€í™”ëŸ‰ê³¼ ìƒëŒ€ ë³€í™”ìœ¨ì„ ë¶„ë¦¬í•˜ì—¬ í‘œê¸°.</p>
+390:  <div class="caption">Figure 1. 4 ì†Œìž¬ì˜ Ideal(íŒŒëž‘) vs Realistic(ì£¼í™©) macro F1 ë¹„êµ. ì˜¤ì°¨ë§‰ëŒ€ëŠ” 9íšŒ í‘œì¤€íŽ¸ì°¨. íšŒìƒ‰ ì ì„ ì€ FP32 baseline.</div>
+394:ì €í•­ë¹„ 25ë°° ì´ìƒì˜ ì„¸ ì†Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta)ëŠ” ideal ì¡°ê±´ì—ì„œ
+397:ê´€ì°°ë˜ì—ˆìœ¼ë‚˜, ì´ëŠ” baseline í‘œì¤€íŽ¸ì°¨(0.0032) ë²”ìœ„ ë‚´ì— ë“¤ì–´ê°€ëŠ” ìš°ì—°í•œ ë³€ë™ìœ¼ë¡œ í•´ì„ëœë‹¤. ê·¸ëŸ¬ë‚˜ variationê³¼
+398:stuck-at faultê°€ ë”í•´ì§„ realistic ì¡°ê±´ì—ì„œëŠ” í‰ê·  macro F1ì´ 0.76~0.87 ìˆ˜ì¤€ìœ¼ë¡œ í•˜ë½í•˜ì˜€ìœ¼ë©°, í‘œì¤€íŽ¸ì°¨ê°€
+402:Subset Accuracy ê¸°ì¤€ìœ¼ë¡œëŠ” ë” í° ê°ì†Œê°€ ë‚˜íƒ€ë‚˜(í‘œ 4), multi-label ë¶„ë¥˜ì—ì„œ 8ê°œ ê²°í•¨ì„ ë™ì‹œì— ì •í™•ížˆ ë§žížˆëŠ” ê²ƒì´
+406:ì´ì™€ ëŒ€ì¡°ì ìœ¼ë¡œ Metallic NanowireëŠ” ideal ì¡°ê±´ì—ì„œë„ F1 0.38ë¡œ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´í•˜ì˜€ë‹¤. ì´ëŠ” ì €í•­ë¹„ 1.97ë°°
+407:+ 4-state ì–‘ìží™”ì˜ ì¡°í•©ì´ ê°€ì¤‘ì¹˜ ë¶„í¬ì˜ ëŒ€ë¶€ë¶„ì˜ ì •ë³´ë¥¼ ì†ì‹¤ì‹œí‚¤ê¸° ë•Œë¬¸ì´ë©°, realistic ì¡°ê±´ì´ ì¶”ê°€ëœë‹¤ê³ 
+408:í•˜ì—¬ ë” ì•…í™”ë  ì—¬ì§€ê°€ ì ë‹¤(realistic F1 0.33). ì¦‰ Metallic Nanowireì˜ í•œê³„ëŠ” ë¹„ì´ìƒì„±ì´ ì•„ë‹ˆë¼
+409:<b>í‘œí˜„ ê°€ëŠ¥í•œ ê°€ì¤‘ì¹˜ ìžìœ ë„ ìžì²´</b>ì— ìžˆë‹¤.
+412:<h2>4.3 Worst-case ë¶•ê´´ í˜„ìƒ ë¶„ì„</h2>
+414:í‘œ 4ì˜ í° í‘œì¤€íŽ¸ì°¨ëŠ” ë‹¨ìˆœí•œ noise varianceê°€ ì•„ë‹ˆë¼, ë™ì¼ ì†Œìž¬ì˜ 9íšŒ noise sampling ê²°ê³¼ê°€ "ì •ìƒ ì˜ì—­"ê³¼
+416:ë‚˜íƒ€ë‚¸ ê²ƒì´ë‹¤. ë‹¤ë§Œ í‘œë³¸ ìˆ˜ê°€ ì†Œìž¬ë‹¹ 9íšŒë¡œ ì œí•œë˜ë¯€ë¡œ í†µê³„ì  ì˜ë¯¸ì˜ bimodal ë¶„í¬ë¡œ ë‹¨ì •í•  ìˆ˜ëŠ” ì—†ìœ¼ë©°,
+417:ë³¸ ì ˆì—ì„œëŠ” "worst-case ë¶•ê´´ í˜„ìƒ"ìœ¼ë¡œ í‘œí˜„í•œë‹¤.
+425:F1 â‰¥ 0.88ì„ "good", F1 &lt; 0.60ì„ "catastrophic"ìœ¼ë¡œ ì •ì˜í–ˆì„ ë•Œ 4 ì†Œìž¬ì˜ ë¶„í¬ëŠ” í‘œ 5ì™€ ê°™ë‹¤.
+429:  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>4/9 (44%)</td><td>4/9 (44%)</td><td>1/9 (11%)</td><td>9</td></tr>
+430:  <tr><td>Ferroelectric</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+432:  <tr><td>TaO<sub>x</sub>/Ta</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+434:<p class="caption">Table 5. ê° ì†Œìž¬ì˜ per-noise ê²°ê³¼ë¥¼ good / moderate / catastrophic ìž„ê³„ë¡œ ë¶„ë¥˜í•œ ë¹ˆë„.</p>
+437:ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” ì•½ 44~56%ê°€ baselineì˜ 90% ì´ìƒì„ ìœ ì§€(good)í•˜ëŠ” í•œíŽ¸, 9íšŒ ì¤‘ 1íšŒ (ì•½ 11%) ë¹„ìœ¨ë¡œ F1ì´
+438:0.60 ë¯¸ë§Œìœ¼ë¡œ ë¶•ê´´(catastrophic)í•˜ëŠ” ê²°ê³¼ê°€ ì„¸ ì†Œìž¬ ëª¨ë‘ì—ì„œ ì¼ê´€ë˜ê²Œ ê´€ì°°ë˜ì—ˆë‹¤. Metallic NanowireëŠ” 9íšŒ ëª¨ë‘
+439:catastrophic êµ¬ê°„ì— ì¡´ìž¬í•˜ì—¬, ë³¸ì§ˆì  í‘œí˜„ í•œê³„ê°€ noise ì¢…ë¥˜ì™€ ë¬´ê´€í•˜ê²Œ í•­ìƒ ì„±ëŠ¥ ë¶•ê´´ë¥¼ ì´ˆëž˜í•¨ì„ ë³´ì—¬ì¤€ë‹¤.
+440:ë˜í•œ NWì˜ ideal ì¡°ê±´(variation=0, fault=0)ì—ì„œë„ ì´ë¯¸ F1=0.38ë¡œ ë¶•ê´´í•˜ë¯€ë¡œ, NWì˜ ê²°ê³¼ëŠ” fault rate ì°¨ì´ê°€
+441:ì•„ë‹Œ 4-state ì–‘ìží™” íš¨ê³¼ë¡œ í•´ì„ëœë‹¤(NWì— ëŒ€í•œ 4-state vs. ë” ë§Žì€ ìƒíƒœ ìˆ˜ì˜ ê°•ì œ ablationì€ ë³¸ ì—°êµ¬ ë²”ìœ„ ì™¸ì´ë©°,
+447:í‘œ 6ì€ 4 ì†Œìž¬ Ã— ë‘ ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ macro F1ì„ ë³´ì—¬ì¤€ë‹¤. ë°ì´í„°ì…‹ì˜ í´ëž˜ìŠ¤ ë¹ˆë„ê°€ ê· ì¼í•˜ì§€ ì•ŠìŒì„
+448:ìœ ì˜í•´ì•¼ í•œë‹¤(Near-Full 0.4%, Scratch 2.3%ë¡œ ê°€ìž¥ ì ìŒ, Loc 48.6%, Random 51.3%ë¡œ ê°€ìž¥ ë§ŽìŒ).
+457:  <tr><td>Metallic Nanowire â€” Realistic</td><td>0.19</td><td>0.44</td><td>0.38</td><td>0.27</td><td>0.57</td><td><b>0.15</b></td><td>0.46</td><td><b>0.17</b></td></tr>
+461:<p class="caption">Table 6. 4 ì†Œìž¬ Ã— Ideal/Realistic ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1 (Idealì€ 3 seed í‰ê· , Realisticì€ 9 sample í‰ê· ).</p>
+466:TaO<sub>x</sub>/Ta 0.70ìœ¼ë¡œ ë–¨ì–´ì ¸, ë‹¤ë¥¸ ë‹¤ìˆ˜ í´ëž˜ìŠ¤(Loc, Random ë“±)ì™€ ì•½ 0.15~0.25ì˜ F1 ê²©ì°¨ë¥¼ ë³´ì¸ë‹¤. ì´ëŠ”
+471:ì‹¤íŒ¨</b>ì´ë‹¤. ì´ëŠ” 4-state ì–‘ìží™”ë¡œ ì¸í•´ ê°€ì¤‘ì¹˜ í‘œí˜„ ìžìœ ë„ê°€ ë¶€ì¡±í•´ minority ë˜ëŠ” ê³µê°„ì ìœ¼ë¡œ ë¯¸ì„¸í•œ
+484:ì‹¤í—˜ ê²°ê³¼ì—ì„œ ê°€ìž¥ ëª…í™•í•œ ê²½ê³„ëŠ” R<sub>off</sub>/R<sub>on</sub> â‰ˆ 25ë°° ë¶€ê·¼ì— ì¡´ìž¬í•œë‹¤. ì €í•­ë¹„ê°€ 25ë°° ì´ìƒì¸ ì„¸ ì†Œìž¬ëŠ”
+487:ê°„ê²©ì´ ê°€ì¤‘ì¹˜ í‘œí˜„ì— ë¯¸ì¹˜ëŠ” ìƒëŒ€ ì˜¤ì°¨ê°€ ì»¤ì§€ê¸° ë•Œë¬¸ì´ë‹¤.
+490:ë‹¤ë§Œ ë³¸ ì—°êµ¬ì˜ ì‹¤í—˜ë§Œìœ¼ë¡œ "25ë°°ê°€ ë³´íŽ¸ì  ë¬¸í„±ê°’"ì´ë¼ ë‹¨ì •í•˜ê¸°ëŠ” ì–´ë µë‹¤. ë³¸ ì—°êµ¬ëŠ” 4 ì†Œìž¬ì˜ ì´ì‚°ì ì¸ ë¹„êµì´ë©°,
+491:ì €í•­ë¹„ sweep(ì˜ˆ: 5Ã—, 10Ã—, 20Ã—, 50Ã—)ì„ ìˆ˜í–‰í•˜ì§€ ì•Šì•˜ê¸° ë•Œë¬¸ì´ë‹¤. "ë³¸ ì—°êµ¬ì˜ ì¡°ê±´ì—ì„œ 25ë°° ì´ìƒì´ë©´ ì–‘ìží™”ë¡œ
+497:Metallic Nanowireì˜ 4-state ì–‘ìží™”ëŠ” ê°€ì¤‘ì¹˜ë¥¼ 4ê°œì˜ ì¹¸ìœ¼ë¡œ ì••ì¶•í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•œë‹¤. 32ë§Œ ê°œì˜ ë¶€ë™ì†Œìˆ˜ì 
+504:í•œíŽ¸ Metallic NanowireëŠ” ë™ìž‘ ì „ì••ì´ ë§¤ìš° ë‚®ê³  (v<sub>off</sub>=0.145 V) variationì´ ìž‘ì•„ (5~8%) ë³„ë„ ì‘ìš©
+509:<h2>5.3 Worst-case ë¶•ê´´ í˜„ìƒì˜ PIM í•¨ì˜</h2>
+511:ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” í‰ê·  ì„±ëŠ¥ì´ ë¹„ìŠ·í•´ë„ 9íšŒ ì¤‘ 1íšŒ catastrophic degradationì´ ë‚˜íƒ€ë‚¬ë‹¤(í‘œ 5). ì´ëŠ” í‰ê· ë§Œìœ¼ë¡œ
+518:ëŒ€ì±…ì´ ì ìš©ë˜ì§€ ì•Šì€ ë³´ìˆ˜ì  ë² ì´ìŠ¤ë¼ì¸ì´ë©°, í–¥í›„ fault tolerance ì ìš© í›„ worst-case ë¶•ê´´ ë¹ˆë„ê°€ ì–´ë–»ê²Œ
+519:ë³€í™”í•˜ëŠ”ì§€ë¥¼ ì¶©ë¶„í•œ í‘œë³¸ìœ¼ë¡œ ì •ëŸ‰í™”í•˜ëŠ” í›„ì† ì—°êµ¬ê°€ í•„ìš”í•˜ë‹¤.
+528:  ê°™ì€ ìž¥ê¸° ë³€í™”ëŠ” ë³¸ ê°€ì¤‘ì¹˜ ìˆ˜ì¤€Â·inference-only í‰ê°€ì—ì„œ ì œì™¸í•˜ì˜€ê³ , LRS/HRS variationë„ ë‹¨ì¼ ê°€ìš°ì‹œì•ˆìœ¼ë¡œ ë‹¨ìˆœí™”í•˜ì˜€ë‹¤.</li>
+529:  <li><b>í‘œë³¸ í•œê³„.</b> ì†Œìž¬ë‹¹ 9íšŒ(3 seed Ã— 3 noise)ë¡œ, 9íšŒ ì¤‘ 1íšŒ ì‚¬ê±´ì˜ binomial 95% ì‹ ë¢°êµ¬ê°„ì€ ì•½ [0.3%, 48%]ì—
+530:  ì´ë¥¸ë‹¤. ë”°ë¼ì„œ ë³¸ë¬¸ì˜ "11%"ëŠ” ë°œìƒ í™•ë¥  ì¶”ì •ì¹˜ê°€ ì•„ë‹ˆë¼ ë³¸ í‘œë³¸ì˜ ê´€ì°° ë¹ˆë„ì´ë©°, ì •ëŸ‰ì  í™•ë¥  ì¶”ì •Â·í†µê³„ì  ìœ ì˜ì„±
+539:ë³¸ ì—°êµ¬ëŠ” VTEAM ëª¨ë¸ ë¬¸í—Œì˜ ì†Œìž¬ë³„ íŒŒë¼ë¯¸í„°ë¥¼ í™œìš©í•œ ì •ì  conductance mapping í™˜ê²½ì—ì„œ 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬
+541:ì •ëŸ‰ ë¹„êµí•˜ì˜€ë‹¤. ì–‘ìží™”, device-to-device variation, stuck-at faultì˜ ì„¸ ë¹„ì´ìƒì„±ì„ ë™ì‹œì— ì ìš©í•œ 9íšŒ
+545:ì²«ì§¸, R<sub>off</sub>/R<sub>on</sub> 25ë°° ì´ìƒì˜ ì„¸ ì†Œìž¬ëŠ” ideal ì¡°ê±´ì—ì„œ baselineì˜ 99% ì´ìƒì˜ ë¶„ë¥˜ ì„±ëŠ¥ì„ ìœ ì§€í•˜ì˜€ìœ¼ë‚˜,
+547:4-state ì–‘ìží™”ì˜ ë³¸ì§ˆì  í•œê³„ë¡œ ideal ì¡°ê±´ì—ì„œë„ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´(F1 0.38)í•˜ì—¬, ë‹¤ë‹¨ê³„ ê°€ì¤‘ì¹˜ ì •ë°€ë„ê°€
+549:ì˜í•´ 9íšŒ ì¤‘ 1íšŒ (ì•½ 11%) ë¹„ìœ¨ë¡œ catastrophic degradationì´ ê´€ì°°ë˜ì—ˆìœ¼ë©°, ì´ëŠ” worst-case ë¶•ê´´ ìœ„í—˜ì„ ì •ì„±ì ìœ¼ë¡œ
+550:ì‹œì‚¬í•œë‹¤(í‘œë³¸ 9ê°œ í•œê³„ìƒ í†µê³„ì  ë¶„í¬ í˜•íƒœë¡œëŠ” ë‹¨ì •í•˜ì§€ ì•ŠëŠ”ë‹¤).
+554:(ii) í‰ê·  ì„±ëŠ¥ê³¼ í•¨ê»˜ worst-case ìœ„í—˜ì— ëŒ€í•œ í‰ê°€, (iii) fault tolerance ë©”ì»¤ë‹ˆì¦˜ ë³‘í–‰ì˜ í•„ìš”ì„±ì„ ì œì•ˆí•œë‹¤.
+555:ë³¸ ì—°êµ¬ì˜ ë³´ìˆ˜ì  í‰ê°€ í”„ë¡œí† ì½œì€ í–¥í›„ PIM ê¸°ë°˜ ê²°í•¨ ë¶„ë¥˜ ì‹œìŠ¤í…œì„ ì„¤ê³„í•  ë•Œ í‰ê·  ì„±ëŠ¥ê³¼ worst-case ìœ„í—˜ì„
+565:<li>S. Kvatinsky, M. Ramadan, E. G. Friedman, and A. Kolodny, "VTEAM: A General Model for Voltage-Controlled Memristors," <i>IEEE Transactions on Circuits and Systems II: Express Briefs</i>, vol. 62, no. 8, pp. 786-790, Aug. 2015.</li>
+566:<li>J. Wang, C. Xu, Z. Yang, J. Zhang, and X. Li, "Deformable Convolutional Networks for Efficient Mixed-type Wafer Defect Pattern Recognition," <i>IEEE Transactions on Semiconductor Manufacturing</i>, vol. 33, no. 4, pp. 587-596, Nov. 2020. DOI: 10.1109/TSM.2020.3020985</li>
+569:<li>S. L. Johnson, A. Sundararajan, D. P. Hunley, and D. R. Strachan, "Memristive Switching of Single-Component Metallic Nanowires," <i>Nanotechnology</i>, vol. 21, no. 12, Art. no. 125204, Mar. 2010.</li>
+572:<li>C. Lammie, W. Xiang, B. Linares-Barranco, and M. R. Azghadi, "MemTorch: An Open-Source Simulation Framework for Memristive Deep Learning Systems," <i>Neurocomputing</i>, vol. 485, pp. 124-133, May 2022.</li>
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+파일이 UTF-8로 보이는데 PowerShell 출력 인코딩이 일부 깨져 보입니다. `rg` 결과의 한글은 판독 가능해서 핵심 위치는 잡혔고, 이제 표와 3~6장 연결부를 좁혀서 보겠습니다.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Encoding UTF8 -LiteralPath 'paper_b5.html' | Select-Object -Skip 280 -First 95" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Encoding UTF8 -LiteralPath 'paper_b5.html' | Select-Object -Skip 370 -First 90" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Encoding UTF8 -LiteralPath 'paper_b5.html' | Select-Object -Skip 480 -First 75" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 490ms:
+이다. 최대 학습 epoch는 20이며, 검증 macro F1이 5 epoch 동안 갱신되지 않으면 학습을 조기 종료(early stopping)
+하였다. 동일 모델 구조를 3개의 baseline seed(42, 123, 456)에 대해 독립적으로 학습하여 평가 결과가 특정 초기화
+seed에만 의존하지 않는지(baseline 변동성)를 확인하였다.
+</p>
+
+<h2>3.3 4종 소재 파라미터</h2>
+<p>
+본 연구의 핵심 비교 대상인 4종 소재의 물리 파라미터는 표 2에 정리하였다.
+R<sub>on</sub>, R<sub>off</sub> 등 거시 특성은 각 소재의 실측 문헌에서 가져왔으며,
+device-to-device variation(σ/μ)과 stuck-at fault 비율은 문헌에서 보고된 범위에 기반한 시뮬레이션 가정값이다.
+</p>
+<table>
+  <tr><th>Parameter</th><th>Pt/HfO<sub>x</sub>/Ti</th><th>Ferroelectric</th><th>Metallic Nanowire</th><th>TaO<sub>x</sub>/Ta</th></tr>
+  <tr><td>R<sub>on</sub> (Ω)</td><td>100</td><td>150,000</td><td>17.3</td><td>4,800</td></tr>
+  <tr><td>R<sub>off</sub> (Ω)</td><td>2,500</td><td>50,000,000</td><td>34</td><td>700,000</td></tr>
+  <tr><td><b>R<sub>off</sub>/R<sub>on</sub></b></td><td><b>25.0×</b></td><td><b>333.3×</b></td><td><b>1.97×</b></td><td><b>145.8×</b></td></tr>
+  <tr><td>Conductance states</td><td>64</td><td>128</td><td>4</td><td>32</td></tr>
+  <tr><td>Variation σ<sub>R_on</sub></td><td>10%</td><td>8%</td><td>5%</td><td>8%</td></tr>
+  <tr><td>Variation σ<sub>R_off</sub></td><td>15%</td><td>12%</td><td>8%</td><td>10%</td></tr>
+  <tr><td>Stuck-at fault rate</td><td>0.5%</td><td>0.3%</td><td>5.0%</td><td>0.3%</td></tr>
+  <tr><td>출처(R<sub>on</sub>, R<sub>off</sub>)</td><td>[1, 3]</td><td>[1, 4]</td><td>[1, 5]</td><td>[6]</td></tr>
+</table>
+<p class="caption">Table 2. 4종 멤리스터 소재의 conductance mapping 및 비이상성 파라미터. R<sub>on</sub>/R<sub>off</sub>는 실측 문헌, variation/fault는 가정값.</p>
+
+<h2>3.4 매핑·양자화 및 비이상성 모델</h2>
+<p>
+학습된 CNN의 가중치는 다음 4단계 파이프라인을 통해 각 소재의 멤리스터 크로스바에 매핑된다.
+</p>
+<p>
+<b>1) 레이어별 정규화 및 부호 분리.</b> 각 Conv/Linear 계층의 가중치 W를 부호 비트 sign(W)와 크기 |W|로 분리한 뒤
+|W|/max(|W|)로 정규화한다. 멤리스터 컨덕턴스는 양의 값만 가지므로, 실제 PIM 회로에서는 양·음 가중치를 두 개의
+멤리스터 컬럼(differential pair: W<sup>+</sup> ? W<sup>?</sup>)으로 구현해야 한다. 본 시뮬레이션에서는 |W|만
+컨덕턴스로 매핑하고 부호 정보는 외부에서 유지하는 방식으로 단순화하였다.
+</p>
+<p>
+<b>2) 선형 매핑.</b> 정규화된 값을 G<sub>min</sub>=1/R<sub>off</sub>, G<sub>max</sub>=1/R<sub>on</sub> 범위로
+선형 매핑한다.
+</p>
+<p>
+<b>3) 비이상성 주입 (Realistic 조건만 해당).</b>
+(i) Device-to-device variation: g ← g·(1 + N(0, σ)). σ는 σ<sub>R_on</sub>과 σ<sub>R_off</sub>의 산술 평균을 단일
+가우시안 분산으로 사용해 소재 간 비교 변수를 통제하였다(LRS/HRS 분리 적용 시의 변동 가능성은 5.4에 명시).
+(ii) Stuck-at fault: 전체 셀 중 fault rate 비율을 무작위로 골라 절반은 G<sub>max</sub>, 절반은 G<sub>min</sub>으로
+고착시킨다. fault rate(0.3~5%)는 크로스바 yield 문헌의 보고 범위에 기반한 가정값으로, 고저항비 세 소재는
+1% 미만을, Metallic Nanowire는 worst-case sensitivity bound로서 보수적인 5%를 적용하였다. 소재 간 fault rate가
+동일하지 않으므로 NW의 realistic 값은 수평 비교가 아닌 sensitivity 시나리오로 해석한다.
+</p>
+<p>
+<b>4) N-state 양자화.</b> 각 셀의 컨덕턴스를 등간격 N개의 levels = linspace(G<sub>min</sub>, G<sub>max</sub>, N)
+중 가장 가까운 값으로 반올림한다(nearest-state rounding). 양자화는 ideal/realistic 두 조건 모두에 적용된다.
+</p>
+<p>
+이 파이프라인은 양자화·변동·stuck-at fault의 세 비이상성을 동시에 반영하며, 매핑 후 출력 재보정(tune)은
+수행하지 않는다.
+</p>
+
+<h2>3.5 평가 프로토콜</h2>
+<p>
+평가는 다음 두 조건에서 수행된다.
+</p>
+<ul>
+  <li><b>Ideal</b>: 변동·고장 없이 양자화만 적용. 양자화는 결정론적이므로 noise sampling은 무의미하며,
+  baseline seed당 1회 평가한다.</li>
+  <li><b>Realistic</b>: 양자화 + 변동 + stuck-at fault. noise 위치는 무작위이므로 baseline seed당 noise seed를
+  분리해 3회 sampling(총 9회/소재) 후 평균과 표준편차를 보고한다.</li>
+</ul>
+<p>
+평가 지표는 multi-label 분류 표준인 <b>Macro F1</b>(클래스 불균형에 강건)과 <b>Subset Accuracy</b>(모든 라벨이
+정확히 일치한 샘플 비율)를 모두 측정한다. Threshold는 0.5로 고정하였다.
+</p>
+
+<!-- ============================================================== -->
+<!--  IV. 결과                                                      -->
+<!-- ============================================================== -->
+<h1>4. 결과</h1>
+
+<h2>4.1 Baseline (FP32 software) 성능</h2>
+<p>
+3개의 baseline seed에 대해 학습된 CNN의 테스트 성능은 표 3과 같다.
+</p>
+<table>
+  <tr><th>Seed</th><th>Best epoch</th><th>Test Subset Acc</th><th>Test Macro F1</th></tr>
+  <tr><td>42</td><td>9</td><td>0.9568</td><td>0.9780</td></tr>
+  <tr><td>123</td><td>11</td><td>0.9446</td><td>0.9800</td></tr>
+  <tr><td>456</td><td>13</td><td>0.9588</td><td>0.9856</td></tr>
+  <tr><td><b>평균±std</b></td><td>?</td><td><b>0.9534 ± 0.0063</b></td><td><b>0.9812 ± 0.0032</b></td></tr>
+</table>
+<p class="caption">Table 3. FP32 software baseline의 3 seed 결과. macro F1의 std=0.0032로 매우 안정적.</p>
+<p>
+세 seed 모두 macro F1 0.98 수준의 안정적인 baseline을 학습하였으며, std가 0.003 수준으로 매우 작아 이후
+소재 비교의 신뢰성 기반으로 사용 가능하다.
+</p>
+
+<h2>4.2 4 소재 Ideal vs Realistic 비교</h2>
+<p>
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 501ms:
+
+<h2>5.1 저항비(R<sub>off</sub>/R<sub>on</sub>)의 영향</h2>
+<p>
+실험 결과에서 가장 명확한 경계는 R<sub>off</sub>/R<sub>on</sub> ? 25배 부근에 존재한다. 저항비가 25배 이상인 세 소재는
+ideal 조건에서 baseline 대비 1% 이내의 손실로 가중치 정보를 잘 보존하지만, 저항비 1.97배의 Metallic Nanowire는
+ideal에서도 baseline의 39% 수준으로 추락한다. 이 차이는 컨덕턴스 범위가 좁을수록 동일한 절대 noise/양자화
+간격이 가중치 표현에 미치는 상대 오차가 커지기 때문이다.
+</p>
+<p>
+다만 본 연구의 실험만으로 "25배가 보편적 문턱값"이라 단정하기는 어렵다. 본 연구는 4 소재의 이산적인 비교이며,
+저항비 sweep(예: 5×, 10×, 20×, 50×)을 수행하지 않았기 때문이다. "본 연구의 조건에서 25배 이상이면 양자화로
+인한 ideal 성능 손실이 1% 이내였다"가 정직한 결론이다.
+</p>
+
+<h2>5.2 Metallic Nanowire의 본질적 한계</h2>
+<p>
+Metallic Nanowire의 4-state 양자화는 가중치를 4개의 칸으로 압축한다는 것을 의미한다. 32만 개의 부동소수점
+가중치가 가질 수 있는 다양한 값이 4개의 이산 값으로 반올림되는 과정에서, CNN이 학습한 미세한 결정 경계가
+대부분 소실된다. 이 한계는 단순 사후 보정만으로는 회복하기 어렵고, 완화를 위해서는 quantization-aware training
+(QAT)이나 소재·회로 수준의 추가 보정(예: 더 많은 conductance level을 갖는 변형 nanowire 구조)이 필요할
+가능성이 크다.
+</p>
+<p>
+한편 Metallic Nanowire는 동작 전압이 매우 낮고 (v<sub>off</sub>=0.145 V) variation이 작아 (5~8%) 별도 응용
+영역에서는 유리한 면이 있을 수 있다. 본 연구가 보이는 것은 "다단계 가중치 정밀도가 필요한 PIM 추론 응용에서
+부적합"하다는 것이지, 소재 자체의 부정이 아니다.
+</p>
+
+<h2>5.3 Worst-case 붕괴 현상의 PIM 함의</h2>
+<p>
+고저항비 세 소재는 평균 성능이 비슷해도 9회 중 1회 catastrophic degradation이 나타났다(표 5). 이는 평균만으로
+소재를 평가하는 관행에 대한 경고로, 그 원인은 stuck-at fault가 가중치 행렬의 어느 위치에 박히는지에 있다 ?
+핵심 가중치를 hit하면 분류기 전체가 무너지지만, 중요도가 낮은 가중치를 hit하면 거의 영향이 없다.
+</p>
+<p>
+따라서 실제 PIM 가속기 설계에서는 (i) write-verify를 통한 stuck-at 셀의 사전 검출, (ii) row/column-shifting
+같은 매핑 다양화, (iii) ECC나 redundancy 같은 fault tolerance 메커니즘이 동반되어야 한다. 본 연구는 이러한
+대책이 적용되지 않은 보수적 베이스라인이며, 향후 fault tolerance 적용 후 worst-case 붕괴 빈도가 어떻게
+변화하는지를 충분한 표본으로 정량화하는 후속 연구가 필요하다.
+</p>
+
+<h2>5.4 한계 및 향후 과제</h2>
+<ul>
+  <li><b>단일 데이터셋·경량 CNN.</b> MixedWM38과 약 32만 파라미터의 얕은 CNN에 한정된 결과로, WM-811K [7] 등
+  다른 데이터셋이나 ResNet 계열 대규모 모델에서의 소재 간 순위 보존은 검증되지 않았다.</li>
+  <li><b>저항비 sweep 미수행.</b> 4 소재의 이산 비교만 수행하여 저항비-성능의 연속적 함수 형태는 결정할 수 없다.</li>
+  <li><b>회로·시간적 비이상성 미반영.</b> sneak path·IR drop·ADC 양자화 등 어레이 수준 비이상성과 drift·endurance
+  같은 장기 변화는 본 가중치 수준·inference-only 평가에서 제외하였고, LRS/HRS variation도 단일 가우시안으로 단순화하였다.</li>
+  <li><b>표본 한계.</b> 소재당 9회(3 seed × 3 noise)로, 9회 중 1회 사건의 binomial 95% 신뢰구간은 약 [0.3%, 48%]에
+  이른다. 따라서 본문의 "11%"는 발생 확률 추정치가 아니라 본 표본의 관찰 빈도이며, 정량적 확률 추정·통계적 유의성
+  검정에는 더 많은 Monte Carlo 반복이 필요하다.</li>
+</ul>
+
+<!-- ============================================================== -->
+<!--  VI. 결론                                                      -->
+<!-- ============================================================== -->
+<h1>6. 결론</h1>
+<p>
+본 연구는 VTEAM 모델 문헌의 소재별 파라미터를 활용한 정적 conductance mapping 환경에서 4종 멤리스터 소재
+(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire, TaO<sub>x</sub>/Ta)의 PIM 환경 웨이퍼 결함 분류 성능을
+정량 비교하였다. 양자화, device-to-device variation, stuck-at fault의 세 비이상성을 동시에 적용한 9회
+Monte Carlo 평가에서 다음 세 가지를 확인하였다.
+</p>
+<p>
+첫째, R<sub>off</sub>/R<sub>on</sub> 25배 이상의 세 소재는 ideal 조건에서 baseline의 99% 이상의 분류 성능을 유지하였으나,
+realistic 조건에서는 평균 macro F1이 0.76~0.87로 하락하였다. 둘째, 저항비 1.97배의 Metallic Nanowire는
+4-state 양자화의 본질적 한계로 ideal 조건에서도 분류 성능이 붕괴(F1 0.38)하여, 다단계 가중치 정밀도가
+필요한 PIM 추론 응용에는 부적합함을 확인하였다. 셋째, 동일 소재 내에서도 stuck-at fault의 위치 무작위성에
+의해 9회 중 1회 (약 11%) 비율로 catastrophic degradation이 관찰되었으며, 이는 worst-case 붕괴 위험을 정성적으로
+시사한다(표본 9개 한계상 통계적 분포 형태로는 단정하지 않는다).
+</p>
+<p>
+본 연구의 결과는 PIM용 멤리스터 소재 선정에서 (i) R<sub>off</sub>/R<sub>on</sub> 충분한 동적 범위 확보,
+(ii) 평균 성능과 함께 worst-case 위험에 대한 평가, (iii) fault tolerance 메커니즘 병행의 필요성을 제안한다.
+본 연구의 보수적 평가 프로토콜은 향후 PIM 기반 결함 분류 시스템을 설계할 때 평균 성능과 worst-case 위험을
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 501ms:
+소재 비교의 신뢰성 기반으로 사용 가능하다.
+</p>
+
+<h2>4.2 4 소재 Ideal vs Realistic 비교</h2>
+<p>
+각 소재별 ideal 및 realistic 조건에서의 macro F1 결과를 표 4와 그림 1에 정리하였다.
+</p>
+<table>
+  <tr><th rowspan="2">Material</th><th rowspan="2">R<sub>off</sub>/R<sub>on</sub></th><th rowspan="2">States</th><th colspan="2">Ideal</th><th colspan="2">Realistic (mean ± std)</th><th colspan="2">ΔF1</th></tr>
+  <tr><th>Subset Acc</th><th>Macro F1</th><th>Subset Acc</th><th>Macro F1</th><th>absolute</th><th>relative</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>25.0×</td><td>64</td><td>0.9578</td><td>0.9826</td><td>0.5601 ± 0.2779</td><td>0.7578 ± 0.2759</td><td>?0.2248</td><td>?22.88%</td></tr>
+  <tr><td>Ferroelectric</td><td>333.3×</td><td>128</td><td>0.9526</td><td>0.9805</td><td>0.6992 ± 0.2660</td><td>0.8570 ± 0.1632</td><td>?0.1235</td><td>?12.60%</td></tr>
+  <tr><td>Metallic Nanowire</td><td>1.97×</td><td>4</td><td>0.0813</td><td>0.3847</td><td>0.0518 ± 0.0413</td><td>0.3288 ± 0.1286</td><td>?0.0559</td><td>?14.53%</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta</td><td>145.8×</td><td>32</td><td>0.9458</td><td>0.9770</td><td>0.7258 ± 0.2431</td><td>0.8726 ± 0.1364</td><td>?0.1044</td><td>?10.69%</td></tr>
+</table>
+<p class="caption">Table 4. 4 소재의 Ideal vs Realistic 분류 성능 (Subset Accuracy 및 Macro F1, 3 baseline seed × 3 noise sample = 9회 평균). ΔF1은 macro F1 기준의 절대 변화량과 상대 변화율을 분리하여 표기.</p>
+
+<div class="figure">
+  <img src="figures/material_comparison.png" alt="Material comparison">
+  <div class="caption">Figure 1. 4 소재의 Ideal(파랑) vs Realistic(주황) macro F1 비교. 오차막대는 9회 표준편차. 회색 점선은 FP32 baseline.</div>
+</div>
+
+<p>
+저항비 25배 이상의 세 소재(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta)는 ideal 조건에서
+0.98 수준의 baseline에 거의 근접한 성능을 보였다. 즉 양자화 단독으로는 분류 성능에 큰 영향을 미치지
+않는다. 또한 Pt/HfO<sub>x</sub>/Ti의 ideal F1(0.9826)이 baseline 평균(0.9812)을 미세하게 상회하는 현상이
+관찰되었으나, 이는 baseline 표준편차(0.0032) 범위 내에 들어가는 우연한 변동으로 해석된다. 그러나 variation과
+stuck-at fault가 더해진 realistic 조건에서는 평균 macro F1이 0.76~0.87 수준으로 하락하였으며, 표준편차가
+0.13~0.28로 매우 컸다.
+</p>
+<p>
+Subset Accuracy 기준으로는 더 큰 감소가 나타나(표 4), multi-label 분류에서 8개 결함을 동시에 정확히 맞히는 것이
+부분 일치보다 훨씬 어려움을 보여준다. Metallic Nanowire는 ideal에서도 Subset Acc 0.08로 사실상 분류가 성립하지 않았다.
+</p>
+<p>
+이와 대조적으로 Metallic Nanowire는 ideal 조건에서도 F1 0.38로 분류 성능이 붕괴하였다. 이는 저항비 1.97배
++ 4-state 양자화의 조합이 가중치 분포의 대부분의 정보를 손실시키기 때문이며, realistic 조건이 추가된다고
+하여 더 악화될 여지가 적다(realistic F1 0.33). 즉 Metallic Nanowire의 한계는 비이상성이 아니라
+<b>표현 가능한 가중치 자유도 자체</b>에 있다.
+</p>
+
+<h2>4.3 Worst-case 붕괴 현상 분석</h2>
+<p>
+표 4의 큰 표준편차는 단순한 noise variance가 아니라, 동일 소재의 9회 noise sampling 결과가 "정상 영역"과
+"붕괴 영역"의 두 그룹으로 갈리는 양상에서 비롯된다. 그림 2는 4 소재의 per-noise F1 분포를 히스토그램으로
+나타낸 것이다. 다만 표본 수가 소재당 9회로 제한되므로 통계적 의미의 bimodal 분포로 단정할 수는 없으며,
+본 절에서는 "worst-case 붕괴 현상"으로 표현한다.
+</p>
+<div class="figure">
+  <img src="figures/bimodal_distribution.png" alt="Bimodal distribution">
+  <div class="caption">Figure 2. 4 소재의 realistic per-noise macro F1 분포 (9 samples). 검정 점선: ideal F1, 빨강 점선: realistic mean.</div>
+</div>
+
+<p>
+F1 ≥ 0.88을 "good", F1 &lt; 0.60을 "catastrophic"으로 정의했을 때 4 소재의 분포는 표 5와 같다.
+</p>
+<table>
+  <tr><th>Material</th><th>Good (F1≥0.88)</th><th>Moderate (0.60≤F1&lt;0.88)</th><th>Catastrophic (F1&lt;0.60)</th><th>Total</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>4/9 (44%)</td><td>4/9 (44%)</td><td>1/9 (11%)</td><td>9</td></tr>
+  <tr><td>Ferroelectric</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+  <tr><td>Metallic Nanowire</td><td>0/9 (0%)</td><td>0/9 (0%)</td><td>9/9 (100%)</td><td>9</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+</table>
+<p class="caption">Table 5. 각 소재의 per-noise 결과를 good / moderate / catastrophic 임계로 분류한 빈도.</p>
+
+<p>
+고저항비 세 소재는 약 44~56%가 baseline의 90% 이상을 유지(good)하는 한편, 9회 중 1회 (약 11%) 비율로 F1이
+0.60 미만으로 붕괴(catastrophic)하는 결과가 세 소재 모두에서 일관되게 관찰되었다. Metallic Nanowire는 9회 모두
+catastrophic 구간에 존재하여, 본질적 표현 한계가 noise 종류와 무관하게 항상 성능 붕괴를 초래함을 보여준다.
+또한 NW의 ideal 조건(variation=0, fault=0)에서도 이미 F1=0.38로 붕괴하므로, NW의 결과는 fault rate 차이가
+아닌 4-state 양자화 효과로 해석된다(NW에 대한 4-state vs. 더 많은 상태 수의 강제 ablation은 본 연구 범위 외이며,
+V.D에 향후 과제로 명시한다).
+</p>
+
+<h2>4.4 결함 유형별 (per-class) F1 분석</h2>
+<p>
+표 6은 4 소재 × 두 조건에서의 결함 클래스별 macro F1을 보여준다. 데이터셋의 클래스 빈도가 균일하지 않음을
+유의해야 한다(Near-Full 0.4%, Scratch 2.3%로 가장 적음, Loc 48.6%, Random 51.3%로 가장 많음).
+</p>
+<table>
+  <tr><th>Material / Condition</th><th>Center</th><th>Donut</th><th>Edge-Loc</th><th>Edge-Ring</th><th>Loc</th><th>Near-Full</th><th>Random</th><th>Scratch</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti ? Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.99</td><td>0.93</td><td>0.99</td><td>0.98</td></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti ? Realistic</td><td>0.86</td><td>0.87</td><td>0.74</td><td>0.78</td><td>0.76</td><td><b>0.64</b></td><td>0.82</td><td><b>0.59</b></td></tr>
+  <tr><td>Ferroelectric ? Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.98</td></tr>
+  <tr><td>Ferroelectric ? Realistic</td><td>0.94</td><td>0.90</td><td>0.90</td><td>0.94</td><td>0.81</td><td>0.79</td><td>0.87</td><td><b>0.69</b></td></tr>
+  <tr><td>Metallic Nanowire ? Ideal</td><td>0.29</td><td>0.73</td><td>0.67</td><td><b>0.00</b></td><td>0.67</td><td><b>0.00</b></td><td>0.72</td><td><b>0.01</b></td></tr>
+  <tr><td>Metallic Nanowire ? Realistic</td><td>0.19</td><td>0.44</td><td>0.38</td><td>0.27</td><td>0.57</td><td><b>0.15</b></td><td>0.46</td><td><b>0.17</b></td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta ? Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.97</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta ? Realistic</td><td>0.98</td><td>0.92</td><td>0.92</td><td>0.95</td><td>0.83</td><td>0.80</td><td>0.89</td><td><b>0.70</b></td></tr>
+</table>
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+핵심 발견 자체는 남아 있지만, 검토 중에 별도로 보이는 문제가 하나 있습니다. 본문 안의 `≈`, `−`, `—`, `→` 같은 기호가 현재 출력에서는 `?`로 보입니다. 실제 파일 문자 자체 문제인지 콘솔 표시 문제인지 확인한 뒤, 내용 평가에 반영하겠습니다.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Select-String -Path 'paper_b5.html' -Encoding UTF8 -Pattern '\\?' | Select-Object -First 40" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+2026-05-21T04:23:31.411898Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$lines = Get-Content -Encoding UTF8 -LiteralPath '"'paper_b5.html'; 0..("'$lines.Length-1) | ForEach-Object { if ($lines[$_] -match '"'\\?') { '{0}: {1}' -f ("'$_+1), $lines[$_] } } | Select-Object -First 60'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$lines = Get-Content -Encoding UTF8 -LiteralPath '"'paper_b5.html'; 0..("'$lines.Length-1) | ForEach-Object { if ($lines[$_] -match '"'\\?') { '{0}: {1}' -f ("'$_+1), $lines[$_] } } | Select-Object -First 60' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$lines = Get-Content -Encoding UTF8 -LiteralPath '"'paper_b5.html'; 0..("'$lines.Length-1) | ForEach-Object { if ($lines[$_] -match '"'\\?') { '{0}: {1}' -f ("'$_+1), $lines[$_] } } | Select-Object -First 60'` rejected: blocked by policy
+ succeeded in 359ms:
+속성을 설정할 수 없습니다. 속성 설정은 이 언어 모드의 핵심 유형에 대해서만 지원됩니다.
+위치 줄:1 문자:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+**A. 핵심 내용 보존**
+
+대체로 살아있습니다. 3대 발견은 모두 본문·결론에 남아 있습니다.
+
+- 저항비 25× 임계분기: [5.1](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:484), 결론에도 있음.
+- NW 4-state 한계: [4.2](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:406), [5.2](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:497)에 유지.
+- 9회 중 1회 worst-case 붕괴: [4.3 Table 5](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:425), [5.3](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:511), [5.4](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:529)에 유지.
+- 표 1~6 모두 남아 있고, “11%=관찰빈도, 확률추정 아님”도 [5.4](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:529)에 잘 격리되어 있습니다.
+
+사라지면 안 될 핵심은 크게 사라지지 않았습니다.
+
+**B. 정확성**
+
+고칠 점이 몇 개 있습니다.
+
+- [Table 2 caption](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:303)의 “R_on/R_off는 실측 문헌”은 부정확합니다. 표는 `R_on`, `R_off`, `Roff/Ron`을 모두 보이므로 “R_on 및 R_off는 실측 문헌” 정도가 맞습니다.
+- [5.1](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:484)의 “가장 명확한 경계는 … 25배 부근에 존재한다”는 조금 강합니다. sweep을 안 했다고 바로 다음 문단에서 인정하므로, 첫 문장도 “본 비교 조건에서는 25배 이상 세 소재와 1.97배 NW 사이의 차이가 가장 뚜렷하다”로 낮추는 게 안전합니다.
+- NW 해석은 약간 과단정입니다. 현재는 “4-state 양자화 효과”로 꽤 강하게 말하지만, 실제로는 `저항비 1.97×`와 `4-state`가 함께 묶여 있어 ablation 없이는 완전 분리가 안 됩니다. “저항비 1.97배와 4-state의 결합, 특히 표현 가능한 상태 수 제약” 정도가 더 방어 가능합니다.
+- 출력상 `?`로 보이는 기호가 있습니다: `W+ ? W?`, `ΔF1 ?0.2248`, `Roff/Ron ? 25배`, 소재명 뒤 `? Ideal`. 실제 브라우저에서도 이렇게 보이면 치명적인 조판 오류입니다. `−`, `≈`, `—`, `→` 같은 기호가 깨진 것으로 보이니 렌더 확인이 필요합니다.
+- [Table 3](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:359)의 평균 행 `Best epoch`가 `?`입니다. 평균을 안 낼 거면 `-` 또는 `N/A`가 낫습니다.
+
+**C. 입문자 가독성**
+
+흐름은 따라갈 수 있습니다. 1장 문제의식 → 2장 배경 → 3장 실험설계 → 4장 결과 → 5장 해석 구조가 유지되어 있고, 압축 때문에 큰 논리 점프가 생기지는 않았습니다.
+
+다만 입문자 기준으로는 [3.4](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:312)가 조금 빡빡합니다. 특히 differential pair 단순화, variation 주입, stuck-at fault, N-state 양자화가 한 절에 몰려 있어 그림이 들어오기 전까지는 이해 부담이 큽니다. 그림을 넣기 전이라면 3.4 첫 문단 끝에 “즉 ideal은 양자화만, realistic은 양자화+variation+fault 조건이다” 한 문장 정도는 복원 가치가 있습니다.
+
+**D. 추가 압축 / 과압축**
+
+더 줄여도 되는 곳:
+
+- [4.2](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:394)의 baseline 상회 해석 문장은 중요도 대비 길 수 있습니다. “baseline std 범위 내 변동” 정도로 한 문장 축약 가능.
+- [4.4](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:463) 이후 per-class 해석은 표가 이미 강하므로 10~15% 더 줄여도 됩니다.
+- [5.2](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:497)의 QAT·소재 보정 제안은 의미는 있지만 결론 핵심은 아니어서 한 문장 축약 가능.
+
+복원이 필요한 곳:
+
+- [3.4](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:312)는 과압축 직전입니다. 입문자용 연결 문장 1개를 복원하는 편이 좋습니다.
+- NW 원인 해석은 압축보다 “정밀도”가 문제입니다. “4-state 본질 한계”를 유지하되, “본 실험에서는 저항비와 상태 수가 함께 낮으므로 완전 분리 검증은 향후 과제”라는 방어 문장을 더 앞쪽에도 한 번 두는 게 좋습니다.
+
+종합하면, 1차 압축은 핵심 보존에는 성공했습니다. 지금 우선 고칠 것은 내용 추가보다 `기호 깨짐`, `25배/4-state 과단정 완화`, `Table 2 caption`, `Table 3 ?`입니다.
+tokens used
+63,177
+**A. 핵심 내용 보존**
+
+대체로 살아있습니다. 3대 발견은 모두 본문·결론에 남아 있습니다.
+
+- 저항비 25× 임계분기: [5.1](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:484), 결론에도 있음.
+- NW 4-state 한계: [4.2](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:406), [5.2](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:497)에 유지.
+- 9회 중 1회 worst-case 붕괴: [4.3 Table 5](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:425), [5.3](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:511), [5.4](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:529)에 유지.
+- 표 1~6 모두 남아 있고, “11%=관찰빈도, 확률추정 아님”도 [5.4](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:529)에 잘 격리되어 있습니다.
+
+사라지면 안 될 핵심은 크게 사라지지 않았습니다.
+
+**B. 정확성**
+
+고칠 점이 몇 개 있습니다.
+
+- [Table 2 caption](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:303)의 “R_on/R_off는 실측 문헌”은 부정확합니다. 표는 `R_on`, `R_off`, `Roff/Ron`을 모두 보이므로 “R_on 및 R_off는 실측 문헌” 정도가 맞습니다.
+- [5.1](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:484)의 “가장 명확한 경계는 … 25배 부근에 존재한다”는 조금 강합니다. sweep을 안 했다고 바로 다음 문단에서 인정하므로, 첫 문장도 “본 비교 조건에서는 25배 이상 세 소재와 1.97배 NW 사이의 차이가 가장 뚜렷하다”로 낮추는 게 안전합니다.
+- NW 해석은 약간 과단정입니다. 현재는 “4-state 양자화 효과”로 꽤 강하게 말하지만, 실제로는 `저항비 1.97×`와 `4-state`가 함께 묶여 있어 ablation 없이는 완전 분리가 안 됩니다. “저항비 1.97배와 4-state의 결합, 특히 표현 가능한 상태 수 제약” 정도가 더 방어 가능합니다.
+- 출력상 `?`로 보이는 기호가 있습니다: `W+ ? W?`, `ΔF1 ?0.2248`, `Roff/Ron ? 25배`, 소재명 뒤 `? Ideal`. 실제 브라우저에서도 이렇게 보이면 치명적인 조판 오류입니다. `−`, `≈`, `—`, `→` 같은 기호가 깨진 것으로 보이니 렌더 확인이 필요합니다.
+- [Table 3](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:359)의 평균 행 `Best epoch`가 `?`입니다. 평균을 안 낼 거면 `-` 또는 `N/A`가 낫습니다.
+
+**C. 입문자 가독성**
+
+흐름은 따라갈 수 있습니다. 1장 문제의식 → 2장 배경 → 3장 실험설계 → 4장 결과 → 5장 해석 구조가 유지되어 있고, 압축 때문에 큰 논리 점프가 생기지는 않았습니다.
+
+다만 입문자 기준으로는 [3.4](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:312)가 조금 빡빡합니다. 특히 differential pair 단순화, variation 주입, stuck-at fault, N-state 양자화가 한 절에 몰려 있어 그림이 들어오기 전까지는 이해 부담이 큽니다. 그림을 넣기 전이라면 3.4 첫 문단 끝에 “즉 ideal은 양자화만, realistic은 양자화+variation+fault 조건이다” 한 문장 정도는 복원 가치가 있습니다.
+
+**D. 추가 압축 / 과압축**
+
+더 줄여도 되는 곳:
+
+- [4.2](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:394)의 baseline 상회 해석 문장은 중요도 대비 길 수 있습니다. “baseline std 범위 내 변동” 정도로 한 문장 축약 가능.
+- [4.4](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:463) 이후 per-class 해석은 표가 이미 강하므로 10~15% 더 줄여도 됩니다.
+- [5.2](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:497)의 QAT·소재 보정 제안은 의미는 있지만 결론 핵심은 아니어서 한 문장 축약 가능.
+
+복원이 필요한 곳:
+
+- [3.4](C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:312)는 과압축 직전입니다. 입문자용 연결 문장 1개를 복원하는 편이 좋습니다.
+- NW 원인 해석은 압축보다 “정밀도”가 문제입니다. “4-state 본질 한계”를 유지하되, “본 실험에서는 저항비와 상태 수가 함께 낮으므로 완전 분리 검증은 향후 과제”라는 방어 문장을 더 앞쪽에도 한 번 두는 게 좋습니다.
+
+종합하면, 1차 압축은 핵심 보존에는 성공했습니다. 지금 우선 고칠 것은 내용 추가보다 `기호 깨짐`, `25배/4-state 과단정 완화`, `Table 2 caption`, `Table 3 ?`입니다.

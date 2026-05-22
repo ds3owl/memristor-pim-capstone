@@ -1,0 +1,1004 @@
+Reading additional input from stdin...
+OpenAI Codex v0.124.0 (research preview)
+--------
+workdir: C:\Users\ds3owl\Desktop\memristor_pim_capstone
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: none
+reasoning summaries: none
+session id: 019e48e7-9663-7852-8387-4fcea6e8ac55
+--------
+user
+paper_b5.html(졸업논문 최종 직전본, base64 임베드본 paper_b5_embedded.html과 내용 동일)을 제출 직전 최종 점검해줘. hwp 양식으로 옮기기 전 마지막 게이트다. 중점: (1) 수치 일관성 — 본문/표/초록/결론에서 같은 값(F1, 저항비, 9회중1회=11%, 0.76~0.88 등)이 서로 안 어긋나는지 (2) 깨진/누락 참조(표 N, 그림 N, 인용 [N]) (3) 오타·비문·어색한 한국어 (4) 디펜스에서 지적당할 만한 논리 허점이나 과장 표현 잔존 (5) front matter(표지~국문요약) 누락. 발견된 문제를 우선순위로, 간결하게. 없으면 '제출 가능'이라고 해줘.
+codex
+최종 점검 기준에 맞춰 먼저 HTML의 본문 구조와 참조/수치 텍스트를 뽑아보겠습니다. 지금 환경은 읽기 전용이라 파일 수정 없이 검토 결과만 정리합니다.
+2026-05-21T05:00:07.235237Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-ChildItem -Force | Select-Object Name,Length,LastWriteTime'` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-ChildItem -Force | Select-Object Name,Length,LastWriteTime' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'rg --files' in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"F1|저항비|9회|11%|0\\.76|0\\.88|표\\s*[0-9]|그림\\s*[0-9]|\\[[0-9]+\\]|국문|요약|초록|결론|참고문헌|Abstract|목차|감사의|학위|졸업\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-ChildItem -Force | Select-Object Name,Length,LastWriteTime'` rejected: blocked by policy
+ succeeded in 349ms:
+64:  <div class="deg">í•™ì‚¬í•™ìœ„ë…¼ë¬¸</div>
+76:    ì´ ë…¼ë¬¸ì„ í•™ì‚¬í•™ìœ„ ë…¼ë¬¸ìœ¼ë¡œ ì œì¶œí•¨<br><br>
+82:  <div class="ko-title" style="margin-top:30mm">ìž„ì°½ìš°ì˜ í•™ì‚¬í•™ìœ„ ë…¼ë¬¸ì„<br>ì¸ì¤€í•¨</div>
+93:    <li><b>êµ­ë¬¸ ìš”ì•½</b></li>
+113:    <li class="s1">4.4 ê²°í•¨ ìœ í˜•ë³„ (per-class) F1 ë¶„ì„</li>
+115:    <li class="s1">5.1 ì €í•­ë¹„ì˜ ì˜í–¥</li>
+119:    <li><b>6. ê²°ë¡ </b></li>
+120:    <li><b>ì°¸ê³ ë¬¸í—Œ</b></li>
+129:  ê·¸ëŸ¬ë‚˜ ë©¤ë¦¬ìŠ¤í„°ëŠ” ì†Œìž¬ë³„ë¡œ ì €í•­ë¹„, í‘œí˜„ ê°€ëŠ¥í•œ ìƒíƒœ ìˆ˜, ë³€ë™(variation), ê²°í•¨ë¥ (stuck-at fault) ë“± ë¬¼ë¦¬ì 
+135:  ì ìš©í•˜ì—¬ 9íšŒ Monte Carlo í‰ê°€ë¥¼ ìˆ˜í–‰í•˜ì˜€ë‹¤.
+136:  ì‹¤í—˜ ê²°ê³¼, R<sub>off</sub>/R<sub>on</sub> ì €í•­ë¹„ê°€ 25ë°° ì´ìƒì¸ ì„¸ ì†Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric,
+137:  TaO<sub>x</sub>/Ta)ëŠ” í‰ê·  macro F1ì´ 0.76~0.88 ìˆ˜ì¤€ì´ì—ˆìœ¼ë‚˜ noise sampleì— ë”°ë¥¸ ë³€ë™ì„±ì´ ë§¤ìš° ì»¸ìœ¼ë©°
+138:  (std 0.13~0.28), ì €í•­ë¹„ 1.97ë°°ì˜
+139:  Metallic NanowireëŠ” 4-state ì–‘ìží™”ì˜ ë³¸ì§ˆì  í•œê³„ë¡œ ì¸í•´ ì´ìƒì  ì¡°ê±´ì—ì„œë„ F1 0.38ë¡œ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´í•˜ì˜€ë‹¤.
+140:  ë˜í•œ ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta) ê°ê°ì—ì„œ 9íšŒ Monte Carlo
+141:  ìƒ˜í”Œ ì¤‘ 1íšŒì”© ì¹˜ëª…ì  ì„±ëŠ¥ ë¶•ê´´(catastrophic degradation, F1 &lt; 0.60)ê°€ ê´€ì°°ë˜ì—ˆìœ¼ë©°,
+158:ìžì›ì´ ì†Œë¹„í•˜ëŠ” ì—ë„ˆì§€ë³´ë‹¤ ìˆ˜ì‹­ ë°° ì´ìƒì˜ ì „ë ¥ì„ ìš”êµ¬í•˜ëŠ” ê²ƒìœ¼ë¡œ ë³´ê³ ë˜ë©° [11], ì´ëŠ” ëª¨ë°”ì¼Â·ì—£ì§€ í™˜ê²½ì—ì„œ
+191:ë™ì¼í•œ ë¹„ì´ìƒì„± ëª¨ë¸ì„ ì ìš©í•˜ì—¬ ì†Œìž¬ ê°„ PIM ì í•©ì„±ì„ macro F1 ì§€í‘œë¡œ ë¹„êµí•œë‹¤.
+200:3ê°œì˜ baseline seedì™€ 3ê°œì˜ noise sampleì„ ê²°í•©í•œ 9íšŒ Monte Carlo í‰ê°€ì—ì„œ, ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ ëª¨ë‘ì—ì„œ
+201:9íšŒ ì¤‘ 1íšŒ ë¹„ìœ¨ë¡œ catastrophic degradationì´ ê´€ì°°ë˜ì—ˆë‹¤. í‘œë³¸ì´ ìž‘ì•„ ë¶„í¬ í˜•íƒœë¥¼ ë‹¨ì •í•  ìˆ˜ëŠ” ì—†ìœ¼ë‚˜,
+215:ì–´ë ˆì´ëŠ” ë‹¨ì¼ ì‚¬ì´í´ì˜ ì•„ë‚ ë¡œê·¸ ì—°ì‚°ìœ¼ë¡œ MVMì„ ì²˜ë¦¬í•  ìˆ˜ ìžˆì–´ PIMì˜ íš¨ê³¼ì ì¸ ë¬¼ë¦¬ êµ¬í˜„ í›„ë³´ë¡œ í‰ê°€ëœë‹¤ [10].
+229:ëª¨ë¸ë¡œ [1], ë‹¤ì–‘í•œ ì†Œìž¬ì˜ ì‹¤ì¸¡ íŠ¹ì„±ì„ ë™ì¼í•œ ìˆ˜ì‹ í˜•íƒœ ì•ˆì—ì„œ íŒŒë¼ë¯¸í„°ë§Œ ë°”ê¾¸ì–´ í‘œí˜„í•  ìˆ˜ ìžˆë‹¤. ë³¸ ì—°êµ¬ëŠ” ì‹œê°„
+253:ë³¸ ì—°êµ¬ì—ì„œëŠ” Wang ë“±ì´ ê³µê°œí•œ MixedWM38 ì›¨ì´í¼ ê²°í•¨ ë°ì´í„°ì…‹ì„ ì‚¬ìš©í•˜ì˜€ë‹¤ [2].
+257:í¬í•¨í•œë‹¤ëŠ” ì ì´ íŠ¹ì§•ì´ë‹¤. 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ì˜ ëŒ€í‘œì ì¸ ê³µê°„ íŒ¨í„´ì€ ê·¸ë¦¼ 1ê³¼ ê°™ë‹¤.
+272:ëª¨ë¸ êµ¬ì¡°ëŠ” ê·¸ë¦¼ 2ì™€ ê°™ë‹¤. ìž…ë ¥ 52Ã—52 ì›¨ì´í¼ ë§µì´ 3ê°œì˜ í•©ì„±ê³± ë¸”ë¡ì„ ê±°ì¹˜ë©° êµ­ì†Œ íŒ¨í„´ì„ ì¶”ì¶œí•˜ê³ 
+274:ê° ê³„ì¸µì˜ ìƒì„¸ ì‚¬ì–‘ì€ í‘œ 1ê³¼ ê°™ìœ¼ë©°, ìž¬í˜„ ê°€ëŠ¥í•œ ë‹¨ìˆœí•œ í˜•íƒœë¡œ ê³ ì •í•˜ì˜€ë‹¤.
+291:ì´ë‹¤. ìµœëŒ€ í•™ìŠµ epochëŠ” 20ì´ë©°, ê²€ì¦ macro F1ì´ 5 epoch ë™ì•ˆ ê°±ì‹ ë˜ì§€ ì•Šìœ¼ë©´ í•™ìŠµì„ ì¡°ê¸° ì¢…ë£Œ(early stopping)
+298:ë³¸ ì—°êµ¬ì˜ í•µì‹¬ ë¹„êµ ëŒ€ìƒì¸ 4ì¢… ì†Œìž¬ì˜ ë¬¼ë¦¬ íŒŒë¼ë¯¸í„°ëŠ” í‘œ 2ì— ì •ë¦¬í•˜ì˜€ë‹¤.
+311:  <tr><td>ì¶œì²˜(R<sub>on</sub>, R<sub>off</sub>)</td><td>[1, 3]</td><td>[1, 4]</td><td>[1, 5]</td><td>[6]</td></tr>
+317:ì—°êµ¬ ì „ì²´ íë¦„ì€ ê·¸ë¦¼ 3ê³¼ ê°™ë‹¤. ì´ ì¤‘ í•™ìŠµëœ CNN ê°€ì¤‘ì¹˜ë¥¼ ê° ì†Œìž¬ì˜ ë©¤ë¦¬ìŠ¤í„° í¬ë¡œìŠ¤ë°”ë¡œ ì˜®ê¸°ëŠ” ë§¤í•‘ ì ˆì°¨ëŠ”
+340:ê³ ì°©ì‹œí‚¨ë‹¤. fault rate(0.3~5%)ëŠ” í¬ë¡œìŠ¤ë°” yield ë¬¸í—Œì˜ ë³´ê³  ë²”ìœ„ì— ê¸°ë°˜í•œ ê°€ì •ê°’ìœ¼ë¡œ, ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ”
+361:  ë¶„ë¦¬í•´ 3íšŒ sampling(ì´ 9íšŒ/ì†Œìž¬) í›„ í‰ê· ê³¼ í‘œì¤€íŽ¸ì°¨ë¥¼ ë³´ê³ í•œë‹¤.</li>
+364:í‰ê°€ ì§€í‘œëŠ” multi-label ë¶„ë¥˜ í‘œì¤€ì¸ <b>Macro F1</b>(í´ëž˜ìŠ¤ ë¶ˆê· í˜•ì— ê°•ê±´)ê³¼ <b>Subset Accuracy</b>(ëª¨ë“  ë¼ë²¨ì´
+375:3ê°œì˜ baseline seedì— ëŒ€í•´ í•™ìŠµëœ CNNì˜ í…ŒìŠ¤íŠ¸ ì„±ëŠ¥ì€ í‘œ 3ê³¼ ê°™ë‹¤.
+378:  <tr><th>Seed</th><th>Best epoch</th><th>Test Subset Acc</th><th>Test Macro F1</th></tr>
+384:<p class="caption">Table 3. FP32 software baselineì˜ 3 seed ê²°ê³¼. macro F1ì˜ std=0.0032ë¡œ ë§¤ìš° ì•ˆì •ì .</p>
+386:ì„¸ seed ëª¨ë‘ macro F1 0.98 ìˆ˜ì¤€ì˜ ì•ˆì •ì ì¸ baselineì„ í•™ìŠµí•˜ì˜€ìœ¼ë©°, stdê°€ 0.003 ìˆ˜ì¤€ìœ¼ë¡œ ë§¤ìš° ìž‘ì•„ ì´í›„
+392:ê° ì†Œìž¬ë³„ ideal ë° realistic ì¡°ê±´ì—ì„œì˜ macro F1 ê²°ê³¼ë¥¼ í‘œ 4ì™€ ê·¸ë¦¼ 4ì— ì •ë¦¬í•˜ì˜€ë‹¤.
+395:  <tr><th rowspan="2">Material</th><th rowspan="2">R<sub>off</sub>/R<sub>on</sub></th><th rowspan="2">States</th><th colspan="2">Ideal</th><th colspan="2">Realistic (mean Â± std)</th><th colspan="2">Î”F1</th></tr>
+396:  <tr><th>Subset Acc</th><th>Macro F1</th><th>Subset Acc</th><th>Macro F1</th><th>absolute</th><th>relative</th></tr>
+402:<p class="caption">Table 4. 4 ì†Œìž¬ì˜ Ideal vs Realistic ë¶„ë¥˜ ì„±ëŠ¥ (Subset Accuracy ë° Macro F1, 3 baseline seed Ã— 3 noise sample = 9íšŒ í‰ê· ). Î”F1ì€ macro F1 ê¸°ì¤€ì˜ ì ˆëŒ€ ë³€í™”ëŸ‰ê³¼ ìƒëŒ€ ë³€í™”ìœ¨ì„ ë¶„ë¦¬í•˜ì—¬ í‘œê¸°.</p>
+406:  <div class="caption">Figure 4. 4ì¢… ì†Œìž¬ì˜ Ideal(íŒŒëž‘) vs Realistic(ì£¼í™©) macro F1 ë¹„êµ. ì˜¤ì°¨ë§‰ëŒ€ëŠ” 9íšŒ í‘œì¤€íŽ¸ì°¨. íšŒìƒ‰ ì ì„ ì€ FP32 baseline.</div>
+410:ì €í•­ë¹„ 25ë°° ì´ìƒì˜ ì„¸ ì†Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta)ëŠ” ideal ì¡°ê±´ì—ì„œ
+412:(Pt/HfO<sub>x</sub>/Tiì˜ ideal F1ì´ baseline í‰ê· ì„ ë¯¸ì„¸í•˜ê²Œ ìƒíšŒí•˜ë‚˜ baseline std ë²”ìœ„ ë‚´ ìš°ì—°í•œ ë³€ë™ì´ë‹¤).
+413:ê·¸ëŸ¬ë‚˜ variationê³¼ stuck-at faultê°€ ë”í•´ì§„ realistic ì¡°ê±´ì—ì„œëŠ” í‰ê·  macro F1ì´ 0.76~0.87ë¡œ í•˜ë½í•˜ê³  í‘œì¤€íŽ¸ì°¨ê°€
+417:Subset Accuracy ê¸°ì¤€ìœ¼ë¡œëŠ” ë” í° ê°ì†Œê°€ ë‚˜íƒ€ë‚˜(í‘œ 4), multi-label ë¶„ë¥˜ì—ì„œ 8ê°œ ê²°í•¨ì„ ë™ì‹œì— ì •í™•ížˆ ë§žížˆëŠ” ê²ƒì´
+421:ì´ì™€ ëŒ€ì¡°ì ìœ¼ë¡œ Metallic NanowireëŠ” ideal ì¡°ê±´ì—ì„œë„ F1 0.38ë¡œ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´í•˜ì˜€ë‹¤. ì´ëŠ” ì €í•­ë¹„ 1.97ë°°
+423:í•˜ì—¬ ë” ì•…í™”ë  ì—¬ì§€ê°€ ì ë‹¤(realistic F1 0.33). ì¦‰ Metallic Nanowireì˜ í•œê³„ëŠ” ë¹„ì´ìƒì„±ì´ ì•„ë‹ˆë¼ ë‚®ì€ ì €í•­ë¹„(1.97Ã—)ì™€
+429:í‘œ 4ì˜ í° í‘œì¤€íŽ¸ì°¨ëŠ” ë‹¨ìˆœí•œ noise varianceê°€ ì•„ë‹ˆë¼, ë™ì¼ ì†Œìž¬ì˜ 9íšŒ noise sampling ê²°ê³¼ê°€ "ì •ìƒ ì˜ì—­"ê³¼
+430:"ë¶•ê´´ ì˜ì—­"ì˜ ë‘ ê·¸ë£¹ìœ¼ë¡œ ê°ˆë¦¬ëŠ” ì–‘ìƒì—ì„œ ë¹„ë¡¯ëœë‹¤. ê·¸ë¦¼ 5ëŠ” 4ì¢… ì†Œìž¬ì˜ per-noise F1 ë¶„í¬ë¥¼ ížˆìŠ¤í† ê·¸ëž¨ìœ¼ë¡œ
+431:ë‚˜íƒ€ë‚¸ ê²ƒì´ë‹¤. ë‹¤ë§Œ í‘œë³¸ ìˆ˜ê°€ ì†Œìž¬ë‹¹ 9íšŒë¡œ ì œí•œë˜ë¯€ë¡œ í†µê³„ì  ì˜ë¯¸ì˜ bimodal ë¶„í¬ë¡œ ë‹¨ì •í•  ìˆ˜ëŠ” ì—†ìœ¼ë©°,
+435:  <img src="figures/bimodal_distribution.png" alt="per-noise F1 ë¶„í¬">
+436:  <div class="caption">Figure 5. 4ì¢… ì†Œìž¬ì˜ realistic per-noise macro F1 ë¶„í¬ (9 samples). ê²€ì • ì ì„ : ideal F1, ë¹¨ê°• ì ì„ : realistic mean.</div>
+440:F1 â‰¥ 0.88ì„ "good", F1 &lt; 0.60ì„ "catastrophic"ìœ¼ë¡œ ì •ì˜í–ˆì„ ë•Œ 4 ì†Œìž¬ì˜ ë¶„í¬ëŠ” í‘œ 5ì™€ ê°™ë‹¤.
+443:  <tr><th>Material</th><th>Good (F1â‰¥0.88)</th><th>Moderate (0.60â‰¤F1&lt;0.88)</th><th>Catastrophic (F1&lt;0.60)</th><th>Total</th></tr>
+444:  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>4/9 (44%)</td><td>4/9 (44%)</td><td>1/9 (11%)</td><td>9</td></tr>
+445:  <tr><td>Ferroelectric</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+447:  <tr><td>TaO<sub>x</sub>/Ta</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+452:ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” ì•½ 44~56%ê°€ baselineì˜ 90% ì´ìƒì„ ìœ ì§€(good)í•˜ëŠ” í•œíŽ¸, 9íšŒ ì¤‘ 1íšŒ (ì•½ 11%) ë¹„ìœ¨ë¡œ F1ì´
+453:0.60 ë¯¸ë§Œìœ¼ë¡œ ë¶•ê´´(catastrophic)í•˜ëŠ” ê²°ê³¼ê°€ ì„¸ ì†Œìž¬ ëª¨ë‘ì—ì„œ ì¼ê´€ë˜ê²Œ ê´€ì°°ë˜ì—ˆë‹¤. Metallic NanowireëŠ” 9íšŒ ëª¨ë‘
+455:ë˜í•œ NWì˜ ideal ì¡°ê±´(variation=0, fault=0)ì—ì„œë„ ì´ë¯¸ F1=0.38ë¡œ ë¶•ê´´í•˜ë¯€ë¡œ, NWì˜ ê²°ê³¼ëŠ” fault rate ì°¨ì´ê°€
+460:<h2>4.4 ê²°í•¨ ìœ í˜•ë³„ (per-class) F1 ë¶„ì„</h2>
+462:í‘œ 6ì€ 4 ì†Œìž¬ Ã— ë‘ ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ macro F1ì„ ë³´ì—¬ì¤€ë‹¤. ë°ì´í„°ì…‹ì˜ í´ëž˜ìŠ¤ ë¹ˆë„ê°€ ê· ì¼í•˜ì§€ ì•ŠìŒì„
+468:  <tr><td>Pt/HfO<sub>x</sub>/Ti â€” Realistic</td><td>0.86</td><td>0.87</td><td>0.74</td><td>0.78</td><td>0.76</td><td><b>0.64</b></td><td>0.82</td><td><b>0.59</b></td></tr>
+476:<p class="caption">Table 6. 4 ì†Œìž¬ Ã— Ideal/Realistic ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1 (Idealì€ 3 seed í‰ê· , Realisticì€ 9 sample í‰ê· ).</p>
+479:ë‘ ê°€ì§€ íŒ¨í„´ì´ ê´€ì°°ëœë‹¤. ì²«ì§¸, <b>minority classì¸ Near-Full(0.4%)ê³¼ Scratch(2.3%)ê°€ ëª¨ë“  ê³ ì €í•­ë¹„ ì†Œìž¬ì—ì„œ
+480:ê°€ìž¥ ë‚®ì€ F1ì„ ë³´ì˜€ë‹¤</b>. íŠ¹ížˆ realistic ì¡°ê±´ì˜ ScratchëŠ” Pt/HfO<sub>x</sub>/Ti 0.59, Ferroelectric 0.69,
+481:TaO<sub>x</sub>/Ta 0.70ìœ¼ë¡œ ë–¨ì–´ì ¸, ë‹¤ë¥¸ ë‹¤ìˆ˜ í´ëž˜ìŠ¤(Loc, Random ë“±)ì™€ ì•½ 0.15~0.25ì˜ F1 ê²©ì°¨ë¥¼ ë³´ì¸ë‹¤. ì´ëŠ”
+485:ë‘˜ì§¸, <b>Metallic NanowireëŠ” ideal ì¡°ê±´ì—ì„œë„ Edge-Ring, Near-Full, Scratchì˜ F1ì´ ì•½ 0ìœ¼ë¡œ ì‚¬ì‹¤ìƒ ë¶„ë¥˜
+487:íŒ¨í„´(Edge-Ring ê°™ì€ ê°€ìž¥ìžë¦¬ ê³ ë¦¬)ì„ ì‹ë³„í•  ìˆ˜ ì—†ìŒì„ ë³´ì—¬ì¤€ë‹¤. realistic ì¡°ê±´ì—ì„œ ì¼ë¶€ í´ëž˜ìŠ¤ì˜ F1ì´ ì‚´ì§
+497:<h2>5.1 ì €í•­ë¹„ì˜ ì˜í–¥</h2>
+499:ë³¸ ë¹„êµ ì¡°ê±´ì—ì„œëŠ” R<sub>off</sub>/R<sub>on</sub> 25ë°° ì´ìƒì¸ ì„¸ ì†Œìž¬ì™€ 1.97ë°°ì¸ Metallic Nanowire ì‚¬ì´ì˜ ì°¨ì´ê°€ ê°€ìž¥ ëšœë ·í•˜ë‹¤. ì €í•­ë¹„ê°€ 25ë°° ì´ìƒì¸ ì„¸ ì†Œìž¬ëŠ”
+500:ideal ì¡°ê±´ì—ì„œ baseline ëŒ€ë¹„ 1% ì´ë‚´ì˜ ì†ì‹¤ë¡œ ê°€ì¤‘ì¹˜ ì •ë³´ë¥¼ ìž˜ ë³´ì¡´í•˜ì§€ë§Œ, ì €í•­ë¹„ 1.97ë°°ì˜ Metallic NanowireëŠ”
+506:ì €í•­ë¹„ sweep(ì˜ˆ: 5Ã—, 10Ã—, 20Ã—, 50Ã—)ì„ ìˆ˜í–‰í•˜ì§€ ì•Šì•˜ê¸° ë•Œë¬¸ì´ë‹¤. "ë³¸ ì—°êµ¬ì˜ ì¡°ê±´ì—ì„œ 25ë°° ì´ìƒì´ë©´ ì–‘ìží™”ë¡œ
+507:ì¸í•œ ideal ì„±ëŠ¥ ì†ì‹¤ì´ 1% ì´ë‚´ì˜€ë‹¤"ê°€ ì •ì§í•œ ê²°ë¡ ì´ë‹¤.
+525:ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” í‰ê·  ì„±ëŠ¥ì´ ë¹„ìŠ·í•´ë„ 9íšŒ ì¤‘ 1íšŒ catastrophic degradationì´ ë‚˜íƒ€ë‚¬ë‹¤(í‘œ 5). ì´ëŠ” í‰ê· ë§Œìœ¼ë¡œ
+538:  <li><b>ë‹¨ì¼ ë°ì´í„°ì…‹Â·ê²½ëŸ‰ CNN.</b> MixedWM38ê³¼ ì•½ 32ë§Œ íŒŒë¼ë¯¸í„°ì˜ ì–•ì€ CNNì— í•œì •ëœ ê²°ê³¼ë¡œ, WM-811K [7] ë“±
+540:  <li><b>ì €í•­ë¹„ sweep ë¯¸ìˆ˜í–‰.</b> 4 ì†Œìž¬ì˜ ì´ì‚° ë¹„êµë§Œ ìˆ˜í–‰í•˜ì—¬ ì €í•­ë¹„-ì„±ëŠ¥ì˜ ì—°ì†ì  í•¨ìˆ˜ í˜•íƒœëŠ” ê²°ì •í•  ìˆ˜ ì—†ë‹¤.</li>
+543:  <li><b>í‘œë³¸ í•œê³„.</b> ì†Œìž¬ë‹¹ 9íšŒ(3 seed Ã— 3 noise)ë¡œ, 9íšŒ ì¤‘ 1íšŒ ì‚¬ê±´ì˜ binomial 95% ì‹ ë¢°êµ¬ê°„ì€ ì•½ [0.3%, 48%]ì—
+544:  ì´ë¥¸ë‹¤. ë”°ë¼ì„œ ë³¸ë¬¸ì˜ "11%"ëŠ” ë°œìƒ í™•ë¥  ì¶”ì •ì¹˜ê°€ ì•„ë‹ˆë¼ ë³¸ í‘œë³¸ì˜ ê´€ì°° ë¹ˆë„ì´ë©°, ì •ëŸ‰ì  í™•ë¥  ì¶”ì •Â·í†µê³„ì  ìœ ì˜ì„±
+549:<!--  VI. ê²°ë¡                                                       -->
+551:<h1>6. ê²°ë¡ </h1>
+555:ì •ëŸ‰ ë¹„êµí•˜ì˜€ë‹¤. ì–‘ìží™”, device-to-device variation, stuck-at faultì˜ ì„¸ ë¹„ì´ìƒì„±ì„ ë™ì‹œì— ì ìš©í•œ 9íšŒ
+560:realistic ì¡°ê±´ì—ì„œëŠ” í‰ê·  macro F1ì´ 0.76~0.87ë¡œ í•˜ë½í•˜ì˜€ë‹¤. ë‘˜ì§¸, ì €í•­ë¹„ 1.97ë°°ì˜ Metallic NanowireëŠ”
+561:4-state ì–‘ìží™”ì˜ ë³¸ì§ˆì  í•œê³„ë¡œ ideal ì¡°ê±´ì—ì„œë„ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´(F1 0.38)í•˜ì—¬, ë‹¤ë‹¨ê³„ ê°€ì¤‘ì¹˜ ì •ë°€ë„ê°€
+563:ì˜í•´ 9íšŒ ì¤‘ 1íšŒ (ì•½ 11%) ë¹„ìœ¨ë¡œ catastrophic degradationì´ ê´€ì°°ë˜ì—ˆìœ¼ë©°, ì´ëŠ” worst-case ë¶•ê´´ ìœ„í—˜ì„ ì •ì„±ì ìœ¼ë¡œ
+574:<!--  ì°¸ê³ ë¬¸í—Œ                                                      -->
+576:<h1>ì°¸ê³ ë¬¸í—Œ</h1>
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 388ms:
+ì´ì–´ì„œ_ìž‘ì—…_í”„ë¡¬í”„íŠ¸.md
+ë‚´ê°€_ì´í•´í•˜ëŠ”ìš©.html
+êµìˆ˜ë‹˜_ë³´ê³ ìš©.html
+results\_tbl4.png
+results\_tables.html
+results\_skeleton.html
+results\_montage.png
+results\v4_final_review_prompt.md
+results\phase_final_audit_prompt.md
+results\phase4_codex.txt
+results\phase3_codex.txt
+results\phase2_review_prompt.md
+results\phase2_gemini.txt
+results\phase2_discuss_prompt.txt
+results\phase2_codex.txt
+results\phase2_check_prompt.txt
+results\phase2_check_gemini.txt
+results\phase2_check_codex.txt
+results\phase1_statistics.json
+results\phase1_review_r2_prompt.md
+results\phase1_review_prompt.txt
+results\phase1_review_prompt.md
+results\phase1_gemini.txt
+results\phase1_codex.txt
+results\phase1_checklist.md
+results\per_noise_table.md
+results\perclass_decision_prompt.md
+results\p3_recheck_prompt.md
+results\p3_final_review_prompt.md
+results\opinion_only_prompt.md
+results\objective_evaluation_prompt.md
+results\nat_decision_prompt.md
+results\method_comparison.md
+results\material_results.json
+results\gemini_v4_final.md
+results\gemini_review_v4.md
+results\gemini_review_v3.md
+results\gemini_phase2_review_v2.md
+results\gemini_phase2_review.md
+results\gemini_phase1_review.md
+results\gemini_phase1_r2.md
+results\gemini_perclass.md
+results\gemini_p3_recheck.md
+results\gemini_p3_final.md
+results\gemini_opinion_v2.md
+results\gemini_opinion.md
+results\gemini_objective.md
+results\gemini_nat.md
+results\gemini_final_optD.md
+results\gemini_final_checklist_v2.md
+results\gemini_final_checklist.md
+results\gemini_final_audit_v3.md
+results\gemini_final_audit_v2.md
+results\gemini_final_audit.md
+results\gemini_external_review_v2.md
+results\gaussian_only_results.json
+results\frontmatter_codex.txt
+results\final_checklist_prompt.md
+results\final_audit_after_optD_prompt.md
+results\external_llm_review_v4.md
+results\external_llm_review_v3.md
+results\external_llm_review_v2.md
+results\dataset_summary.json
+results\codex_v4_final.md
+results\codex_review_v4.md
+results\codex_review_v3.md
+results\codex_phase2_review.md
+results\codex_phase1_review.md
+results\codex_phase1_r2.md
+results\codex_perclass.md
+results\codex_p3_recheck.md
+results\codex_p3_final.md
+results\codex_opinion.md
+results\codex_objective.md
+results\codex_nat.md
+results\codex_final_optD.md
+results\codex_final_checklist.md
+results\codex_final_audit.md
+results\codex_external_review_v2.md
+results\body_extract.md
+results\baseline_results.json
+README.md
+paper_v8_10p.html
+paper_b5_preview.pdf
+paper_b5_embedded.pdf
+paper_b5_embedded.html
+paper_b5.html
+paper.html
+figures\cnn_architecture.png
+figures\bimodal_distribution.png
+figures\wafer_defect_examples.png
+figures\pipeline_overview.png
+figures\method_comparison.png
+figures\material_comparison.png
+checkpoints\baseline_seed456.pt
+checkpoints\baseline_seed42.pt
+checkpoints\baseline_seed123.pt
+code\train.py
+code\model.py
+code\make_explain_figures.py
+code\extract_body.py
+code\eval_gaussian.py
+code\eval.py
+code\embed_figures.py
+code\embed_b5.py
+code\data.py
+code\compare_methods.py
+code\build_b5.py
+code\analyze.py
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+기본 검색은 됐지만 터미널 출력 인코딩이 깨져서, 다음 단계는 HTML을 UTF-8로 직접 읽고 ASCII 이스케이프 형태로 필요한 구간만 뽑겠습니다. 참조 번호와 표/그림 캡션, 핵심 수치 테이블을 분리해서 대조하겠습니다.
+2026-05-21T05:00:29.866096Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+import re
+p=Path('paper_b5.html')
+s=p.read_text(encoding='utf-8')
+for i,line in enumerate(s.splitlines(),1):
+    if re.search(r'F1|저항비|9회|11%|0\\.76|0\\.87|0\\.88|표\\s*\\d|그림\\s*\\d|\\[\\d+\\]|국문|요약|초록|결론|참고문헌|목차|인준|제출', line):
+        print(f'{i}: '+line.encode('unicode_escape').decode())
+'@ | python -"` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+import re
+p=Path('paper_b5.html')
+s=p.read_text(encoding='utf-8')
+for i,line in enumerate(s.splitlines(),1):
+    if re.search(r'F1|저항비|9회|11%|0\\.76|0\\.87|0\\.88|표\\s*\\d|그림\\s*\\d|\\[\\d+\\]|국문|요약|초록|결론|참고문헌|목차|인준|제출', line):
+        print(f'{i}: '+line.encode('unicode_escape').decode())
+'@ | python -" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+import re
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+# headings and captions
+for i,line in enumerate(s.splitlines(),1):
+    if re.search(r'<h[12]|class=\"caption\"|<caption|Table \\d|Figure \\d|<li><b>', line):
+        txt=re.sub('<["'^>]+>'"',' ',line)
+        txt=re.sub(r'\\s+',' ',txt).strip()
+        print(f'{i}: '+txt.encode('unicode_escape').decode())
+'@ | python -" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+import re
+p=Path('paper_b5.html')
+s=p.read_text(encoding='utf-8')
+for i,line in enumerate(s.splitlines(),1):
+    if re.search(r'F1|저항비|9회|11%|0\\.76|0\\.87|0\\.88|표\\s*\\d|그림\\s*\\d|\\[\\d+\\]|국문|요약|초록|결론|참고문헌|목차|인준|제출', line):
+        print(f'{i}: '+line.encode('unicode_escape').decode())
+'@ | python -"` rejected: blocked by policy
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+import re
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+# headings and captions
+for i,line in enumerate(s.splitlines(),1):
+    if re.search(r'<h[12]|class=\"caption\"|<caption|Table \\d|Figure \\d|<li><b>', line):
+        txt=re.sub('<["'^>]+>'"',' ',line)
+        txt=re.sub(r'\\s+',' ',txt).strip()
+        print(f'{i}: '+txt.encode('unicode_escape').decode())
+'@ | python -"` rejected: blocked by policy
+2026-05-21T05:00:29.866777Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+import re
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+# headings and captions
+for i,line in enumerate(s.splitlines(),1):
+    if re.search(r'<h[12]|class=\"caption\"|<caption|Table \\d|Figure \\d|<li><b>', line):
+        txt=re.sub('<["'^>]+>'"',' ',line)
+        txt=re.sub(r'\\s+',' ',txt).strip()
+        print(f'{i}: '+txt.encode('unicode_escape').decode())
+'@ | python -"` rejected: blocked by policy
+2026-05-21T05:00:29.867729Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+import re
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+# References cited and bibliography numbers
+cites=sorted(set(int(x) for x in re.findall(r'\\[(\\d+)\\]', s)))
+bib=[]
+for m in re.finditer(r'<li>\\s*\\[(\\d+)\\]', s): bib.append(int(m.group(1)))
+print('cites', cites)
+print('bib', bib)
+print('missing_bib_for_cites', sorted(set(cites)-set(bib)))
+print('uncited_bib', sorted(set(bib)-set(cites)))
+print('tables mentioned', sorted(set(int(x) for x in re.findall(r'표\\s*(\\d+)', s))))
+print('figs mentioned', sorted(set(int(x) for x in re.findall(r'그림\\s*(\\d+)', s))))
+print('table captions', re.findall(r'Table\\s+(\\d+)', s))
+print('figure captions', re.findall(r'Figure\\s+(\\d+)', s))
+'@ | python -"` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+import re
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+# References cited and bibliography numbers
+cites=sorted(set(int(x) for x in re.findall(r'\\[(\\d+)\\]', s)))
+bib=[]
+for m in re.finditer(r'<li>\\s*\\[(\\d+)\\]', s): bib.append(int(m.group(1)))
+print('cites', cites)
+print('bib', bib)
+print('missing_bib_for_cites', sorted(set(cites)-set(bib)))
+print('uncited_bib', sorted(set(bib)-set(cites)))
+print('tables mentioned', sorted(set(int(x) for x in re.findall(r'표\\s*(\\d+)', s))))
+print('figs mentioned', sorted(set(int(x) for x in re.findall(r'그림\\s*(\\d+)', s))))
+print('table captions', re.findall(r'Table\\s+(\\d+)', s))
+print('figure captions', re.findall(r'Figure\\s+(\\d+)', s))
+'@ | python -" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+from pathlib import Path
+import re
+s=Path('paper_b5.html').read_text(encoding='utf-8')
+# References cited and bibliography numbers
+cites=sorted(set(int(x) for x in re.findall(r'\\[(\\d+)\\]', s)))
+bib=[]
+for m in re.finditer(r'<li>\\s*\\[(\\d+)\\]', s): bib.append(int(m.group(1)))
+print('cites', cites)
+print('bib', bib)
+print('missing_bib_for_cites', sorted(set(cites)-set(bib)))
+print('uncited_bib', sorted(set(bib)-set(cites)))
+print('tables mentioned', sorted(set(int(x) for x in re.findall(r'표\\s*(\\d+)', s))))
+print('figs mentioned', sorted(set(int(x) for x in re.findall(r'그림\\s*(\\d+)', s))))
+print('table captions', re.findall(r'Table\\s+(\\d+)', s))
+print('figure captions', re.findall(r'Figure\\s+(\\d+)', s))
+'@ | python -"` rejected: blocked by policy
+codex
+읽기 명령 일부가 정책 필터에 걸렸습니다. 파일을 바꾸는 작업은 아니므로, 더 단순한 한 줄 명령과 기존 `rg` 기반으로 필요한 정보를 나눠서 확인하겠습니다.
+2026-05-21T05:00:36.876814Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; import re; s=Path('paper_b5.html').read_text(encoding='utf-8'); print('len',len(s)); print('cites',sorted(set(map(int,re.findall(r'\\\\[(\\\\d+)\\\\]',s))))); print('bib',re.findall(r'<li>\\\\s*\\\\[(\\\\d+)\\\\]',s)); print('tables mentioned',sorted(set(map(int,re.findall(r'표\\\\s*(\\\\d+)',s))))); print('figs mentioned',sorted(set(map(int,re.findall(r'그림\\\\s*(\\\\d+)',s))))); print('table captions',re.findall(r'Table\\\\s+(\\\\d+)',s)); print('figure captions',re.findall(r'Figure\\\\s+(\\\\d+)',s))\""` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; import re; s=Path('paper_b5.html').read_text(encoding='utf-8'); print('len',len(s)); print('cites',sorted(set(map(int,re.findall(r'\\\\[(\\\\d+)\\\\]',s))))); print('bib',re.findall(r'<li>\\\\s*\\\\[(\\\\d+)\\\\]',s)); print('tables mentioned',sorted(set(map(int,re.findall(r'표\\\\s*(\\\\d+)',s))))); print('figs mentioned',sorted(set(map(int,re.findall(r'그림\\\\s*(\\\\d+)',s))))); print('table captions',re.findall(r'Table\\\\s+(\\\\d+)',s)); print('figure captions',re.findall(r'Figure\\\\s+(\\\\d+)',s))\"" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"from pathlib import Path; import re; s=Path('paper_b5.html').read_text(encoding='utf-8'); print('len',len(s)); print('cites',sorted(set(map(int,re.findall(r'\\\\[(\\\\d+)\\\\]',s))))); print('bib',re.findall(r'<li>\\\\s*\\\\[(\\\\d+)\\\\]',s)); print('tables mentioned',sorted(set(map(int,re.findall(r'표\\\\s*(\\\\d+)',s))))); print('figs mentioned',sorted(set(map(int,re.findall(r'그림\\\\s*(\\\\d+)',s))))); print('table captions',re.findall(r'Table\\\\s+(\\\\d+)',s)); print('figure captions',re.findall(r'Figure\\\\s+(\\\\d+)',s))\""` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n -C 8 \"Table 4|Material|Pt/HfO|Ferroelectric|Metallic|TaO|0\\.76|0\\.87|0\\.88|0\\.38|0\\.33|11%|4/9|5/9|1/9\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n -C 5 \"Table 5|Table 6|Near-Full|Scratch|Edge-Ring|0\\.59|0\\.69|0\\.70|0\\.64\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"<h1|<h2|Table [0-9]|Figure [0-9]|<li>\\[[0-9]+\\]|\\[[0-9]+\\]\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 363ms:
+163-ì´ë™ ë³‘ëª©ì„ ì™„í™”í•˜ëŠ” ì•„í‚¤í…ì²˜ì´ë‹¤. ê·¸ì¤‘ì—ì„œë„ ë©¤ë¦¬ìŠ¤í„°(memristor) ê¸°ë°˜ í¬ë¡œìŠ¤ë°” ì–´ë ˆì´ëŠ” ì˜´ì˜ ë²•ì¹™ê³¼ í‚¤ë¥´ížˆí˜¸í”„
+164-ì „ë¥˜ ë²•ì¹™ë§Œìœ¼ë¡œ ë‹¨ì¼ ì‚¬ì´í´ ì•ˆì— í–‰ë ¬-ë²¡í„° ê³±ì…ˆì„ ì™„ì„±í•  ìˆ˜ ìžˆì–´ ë”¥ëŸ¬ë‹ ì¶”ë¡ ìš© PIM ê°€ì†ê¸°ì˜ ëŒ€í‘œ í›„ë³´ë¡œ
+165-ì—°êµ¬ë˜ì–´ ì™”ë‹¤ [1, 8, 9, 10].
+166-</p>
+167-<p>
+168:ë°˜ë„ì²´ ì œì¡° ê³µì •ì—ì„œëŠ” ì›¨ì´í¼ í‘œë©´ì˜ ê²°í•¨ íŒ¨í„´(Center, Donut, Edge-Ring ë“±)ì„ ìžë™ ë¶„ë¥˜í•˜ëŠ” ìž‘ì—…ì´ ìˆ˜ìœ¨ ê´€ë¦¬ì—
+169-í•„ìˆ˜ì ì´ë‹¤. ì´ ìž‘ì—…ì€ CNN(convolutional neural network)ì´ ê°•ì ì„ ë³´ì´ëŠ” ë¶„ì•¼ì´ë©°, ê³µìž¥ ë¼ì¸ì—ì„œ ì‹¤ì‹œê°„ìœ¼ë¡œ
+170-ìš”êµ¬ë˜ëŠ” ë§Œí¼ ì €ì „ë ¥ ì—£ì§€ ì¶”ë¡  ê°€ì†ê¸°ì™€ ê²°í•©í•  ìˆ˜ ìžˆë‹¤ë©´ ì‹¤ìš©ì  ê°€ì¹˜ê°€ í¬ë‹¤.
+171-</p>
+172-
+173-<h2>1.2 ì„ í–‰ ì—°êµ¬ì˜ í•œê³„</h2>
+--
+250-
+251-<h2>3.1 ë°ì´í„°ì…‹</h2>
+252-<p>
+253-ë³¸ ì—°êµ¬ì—ì„œëŠ” Wang ë“±ì´ ê³µê°œí•œ MixedWM38 ì›¨ì´í¼ ê²°í•¨ ë°ì´í„°ì…‹ì„ ì‚¬ìš©í•˜ì˜€ë‹¤ [2].
+254-ì´ 38,015ìž¥ì˜ 52Ã—52 ì›¨ì´í¼ ë§µìœ¼ë¡œ êµ¬ì„±ë˜ë©°, í”½ì…€ ê°’ì€ ë°°ê²½(0), ì •ìƒ ë‹¤ì´(1), ê²°í•¨ ë‹¤ì´(2)ì˜ ì •ìˆ˜ categorical
+255:ê°’ì´ë‹¤. ë¼ë²¨ì€ 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤(Center, Donut, Edge-Loc, Edge-Ring, Loc, Near-Full, Random, Scratch)ì— ëŒ€í•œ
+256-multi-hot ë²¡í„°ë¡œ, ë‹¨ì¼ ê²°í•¨ë¿ ì•„ë‹ˆë¼ ë‘ ì¢…ë¥˜ ì´ìƒì˜ ê²°í•¨ì´ ë™ì‹œì— ì¡´ìž¬í•˜ëŠ” ë³µí•© ê²°í•¨(mixed-type) íŒ¨í„´ì„
+257-í¬í•¨í•œë‹¤ëŠ” ì ì´ íŠ¹ì§•ì´ë‹¤. 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ì˜ ëŒ€í‘œì ì¸ ê³µê°„ íŒ¨í„´ì€ ê·¸ë¦¼ 1ê³¼ ê°™ë‹¤.
+258-</p>
+259-<div class="figure tall">
+260-  <img src="figures/wafer_defect_examples.png" alt="ì›¨ì´í¼ ê²°í•¨ 8ì¢… ì˜ˆì‹œ">
+--
+393-</p>
+394-<table>
+395-  <tr><th rowspan="2">Material</th><th rowspan="2">R<sub>off</sub>/R<sub>on</sub></th><th rowspan="2">States</th><th colspan="2">Ideal</th><th colspan="2">Realistic (mean Â± std)</th><th colspan="2">Î”F1</th></tr>
+396-  <tr><th>Subset Acc</th><th>Macro F1</th><th>Subset Acc</th><th>Macro F1</th><th>absolute</th><th>relative</th></tr>
+397-  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>25.0Ã—</td><td>64</td><td>0.9578</td><td>0.9826</td><td>0.5601 Â± 0.2779</td><td>0.7578 Â± 0.2759</td><td>âˆ’0.2248</td><td>âˆ’22.88%</td></tr>
+398:  <tr><td>Ferroelectric</td><td>333.3Ã—</td><td>128</td><td>0.9526</td><td>0.9805</td><td>0.6992 Â± 0.2660</td><td>0.8570 Â± 0.1632</td><td>âˆ’0.1235</td><td>âˆ’12.60%</td></tr>
+399-  <tr><td>Metallic Nanowire</td><td>1.97Ã—</td><td>4</td><td>0.0813</td><td>0.3847</td><td>0.0518 Â± 0.0413</td><td>0.3288 Â± 0.1286</td><td>âˆ’0.0559</td><td>âˆ’14.53%</td></tr>
+400:  <tr><td>TaO<sub>x</sub>/Ta</td><td>145.8Ã—</td><td>32</td><td>0.9458</td><td>0.9770</td><td>0.7258 Â± 0.2431</td><td>0.8726 Â± 0.1364</td><td>âˆ’0.1044</td><td>âˆ’10.69%</td></tr>
+401-</table>
+402-<p class="caption">Table 4. 4 ì†Œìž¬ì˜ Ideal vs Realistic ë¶„ë¥˜ ì„±ëŠ¥ (Subset Accuracy ë° Macro F1, 3 baseline seed Ã— 3 noise sample = 9íšŒ í‰ê· ). Î”F1ì€ macro F1 ê¸°ì¤€ì˜ ì ˆëŒ€ ë³€í™”ëŸ‰ê³¼ ìƒëŒ€ ë³€í™”ìœ¨ì„ ë¶„ë¦¬í•˜ì—¬ í‘œê¸°.</p>
+403-
+404-<div class="figure">
+405-  <img src="figures/material_comparison.png" alt="Material comparison">
+--
+444-  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>4/9 (44%)</td><td>4/9 (44%)</td><td>1/9 (11%)</td><td>9</td></tr>
+445-  <tr><td>Ferroelectric</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+446-  <tr><td>Metallic Nanowire</td><td>0/9 (0%)</td><td>0/9 (0%)</td><td>9/9 (100%)</td><td>9</td></tr>
+447-  <tr><td>TaO<sub>x</sub>/Ta</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+448-</table>
+449:<p class="caption">Table 5. ê° ì†Œìž¬ì˜ per-noise ê²°ê³¼ë¥¼ good / moderate / catastrophic ìž„ê³„ë¡œ ë¶„ë¥˜í•œ ë¹ˆë„.</p>
+450-
+451-<p>
+452-ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” ì•½ 44~56%ê°€ baselineì˜ 90% ì´ìƒì„ ìœ ì§€(good)í•˜ëŠ” í•œíŽ¸, 9íšŒ ì¤‘ 1íšŒ (ì•½ 11%) ë¹„ìœ¨ë¡œ F1ì´
+453-0.60 ë¯¸ë§Œìœ¼ë¡œ ë¶•ê´´(catastrophic)í•˜ëŠ” ê²°ê³¼ê°€ ì„¸ ì†Œìž¬ ëª¨ë‘ì—ì„œ ì¼ê´€ë˜ê²Œ ê´€ì°°ë˜ì—ˆë‹¤. Metallic NanowireëŠ” 9íšŒ ëª¨ë‘
+454-catastrophic êµ¬ê°„ì— ì¡´ìž¬í•˜ì—¬, ë³¸ì§ˆì  í‘œí˜„ í•œê³„ê°€ noise ì¢…ë¥˜ì™€ ë¬´ê´€í•˜ê²Œ í•­ìƒ ì„±ëŠ¥ ë¶•ê´´ë¥¼ ì´ˆëž˜í•¨ì„ ë³´ì—¬ì¤€ë‹¤.
+--
+458-</p>
+459-
+460-<h2>4.4 ê²°í•¨ ìœ í˜•ë³„ (per-class) F1 ë¶„ì„</h2>
+461-<p>
+462-í‘œ 6ì€ 4 ì†Œìž¬ Ã— ë‘ ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ macro F1ì„ ë³´ì—¬ì¤€ë‹¤. ë°ì´í„°ì…‹ì˜ í´ëž˜ìŠ¤ ë¹ˆë„ê°€ ê· ì¼í•˜ì§€ ì•ŠìŒì„
+463:ìœ ì˜í•´ì•¼ í•œë‹¤(Near-Full 0.4%, Scratch 2.3%ë¡œ ê°€ìž¥ ì ìŒ, Loc 48.6%, Random 51.3%ë¡œ ê°€ìž¥ ë§ŽìŒ).
+464-</p>
+465-<table>
+466:  <tr><th>Material / Condition</th><th>Center</th><th>Donut</th><th>Edge-Loc</th><th>Edge-Ring</th><th>Loc</th><th>Near-Full</th><th>Random</th><th>Scratch</th></tr>
+467-  <tr><td>Pt/HfO<sub>x</sub>/Ti â€” Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.99</td><td>0.93</td><td>0.99</td><td>0.98</td></tr>
+468:  <tr><td>Pt/HfO<sub>x</sub>/Ti â€” Realistic</td><td>0.86</td><td>0.87</td><td>0.74</td><td>0.78</td><td>0.76</td><td><b>0.64</b></td><td>0.82</td><td><b>0.59</b></td></tr>
+469-  <tr><td>Ferroelectric â€” Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.98</td></tr>
+470:  <tr><td>Ferroelectric â€” Realistic</td><td>0.94</td><td>0.90</td><td>0.90</td><td>0.94</td><td>0.81</td><td>0.79</td><td>0.87</td><td><b>0.69</b></td></tr>
+471-  <tr><td>Metallic Nanowire â€” Ideal</td><td>0.29</td><td>0.73</td><td>0.67</td><td><b>0.00</b></td><td>0.67</td><td><b>0.00</b></td><td>0.72</td><td><b>0.01</b></td></tr>
+472-  <tr><td>Metallic Nanowire â€” Realistic</td><td>0.19</td><td>0.44</td><td>0.38</td><td>0.27</td><td>0.57</td><td><b>0.15</b></td><td>0.46</td><td><b>0.17</b></td></tr>
+473-  <tr><td>TaO<sub>x</sub>/Ta â€” Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.97</td></tr>
+474:  <tr><td>TaO<sub>x</sub>/Ta â€” Realistic</td><td>0.98</td><td>0.92</td><td>0.92</td><td>0.95</td><td>0.83</td><td>0.80</td><td>0.89</td><td><b>0.70</b></td></tr>
+475-</table>
+476:<p class="caption">Table 6. 4 ì†Œìž¬ Ã— Ideal/Realistic ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1 (Idealì€ 3 seed í‰ê· , Realisticì€ 9 sample í‰ê· ).</p>
+477-
+478-<p>
+479:ë‘ ê°€ì§€ íŒ¨í„´ì´ ê´€ì°°ëœë‹¤. ì²«ì§¸, <b>minority classì¸ Near-Full(0.4%)ê³¼ Scratch(2.3%)ê°€ ëª¨ë“  ê³ ì €í•­ë¹„ ì†Œìž¬ì—ì„œ
+480:ê°€ìž¥ ë‚®ì€ F1ì„ ë³´ì˜€ë‹¤</b>. íŠ¹ížˆ realistic ì¡°ê±´ì˜ ScratchëŠ” Pt/HfO<sub>x</sub>/Ti 0.59, Ferroelectric 0.69,
+481:TaO<sub>x</sub>/Ta 0.70ìœ¼ë¡œ ë–¨ì–´ì ¸, ë‹¤ë¥¸ ë‹¤ìˆ˜ í´ëž˜ìŠ¤(Loc, Random ë“±)ì™€ ì•½ 0.15~0.25ì˜ F1 ê²©ì°¨ë¥¼ ë³´ì¸ë‹¤. ì´ëŠ”
+482-multi-label ë¶„ë¥˜ì—ì„œ í´ëž˜ìŠ¤ ë¶ˆê· í˜•ì´ ë¹„ì´ìƒì„± ì¡°ê±´ì—ì„œ ë” ì¦í­ë¨ì„ ì‹œì‚¬í•œë‹¤.
+483-</p>
+484-<p>
+485:ë‘˜ì§¸, <b>Metallic NanowireëŠ” ideal ì¡°ê±´ì—ì„œë„ Edge-Ring, Near-Full, Scratchì˜ F1ì´ ì•½ 0ìœ¼ë¡œ ì‚¬ì‹¤ìƒ ë¶„ë¥˜
+486-ì‹¤íŒ¨</b>ì´ë‹¤. ì´ëŠ” 4-state ì–‘ìží™”ë¡œ ì¸í•´ ê°€ì¤‘ì¹˜ í‘œí˜„ ìžìœ ë„ê°€ ë¶€ì¡±í•´ minority ë˜ëŠ” ê³µê°„ì ìœ¼ë¡œ ë¯¸ì„¸í•œ
+487:íŒ¨í„´(Edge-Ring ê°™ì€ ê°€ìž¥ìžë¦¬ ê³ ë¦¬)ì„ ì‹ë³„í•  ìˆ˜ ì—†ìŒì„ ë³´ì—¬ì¤€ë‹¤. realistic ì¡°ê±´ì—ì„œ ì¼ë¶€ í´ëž˜ìŠ¤ì˜ F1ì´ ì‚´ì§
+488-ì¦ê°€í•˜ëŠ” í˜„ìƒì€ ì–‘ìží™”ë¡œ ì´ë¯¸ ë¬´ë„ˆì§„ ê²°ì • ê²½ê³„ê°€ random noiseë¡œ ìš°ì—°ížˆ ì¼ë¶€ ì •ë‹µì„ ë§žížˆëŠ” í†µê³„ì  íš¨ê³¼ë¡œ
+489-í•´ì„ëœë‹¤.
+490-</p>
+491-
+492-<!-- ============================================================== -->
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 377ms:
+58-    .sheet { page-break-after: always; }
+59-  }
+60-</style>
+61-</head>
+62-<body>
+63-<section class="sheet cover">
+64-  <div class="deg">í•™ì‚¬í•™ìœ„ë…¼ë¬¸</div>
+65-  <div class="ko-title">4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ íŒŒë¼ë¯¸í„°ë¥¼ í™œìš©í•œ<br>PIM í™˜ê²½ ì›¨ì´í¼ ê²°í•¨ ë¶„ë¥˜ ì„±ëŠ¥ ë¹„êµ ì—°êµ¬</div>
+66:  <div class="en-title">A Comparative Study of Four Memristive Material Candidates<br>for Processing-In-Memory Wafer Defect Classification</div>
+67-  <div class="fm-info">
+68-    ìƒëª…ëŒ€í•™êµ ê³µê³¼ëŒ€í•™<br>ì‹œìŠ¤í…œë°˜ë„ì²´ê³µí•™ê³¼<br>ìž„ ì°½ ìš°<br><br>2026ë…„ 5ì›”
+69-  </div>
+70-</section>
+71-<section class="sheet inner">
+72-  <div class="ko-title" style="margin-top:14mm">4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ íŒŒë¼ë¯¸í„°ë¥¼ í™œìš©í•œ<br>PIM í™˜ê²½ ì›¨ì´í¼ ê²°í•¨ ë¶„ë¥˜ ì„±ëŠ¥ ë¹„êµ ì—°êµ¬</div>
+73:  <div class="en-title">A Comparative Study of Four Memristive Material Candidates<br>for Processing-In-Memory Wafer Defect Classification</div>
+74-  <div class="fm-info" style="margin-top:10mm">
+75-    ì§€ë„êµìˆ˜ã€€ì´ ì¢… í™˜<br><br>
+76-    ì´ ë…¼ë¬¸ì„ í•™ì‚¬í•™ìœ„ ë…¼ë¬¸ìœ¼ë¡œ ì œì¶œí•¨<br><br>
+77-    2026ë…„ 5ì›”<br><br>
+78-    ìƒëª…ëŒ€í•™êµ ê³µê³¼ëŒ€í•™<br>ì‹œìŠ¤í…œë°˜ë„ì²´ê³µí•™ê³¼<br>ìž„ ì°½ ìš°
+79-  </div>
+80-</section>
+81-<section class="sheet approval">
+--
+108-    <li class="s1">3.5 í‰ê°€ í”„ë¡œí† ì½œ</li>
+109-    <li><b>4. ê²°ê³¼</b></li>
+110-    <li class="s1">4.1 Baseline (FP32 software) ì„±ëŠ¥</li>
+111-    <li class="s1">4.2 4ì¢… ì†Œìž¬ Ideal vs Realistic ë¹„êµ</li>
+112-    <li class="s1">4.3 Worst-case ë¶•ê´´ í˜„ìƒ ë¶„ì„</li>
+113-    <li class="s1">4.4 ê²°í•¨ ìœ í˜•ë³„ (per-class) F1 ë¶„ì„</li>
+114-    <li><b>5. ë…¼ì˜</b></li>
+115-    <li class="s1">5.1 ì €í•­ë¹„ì˜ ì˜í–¥</li>
+116:    <li class="s1">5.2 Metallic Nanowireì˜ ë³¸ì§ˆì  í•œê³„</li>
+117-    <li class="s1">5.3 Worst-case ë¶•ê´´ í˜„ìƒì˜ PIM í•¨ì˜</li>
+118-    <li class="s1">5.4 í•œê³„ ë° í–¥í›„ ê³¼ì œ</li>
+119-    <li><b>6. ê²°ë¡ </b></li>
+120-    <li><b>ì°¸ê³ ë¬¸í—Œ</b></li>
+121-  </ul>
+122-</section>
+123-<section class="sheet summary">
+124-  <h1 style="text-align:center;border:none">êµ­ ë¬¸ ìš” ì•½</h1>
+125-  <p class="noindent">
+126-  Processing-In-Memory (PIM) ì•„í‚¤í…ì²˜ëŠ” ì¸ê³µì§€ëŠ¥ ê°€ì†ê¸°ì˜ ë©”ëª¨ë¦¬-ì—°ì‚° ë³‘ëª©ì„ í•´ê²°í•  ì°¨ì„¸ëŒ€ ê¸°ìˆ ë¡œ ì£¼ëª©ë°›ê³  ìžˆë‹¤.
+127-  íŠ¹ížˆ ë©¤ë¦¬ìŠ¤í„°(memristor) ê¸°ë°˜ í¬ë¡œìŠ¤ë°” ì–´ë ˆì´ëŠ” ê°€ì¤‘ì¹˜ ì €ìž¥ê³¼ ê³±ì…ˆ-ëˆ„ì  ì—°ì‚°ì„ ë™ì‹œì— ìˆ˜í–‰í•  ìˆ˜ ìžˆì–´
+128-  ë”¥ëŸ¬ë‹ ì¶”ë¡ ì— ì í•©í•˜ë‹¤.
+129-  ê·¸ëŸ¬ë‚˜ ë©¤ë¦¬ìŠ¤í„°ëŠ” ì†Œìž¬ë³„ë¡œ ì €í•­ë¹„, í‘œí˜„ ê°€ëŠ¥í•œ ìƒíƒœ ìˆ˜, ë³€ë™(variation), ê²°í•¨ë¥ (stuck-at fault) ë“± ë¬¼ë¦¬ì 
+130-  íŠ¹ì„±ì´ í¬ê²Œ ë‹¤ë¥´ë©°, ì´ëŠ” ë¶„ë¥˜ ì„±ëŠ¥ì— ì§ì ‘ì ì¸ ì˜í–¥ì„ ë¯¸ì¹œë‹¤.
+131:  ë³¸ ì—°êµ¬ì—ì„œëŠ” VTEAM ëª¨ë¸ì˜ ë¬¸í—Œ íŒŒë¼ë¯¸í„°ë¥¼ í™œìš©í•˜ì—¬ Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire,
+132:  TaO<sub>x</sub>/Taì˜ 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ë¥¼ ë™ì¼í•œ ì •ì  conductance mapping ê¸°ë°˜ ì‹œë®¬ë ˆì´ì…˜ í™˜ê²½ì—ì„œ ë¹„êµí•˜ì˜€ë‹¤.
+133-  MixedWM38 ì›¨ì´í¼ ê²°í•¨ ë°ì´í„°ì…‹(8ê°œ ê²°í•¨ ë¼ë²¨ì´ ëª¨ë‘ 0ì¸ normal/no-defect 1,000ìž¥ì„ ì œì™¸í•œ 37,015ìž¥, 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ multi-label)ìœ¼ë¡œ
+134-  í•™ìŠµëœ ê²½ëŸ‰ CNN ëª¨ë¸ì„ ê° ì†Œìž¬ì˜ í¬ë¡œìŠ¤ë°” ì–´ë ˆì´ì— ë§¤í•‘í•˜ê³ , ì–‘ìží™”Â·ë³€ë™Â·stuck-at faultì˜ ì„¸ ë¹„ì´ìƒì„±ì„ ë™ì‹œì—
+135-  ì ìš©í•˜ì—¬ 9íšŒ Monte Carlo í‰ê°€ë¥¼ ìˆ˜í–‰í•˜ì˜€ë‹¤.
+136:  ì‹¤í—˜ ê²°ê³¼, R<sub>off</sub>/R<sub>on</sub> ì €í•­ë¹„ê°€ 25ë°° ì´ìƒì¸ ì„¸ ì†Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric,
+137:  TaO<sub>x</sub>/Ta)ëŠ” í‰ê·  macro F1ì´ 0.76~0.88 ìˆ˜ì¤€ì´ì—ˆìœ¼ë‚˜ noise sampleì— ë”°ë¥¸ ë³€ë™ì„±ì´ ë§¤ìš° ì»¸ìœ¼ë©°
+138-  (std 0.13~0.28), ì €í•­ë¹„ 1.97ë°°ì˜
+139:  Metallic NanowireëŠ” 4-state ì–‘ìží™”ì˜ ë³¸ì§ˆì  í•œê³„ë¡œ ì¸í•´ ì´ìƒì  ì¡°ê±´ì—ì„œë„ F1 0.38ë¡œ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´í•˜ì˜€ë‹¤.
+140:  ë˜í•œ ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta) ê°ê°ì—ì„œ 9íšŒ Monte Carlo
+141-  ìƒ˜í”Œ ì¤‘ 1íšŒì”© ì¹˜ëª…ì  ì„±ëŠ¥ ë¶•ê´´(catastrophic degradation, F1 &lt; 0.60)ê°€ ê´€ì°°ë˜ì—ˆìœ¼ë©°,
+142-  ì´ëŠ” stuck-at fault ìœ„ì¹˜ ë¬´ìž‘ìœ„ì„±ì— ì˜í•œ worst-case ë¶•ê´´ ìœ„í—˜ì˜ ê°€ëŠ¥ì„±ì„ ì‹œì‚¬í•œë‹¤(ë‹¤ë§Œ ì‹¤ì œ ë°œìƒ í™•ë¥  ì¶”ì •ì—ëŠ”
+143-  ë” ë§Žì€ ë°˜ë³µì´ í•„ìš”í•˜ë‹¤).
+144-  ì´ëŠ” PIM ì‘ìš©ì—ì„œ í‰ê·  ì„±ëŠ¥ë¿ ì•„ë‹ˆë¼ ê²°í•¨ ë¶„í¬ì— ë”°ë¥¸ worst-case ìœ„í—˜ê¹Œì§€ í•¨ê»˜ ê³ ë ¤í•´ì•¼ í•¨ì„ ì‹œì‚¬í•œë‹¤.
+145-  </p>
+146-  <p class="noindent keywords">
+147-  <b>Keywords</b> : Memristor, Processing-In-Memory (PIM), VTEAM model, Convolutional Neural Network,
+148-  Wafer defect classification, Stuck-at fault, Quantization
+--
+182-ê°€ì •í•´ ë¹„ì´ìƒì„±ì˜ ì˜í–¥ì„ ê³¼ì†Œí‰ê°€í•˜ëŠ” ê²½í–¥ì´ ìžˆì—ˆë‹¤. ì´ëŠ” ì‹¤ì œ PIM ì¹©ì—ì„œ ë°œìƒí•  ìˆ˜ ìžˆëŠ” ì‹¬ê°í•œ ì„±ëŠ¥ ì €í•˜
+183-(catastrophic degradation)ë¥¼ ì‹œë®¬ë ˆì´ì…˜ ë‹¨ê³„ì—ì„œ ì‚¬ì „ í‰ê°€í•˜ì§€ ëª»í•˜ê²Œ ë§Œë“ ë‹¤.
+184-</p>
+185-
+186-<h2>1.3 ë³¸ ì—°êµ¬ì˜ ê¸°ì—¬</h2>
+187-<p>ë³¸ ì—°êµ¬ëŠ” ë‹¤ìŒê³¼ ê°™ì€ ê¸°ì—¬ë¥¼ ì œì‹œí•œë‹¤.</p>
+188-<p>
+189-<b>1) VTEAM ë¬¸í—Œ íŒŒë¼ë¯¸í„°ë¥¼ ì°¸ê³ í•œ ì •ì  conductance mapping í™˜ê²½ì—ì„œ 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ì˜ ì •ëŸ‰ ë¹„êµ.</b>
+190:Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire, TaO<sub>x</sub>/Taì— ëŒ€í•´ ë™ì¼í•œ CNN, ë™ì¼í•œ ë°ì´í„°ì…‹,
+191-ë™ì¼í•œ ë¹„ì´ìƒì„± ëª¨ë¸ì„ ì ìš©í•˜ì—¬ ì†Œìž¬ ê°„ PIM ì í•©ì„±ì„ macro F1 ì§€í‘œë¡œ ë¹„êµí•œë‹¤.
+192-</p>
+193-<p>
+194-<b>2) ì„¸ ë¹„ì´ìƒì„±ì˜ ë™ì‹œ ì ìš©.</b>
+195-ì–‘ìží™”Â·ë³€ë™Â·stuck-at faultë¥¼ ë§¤í•‘ íŒŒì´í”„ë¼ì¸ì— ë™ì‹œì— ë°˜ì˜í•¨ìœ¼ë¡œì¨ ì‹¤ì œ ë©¤ë¦¬ìŠ¤í„° ì¹©ì˜ ë™ìž‘ì— ë” ê°€ê¹Œìš´
+196-ë³´ìˆ˜ì  í‰ê°€ë¥¼ ìˆ˜í–‰í•œë‹¤. ë§¤í•‘ í›„ ì¶œë ¥ ìž¬ë³´ì •ì€ ê°€ì •í•˜ì§€ ì•ŠëŠ”ë‹¤.
+197-</p>
+198-<p>
+--
+295-
+296-<h2>3.3 4ì¢… ì†Œìž¬ íŒŒë¼ë¯¸í„°</h2>
+297-<p>
+298-ë³¸ ì—°êµ¬ì˜ í•µì‹¬ ë¹„êµ ëŒ€ìƒì¸ 4ì¢… ì†Œìž¬ì˜ ë¬¼ë¦¬ íŒŒë¼ë¯¸í„°ëŠ” í‘œ 2ì— ì •ë¦¬í•˜ì˜€ë‹¤.
+299-R<sub>on</sub>, R<sub>off</sub> ë“± ê±°ì‹œ íŠ¹ì„±ì€ ê° ì†Œìž¬ì˜ ì‹¤ì¸¡ ë¬¸í—Œì—ì„œ ê°€ì ¸ì™”ìœ¼ë©°,
+300-device-to-device variation(Ïƒ/Î¼)ê³¼ stuck-at fault ë¹„ìœ¨ì€ ë¬¸í—Œì—ì„œ ë³´ê³ ëœ ë²”ìœ„ì— ê¸°ë°˜í•œ ì‹œë®¬ë ˆì´ì…˜ ê°€ì •ê°’ì´ë‹¤.
+301-</p>
+302-<table>
+303:  <tr><th>Parameter</th><th>Pt/HfO<sub>x</sub>/Ti</th><th>Ferroelectric</th><th>Metallic Nanowire</th><th>TaO<sub>x</sub>/Ta</th></tr>
+304-  <tr><td>R<sub>on</sub> (Î©)</td><td>100</td><td>150,000</td><td>17.3</td><td>4,800</td></tr>
+305-  <tr><td>R<sub>off</sub> (Î©)</td><td>2,500</td><td>50,000,000</td><td>34</td><td>700,000</td></tr>
+306-  <tr><td><b>R<sub>off</sub>/R<sub>on</sub></b></td><td><b>25.0Ã—</b></td><td><b>333.3Ã—</b></td><td><b>1.97Ã—</b></td><td><b>145.8Ã—</b></td></tr>
+307-  <tr><td>Conductance states</td><td>64</td><td>128</td><td>4</td><td>32</td></tr>
+308-  <tr><td>Variation Ïƒ<sub>R_on</sub></td><td>10%</td><td>8%</td><td>5%</td><td>8%</td></tr>
+309-  <tr><td>Variation Ïƒ<sub>R_off</sub></td><td>15%</td><td>12%</td><td>8%</td><td>10%</td></tr>
+310-  <tr><td>Stuck-at fault rate</td><td>0.5%</td><td>0.3%</td><td>5.0%</td><td>0.3%</td></tr>
+311-  <tr><td>ì¶œì²˜(R<sub>on</sub>, R<sub>off</sub>)</td><td>[1, 3]</td><td>[1, 4]</td><td>[1, 5]</td><td>[6]</td></tr>
+--
+333-ì„ í˜• ë§¤í•‘í•œë‹¤.
+334-</p>
+335-<p>
+336-<b>3) ë¹„ì´ìƒì„± ì£¼ìž… (Realistic ì¡°ê±´ë§Œ í•´ë‹¹).</b>
+337-(i) Device-to-device variation: g â† gÂ·(1 + N(0, Ïƒ)). ÏƒëŠ” Ïƒ<sub>R_on</sub>ê³¼ Ïƒ<sub>R_off</sub>ì˜ ì‚°ìˆ  í‰ê· ì„ ë‹¨ì¼
+338-ê°€ìš°ì‹œì•ˆ ë¶„ì‚°ìœ¼ë¡œ ì‚¬ìš©í•´ ì†Œìž¬ ê°„ ë¹„êµ ë³€ìˆ˜ë¥¼ í†µì œí•˜ì˜€ë‹¤(LRS/HRS ë¶„ë¦¬ ì ìš© ì‹œì˜ ë³€ë™ ê°€ëŠ¥ì„±ì€ 5.4ì— ëª…ì‹œ).
+339-(ii) Stuck-at fault: ì „ì²´ ì…€ ì¤‘ fault rate ë¹„ìœ¨ì„ ë¬´ìž‘ìœ„ë¡œ ê³¨ë¼ ì ˆë°˜ì€ G<sub>max</sub>, ì ˆë°˜ì€ G<sub>min</sub>ìœ¼ë¡œ
+340-ê³ ì°©ì‹œí‚¨ë‹¤. fault rate(0.3~5%)ëŠ” í¬ë¡œìŠ¤ë°” yield ë¬¸í—Œì˜ ë³´ê³  ë²”ìœ„ì— ê¸°ë°˜í•œ ê°€ì •ê°’ìœ¼ë¡œ, ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ”
+341:1% ë¯¸ë§Œì„, Metallic NanowireëŠ” worst-case sensitivity boundë¡œì„œ ë³´ìˆ˜ì ì¸ 5%ë¥¼ ì ìš©í•˜ì˜€ë‹¤. ì†Œìž¬ ê°„ fault rateê°€
+342-ë™ì¼í•˜ì§€ ì•Šìœ¼ë¯€ë¡œ NWì˜ realistic ê°’ì€ ìˆ˜í‰ ë¹„êµê°€ ì•„ë‹Œ sensitivity ì‹œë‚˜ë¦¬ì˜¤ë¡œ í•´ì„í•œë‹¤.
+343-</p>
+344-<p>
+345-<b>4) N-state ì–‘ìží™”.</b> ê° ì…€ì˜ ì»¨ë•í„´ìŠ¤ë¥¼ ë“±ê°„ê²© Nê°œì˜ levels = linspace(G<sub>min</sub>, G<sub>max</sub>, N)
+346-ì¤‘ ê°€ìž¥ ê°€ê¹Œìš´ ê°’ìœ¼ë¡œ ë°˜ì˜¬ë¦¼í•œë‹¤(nearest-state rounding). ì–‘ìží™”ëŠ” ideal/realistic ë‘ ì¡°ê±´ ëª¨ë‘ì— ì ìš©ëœë‹¤.
+347-</p>
+348-<p>
+349-ì´ íŒŒì´í”„ë¼ì¸ì€ ì–‘ìží™”Â·ë³€ë™Â·stuck-at faultì˜ ì„¸ ë¹„ì´ìƒì„±ì„ ë™ì‹œì— ë°˜ì˜í•˜ë©°, ë§¤í•‘ í›„ ì¶œë ¥ ìž¬ë³´ì •(tune)ì€
+--
+387-ì†Œìž¬ ë¹„êµì˜ ì‹ ë¢°ì„± ê¸°ë°˜ìœ¼ë¡œ ì‚¬ìš© ê°€ëŠ¥í•˜ë‹¤.
+388-</p>
+389-
+390-<h2>4.2 4ì¢… ì†Œìž¬ Ideal vs Realistic ë¹„êµ</h2>
+391-<p>
+392-ê° ì†Œìž¬ë³„ ideal ë° realistic ì¡°ê±´ì—ì„œì˜ macro F1 ê²°ê³¼ë¥¼ í‘œ 4ì™€ ê·¸ë¦¼ 4ì— ì •ë¦¬í•˜ì˜€ë‹¤.
+393-</p>
+394-<table>
+395:  <tr><th rowspan="2">Material</th><th rowspan="2">R<sub>off</sub>/R<sub>on</sub></th><th rowspan="2">States</th><th colspan="2">Ideal</th><th colspan="2">Realistic (mean Â± std)</th><th colspan="2">Î”F1</th></tr>
+396-  <tr><th>Subset Acc</th><th>Macro F1</th><th>Subset Acc</th><th>Macro F1</th><th>absolute</th><th>relative</th></tr>
+397:  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>25.0Ã—</td><td>64</td><td>0.9578</td><td>0.9826</td><td>0.5601 Â± 0.2779</td><td>0.7578 Â± 0.2759</td><td>âˆ’0.2248</td><td>âˆ’22.88%</td></tr>
+398:  <tr><td>Ferroelectric</td><td>333.3Ã—</td><td>128</td><td>0.9526</td><td>0.9805</td><td>0.6992 Â± 0.2660</td><td>0.8570 Â± 0.1632</td><td>âˆ’0.1235</td><td>âˆ’12.60%</td></tr>
+399:  <tr><td>Metallic Nanowire</td><td>1.97Ã—</td><td>4</td><td>0.0813</td><td>0.3847</td><td>0.0518 Â± 0.0413</td><td>0.3288 Â± 0.1286</td><td>âˆ’0.0559</td><td>âˆ’14.53%</td></tr>
+400:  <tr><td>TaO<sub>x</sub>/Ta</td><td>145.8Ã—</td><td>32</td><td>0.9458</td><td>0.9770</td><td>0.7258 Â± 0.2431</td><td>0.8726 Â± 0.1364</td><td>âˆ’0.1044</td><td>âˆ’10.69%</td></tr>
+401-</table>
+402:<p class="caption">Table 4. 4 ì†Œìž¬ì˜ Ideal vs Realistic ë¶„ë¥˜ ì„±ëŠ¥ (Subset Accuracy ë° Macro F1, 3 baseline seed Ã— 3 noise sample = 9íšŒ í‰ê· ). Î”F1ì€ macro F1 ê¸°ì¤€ì˜ ì ˆëŒ€ ë³€í™”ëŸ‰ê³¼ ìƒëŒ€ ë³€í™”ìœ¨ì„ ë¶„ë¦¬í•˜ì—¬ í‘œê¸°.</p>
+403-
+404-<div class="figure">
+405:  <img src="figures/material_comparison.png" alt="Material comparison">
+406-  <div class="caption">Figure 4. 4ì¢… ì†Œìž¬ì˜ Ideal(íŒŒëž‘) vs Realistic(ì£¼í™©) macro F1 ë¹„êµ. ì˜¤ì°¨ë§‰ëŒ€ëŠ” 9íšŒ í‘œì¤€íŽ¸ì°¨. íšŒìƒ‰ ì ì„ ì€ FP32 baseline.</div>
+407-</div>
+408-
+409-<p>
+410:ì €í•­ë¹„ 25ë°° ì´ìƒì˜ ì„¸ ì†Œìž¬(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, TaO<sub>x</sub>/Ta)ëŠ” ideal ì¡°ê±´ì—ì„œ
+411-0.98 ìˆ˜ì¤€ì˜ baselineì— ê±°ì˜ ê·¼ì ‘í•œ ì„±ëŠ¥ì„ ë³´ì˜€ë‹¤. ì¦‰ ì–‘ìží™” ë‹¨ë…ìœ¼ë¡œëŠ” ë¶„ë¥˜ ì„±ëŠ¥ì— í° ì˜í–¥ì„ ë¯¸ì¹˜ì§€ ì•ŠëŠ”ë‹¤
+412:(Pt/HfO<sub>x</sub>/Tiì˜ ideal F1ì´ baseline í‰ê· ì„ ë¯¸ì„¸í•˜ê²Œ ìƒíšŒí•˜ë‚˜ baseline std ë²”ìœ„ ë‚´ ìš°ì—°í•œ ë³€ë™ì´ë‹¤).
+413:ê·¸ëŸ¬ë‚˜ variationê³¼ stuck-at faultê°€ ë”í•´ì§„ realistic ì¡°ê±´ì—ì„œëŠ” í‰ê·  macro F1ì´ 0.76~0.87ë¡œ í•˜ë½í•˜ê³  í‘œì¤€íŽ¸ì°¨ê°€
+414-0.13~0.28ë¡œ ë§¤ìš° ì»¸ë‹¤.
+415-</p>
+416-<p>
+417-Subset Accuracy ê¸°ì¤€ìœ¼ë¡œëŠ” ë” í° ê°ì†Œê°€ ë‚˜íƒ€ë‚˜(í‘œ 4), multi-label ë¶„ë¥˜ì—ì„œ 8ê°œ ê²°í•¨ì„ ë™ì‹œì— ì •í™•ížˆ ë§žížˆëŠ” ê²ƒì´
+418:ë¶€ë¶„ ì¼ì¹˜ë³´ë‹¤ í›¨ì”¬ ì–´ë ¤ì›€ì„ ë³´ì—¬ì¤€ë‹¤. Metallic NanowireëŠ” idealì—ì„œë„ Subset Acc 0.08ë¡œ ì‚¬ì‹¤ìƒ ë¶„ë¥˜ê°€ ì„±ë¦½í•˜ì§€ ì•Šì•˜ë‹¤.
+419-</p>
+420-<p>
+421:ì´ì™€ ëŒ€ì¡°ì ìœ¼ë¡œ Metallic NanowireëŠ” ideal ì¡°ê±´ì—ì„œë„ F1 0.38ë¡œ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´í•˜ì˜€ë‹¤. ì´ëŠ” ì €í•­ë¹„ 1.97ë°°
+422-+ 4-state ì–‘ìží™”ì˜ ì¡°í•©ì´ ê°€ì¤‘ì¹˜ ë¶„í¬ì˜ ëŒ€ë¶€ë¶„ì˜ ì •ë³´ë¥¼ ì†ì‹¤ì‹œí‚¤ê¸° ë•Œë¬¸ì´ë©°, realistic ì¡°ê±´ì´ ì¶”ê°€ëœë‹¤ê³ 
+423:í•˜ì—¬ ë” ì•…í™”ë  ì—¬ì§€ê°€ ì ë‹¤(realistic F1 0.33). ì¦‰ Metallic Nanowireì˜ í•œê³„ëŠ” ë¹„ì´ìƒì„±ì´ ì•„ë‹ˆë¼ ë‚®ì€ ì €í•­ë¹„(1.97Ã—)ì™€
+424-4-stateê°€ ê²°í•©í•´ ë§Œë“œëŠ” <b>í‘œí˜„ ê°€ëŠ¥í•œ ê°€ì¤‘ì¹˜ ìžìœ ë„ ë¶€ì¡± ìžì²´</b>ì— ìžˆë‹¤(ë‘ ìš”ì¸ì˜ ì™„ì „í•œ ë¶„ë¦¬ëŠ” ablationì´ í•„ìš”í•˜ë©° 5.4ì— í–¥í›„ ê³¼ì œë¡œ ëª…ì‹œ).
+425-</p>
+426-
+427-<h2>4.3 Worst-case ë¶•ê´´ í˜„ìƒ ë¶„ì„</h2>
+428-<p>
+429-í‘œ 4ì˜ í° í‘œì¤€íŽ¸ì°¨ëŠ” ë‹¨ìˆœí•œ noise varianceê°€ ì•„ë‹ˆë¼, ë™ì¼ ì†Œìž¬ì˜ 9íšŒ noise sampling ê²°ê³¼ê°€ "ì •ìƒ ì˜ì—­"ê³¼
+430-"ë¶•ê´´ ì˜ì—­"ì˜ ë‘ ê·¸ë£¹ìœ¼ë¡œ ê°ˆë¦¬ëŠ” ì–‘ìƒì—ì„œ ë¹„ë¡¯ëœë‹¤. ê·¸ë¦¼ 5ëŠ” 4ì¢… ì†Œìž¬ì˜ per-noise F1 ë¶„í¬ë¥¼ ížˆìŠ¤í† ê·¸ëž¨ìœ¼ë¡œ
+431-ë‚˜íƒ€ë‚¸ ê²ƒì´ë‹¤. ë‹¤ë§Œ í‘œë³¸ ìˆ˜ê°€ ì†Œìž¬ë‹¹ 9íšŒë¡œ ì œí•œë˜ë¯€ë¡œ í†µê³„ì  ì˜ë¯¸ì˜ bimodal ë¶„í¬ë¡œ ë‹¨ì •í•  ìˆ˜ëŠ” ì—†ìœ¼ë©°,
+432-ë³¸ ì ˆì—ì„œëŠ” "worst-case ë¶•ê´´ í˜„ìƒ"ìœ¼ë¡œ í‘œí˜„í•œë‹¤.
+433-</p>
+434-<div class="figure">
+435-  <img src="figures/bimodal_distribution.png" alt="per-noise F1 ë¶„í¬">
+436-  <div class="caption">Figure 5. 4ì¢… ì†Œìž¬ì˜ realistic per-noise macro F1 ë¶„í¬ (9 samples). ê²€ì • ì ì„ : ideal F1, ë¹¨ê°• ì ì„ : realistic mean.</div>
+437-</div>
+438-
+439-<p>
+440:F1 â‰¥ 0.88ì„ "good", F1 &lt; 0.60ì„ "catastrophic"ìœ¼ë¡œ ì •ì˜í–ˆì„ ë•Œ 4 ì†Œìž¬ì˜ ë¶„í¬ëŠ” í‘œ 5ì™€ ê°™ë‹¤.
+441-</p>
+442-<table>
+443:  <tr><th>Material</th><th>Good (F1â‰¥0.88)</th><th>Moderate (0.60â‰¤F1&lt;0.88)</th><th>Catastrophic (F1&lt;0.60)</th><th>Total</th></tr>
+444:  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>4/9 (44%)</td><td>4/9 (44%)</td><td>1/9 (11%)</td><td>9</td></tr>
+445:  <tr><td>Ferroelectric</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+446:  <tr><td>Metallic Nanowire</td><td>0/9 (0%)</td><td>0/9 (0%)</td><td>9/9 (100%)</td><td>9</td></tr>
+447:  <tr><td>TaO<sub>x</sub>/Ta</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+448-</table>
+449-<p class="caption">Table 5. ê° ì†Œìž¬ì˜ per-noise ê²°ê³¼ë¥¼ good / moderate / catastrophic ìž„ê³„ë¡œ ë¶„ë¥˜í•œ ë¹ˆë„.</p>
+450-
+451-<p>
+452:ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” ì•½ 44~56%ê°€ baselineì˜ 90% ì´ìƒì„ ìœ ì§€(good)í•˜ëŠ” í•œíŽ¸, 9íšŒ ì¤‘ 1íšŒ (ì•½ 11%) ë¹„ìœ¨ë¡œ F1ì´
+453:0.60 ë¯¸ë§Œìœ¼ë¡œ ë¶•ê´´(catastrophic)í•˜ëŠ” ê²°ê³¼ê°€ ì„¸ ì†Œìž¬ ëª¨ë‘ì—ì„œ ì¼ê´€ë˜ê²Œ ê´€ì°°ë˜ì—ˆë‹¤. Metallic NanowireëŠ” 9íšŒ ëª¨ë‘
+454-catastrophic êµ¬ê°„ì— ì¡´ìž¬í•˜ì—¬, ë³¸ì§ˆì  í‘œí˜„ í•œê³„ê°€ noise ì¢…ë¥˜ì™€ ë¬´ê´€í•˜ê²Œ í•­ìƒ ì„±ëŠ¥ ë¶•ê´´ë¥¼ ì´ˆëž˜í•¨ì„ ë³´ì—¬ì¤€ë‹¤.
+455:ë˜í•œ NWì˜ ideal ì¡°ê±´(variation=0, fault=0)ì—ì„œë„ ì´ë¯¸ F1=0.38ë¡œ ë¶•ê´´í•˜ë¯€ë¡œ, NWì˜ ê²°ê³¼ëŠ” fault rate ì°¨ì´ê°€
+456-ì•„ë‹Œ 4-state ì–‘ìží™” íš¨ê³¼ë¡œ í•´ì„ëœë‹¤(NWì— ëŒ€í•œ 4-state vs. ë” ë§Žì€ ìƒíƒœ ìˆ˜ì˜ ê°•ì œ ablationì€ ë³¸ ì—°êµ¬ ë²”ìœ„ ì™¸ì´ë©°,
+457-V.Dì— í–¥í›„ ê³¼ì œë¡œ ëª…ì‹œí•œë‹¤).
+458-</p>
+459-
+460-<h2>4.4 ê²°í•¨ ìœ í˜•ë³„ (per-class) F1 ë¶„ì„</h2>
+461-<p>
+462-í‘œ 6ì€ 4 ì†Œìž¬ Ã— ë‘ ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ macro F1ì„ ë³´ì—¬ì¤€ë‹¤. ë°ì´í„°ì…‹ì˜ í´ëž˜ìŠ¤ ë¹ˆë„ê°€ ê· ì¼í•˜ì§€ ì•ŠìŒì„
+463-ìœ ì˜í•´ì•¼ í•œë‹¤(Near-Full 0.4%, Scratch 2.3%ë¡œ ê°€ìž¥ ì ìŒ, Loc 48.6%, Random 51.3%ë¡œ ê°€ìž¥ ë§ŽìŒ).
+464-</p>
+465-<table>
+466:  <tr><th>Material / Condition</th><th>Center</th><th>Donut</th><th>Edge-Loc</th><th>Edge-Ring</th><th>Loc</th><th>Near-Full</th><th>Random</th><th>Scratch</th></tr>
+467:  <tr><td>Pt/HfO<sub>x</sub>/Ti â€” Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.99</td><td>0.93</td><td>0.99</td><td>0.98</td></tr>
+468:  <tr><td>Pt/HfO<sub>x</sub>/Ti â€” Realistic</td><td>0.86</td><td>0.87</td><td>0.74</td><td>0.78</td><td>0.76</td><td><b>0.64</b></td><td>0.82</td><td><b>0.59</b></td></tr>
+469:  <tr><td>Ferroelectric â€” Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.98</td></tr>
+470:  <tr><td>Ferroelectric â€” Realistic</td><td>0.94</td><td>0.90</td><td>0.90</td><td>0.94</td><td>0.81</td><td>0.79</td><td>0.87</td><td><b>0.69</b></td></tr>
+471:  <tr><td>Metallic Nanowire â€” Ideal</td><td>0.29</td><td>0.73</td><td>0.67</td><td><b>0.00</b></td><td>0.67</td><td><b>0.00</b></td><td>0.72</td><td><b>0.01</b></td></tr>
+472:  <tr><td>Metallic Nanowire â€” Realistic</td><td>0.19</td><td>0.44</td><td>0.38</td><td>0.27</td><td>0.57</td><td><b>0.15</b></td><td>0.46</td><td><b>0.17</b></td></tr>
+473:  <tr><td>TaO<sub>x</sub>/Ta â€” Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.97</td></tr>
+474:  <tr><td>TaO<sub>x</sub>/Ta â€” Realistic</td><td>0.98</td><td>0.92</td><td>0.92</td><td>0.95</td><td>0.83</td><td>0.80</td><td>0.89</td><td><b>0.70</b></td></tr>
+475-</table>
+476-<p class="caption">Table 6. 4 ì†Œìž¬ Ã— Ideal/Realistic ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1 (Idealì€ 3 seed í‰ê· , Realisticì€ 9 sample í‰ê· ).</p>
+477-
+478-<p>
+479-ë‘ ê°€ì§€ íŒ¨í„´ì´ ê´€ì°°ëœë‹¤. ì²«ì§¸, <b>minority classì¸ Near-Full(0.4%)ê³¼ Scratch(2.3%)ê°€ ëª¨ë“  ê³ ì €í•­ë¹„ ì†Œìž¬ì—ì„œ
+480:ê°€ìž¥ ë‚®ì€ F1ì„ ë³´ì˜€ë‹¤</b>. íŠ¹ížˆ realistic ì¡°ê±´ì˜ ScratchëŠ” Pt/HfO<sub>x</sub>/Ti 0.59, Ferroelectric 0.69,
+481:TaO<sub>x</sub>/Ta 0.70ìœ¼ë¡œ ë–¨ì–´ì ¸, ë‹¤ë¥¸ ë‹¤ìˆ˜ í´ëž˜ìŠ¤(Loc, Random ë“±)ì™€ ì•½ 0.15~0.25ì˜ F1 ê²©ì°¨ë¥¼ ë³´ì¸ë‹¤. ì´ëŠ”
+482-multi-label ë¶„ë¥˜ì—ì„œ í´ëž˜ìŠ¤ ë¶ˆê· í˜•ì´ ë¹„ì´ìƒì„± ì¡°ê±´ì—ì„œ ë” ì¦í­ë¨ì„ ì‹œì‚¬í•œë‹¤.
+483-</p>
+484-<p>
+485:ë‘˜ì§¸, <b>Metallic NanowireëŠ” ideal ì¡°ê±´ì—ì„œë„ Edge-Ring, Near-Full, Scratchì˜ F1ì´ ì•½ 0ìœ¼ë¡œ ì‚¬ì‹¤ìƒ ë¶„ë¥˜
+486-ì‹¤íŒ¨</b>ì´ë‹¤. ì´ëŠ” 4-state ì–‘ìží™”ë¡œ ì¸í•´ ê°€ì¤‘ì¹˜ í‘œí˜„ ìžìœ ë„ê°€ ë¶€ì¡±í•´ minority ë˜ëŠ” ê³µê°„ì ìœ¼ë¡œ ë¯¸ì„¸í•œ
+487-íŒ¨í„´(Edge-Ring ê°™ì€ ê°€ìž¥ìžë¦¬ ê³ ë¦¬)ì„ ì‹ë³„í•  ìˆ˜ ì—†ìŒì„ ë³´ì—¬ì¤€ë‹¤. realistic ì¡°ê±´ì—ì„œ ì¼ë¶€ í´ëž˜ìŠ¤ì˜ F1ì´ ì‚´ì§
+488-ì¦ê°€í•˜ëŠ” í˜„ìƒì€ ì–‘ìží™”ë¡œ ì´ë¯¸ ë¬´ë„ˆì§„ ê²°ì • ê²½ê³„ê°€ random noiseë¡œ ìš°ì—°ížˆ ì¼ë¶€ ì •ë‹µì„ ë§žížˆëŠ” í†µê³„ì  íš¨ê³¼ë¡œ
+489-í•´ì„ëœë‹¤.
+490-</p>
+491-
+492-<!-- ============================================================== -->
+493-<!--  V. ë…¼ì˜                                                       -->
+494-<!-- ============================================================== -->
+495-<h1>5. ë…¼ì˜</h1>
+496-
+497-<h2>5.1 ì €í•­ë¹„ì˜ ì˜í–¥</h2>
+498-<p>
+499:ë³¸ ë¹„êµ ì¡°ê±´ì—ì„œëŠ” R<sub>off</sub>/R<sub>on</sub> 25ë°° ì´ìƒì¸ ì„¸ ì†Œìž¬ì™€ 1.97ë°°ì¸ Metallic Nanowire ì‚¬ì´ì˜ ì°¨ì´ê°€ ê°€ìž¥ ëšœë ·í•˜ë‹¤. ì €í•­ë¹„ê°€ 25ë°° ì´ìƒì¸ ì„¸ ì†Œìž¬ëŠ”
+500:ideal ì¡°ê±´ì—ì„œ baseline ëŒ€ë¹„ 1% ì´ë‚´ì˜ ì†ì‹¤ë¡œ ê°€ì¤‘ì¹˜ ì •ë³´ë¥¼ ìž˜ ë³´ì¡´í•˜ì§€ë§Œ, ì €í•­ë¹„ 1.97ë°°ì˜ Metallic NanowireëŠ”
+501-idealì—ì„œë„ baselineì˜ 39% ìˆ˜ì¤€ìœ¼ë¡œ ì¶”ë½í•œë‹¤. ì´ ì°¨ì´ëŠ” ì»¨ë•í„´ìŠ¤ ë²”ìœ„ê°€ ì¢ì„ìˆ˜ë¡ ë™ì¼í•œ ì ˆëŒ€ noise/ì–‘ìží™”
+502-ê°„ê²©ì´ ê°€ì¤‘ì¹˜ í‘œí˜„ì— ë¯¸ì¹˜ëŠ” ìƒëŒ€ ì˜¤ì°¨ê°€ ì»¤ì§€ê¸° ë•Œë¬¸ì´ë‹¤.
+503-</p>
+504-<p>
+505-ë‹¤ë§Œ ë³¸ ì—°êµ¬ì˜ ì‹¤í—˜ë§Œìœ¼ë¡œ "25ë°°ê°€ ë³´íŽ¸ì  ë¬¸í„±ê°’"ì´ë¼ ë‹¨ì •í•˜ê¸°ëŠ” ì–´ë µë‹¤. ë³¸ ì—°êµ¬ëŠ” 4 ì†Œìž¬ì˜ ì´ì‚°ì ì¸ ë¹„êµì´ë©°,
+506-ì €í•­ë¹„ sweep(ì˜ˆ: 5Ã—, 10Ã—, 20Ã—, 50Ã—)ì„ ìˆ˜í–‰í•˜ì§€ ì•Šì•˜ê¸° ë•Œë¬¸ì´ë‹¤. "ë³¸ ì—°êµ¬ì˜ ì¡°ê±´ì—ì„œ 25ë°° ì´ìƒì´ë©´ ì–‘ìží™”ë¡œ
+507-ì¸í•œ ideal ì„±ëŠ¥ ì†ì‹¤ì´ 1% ì´ë‚´ì˜€ë‹¤"ê°€ ì •ì§í•œ ê²°ë¡ ì´ë‹¤.
+508-</p>
+509-
+510:<h2>5.2 Metallic Nanowireì˜ ë³¸ì§ˆì  í•œê³„</h2>
+511-<p>
+512:Metallic Nanowireì˜ 4-state ì–‘ìží™”ëŠ” ê°€ì¤‘ì¹˜ë¥¼ 4ê°œì˜ ì¹¸ìœ¼ë¡œ ì••ì¶•í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•œë‹¤. 32ë§Œ ê°œì˜ ë¶€ë™ì†Œìˆ˜ì 
+513-ê°€ì¤‘ì¹˜ê°€ ê°€ì§ˆ ìˆ˜ ìžˆëŠ” ë‹¤ì–‘í•œ ê°’ì´ 4ê°œì˜ ì´ì‚° ê°’ìœ¼ë¡œ ë°˜ì˜¬ë¦¼ë˜ëŠ” ê³¼ì •ì—ì„œ, CNNì´ í•™ìŠµí•œ ë¯¸ì„¸í•œ ê²°ì • ê²½ê³„ê°€
+514-ëŒ€ë¶€ë¶„ ì†Œì‹¤ëœë‹¤. ì´ í•œê³„ëŠ” ë‹¨ìˆœ ì‚¬í›„ ë³´ì •ë§Œìœ¼ë¡œëŠ” íšŒë³µí•˜ê¸° ì–´ë µê³ , quantization-aware training(QAT)ì´ë‚˜ ë” ë§Žì€ conductance
+515-levelì„ ê°–ëŠ” ë³€í˜• êµ¬ì¡° ë“±ì´ í•„ìš”í•˜ë‹¤.
+516-</p>
+517-<p>
+518:í•œíŽ¸ Metallic NanowireëŠ” ë™ìž‘ ì „ì••ì´ ë§¤ìš° ë‚®ê³  (v<sub>off</sub>=0.145 V) variationì´ ìž‘ì•„ (5~8%) ë³„ë„ ì‘ìš©
+519-ì˜ì—­ì—ì„œëŠ” ìœ ë¦¬í•œ ë©´ì´ ìžˆì„ ìˆ˜ ìžˆë‹¤. ë³¸ ì—°êµ¬ê°€ ë³´ì´ëŠ” ê²ƒì€ "ë‹¤ë‹¨ê³„ ê°€ì¤‘ì¹˜ ì •ë°€ë„ê°€ í•„ìš”í•œ PIM ì¶”ë¡  ì‘ìš©ì—ì„œ
+520-ë¶€ì í•©"í•˜ë‹¤ëŠ” ê²ƒì´ì§€, ì†Œìž¬ ìžì²´ì˜ ë¶€ì •ì´ ì•„ë‹ˆë‹¤.
+521-</p>
+522-
+523-<h2>5.3 Worst-case ë¶•ê´´ í˜„ìƒì˜ PIM í•¨ì˜</h2>
+524-<p>
+525-ê³ ì €í•­ë¹„ ì„¸ ì†Œìž¬ëŠ” í‰ê·  ì„±ëŠ¥ì´ ë¹„ìŠ·í•´ë„ 9íšŒ ì¤‘ 1íšŒ catastrophic degradationì´ ë‚˜íƒ€ë‚¬ë‹¤(í‘œ 5). ì´ëŠ” í‰ê· ë§Œìœ¼ë¡œ
+526-ì†Œìž¬ë¥¼ í‰ê°€í•˜ëŠ” ê´€í–‰ì— ëŒ€í•œ ê²½ê³ ë¡œ, ê·¸ ì›ì¸ì€ stuck-at faultê°€ ê°€ì¤‘ì¹˜ í–‰ë ¬ì˜ ì–´ëŠ ìœ„ì¹˜ì— ë°•ížˆëŠ”ì§€ì— ìžˆë‹¤ â€”
+--
+536-<h2>5.4 í•œê³„ ë° í–¥í›„ ê³¼ì œ</h2>
+537-<ul>
+538-  <li><b>ë‹¨ì¼ ë°ì´í„°ì…‹Â·ê²½ëŸ‰ CNN.</b> MixedWM38ê³¼ ì•½ 32ë§Œ íŒŒë¼ë¯¸í„°ì˜ ì–•ì€ CNNì— í•œì •ëœ ê²°ê³¼ë¡œ, WM-811K [7] ë“±
+539-  ë‹¤ë¥¸ ë°ì´í„°ì…‹ì´ë‚˜ ResNet ê³„ì—´ ëŒ€ê·œëª¨ ëª¨ë¸ì—ì„œì˜ ì†Œìž¬ ê°„ ìˆœìœ„ ë³´ì¡´ì€ ê²€ì¦ë˜ì§€ ì•Šì•˜ë‹¤.</li>
+540-  <li><b>ì €í•­ë¹„ sweep ë¯¸ìˆ˜í–‰.</b> 4 ì†Œìž¬ì˜ ì´ì‚° ë¹„êµë§Œ ìˆ˜í–‰í•˜ì—¬ ì €í•­ë¹„-ì„±ëŠ¥ì˜ ì—°ì†ì  í•¨ìˆ˜ í˜•íƒœëŠ” ê²°ì •í•  ìˆ˜ ì—†ë‹¤.</li>
+541-  <li><b>íšŒë¡œÂ·ì‹œê°„ì  ë¹„ì´ìƒì„± ë¯¸ë°˜ì˜.</b> sneak pathÂ·IR dropÂ·ADC ì–‘ìží™” ë“± ì–´ë ˆì´ ìˆ˜ì¤€ ë¹„ì´ìƒì„±ê³¼ driftÂ·endurance
+542-  ê°™ì€ ìž¥ê¸° ë³€í™”ëŠ” ë³¸ ê°€ì¤‘ì¹˜ ìˆ˜ì¤€Â·inference-only í‰ê°€ì—ì„œ ì œì™¸í•˜ì˜€ê³ , LRS/HRS variationë„ ë‹¨ì¼ ê°€ìš°ì‹œì•ˆìœ¼ë¡œ ë‹¨ìˆœí™”í•˜ì˜€ë‹¤.</li>
+543-  <li><b>í‘œë³¸ í•œê³„.</b> ì†Œìž¬ë‹¹ 9íšŒ(3 seed Ã— 3 noise)ë¡œ, 9íšŒ ì¤‘ 1íšŒ ì‚¬ê±´ì˜ binomial 95% ì‹ ë¢°êµ¬ê°„ì€ ì•½ [0.3%, 48%]ì—
+544:  ì´ë¥¸ë‹¤. ë”°ë¼ì„œ ë³¸ë¬¸ì˜ "11%"ëŠ” ë°œìƒ í™•ë¥  ì¶”ì •ì¹˜ê°€ ì•„ë‹ˆë¼ ë³¸ í‘œë³¸ì˜ ê´€ì°° ë¹ˆë„ì´ë©°, ì •ëŸ‰ì  í™•ë¥  ì¶”ì •Â·í†µê³„ì  ìœ ì˜ì„±
+545-  ê²€ì •ì—ëŠ” ë” ë§Žì€ Monte Carlo ë°˜ë³µì´ í•„ìš”í•˜ë‹¤.</li>
+546-</ul>
+547-
+548-<!-- ============================================================== -->
+549-<!--  VI. ê²°ë¡                                                       -->
+550-<!-- ============================================================== -->
+551-<h1>6. ê²°ë¡ </h1>
+552-<p>
+553-ë³¸ ì—°êµ¬ëŠ” VTEAM ëª¨ë¸ ë¬¸í—Œì˜ ì†Œìž¬ë³„ íŒŒë¼ë¯¸í„°ë¥¼ í™œìš©í•œ ì •ì  conductance mapping í™˜ê²½ì—ì„œ 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬
+554:(Pt/HfO<sub>x</sub>/Ti, Ferroelectric, Metallic Nanowire, TaO<sub>x</sub>/Ta)ì˜ PIM í™˜ê²½ ì›¨ì´í¼ ê²°í•¨ ë¶„ë¥˜ ì„±ëŠ¥ì„
+555-ì •ëŸ‰ ë¹„êµí•˜ì˜€ë‹¤. ì–‘ìží™”, device-to-device variation, stuck-at faultì˜ ì„¸ ë¹„ì´ìƒì„±ì„ ë™ì‹œì— ì ìš©í•œ 9íšŒ
+556-Monte Carlo í‰ê°€ì—ì„œ ë‹¤ìŒ ì„¸ ê°€ì§€ë¥¼ í™•ì¸í•˜ì˜€ë‹¤.
+557-</p>
+558-<p>
+559-ì²«ì§¸, R<sub>off</sub>/R<sub>on</sub> 25ë°° ì´ìƒì˜ ì„¸ ì†Œìž¬ëŠ” ideal ì¡°ê±´ì—ì„œ baselineì˜ 99% ì´ìƒì˜ ë¶„ë¥˜ ì„±ëŠ¥ì„ ìœ ì§€í•˜ì˜€ìœ¼ë‚˜,
+560:realistic ì¡°ê±´ì—ì„œëŠ” í‰ê·  macro F1ì´ 0.76~0.87ë¡œ í•˜ë½í•˜ì˜€ë‹¤. ë‘˜ì§¸, ì €í•­ë¹„ 1.97ë°°ì˜ Metallic NanowireëŠ”
+561:4-state ì–‘ìží™”ì˜ ë³¸ì§ˆì  í•œê³„ë¡œ ideal ì¡°ê±´ì—ì„œë„ ë¶„ë¥˜ ì„±ëŠ¥ì´ ë¶•ê´´(F1 0.38)í•˜ì—¬, ë‹¤ë‹¨ê³„ ê°€ì¤‘ì¹˜ ì •ë°€ë„ê°€
+562-í•„ìš”í•œ PIM ì¶”ë¡  ì‘ìš©ì—ëŠ” ë¶€ì í•©í•¨ì„ í™•ì¸í•˜ì˜€ë‹¤. ì…‹ì§¸, ë™ì¼ ì†Œìž¬ ë‚´ì—ì„œë„ stuck-at faultì˜ ìœ„ì¹˜ ë¬´ìž‘ìœ„ì„±ì—
+563:ì˜í•´ 9íšŒ ì¤‘ 1íšŒ (ì•½ 11%) ë¹„ìœ¨ë¡œ catastrophic degradationì´ ê´€ì°°ë˜ì—ˆìœ¼ë©°, ì´ëŠ” worst-case ë¶•ê´´ ìœ„í—˜ì„ ì •ì„±ì ìœ¼ë¡œ
+564-ì‹œì‚¬í•œë‹¤(í‘œë³¸ 9ê°œ í•œê³„ìƒ í†µê³„ì  ë¶„í¬ í˜•íƒœë¡œëŠ” ë‹¨ì •í•˜ì§€ ì•ŠëŠ”ë‹¤).
+565-</p>
+566-<p>
+567-ë³¸ ì—°êµ¬ì˜ ê²°ê³¼ëŠ” PIMìš© ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ ì„ ì •ì—ì„œ (i) R<sub>off</sub>/R<sub>on</sub> ì¶©ë¶„í•œ ë™ì  ë²”ìœ„ í™•ë³´,
+568-(ii) í‰ê·  ì„±ëŠ¥ê³¼ í•¨ê»˜ worst-case ìœ„í—˜ì— ëŒ€í•œ í‰ê°€, (iii) fault tolerance ë©”ì»¤ë‹ˆì¦˜ ë³‘í–‰ì˜ í•„ìš”ì„±ì„ ì œì•ˆí•œë‹¤.
+569-ë³¸ ì—°êµ¬ì˜ ë³´ìˆ˜ì  í‰ê°€ í”„ë¡œí† ì½œì€ í–¥í›„ PIM ê¸°ë°˜ ê²°í•¨ ë¶„ë¥˜ ì‹œìŠ¤í…œì„ ì„¤ê³„í•  ë•Œ í‰ê·  ì„±ëŠ¥ê³¼ worst-case ìœ„í—˜ì„
+570-í•¨ê»˜ ê²€í† í•˜ëŠ” ê¸°ì´ˆ ê²€ì¦ ì ˆì°¨ë¡œ í™œìš©ë  ìˆ˜ ìžˆë‹¤.
+571-</p>
+--
+574-<!--  ì°¸ê³ ë¬¸í—Œ                                                      -->
+575-<!-- ============================================================== -->
+576-<h1>ì°¸ê³ ë¬¸í—Œ</h1>
+577-<div class="references">
+578-<ol>
+579-<li>S. Kvatinsky, M. Ramadan, E. G. Friedman, and A. Kolodny, "VTEAM: A General Model for Voltage-Controlled Memristors," <i>IEEE Transactions on Circuits and Systems II: Express Briefs</i>, vol. 62, no. 8, pp. 786-790, Aug. 2015.</li>
+580-<li>J. Wang, C. Xu, Z. Yang, J. Zhang, and X. Li, "Deformable Convolutional Networks for Efficient Mixed-type Wafer Defect Pattern Recognition," <i>IEEE Transactions on Semiconductor Manufacturing</i>, vol. 33, no. 4, pp. 587-596, Nov. 2020. DOI: 10.1109/TSM.2020.3020985</li>
+581-<li>E. Yalon, A. Gavrilov, S. Cohen, D. Mistele, B. Meyler, J. Salzman, and D. Ritter, "Resistive Switching in HfO<sub>2</sub> Probed by a Metal-Insulator-Semiconductor Bipolar Transistor," <i>IEEE Electron Device Letters</i>, vol. 33, no. 1, pp. 11-13, Jan. 2012.</li>
+582:<li>A. Chanthbouala, V. Garcia, R. O. Cherifi, K. Bouzehouane, S. Fusil, X. Moya, S. Xavier, H. Yamada, C. Deranlot, N. D. Mathur, M. Bibes, A. BarthÃ©lÃ©my, and J. Grollier, "A Ferroelectric Memristor," <i>Nature Materials</i>, vol. 11, no. 10, pp. 860-864, Oct. 2012.</li>
+583:<li>S. L. Johnson, A. Sundararajan, D. P. Hunley, and D. R. Strachan, "Memristive Switching of Single-Component Metallic Nanowires," <i>Nanotechnology</i>, vol. 21, no. 12, Art. no. 125204, Mar. 2010.</li>
+584-<li>C. Yakopcic, T. M. Taha, D. J. Mountain, T. Salter, M. J. Marinella, and M. McLean, "Memristor Model Optimization Based on Parameter Extraction from Device Characterization Data," <i>IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems</i>, vol. 39, no. 5, pp. 1084-1095, May 2020.</li>
+585-<li>M.-J. Wu, J.-S. R. Jang, and J.-L. Chen, "Wafer Map Failure Pattern Recognition and Similarity Ranking for Large-Scale Data Sets," <i>IEEE Transactions on Semiconductor Manufacturing</i>, vol. 28, no. 1, pp. 1-12, Feb. 2015.</li>
+586-<li>C. Lammie, W. Xiang, B. Linares-Barranco, and M. R. Azghadi, "MemTorch: An Open-Source Simulation Framework for Memristive Deep Learning Systems," <i>Neurocomputing</i>, vol. 485, pp. 124-133, May 2022.</li>
+587-<li>S. Yu and P.-Y. Chen, "Emerging Memory Technologies: Recent Trends and Prospects," <i>IEEE Solid-State Circuits Magazine</i>, vol. 8, no. 2, pp. 43-56, Spring 2016.</li>
+588-<li>M. A. Zidan, J. P. Strachan, and W. D. Lu, "The Future of Electronics Based on Memristive Systems," <i>Nature Electronics</i>, vol. 1, no. 1, pp. 22-29, Jan. 2018.</li>
+589-<li>M. Horowitz, "Computing's Energy Problem (and what we can do about it)," in <i>Proc. IEEE International Solid-State Circuits Conference (ISSCC)</i>, Feb. 2014, pp. 10-14.</li>
+590-<li>Y.-H. Chen, T. Krishna, J. S. Emer, and V. Sze, "Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks," <i>IEEE Journal of Solid-State Circuits</i>, vol. 52, no. 1, pp. 127-138, Jan. 2017.</li>
+591-</ol>
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 338ms:
+91:  <h1>ì°¨ã€€ã€€ë¡€</h1>
+124:  <h1 style="text-align:center;border:none">êµ­ ë¬¸ ìš” ì•½</h1>
+152:<h1>1. ì„œë¡ </h1>
+154:<h2>1.1 ì—°êµ¬ ë°°ê²½</h2>
+158:ìžì›ì´ ì†Œë¹„í•˜ëŠ” ì—ë„ˆì§€ë³´ë‹¤ ìˆ˜ì‹­ ë°° ì´ìƒì˜ ì „ë ¥ì„ ìš”êµ¬í•˜ëŠ” ê²ƒìœ¼ë¡œ ë³´ê³ ë˜ë©° [11], ì´ëŠ” ëª¨ë°”ì¼Â·ì—£ì§€ í™˜ê²½ì—ì„œ
+173:<h2>1.2 ì„ í–‰ ì—°êµ¬ì˜ í•œê³„</h2>
+186:<h2>1.3 ë³¸ ì—°êµ¬ì˜ ê¸°ì—¬</h2>
+209:<h1>2. ì´ë¡ ì  ë°°ê²½</h1>
+211:<h2>2.1 Processing-In-Memory (PIM)</h2>
+215:ì–´ë ˆì´ëŠ” ë‹¨ì¼ ì‚¬ì´í´ì˜ ì•„ë‚ ë¡œê·¸ ì—°ì‚°ìœ¼ë¡œ MVMì„ ì²˜ë¦¬í•  ìˆ˜ ìžˆì–´ PIMì˜ íš¨ê³¼ì ì¸ ë¬¼ë¦¬ êµ¬í˜„ í›„ë³´ë¡œ í‰ê°€ëœë‹¤ [10].
+218:<h2>2.2 ë©¤ë¦¬ìŠ¤í„° í¬ë¡œìŠ¤ë°” ì–´ë ˆì´</h2>
+226:<h2>2.3 VTEAM ëª¨ë¸</h2>
+229:ëª¨ë¸ë¡œ [1], ë‹¤ì–‘í•œ ì†Œìž¬ì˜ ì‹¤ì¸¡ íŠ¹ì„±ì„ ë™ì¼í•œ ìˆ˜ì‹ í˜•íƒœ ì•ˆì—ì„œ íŒŒë¼ë¯¸í„°ë§Œ ë°”ê¾¸ì–´ í‘œí˜„í•  ìˆ˜ ìžˆë‹¤. ë³¸ ì—°êµ¬ëŠ” ì‹œê°„
+240:<h2>2.4 ì›¨ì´í¼ ê²°í•¨ ë¶„ë¥˜ì™€ CNN</h2>
+249:<h1>3. ë°©ë²•ë¡ </h1>
+251:<h2>3.1 ë°ì´í„°ì…‹</h2>
+253:ë³¸ ì—°êµ¬ì—ì„œëŠ” Wang ë“±ì´ ê³µê°œí•œ MixedWM38 ì›¨ì´í¼ ê²°í•¨ ë°ì´í„°ì…‹ì„ ì‚¬ìš©í•˜ì˜€ë‹¤ [2].
+261:  <div class="caption">Figure 1. MixedWM38ì˜ 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ ë‹¨ì¼ê²°í•¨ ì˜ˆì‹œ (í°=ì›¨ì´í¼ ë°–, íšŒìƒ‰=ì •ìƒ die, ë¹¨ê°•=ê²°í•¨ die). ì‹¤ì œ ë°ì´í„°ëŠ” ë‘ ì¢…ë¥˜ ì´ìƒì´ ê²¹ì¹œ ë³µí•© ê²°í•¨ì„ í¬í•¨í•œë‹¤.</div>
+270:<h2>3.2 CNN ëª¨ë¸ êµ¬ì¡°</h2>
+278:  <div class="caption">Figure 2. WaferCNN êµ¬ì¡°. 3ê°œ í•©ì„±ê³± ë¸”ë¡ì´ êµ­ì†Œ íŒ¨í„´ì„ ì¶”ì¶œí•˜ê³ (MaxPoolë¡œ í•´ìƒë„ Â½ì”© ì¶•ì†Œ) ì™„ì „ì—°ê²° ê³„ì¸µì´ 8ê°œ ê²°í•¨ í™•ë¥ ì„ ì¶œë ¥í•œë‹¤(multi-label).</div>
+288:<p class="caption">Table 1. CNN ëª¨ë¸ êµ¬ì¡°. ì´ íŒŒë¼ë¯¸í„° ìˆ˜ 319,592.</p>
+296:<h2>3.3 4ì¢… ì†Œìž¬ íŒŒë¼ë¯¸í„°</h2>
+311:  <tr><td>ì¶œì²˜(R<sub>on</sub>, R<sub>off</sub>)</td><td>[1, 3]</td><td>[1, 4]</td><td>[1, 5]</td><td>[6]</td></tr>
+313:<p class="caption">Table 2. 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ì˜ conductance mapping ë° ë¹„ì´ìƒì„± íŒŒë¼ë¯¸í„°. R<sub>on</sub>, R<sub>off</sub>ëŠ” ì‹¤ì¸¡ ë¬¸í—Œ, variation/faultëŠ” ê°€ì •ê°’.</p>
+315:<h2>3.4 ë§¤í•‘Â·ì–‘ìží™” ë° ë¹„ì´ìƒì„± ëª¨ë¸</h2>
+323:  <div class="caption">Figure 3. ì „ì²´ í‰ê°€ íë¦„. ì†Œí”„íŠ¸ì›¨ì–´ì—ì„œ í•™ìŠµí•œ CNN ê°€ì¤‘ì¹˜ë¥¼ ì†Œìž¬ë³„ ë©¤ë¦¬ìŠ¤í„° ì»¨ë•í„´ìŠ¤ë¡œ ë§¤í•‘Â·ì–‘ìží™”í•˜ê³  ë¹„ì´ìƒì„±ì„ ì£¼ìž…í•´ ì¶”ë¡  ë‹¨ê³„ë§Œ PIM í™˜ê²½ì—ì„œ í‰ê°€í•œë‹¤.</div>
+353:<h2>3.5 í‰ê°€ í”„ë¡œí† ì½œ</h2>
+371:<h1>4. ê²°ê³¼</h1>
+373:<h2>4.1 Baseline (FP32 software) ì„±ëŠ¥</h2>
+384:<p class="caption">Table 3. FP32 software baselineì˜ 3 seed ê²°ê³¼. macro F1ì˜ std=0.0032ë¡œ ë§¤ìš° ì•ˆì •ì .</p>
+390:<h2>4.2 4ì¢… ì†Œìž¬ Ideal vs Realistic ë¹„êµ</h2>
+402:<p class="caption">Table 4. 4 ì†Œìž¬ì˜ Ideal vs Realistic ë¶„ë¥˜ ì„±ëŠ¥ (Subset Accuracy ë° Macro F1, 3 baseline seed Ã— 3 noise sample = 9íšŒ í‰ê· ). Î”F1ì€ macro F1 ê¸°ì¤€ì˜ ì ˆëŒ€ ë³€í™”ëŸ‰ê³¼ ìƒëŒ€ ë³€í™”ìœ¨ì„ ë¶„ë¦¬í•˜ì—¬ í‘œê¸°.</p>
+406:  <div class="caption">Figure 4. 4ì¢… ì†Œìž¬ì˜ Ideal(íŒŒëž‘) vs Realistic(ì£¼í™©) macro F1 ë¹„êµ. ì˜¤ì°¨ë§‰ëŒ€ëŠ” 9íšŒ í‘œì¤€íŽ¸ì°¨. íšŒìƒ‰ ì ì„ ì€ FP32 baseline.</div>
+427:<h2>4.3 Worst-case ë¶•ê´´ í˜„ìƒ ë¶„ì„</h2>
+436:  <div class="caption">Figure 5. 4ì¢… ì†Œìž¬ì˜ realistic per-noise macro F1 ë¶„í¬ (9 samples). ê²€ì • ì ì„ : ideal F1, ë¹¨ê°• ì ì„ : realistic mean.</div>
+449:<p class="caption">Table 5. ê° ì†Œìž¬ì˜ per-noise ê²°ê³¼ë¥¼ good / moderate / catastrophic ìž„ê³„ë¡œ ë¶„ë¥˜í•œ ë¹ˆë„.</p>
+460:<h2>4.4 ê²°í•¨ ìœ í˜•ë³„ (per-class) F1 ë¶„ì„</h2>
+476:<p class="caption">Table 6. 4 ì†Œìž¬ Ã— Ideal/Realistic ì¡°ê±´ì—ì„œì˜ ê²°í•¨ í´ëž˜ìŠ¤ë³„ F1 (Idealì€ 3 seed í‰ê· , Realisticì€ 9 sample í‰ê· ).</p>
+495:<h1>5. ë…¼ì˜</h1>
+497:<h2>5.1 ì €í•­ë¹„ì˜ ì˜í–¥</h2>
+510:<h2>5.2 Metallic Nanowireì˜ ë³¸ì§ˆì  í•œê³„</h2>
+523:<h2>5.3 Worst-case ë¶•ê´´ í˜„ìƒì˜ PIM í•¨ì˜</h2>
+536:<h2>5.4 í•œê³„ ë° í–¥í›„ ê³¼ì œ</h2>
+538:  <li><b>ë‹¨ì¼ ë°ì´í„°ì…‹Â·ê²½ëŸ‰ CNN.</b> MixedWM38ê³¼ ì•½ 32ë§Œ íŒŒë¼ë¯¸í„°ì˜ ì–•ì€ CNNì— í•œì •ëœ ê²°ê³¼ë¡œ, WM-811K [7] ë“±
+551:<h1>6. ê²°ë¡ </h1>
+576:<h1>ì°¸ê³ ë¬¸í—Œ</h1>
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+숫자 대조상 큰 축은 보입니다. 표 4 기준 고저항비 3소재 realistic macro F1은 0.7578, 0.8570, 0.8726이라 반올림 범위는 `0.76~0.87`이고, 초록의 `0.76~0.88`만 현재 어긋납니다.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"\\[12\\]|\\[8\\]|\\[9\\]|\\[10\\]|\\[11\\]|\\[1, 8, 9, 10\\]|\\[1, 3\\]|\\[1, 4\\]|\\[1, 5\\]|\\[6\\]|\\[7\\]\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+2026-05-21T05:00:59.417464Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n -C 4 \"<section class=\\\"sheet|cover|inner|approval|contents|summary|국|요|논문|제출|인준|지도|2026|상명|임\" paper_b5.html"` rejected: blocked by policy
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n -C 4 \"<section class=\\\"sheet|cover|inner|approval|contents|summary|국|요|논문|제출|인준|지도|2026|상명|임\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"<img src=|figures/|src=\\\"data:image|alt=|Table 1|Table 2|Figure 1|Figure 2|Figure 3|Figure 4|Figure 5\" paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n -C 4 \"<section class=\\\"sheet|cover|inner|approval|contents|summary|국|요|논문|제출|인준|지도|2026|상명|임\" paper_b5.html"` rejected: blocked by policy
+ declined in 0ms:
+`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"<img src=|figures/|src=\\\"data:image|alt=|Table 1|Table 2|Figure 1|Figure 2|Figure 3|Figure 4|Figure 5\" paper_b5.html"` rejected: blocked by policy
+2026-05-21T05:00:59.417784Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"<img src=|figures/|src=\\\"data:image|alt=|Table 1|Table 2|Figure 1|Figure 2|Figure 3|Figure 4|Figure 5\" paper_b5.html"` rejected: blocked by policy
+ succeeded in 381ms:
+158:ìžì›ì´ ì†Œë¹„í•˜ëŠ” ì—ë„ˆì§€ë³´ë‹¤ ìˆ˜ì‹­ ë°° ì´ìƒì˜ ì „ë ¥ì„ ìš”êµ¬í•˜ëŠ” ê²ƒìœ¼ë¡œ ë³´ê³ ë˜ë©° [11], ì´ëŠ” ëª¨ë°”ì¼Â·ì—£ì§€ í™˜ê²½ì—ì„œ
+165:ì—°êµ¬ë˜ì–´ ì™”ë‹¤ [1, 8, 9, 10].
+215:ì–´ë ˆì´ëŠ” ë‹¨ì¼ ì‚¬ì´í´ì˜ ì•„ë‚ ë¡œê·¸ ì—°ì‚°ìœ¼ë¡œ MVMì„ ì²˜ë¦¬í•  ìˆ˜ ìžˆì–´ PIMì˜ íš¨ê³¼ì ì¸ ë¬¼ë¦¬ êµ¬í˜„ í›„ë³´ë¡œ í‰ê°€ëœë‹¤ [10].
+311:  <tr><td>ì¶œì²˜(R<sub>on</sub>, R<sub>off</sub>)</td><td>[1, 3]</td><td>[1, 4]</td><td>[1, 5]</td><td>[6]</td></tr>
+538:  <li><b>ë‹¨ì¼ ë°ì´í„°ì…‹Â·ê²½ëŸ‰ CNN.</b> MixedWM38ê³¼ ì•½ 32ë§Œ íŒŒë¼ë¯¸í„°ì˜ ì–•ì€ CNNì— í•œì •ëœ ê²°ê³¼ë¡œ, WM-811K [7] ë“±
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n '<section class=|cover|inner|approval|contents|summary|2026|상명|지도|제출|인준|국문|요약' paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n '<img src=|figures/|data:image|Table 1|Table 2|Figure 1|Figure 2|Figure 3|Figure 4|Figure 5' paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n '0\\.76~0\\.88|0\\.76~0\\.87|0\\.13~0\\.28|0\\.13~0\\.27|0\\.7578|0\\.8570|0\\.8726|0\\.2759|0\\.1632|0\\.1364' paper_b5.html" in C:\Users\ds3owl\Desktop\memristor_pim_capstone
+ succeeded in 426ms:
+44:  .cover, .inner, .approval { text-align: center; }
+45:  .cover .deg { font-size: 16pt; font-weight: bold; margin: 18mm 0 28mm; letter-spacing: 4px; }
+49:  .approval .judge { text-align: left; width: 70%; margin: 6mm auto; font-size: 12pt; line-height: 3; }
+63:<section class="sheet cover">
+68:    ìƒëª…ëŒ€í•™êµ ê³µê³¼ëŒ€í•™<br>ì‹œìŠ¤í…œë°˜ë„ì²´ê³µí•™ê³¼<br>ìž„ ì°½ ìš°<br><br>2026ë…„ 5ì›”
+71:<section class="sheet inner">
+75:    ì§€ë„êµìˆ˜ã€€ì´ ì¢… í™˜<br><br>
+76:    ì´ ë…¼ë¬¸ì„ í•™ì‚¬í•™ìœ„ ë…¼ë¬¸ìœ¼ë¡œ ì œì¶œí•¨<br><br>
+77:    2026ë…„ 5ì›”<br><br>
+78:    ìƒëª…ëŒ€í•™êµ ê³µê³¼ëŒ€í•™<br>ì‹œìŠ¤í…œë°˜ë„ì²´ê³µí•™ê³¼<br>ìž„ ì°½ ìš°
+81:<section class="sheet approval">
+82:  <div class="ko-title" style="margin-top:30mm">ìž„ì°½ìš°ì˜ í•™ì‚¬í•™ìœ„ ë…¼ë¬¸ì„<br>ì¸ì¤€í•¨</div>
+88:  <div class="fm-info" style="margin-top:20mm">ìƒëª…ëŒ€í•™êµ ê³µê³¼ëŒ€í•™<br><br>2026ë…„ 5ì›”</div>
+90:<section class="sheet toc">
+93:    <li><b>êµ­ë¬¸ ìš”ì•½</b></li>
+123:<section class="sheet summary">
+595:â€” Manuscript draft, Sangmyung University Capstone Project, 2026 â€”
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 433ms:
+137:  TaO<sub>x</sub>/Ta)ëŠ” í‰ê·  macro F1ì´ 0.76~0.88 ìˆ˜ì¤€ì´ì—ˆìœ¼ë‚˜ noise sampleì— ë”°ë¥¸ ë³€ë™ì„±ì´ ë§¤ìš° ì»¸ìœ¼ë©°
+138:  (std 0.13~0.28), ì €í•­ë¹„ 1.97ë°°ì˜
+397:  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>25.0Ã—</td><td>64</td><td>0.9578</td><td>0.9826</td><td>0.5601 Â± 0.2779</td><td>0.7578 Â± 0.2759</td><td>âˆ’0.2248</td><td>âˆ’22.88%</td></tr>
+398:  <tr><td>Ferroelectric</td><td>333.3Ã—</td><td>128</td><td>0.9526</td><td>0.9805</td><td>0.6992 Â± 0.2660</td><td>0.8570 Â± 0.1632</td><td>âˆ’0.1235</td><td>âˆ’12.60%</td></tr>
+400:  <tr><td>TaO<sub>x</sub>/Ta</td><td>145.8Ã—</td><td>32</td><td>0.9458</td><td>0.9770</td><td>0.7258 Â± 0.2431</td><td>0.8726 Â± 0.1364</td><td>âˆ’0.1044</td><td>âˆ’10.69%</td></tr>
+413:ê·¸ëŸ¬ë‚˜ variationê³¼ stuck-at faultê°€ ë”í•´ì§„ realistic ì¡°ê±´ì—ì„œëŠ” í‰ê·  macro F1ì´ 0.76~0.87ë¡œ í•˜ë½í•˜ê³  í‘œì¤€íŽ¸ì°¨ê°€
+414:0.13~0.28ë¡œ ë§¤ìš° ì»¸ë‹¤.
+560:realistic ì¡°ê±´ì—ì„œëŠ” í‰ê·  macro F1ì´ 0.76~0.87ë¡œ í•˜ë½í•˜ì˜€ë‹¤. ë‘˜ì§¸, ì €í•­ë¹„ 1.97ë°°ì˜ Metallic NanowireëŠ”
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+ succeeded in 452ms:
+260:  <img src="figures/wafer_defect_examples.png" alt="ì›¨ì´í¼ ê²°í•¨ 8ì¢… ì˜ˆì‹œ">
+261:  <div class="caption">Figure 1. MixedWM38ì˜ 8ê°œ ê²°í•¨ í´ëž˜ìŠ¤ ë‹¨ì¼ê²°í•¨ ì˜ˆì‹œ (í°=ì›¨ì´í¼ ë°–, íšŒìƒ‰=ì •ìƒ die, ë¹¨ê°•=ê²°í•¨ die). ì‹¤ì œ ë°ì´í„°ëŠ” ë‘ ì¢…ë¥˜ ì´ìƒì´ ê²¹ì¹œ ë³µí•© ê²°í•¨ì„ í¬í•¨í•œë‹¤.</div>
+277:  <img src="figures/cnn_architecture.png" alt="CNN êµ¬ì¡°ë„">
+278:  <div class="caption">Figure 2. WaferCNN êµ¬ì¡°. 3ê°œ í•©ì„±ê³± ë¸”ë¡ì´ êµ­ì†Œ íŒ¨í„´ì„ ì¶”ì¶œí•˜ê³ (MaxPoolë¡œ í•´ìƒë„ Â½ì”© ì¶•ì†Œ) ì™„ì „ì—°ê²° ê³„ì¸µì´ 8ê°œ ê²°í•¨ í™•ë¥ ì„ ì¶œë ¥í•œë‹¤(multi-label).</div>
+288:<p class="caption">Table 1. CNN ëª¨ë¸ êµ¬ì¡°. ì´ íŒŒë¼ë¯¸í„° ìˆ˜ 319,592.</p>
+313:<p class="caption">Table 2. 4ì¢… ë©¤ë¦¬ìŠ¤í„° ì†Œìž¬ì˜ conductance mapping ë° ë¹„ì´ìƒì„± íŒŒë¼ë¯¸í„°. R<sub>on</sub>, R<sub>off</sub>ëŠ” ì‹¤ì¸¡ ë¬¸í—Œ, variation/faultëŠ” ê°€ì •ê°’.</p>
+322:  <img src="figures/pipeline_overview.png" alt="ì „ì²´ íŒŒì´í”„ë¼ì¸">
+323:  <div class="caption">Figure 3. ì „ì²´ í‰ê°€ íë¦„. ì†Œí”„íŠ¸ì›¨ì–´ì—ì„œ í•™ìŠµí•œ CNN ê°€ì¤‘ì¹˜ë¥¼ ì†Œìž¬ë³„ ë©¤ë¦¬ìŠ¤í„° ì»¨ë•í„´ìŠ¤ë¡œ ë§¤í•‘Â·ì–‘ìží™”í•˜ê³  ë¹„ì´ìƒì„±ì„ ì£¼ìž…í•´ ì¶”ë¡  ë‹¨ê³„ë§Œ PIM í™˜ê²½ì—ì„œ í‰ê°€í•œë‹¤.</div>
+405:  <img src="figures/material_comparison.png" alt="Material comparison">
+406:  <div class="caption">Figure 4. 4ì¢… ì†Œìž¬ì˜ Ideal(íŒŒëž‘) vs Realistic(ì£¼í™©) macro F1 ë¹„êµ. ì˜¤ì°¨ë§‰ëŒ€ëŠ” 9íšŒ í‘œì¤€íŽ¸ì°¨. íšŒìƒ‰ ì ì„ ì€ FP32 baseline.</div>
+435:  <img src="figures/bimodal_distribution.png" alt="per-noise F1 ë¶„í¬">
+436:  <div class="caption">Figure 5. 4ì¢… ì†Œìž¬ì˜ realistic per-noise macro F1 ë¶„í¬ (9 samples). ê²€ì • ì ì„ : ideal F1, ë¹¨ê°• ì ì„ : realistic mean.</div>
+¼Ó¼ºÀ» ¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù. ¼Ó¼º ¼³Á¤Àº ÀÌ ¾ð¾î ¸ðµåÀÇ ÇÙ½É À¯Çü¿¡ ´ëÇØ¼­¸¸ Áö¿øµË´Ï´Ù.
+À§Ä¡ ÁÙ:1 ¹®ÀÚ:1
++ [Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+
+codex
+최종 게이트 기준으로는 **소폭 수정 후 제출 가능**입니다. 치명적 누락은 없고, 아래 2건만 제출 전 고치면 됩니다.
+
+**우선순위 높음**
+1. **국문요약 수치 불일치**
+   - [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:137): `0.76~0.88`
+   - 본문/결론/표 4 기준은 `0.7578, 0.8570, 0.8726` → 반올림하면 **0.76~0.87**
+   - 수정 권장: 국문요약의 `0.76~0.88`을 **`0.76~0.87`**로 통일.
+
+2. **Metallic Nanowire 원인 단정 표현**
+   - [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:455): “fault rate 차이가 아닌 4-state 양자화 효과로 해석된다”
+   - 앞에서는 “저항비 1.97배 + 4-state 조합” 및 “완전한 분리는 ablation 필요”라고 조심스럽게 씀. 이 문장은 디펜스에서 “분리 실험 없이 어떻게 단정하나?” 지적 가능.
+   - 수정 권장: **“fault rate 차이보다는 낮은 저항비와 4-state 양자화의 영향이 지배적인 것으로 해석된다”** 정도로 완화.
+
+**우선순위 중간**
+3. **참고문헌 [12] 미인용**
+   - 본문 인용은 [1]~[11]만 확인되고, 참고문헌 12번 Eyeriss는 본문에서 직접 인용되지 않음.
+   - 깨진 인용은 아니지만, 제출본에서는 미인용 참고문헌으로 보일 수 있음. 본문에 [12]를 추가하거나 참고문헌에서 제거 권장.
+
+4. **NW “항상 성능 붕괴” 표현 다소 강함**
+   - [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:453) 부근.
+   - 9회 샘플 결과로는 맞지만 일반 명제로 보일 수 있음.
+   - “본 실험 조건의 9회 샘플에서는 모두 catastrophic”처럼 표본 범위를 붙이면 더 안전.
+
+**문제 없음**
+- 표 1~6, 그림 1~5 참조/캡션 대응은 정상.
+- `9회 중 1회 = 약 11%`, good/moderate/catastrophic 빈도는 표 5와 본문/결론이 일치.
+- 저항비 `25.0×`, `333.3×`, `1.97×`, `145.8×`는 표 2/4와 본문 서술 일치.
+- front matter는 표지, 속표지/제출문, 인준면, 목차, 국문요약까지 존재. 다만 학교 양식이 “표목차/그림목차”를 별도로 요구하면 현재 별도 페이지는 없음.
+tokens used
+102,660
+최종 게이트 기준으로는 **소폭 수정 후 제출 가능**입니다. 치명적 누락은 없고, 아래 2건만 제출 전 고치면 됩니다.
+
+**우선순위 높음**
+1. **국문요약 수치 불일치**
+   - [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:137): `0.76~0.88`
+   - 본문/결론/표 4 기준은 `0.7578, 0.8570, 0.8726` → 반올림하면 **0.76~0.87**
+   - 수정 권장: 국문요약의 `0.76~0.88`을 **`0.76~0.87`**로 통일.
+
+2. **Metallic Nanowire 원인 단정 표현**
+   - [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:455): “fault rate 차이가 아닌 4-state 양자화 효과로 해석된다”
+   - 앞에서는 “저항비 1.97배 + 4-state 조합” 및 “완전한 분리는 ablation 필요”라고 조심스럽게 씀. 이 문장은 디펜스에서 “분리 실험 없이 어떻게 단정하나?” 지적 가능.
+   - 수정 권장: **“fault rate 차이보다는 낮은 저항비와 4-state 양자화의 영향이 지배적인 것으로 해석된다”** 정도로 완화.
+
+**우선순위 중간**
+3. **참고문헌 [12] 미인용**
+   - 본문 인용은 [1]~[11]만 확인되고, 참고문헌 12번 Eyeriss는 본문에서 직접 인용되지 않음.
+   - 깨진 인용은 아니지만, 제출본에서는 미인용 참고문헌으로 보일 수 있음. 본문에 [12]를 추가하거나 참고문헌에서 제거 권장.
+
+4. **NW “항상 성능 붕괴” 표현 다소 강함**
+   - [paper_b5.html](/C:/Users/ds3owl/Desktop/memristor_pim_capstone/paper_b5.html:453) 부근.
+   - 9회 샘플 결과로는 맞지만 일반 명제로 보일 수 있음.
+   - “본 실험 조건의 9회 샘플에서는 모두 catastrophic”처럼 표본 범위를 붙이면 더 안전.
+
+**문제 없음**
+- 표 1~6, 그림 1~5 참조/캡션 대응은 정상.
+- `9회 중 1회 = 약 11%`, good/moderate/catastrophic 빈도는 표 5와 본문/결론이 일치.
+- 저항비 `25.0×`, `333.3×`, `1.97×`, `145.8×`는 표 2/4와 본문 서술 일치.
+- front matter는 표지, 속표지/제출문, 인준면, 목차, 국문요약까지 존재. 다만 학교 양식이 “표목차/그림목차”를 별도로 요구하면 현재 별도 페이지는 없음.

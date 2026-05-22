@@ -1,0 +1,67 @@
+<table>
+  <tr><th>계층</th><th>구성</th><th>출력 크기</th></tr>
+  <tr><td>Conv1</td><td>3×3, 16ch, BN, ReLU, MaxPool(2)</td><td>26×26×16</td></tr>
+  <tr><td>Conv2</td><td>3×3, 32ch, BN, ReLU, MaxPool(2)</td><td>13×13×32</td></tr>
+  <tr><td>Conv3</td><td>3×3, 64ch, BN, ReLU, MaxPool(2)</td><td>6×6×64</td></tr>
+  <tr><td>FC1</td><td>Linear(2304→128), ReLU, Dropout(0.3)</td><td>128</td></tr>
+  <tr><td>FC2</td><td>Linear(128→8)</td><td>8 (logits)</td></tr>
+</table>
+
+<!-- TABLE BREAK -->
+
+<table>
+  <tr><th>Parameter</th><th>Pt/HfO<sub>x</sub>/Ti</th><th>Ferroelectric</th><th>Metallic Nanowire</th><th>TaO<sub>x</sub>/Ta</th></tr>
+  <tr><td>R<sub>on</sub> (Ω)</td><td>100</td><td>150,000</td><td>17.3</td><td>4,800</td></tr>
+  <tr><td>R<sub>off</sub> (Ω)</td><td>2,500</td><td>50,000,000</td><td>34</td><td>700,000</td></tr>
+  <tr><td><b>R<sub>off</sub>/R<sub>on</sub></b></td><td><b>25.0×</b></td><td><b>333.3×</b></td><td><b>1.97×</b></td><td><b>145.8×</b></td></tr>
+  <tr><td>Conductance states</td><td>64</td><td>128</td><td>4</td><td>32</td></tr>
+  <tr><td>Variation σ<sub>R_on</sub></td><td>10%</td><td>8%</td><td>5%</td><td>8%</td></tr>
+  <tr><td>Variation σ<sub>R_off</sub></td><td>15%</td><td>12%</td><td>8%</td><td>10%</td></tr>
+  <tr><td>Stuck-at fault rate</td><td>0.5%</td><td>0.3%</td><td>5.0%</td><td>0.3%</td></tr>
+  <tr><td>출처(R<sub>on</sub>, R<sub>off</sub>)</td><td>[1, 3]</td><td>[1, 4]</td><td>[1, 5]</td><td>[6]</td></tr>
+</table>
+
+<!-- TABLE BREAK -->
+
+<table>
+  <tr><th>Seed</th><th>Best epoch</th><th>Test Subset Acc</th><th>Test Macro F1</th></tr>
+  <tr><td>42</td><td>9</td><td>0.9568</td><td>0.9780</td></tr>
+  <tr><td>123</td><td>11</td><td>0.9446</td><td>0.9800</td></tr>
+  <tr><td>456</td><td>13</td><td>0.9588</td><td>0.9856</td></tr>
+  <tr><td><b>평균±std</b></td><td>—</td><td><b>0.9534 ± 0.0063</b></td><td><b>0.9812 ± 0.0032</b></td></tr>
+</table>
+
+<!-- TABLE BREAK -->
+
+<table>
+  <tr><th rowspan="2">Material</th><th rowspan="2">R<sub>off</sub>/R<sub>on</sub></th><th rowspan="2">States</th><th colspan="2">Ideal</th><th colspan="2">Realistic (mean ± std)</th><th colspan="2">ΔF1</th></tr>
+  <tr><th>Subset Acc</th><th>Macro F1</th><th>Subset Acc</th><th>Macro F1</th><th>absolute</th><th>relative</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>25.0×</td><td>64</td><td>0.9578</td><td>0.9826</td><td>0.5601 ± 0.2779</td><td>0.7578 ± 0.2759</td><td>−0.2248</td><td>−22.88%</td></tr>
+  <tr><td>Ferroelectric</td><td>333.3×</td><td>128</td><td>0.9526</td><td>0.9805</td><td>0.6992 ± 0.2660</td><td>0.8570 ± 0.1632</td><td>−0.1235</td><td>−12.60%</td></tr>
+  <tr><td>Metallic Nanowire</td><td>1.97×</td><td>4</td><td>0.0813</td><td>0.3847</td><td>0.0518 ± 0.0413</td><td>0.3288 ± 0.1286</td><td>−0.0559</td><td>−14.53%</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta</td><td>145.8×</td><td>32</td><td>0.9458</td><td>0.9770</td><td>0.7258 ± 0.2431</td><td>0.8726 ± 0.1364</td><td>−0.1044</td><td>−10.69%</td></tr>
+</table>
+
+<!-- TABLE BREAK -->
+
+<table>
+  <tr><th>Material</th><th>Good (F1≥0.88)</th><th>Moderate (0.60≤F1&lt;0.88)</th><th>Catastrophic (F1&lt;0.60)</th><th>Total</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti</td><td>4/9 (44%)</td><td>4/9 (44%)</td><td>1/9 (11%)</td><td>9</td></tr>
+  <tr><td>Ferroelectric</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+  <tr><td>Metallic Nanowire</td><td>0/9 (0%)</td><td>0/9 (0%)</td><td>9/9 (100%)</td><td>9</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta</td><td>5/9 (56%)</td><td>3/9 (33%)</td><td>1/9 (11%)</td><td>9</td></tr>
+</table>
+
+<!-- TABLE BREAK -->
+
+<table>
+  <tr><th>Material / Condition</th><th>Center</th><th>Donut</th><th>Edge-Loc</th><th>Edge-Ring</th><th>Loc</th><th>Near-Full</th><th>Random</th><th>Scratch</th></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti — Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.99</td><td>0.93</td><td>0.99</td><td>0.98</td></tr>
+  <tr><td>Pt/HfO<sub>x</sub>/Ti — Realistic</td><td>0.86</td><td>0.87</td><td>0.74</td><td>0.78</td><td>0.76</td><td><b>0.64</b></td><td>0.82</td><td><b>0.59</b></td></tr>
+  <tr><td>Ferroelectric — Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.98</td></tr>
+  <tr><td>Ferroelectric — Realistic</td><td>0.94</td><td>0.90</td><td>0.90</td><td>0.94</td><td>0.81</td><td>0.79</td><td>0.87</td><td><b>0.69</b></td></tr>
+  <tr><td>Metallic Nanowire — Ideal</td><td>0.29</td><td>0.73</td><td>0.67</td><td><b>0.00</b></td><td>0.67</td><td><b>0.00</b></td><td>0.72</td><td><b>0.01</b></td></tr>
+  <tr><td>Metallic Nanowire — Realistic</td><td>0.19</td><td>0.44</td><td>0.38</td><td>0.27</td><td>0.57</td><td><b>0.15</b></td><td>0.46</td><td><b>0.17</b></td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta — Ideal</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.99</td><td>0.98</td><td>0.92</td><td>0.99</td><td>0.97</td></tr>
+  <tr><td>TaO<sub>x</sub>/Ta — Realistic</td><td>0.98</td><td>0.92</td><td>0.92</td><td>0.95</td><td>0.83</td><td>0.80</td><td>0.89</td><td><b>0.70</b></td></tr>
+</table>
